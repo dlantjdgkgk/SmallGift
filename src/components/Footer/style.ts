@@ -6,7 +6,9 @@ export const FooterWrapper = styled.div`
   background-color: #e2e2e2;
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  div {
+    margin: 12px 0 0 8px;
+  }
   .information,
   .smallgiftInformation {
     display: flex;
@@ -14,6 +16,7 @@ export const FooterWrapper = styled.div`
     font-weight: 300;
     font-size: 11px;
     color: #575757;
+    margin-bottom: 12px;
   }
   .smallgift {
     font-size: 16px;

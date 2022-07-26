@@ -5,11 +5,11 @@ import MainPageCategory from "components/MainPageCategory/MainPageCategory";
 
 const Main = () => {
   return (
-    <div>
+    <>
       <Header />
       <MainPageCategory />
       <Footer />;
-    </div>
+    </>
   );
 };
 

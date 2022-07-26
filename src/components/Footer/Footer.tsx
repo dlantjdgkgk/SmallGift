@@ -15,8 +15,8 @@ const Footer = () => {
       </div>
       <div className="smallgiftInformation">
         <p>
-          (주)스몰기프트는 통신 판매중개자이며, 통신판매의 당사자가 아닙니다. 따라서 상품, 거래정보 및 거래에 대해
-          책임을 지지 않습니다.
+          (주)스몰기프트는 통신판매중개자이며, 통신판매의 당사자가 아닙니다. 따라서 상품, 거래정보 및 거래에 대해 책임을
+          지지 않습니다.
         </p>
       </div>
     </Styled.FooterWrapper>

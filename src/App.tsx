@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SigninSample from "./pages/samples/SigninSample";
+import Main from "./pages/Main";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/samples/signin" element={<SigninSample />}></Route>
+        <Route path="/" element={<Main />} />
       </Routes>
     </BrowserRouter>
   );

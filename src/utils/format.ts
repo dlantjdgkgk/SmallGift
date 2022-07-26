@@ -1,1 +1,1 @@
-const fun = () => {};
+export {};

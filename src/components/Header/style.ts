@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
+  min-width: 360px;
   width: 100%;
   background-color: #d9d9d9;
   display: flex;
@@ -31,6 +31,3 @@ export const Navbar = styled.div`
   height: 212px;
   background-color: #c1c1c1;
 `;
-=======
-export {};
->>>>>>> dev-heseok

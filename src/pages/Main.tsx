@@ -8,6 +8,7 @@ const Main = () => {
   return (
     <>
       <Header />
+
       <MainPageCategory />
       <Styled.SectionRestaurantWrapper>
         <p className="location">홍길동님 근처에 있어요</p>

@@ -2,13 +2,8 @@ import styled from "styled-components";
 
 export const MainPageCategoryWrapper = styled.div`
   margin: 60px 0 0 16px;
-  overflow: auto;
-  -ms-overflow-style: none;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   .categorySearch {
-    font-size: 5vw;
+    font-size: 20px;
     font-weight: bold;
     margin-bottom: 16px;
   }
@@ -16,6 +11,11 @@ export const MainPageCategoryWrapper = styled.div`
     display: flex;
     width: 100vw;
     margin-bottom: 60px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
     .FoodCategory {
       display: flex;
       flex-direction: column;
@@ -28,6 +28,11 @@ export const MainPageCategoryWrapper = styled.div`
         border-radius: 100px;
         margin-bottom: 8px;
       }
+      p {
+        font-size: 14px;
+        font-weight: bold;
+        font-family: "Noto Sans KR";
+      }
     }
   }
 `;
@@ -36,5 +41,5 @@ export const Line = styled.div`
   width: 100%;
   height: 12px;
   background-color: #f4f4f4;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 `;

@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import * as Styled from "./style";
 
 const Header = () => {
@@ -13,6 +14,11 @@ const Header = () => {
       <Styled.Navbar />
     </>
   );
+=======
+
+const Header = () => {
+  return <div></div>;
+>>>>>>> dev-heseok
 };
 
 export default Header;

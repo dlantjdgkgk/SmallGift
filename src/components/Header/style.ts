@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
@@ -31,3 +32,6 @@ export const Navbar = styled.div`
   height: 212px;
   background-color: #c1c1c1;
 `;
+=======
+export {};
+>>>>>>> dev-heseok

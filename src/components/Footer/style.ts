@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import styled from "styled-components";
 
 export const FooterWrapper = styled.div`
@@ -23,3 +24,6 @@ export const FooterWrapper = styled.div`
     font-weight: 700;
   }
 `;
+=======
+export {};
+>>>>>>> dev-heseok

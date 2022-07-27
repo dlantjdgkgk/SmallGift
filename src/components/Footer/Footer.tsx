@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import * as Styled from "./style";
 
 const Footer = () => {
@@ -23,6 +24,11 @@ const Footer = () => {
       </div>
     </Styled.FooterWrapper>
   );
+=======
+
+const Footer = () => {
+  return <div></div>;
+>>>>>>> dev-heseok
 };
 
 export default Footer;

@@ -11,7 +11,7 @@ const Main = () => {
 
       <MainPageCategory />
       <Styled.SectionRestaurantWrapper>
-        <p className="location">홍길동님 근처에 있어요</p>
+        <p className="location">홍길동님 근처에 있어요s</p>
         <div className="addressInformation">
           <p className="address">주소</p>
           <p className="exactAddress">서울특별시 마포구 양화로7안길</p>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
+  min-width: 360px;
   width: 100%;
   background-color: #d9d9d9;
   display: flex;

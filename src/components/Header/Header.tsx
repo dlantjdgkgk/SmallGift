@@ -6,7 +6,7 @@ const Header = () => {
       <Styled.HeaderWrapper>
         <div className="logo">Logo</div>
         <div>
-          <button type="button">My</button>
+          <button type="button">Mys</button>
         </div>
       </Styled.HeaderWrapper>
       <Styled.Navbar />

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const MainPageCategoryWrapper = styled.div`
   margin: 60px 0 0 16px;
+  overflow: hidden;
   .categorySearch {
     font-size: 20px;
     font-weight: bold;
@@ -11,7 +12,7 @@ export const MainPageCategoryWrapper = styled.div`
     display: flex;
     width: 100vw;
     margin-bottom: 60px;
-    overflow: auto;
+    overflow-x: auto;
     -ms-overflow-style: none;
     ::-webkit-scrollbar {
       display: none;

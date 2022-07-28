@@ -1,4 +1,5 @@
 import * as Styled from "./style";
+import { Outlet } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -9,7 +10,7 @@ const Header = () => {
           <button type="button">My</button>
         </div>
       </Styled.HeaderWrapper>
-      <Styled.Navbar />
+      <Outlet />
     </>
   );
 };

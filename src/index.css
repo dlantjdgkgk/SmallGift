@@ -1,3 +1,11 @@
+#root{
+    max-width: 768px;
+    min-width: 360px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: rgb(255,255,255);
+}
+
 body,
 h1,h2,h3,h4,h5,h6,p,
 ul,li,ol{

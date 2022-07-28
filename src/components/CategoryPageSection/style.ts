@@ -33,7 +33,6 @@ export const CategoryPageSectionWrapper = styled.div`
       display: flex;
       flex-direction: column;
       text-align: center;
-      margin-right: 8px;
     }
   }
   button {
@@ -47,5 +46,63 @@ export const CategoryPageSectionWrapper = styled.div`
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
+    margin-right: 8px;
+  }
+  // 마지막 버튼 margin-right 16px 아직 안됐음.
+
+  .restaurants {
+    width: 100%;
+    padding-right: 16px;
+    margin-top: 48px;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 16px;
+  }
+  .restaurant {
+    width: 100%;
+    border-bottom: 1px solid #eaeaea;
+    display: flex;
+  }
+  .box {
+    width: 80px;
+    height: 80px;
+    background: #d9d9d9;
+    margin-bottom: 16px;
+  }
+  .restaurantInformation {
+    margin-left: 22px;
+    display: flex;
+    flex-direction: column;
+    button {
+      width: 32px;
+      height: 20px;
+      background: #5e5e5e;
+      border-radius: 2px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 11px;
+      line-height: 16px;
+      letter-spacing: -0.04em;
+      color: #f4f4f4;
+    }
+    .restaurantName {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    .restaurantMenu {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #8f8f8f;
+    }
   }
 `;

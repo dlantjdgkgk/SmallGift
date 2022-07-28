@@ -44,6 +44,38 @@ const CategoryPageSection = () => {
           );
         })}
       </div>
+      <div className="restaurants">
+        <div className="restaurant">
+          <div className="box" />
+          <div className="restaurantInformation">
+            <button className="category" type="button">
+              한식
+            </button>
+            <p className="restaurantName">쭈꾸미랩소디 강남점</p>
+            <p className="restaurantMenu">쭈차돌세트,직화쭈꾸미,직화차돌 외</p>
+          </div>
+        </div>
+        <div className="restaurant">
+          <div className="box" />
+          <div className="restaurantInformation">
+            <button className="category" type="button">
+              한식
+            </button>
+            <p className="restaurantName">을지다락 강남</p>
+            <p className="restaurantMenu">다락 오므라이스,다락 로-제,가츠산도 외</p>
+          </div>
+        </div>
+        <div className="restaurant">
+          <div className="box" />
+          <div className="restaurantInformation">
+            <button className="category" type="button">
+              한식
+            </button>
+            <p className="restaurantName">썸띵어바웃커피</p>
+            <p className="restaurantMenu">아메리카노,카페라떼,치즈케이크</p>
+          </div>
+        </div>
+      </div>
     </Styled.CategoryPageSectionWrapper>
   );
 };

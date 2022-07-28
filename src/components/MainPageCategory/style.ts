@@ -10,7 +10,7 @@ export const MainPageCategoryWrapper = styled.div`
   }
   .categories {
     display: flex;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 60px;
     overflow-x: auto;
     -ms-overflow-style: none;

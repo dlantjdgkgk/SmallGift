@@ -9,7 +9,7 @@ import * as Styled from "./style";
 const Main = () => {
   return (
     <>
-      <Header />
+      <Styled.Navbar />
       <MainPageCategory />
       <MainPageRestaurant />
       <Styled.Line />

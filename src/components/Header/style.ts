@@ -25,9 +25,3 @@ export const HeaderWrapper = styled.div`
     margin: 8px 16px 8px 0px;
   }
 `;
-
-export const Navbar = styled.div`
-  width: 100%;
-  height: 212px;
-  background-color: #c1c1c1;
-`;

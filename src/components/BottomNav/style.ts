@@ -7,7 +7,8 @@ export const NavWrapper = styled.div`
   left: 0;
   right: 0;
   height: 45px;
-
+  max-width: 768px;
+  margin: 0 auto;
   div {
     text-align: center;
     float: left;

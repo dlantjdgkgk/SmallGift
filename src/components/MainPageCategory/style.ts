@@ -13,6 +13,7 @@ export const MainPageCategoryWrapper = styled.div`
     width: 100%;
     margin-bottom: 60px;
     overflow-x: auto;
+    scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     ::-webkit-scrollbar {
       display: none;

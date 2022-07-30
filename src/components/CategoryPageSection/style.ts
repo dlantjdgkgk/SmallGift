@@ -63,17 +63,17 @@ export const CategoryPageSectionWrapper = styled.div`
     border-bottom: 1px solid #eaeaea;
     display: flex;
   }
-  .box {
+  .restaurantImage {
     width: 80px;
     height: 80px;
     background: #d9d9d9;
     margin-bottom: 16px;
   }
   .restaurantInformation {
-    margin-left: 22px;
+    margin-left: 16px;
     display: flex;
     flex-direction: column;
-    button {
+    .category {
       width: 32px;
       height: 20px;
       background: #5e5e5e;
@@ -85,6 +85,9 @@ export const CategoryPageSectionWrapper = styled.div`
       line-height: 16px;
       letter-spacing: -0.04em;
       color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .restaurantName {
       font-family: "Noto Sans KR";

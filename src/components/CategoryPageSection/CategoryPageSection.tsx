@@ -1,14 +1,14 @@
 import * as Styled from "./style";
 import { useState } from "react";
 import queryString from "query-string";
-import { useNavigate } from "react-router";
+
 import { Link } from "react-router-dom";
 
 const CategoryPageSection = () => {
-  const navigate = useNavigate();
-  const selectList = ["서울시 강남구 역삼동", "서울시 송파구 가락동"];
-  const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const [selected, setSelected] = useState("");
+  const selectList = ["서울시 강남구 역삼동", "서울시 송파구 가락동"];
+
+  const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const defaultSelect = queryString.parse(window.location.search).value;
   const [selectCategory, setSelectCategory] = useState(defaultSelect);
   const shopList = [

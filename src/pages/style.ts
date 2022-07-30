@@ -14,7 +14,6 @@ export const Navbar = styled.div`
 
 export const CategoryRestaurantWrapper = styled.div`
   position: relative;
-
   .nav {
     height: 192px;
     background-color: #c1c1c1;

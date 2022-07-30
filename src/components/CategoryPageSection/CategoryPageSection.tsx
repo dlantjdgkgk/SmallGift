@@ -1,16 +1,17 @@
 import * as Styled from "./style";
 import { useState } from "react";
 import queryString from "query-string";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 
 const CategoryPageSection = () => {
+  const navigate = useNavigate();
   const selectList = ["서울시 강남구 역삼동", "서울시 송파구 가락동"];
   const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const [selected, setSelected] = useState("");
-  const queryStringResult = queryString.parse(window.location.search).value;
-  const defaultSelect = queryStringResult;
+  const defaultSelect = queryString.parse(window.location.search).value;
   const [selectCategory, setSelectCategory] = useState(defaultSelect);
-
-  const list = [
+  const shopList = [
     {
       category: "한식",
       restaurantName: "쭈꾸미랩소디 강남점",
@@ -75,36 +76,22 @@ const CategoryPageSection = () => {
       </div>
 
       <div className="restaurants">
-        <div className="restaurant">
-          <div className="box" />
-          <div className="restaurantInformation">
-            <button className="category" type="button">
-              한식
-            </button>
-            <p className="restaurantName">쭈꾸미랩소디 강남점</p>
-            <p className="restaurantMenu">쭈차돌세트,직화쭈꾸미,직화차돌 외</p>
-          </div>
-        </div>
-        {/* <div className="restaurant">
-          <div className="box" />
-          <div className="restaurantInformation">
-            <button className="category" type="button">
-              한식
-            </button>
-            <p className="restaurantName">을지다락 강남</p>
-            <p className="restaurantMenu">다락 오므라이스,다락 로-제,가츠산도 외</p>
-          </div>
-        </div> */}
-        {/* <div className="restaurant">
-          <div className="box" />
-          <div className="restaurantInformation">
-            <button className="category" type="button">
-              한식
-            </button>
-            <p className="restaurantName">썸띵어바웃커피</p>
-            <p className="restaurantMenu">아메리카노,카페라떼,치즈케이크</p>
-          </div>
-        </div> */}
+        {(selectCategory === "전체" ? shopList : shopList.filter((shop) => shop.category === selectCategory)).map(
+          (shop, index) => {
+            return (
+              <Link to={`/categoryRestaurant?value=${shop.restaurantName}`} key={index}>
+                <div className="restaurant">
+                  <div className="restaurantImage" />
+                  <div className="restaurantInformation">
+                    <div className="category">{shop.category}</div>
+                    <p className="restaurantName">{shop.restaurantName}</p>
+                    <p className="restaurantMenu">{shop.restaurantMenu}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          },
+        )}
       </div>
     </Styled.CategoryPageSectionWrapper>
   );

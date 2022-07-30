@@ -16,6 +16,7 @@ const MainPageRestaurant = () => {
           </button>
         </div>
       </div>
+
       <div className="restaurants">
         <div className="restaurant">
           <div className="category">일식</div>
@@ -27,30 +28,21 @@ const MainPageRestaurant = () => {
           </div>
         </div>
         <div className="restaurant">
-          <div className="category">일식</div>
+          <div className="category">카페</div>
           <button type="button" aria-label="Click" />
           <div className="restaurantInformation">
-            <p className="restaurantName">카멜로 연남</p>
-            <p className="restaurantMenu">버터 봉골레 파스타</p>
-            <p className="menuPrice">17,000원</p>
+            <p className="restaurantName">모센즈 스위트</p>
+            <p className="restaurantMenu">모센 라떼</p>
+            <p className="menuPrice">6,000원</p>
           </div>
         </div>
         <div className="restaurant">
-          <div className="category">일식</div>
+          <div className="category">한식</div>
           <button type="button" aria-label="Click" />
           <div className="restaurantInformation">
-            <p className="restaurantName">카멜로 연남</p>
-            <p className="restaurantMenu">버터 봉골레 파스타</p>
-            <p className="menuPrice">17,000원</p>
-          </div>
-        </div>
-        <div className="restaurant">
-          <div className="category">일식</div>
-          <button type="button" aria-label="Click" />
-          <div className="restaurantInformation">
-            <p className="restaurantName">카멜로 연남</p>
-            <p className="restaurantMenu">버터 봉골레 파스타</p>
-            <p className="menuPrice">17,000원</p>
+            <p className="restaurantName">아뜨뜨</p>
+            <p className="restaurantMenu">소고기 솥밥</p>
+            <p className="menuPrice">15,000원</p>
           </div>
         </div>
       </div>

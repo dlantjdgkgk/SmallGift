@@ -55,7 +55,6 @@ export const CategoryPageSectionWrapper = styled.div`
     padding-right: 16px;
     margin-top: 48px;
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
     grid-row-gap: 16px;
   }
   .restaurant {

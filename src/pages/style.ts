@@ -14,6 +14,7 @@ export const Navbar = styled.div`
 
 export const CategoryRestaurantWrapper = styled.div`
   position: relative;
+  overflow: hidden;
   .nav {
     height: 192px;
     background-color: #c1c1c1;
@@ -75,7 +76,7 @@ export const CategoryRestaurantWrapper = styled.div`
     }
   }
   .restaurantBestMenu {
-    margin: 24px 0 0 24px;
+    padding: 24px 0 0 24px;
     .bestMenu {
       margin-bottom: 16px;
       font-family: "Noto Sans KR";
@@ -138,5 +139,23 @@ export const CategoryRestaurantWrapper = styled.div`
     width: 100%;
     height: 8px;
     background: #f8f8f8;
+  }
+  .menuAndRestaurantInformation {
+    display: flex;
+    button {
+      width: 50%;
+      border-bottom: 2px solid black;
+      p {
+        font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        text-align: center;
+        letter-spacing: -0.04em;
+        color: #000000;
+        margin-bottom: 10px;
+      }
+    }
   }
 `;

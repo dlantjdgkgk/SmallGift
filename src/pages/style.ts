@@ -20,7 +20,7 @@ export const CategoryRestaurantWrapper = styled.div`
     background-color: #c1c1c1;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) -55.86%, rgba(0, 0, 0, 0.7) 100%);
   }
-  .reasturantInformation {
+  .resturantThumbnail {
     .category {
       position: absolute;
       top: 0;
@@ -38,7 +38,7 @@ export const CategoryRestaurantWrapper = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-left: 16px;
+      margin-left: 24px;
       margin-top: 110px;
     }
     .restaurantLike {
@@ -49,7 +49,7 @@ export const CategoryRestaurantWrapper = styled.div`
       justify-content: space-between;
       margin-top: 4px;
       padding-right: 16px;
-      padding-left: 16px;
+      padding-left: 24px;
       margin-top: 136px;
     }
     .restaurantName {
@@ -76,7 +76,7 @@ export const CategoryRestaurantWrapper = styled.div`
     }
   }
   .restaurantBestMenu {
-    padding: 24px 0 0 24px;
+    margin: 24px 0 0 24px;
     .bestMenu {
       margin-bottom: 16px;
       font-family: "Noto Sans KR";
@@ -92,7 +92,7 @@ export const CategoryRestaurantWrapper = styled.div`
   .menuInformation {
     width: 100%;
     display: flex;
-    margin-bottom: 32px;
+    margin-bottom: 16px;
   }
   .menuImage {
     width: 92px;
@@ -142,19 +142,103 @@ export const CategoryRestaurantWrapper = styled.div`
   }
   .menuAndRestaurantInformation {
     display: flex;
+    margin-bottom: 32px;
     button {
       width: 50%;
-      border-bottom: 2px solid black;
+      font-weight: 400;
       p {
         font-family: "Noto Sans KR";
         font-style: normal;
-        font-weight: 400;
         font-size: 16px;
         line-height: 23px;
         text-align: center;
         letter-spacing: -0.04em;
         color: #000000;
         margin-bottom: 10px;
+      }
+    }
+  }
+  .manyMenu {
+    margin-left: 24px;
+    margin-bottom: 100px;
+  }
+
+  .restaurantInformation {
+    display: flex;
+    flex-direction: column;
+    margin-left: 24px;
+    margin-right: 24px;
+    .addressInformation {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    .restaurantAddress {
+      display: flex;
+      align-items: center;
+      margin-bottom: 46px;
+    }
+    .address,
+    .hours,
+    .phoneNumberKorean {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.04em;
+      color: #000000;
+      margin-left: 15.92px;
+    }
+    .map {
+      width: 100%;
+      height: 144px;
+      background-color: black;
+      margin-bottom: 24px;
+    }
+    .restaurantOperatingHours {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e6e6e6;
+      margin-top: 24px;
+      .operatingHours {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .hourInformation {
+        margin-bottom: 22px;
+        margin-left: 34px;
+        .everyday,
+        .breaktime,
+        .lastOrder,
+        .phoneNumber {
+          font-family: "Noto Sans KR";
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 23px;
+          display: flex;
+          align-items: center;
+          letter-spacing: -0.04em;
+          color: #000000;
+        }
+      }
+    }
+    .phoneNumberInformation {
+      display: flex;
+      flex-direction: column;
+      margin-top: 24px;
+      margin-bottom: 100px;
+      .phone {
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .phoneNumber {
+        margin-left: 34px;
       }
     }
   }

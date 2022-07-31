@@ -6,10 +6,17 @@ import Slider from "react-slick";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faClock, faPhone } from "@fortawesome/free-solid-svg-icons";
+import KakaoShare from "components/KakaoShare/KakaoShare";
+import Modal from "components/Modal/Modal";
 
-const CategoryRestaurant = () => {
+const CategoryRestaurant = ({}) => {
   const buttons = ["전체 메뉴", "매장 정보"];
   const [selectButton, setSelectButton] = useState("전체 메뉴");
+
+  const [selectMenu, setSelectMenu] = useState(4);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleModalClose = () => setModalIsOpen(false);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -42,8 +49,6 @@ const CategoryRestaurant = () => {
     },
   ];
 
-  const handleClick = () => {};
-
   return (
     <Styled.CategoryRestaurantWrapper>
       <div className="nav" />
@@ -51,30 +56,42 @@ const CategoryRestaurant = () => {
         <div className="category">한식</div>
         <div className="restaurantLike">
           <div className="restaurantName">쭈꾸미랩소디 강남점</div>
-          <button type="button" className="like">
-            Like
-          </button>
+          <div className="likeAndShareButton">
+            <button type="button" className="like">
+              Like
+            </button>
+            <button type="button" className="share">
+              <KakaoShare />
+            </button>
+          </div>
         </div>
       </div>
+
       <div className="restaurantBestMenu">
         <p className="bestMenu">Best 메뉴</p>
         <Slider {...settings}>
           {menuList.map((menu, index) => {
+            const isSelected = selectMenu === index;
             return (
-              <Link
-                to={`/categoryProduct?setMenuName=${menu.setMenuName}&setMenu=${menu.setMenu}&price=${menu.price}`}
+              <div
+                className="bestMenuInformation"
                 key={index}
-                style={{ color: "black" }}
+                aria-hidden="true"
+                onClick={() => {
+                  setSelectMenu(index);
+                  setModalIsOpen(!modalIsOpen);
+                }}
               >
+                {modalIsOpen && isSelected ? <Modal menu={menu} handleModalClose={handleModalClose} /> : undefined}
                 <div className="menuInformation">
                   <div className="menuImage" />
-                  <div className="setMenuInformation">
+                  <div className="setMenuInfo">
                     <div className="setMenuName">{menu.setMenuName}</div>
                     <p className="setMenu">{menu.setMenu}</p>
                     <p className="price">{menu.price}</p>
                   </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </Slider>
@@ -100,20 +117,14 @@ const CategoryRestaurant = () => {
         <div className="manyMenu">
           {menuList.map((menu, index) => {
             return (
-              <Link
-                to={`/categoryProduct?setMenuName=${menu.setMenuName}&setMenu=${menu.setMenu}&price=${menu.price}`}
-                key={index}
-                style={{ color: "black" }}
-              >
-                <div className="menuInformation">
-                  <div className="menuImage" />
-                  <div className="setMenuInformation">
-                    <div className="setMenuName">{menu.setMenuName}</div>
-                    <p className="setMenu">{menu.setMenu}</p>
-                    <p className="price">{menu.price}</p>
-                  </div>
+              <div className="bestMenuInformation" key={index} aria-hidden="true">
+                <div className="menuImage" />
+                <div className="setMenuInfo">
+                  <div className="setMenuName">{menu.setMenuName}</div>
+                  <p className="setMenu">{menu.setMenu}</p>
+                  <p className="price">{menu.price}</p>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

@@ -50,7 +50,6 @@ export const CategoryRestaurantWrapper = styled.div`
       margin-top: 4px;
       padding-right: 16px;
       padding-left: 24px;
-      margin-top: 136px;
     }
     .restaurantName {
       font-family: "Noto Sans KR";
@@ -60,8 +59,10 @@ export const CategoryRestaurantWrapper = styled.div`
       line-height: 35px;
       letter-spacing: -0.04em;
       color: #ffffff;
+      margin-top: 136px;
     }
-    button {
+    .like,
+    .share {
       width: 32px;
       height: 32px;
       background: #737373;
@@ -73,6 +74,10 @@ export const CategoryRestaurantWrapper = styled.div`
       text-align: center;
       letter-spacing: -0.04em;
       color: #000000;
+      margin-top: 4px;
+    }
+    .like {
+      margin-right: 16px;
     }
   }
   .restaurantBestMenu {
@@ -94,45 +99,59 @@ export const CategoryRestaurantWrapper = styled.div`
     display: flex;
     margin-bottom: 16px;
   }
+  .bestMenuInformation {
+    width: 100%;
+    display: flex;
+    margin-bottom: 24px;
+  }
+
   .menuImage {
     width: 92px;
     height: 92px;
     background: #d9d9d9;
   }
-  .setMenuInformation {
+  .setMenuInfo {
     margin-left: 16px;
     display: flex;
     flex-direction: column;
-    .setMenuName {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
-    .setMenu {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.04em;
-      color: #000000;
-      margin-top: 4px;
-    }
-    .price {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: #000000;
-      margin-top: 17px;
-    }
   }
+  .setManyMenuInformation {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .setMenuName {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  .setMenu {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-top: 4px;
+  }
+
+  .price {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-top: 17px;
+  }
+
   .line {
     margin-top: 45px;
     margin-bottom: 16px;
@@ -241,5 +260,63 @@ export const CategoryRestaurantWrapper = styled.div`
         margin-left: 34px;
       }
     }
+  }
+`;
+
+export const CategoryProductWrapper = styled.div`
+  .nav {
+    position: relative;
+    background: #575757;
+    height: 376px;
+    z-index: 1;
+  }
+  .backAndAlertButton {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  button {
+    width: 32px;
+    height: 32px;
+    background: #a8a8a8;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-top: 8px;
+  }
+  .likeAndShareButton {
+    display: flex;
+    margin-top: 8px;
+    button {
+      width: 32px;
+      height: 32px;
+      background: #737373;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 8px;
+      line-height: 12px;
+      text-align: center;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    .like {
+      margin-left: 264px;
+      margin-right: 16px;
+    }
+  }
+  .modal {
+    position: absolute;
+    width: 360px;
+    height: 323px;
+    background: #ffffff;
+    border-radius: 16px 16px 0px 0px;
+    z-index: 3;
   }
 `;

@@ -10,7 +10,6 @@ import MyPage from "pages/MyPage";
 import CategoryRestaurant from "pages/CategoryRestaurant";
 import BottomNav from "components/BottomNav/BottomNav";
 import Header from "components/Header/Header";
-import CategoryProduct from "pages/CategoryProduct";
 
 const Routers = () => {
   return (
@@ -25,11 +24,10 @@ const Routers = () => {
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/categoryRestaurant" element={<CategoryRestaurant />} />
           </Route>
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/find" element={<Find />} />
-          <Route path="/categoryProduct" element={<CategoryProduct />} />
         </Route>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/find" element={<Find />} />
       </Routes>
     </Router>
   );

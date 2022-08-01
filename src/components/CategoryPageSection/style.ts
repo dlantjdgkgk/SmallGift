@@ -34,6 +34,9 @@ export const CategoryPageSectionWrapper = styled.div`
       flex-direction: column;
       text-align: center;
     }
+    div:last-child {
+      margin-right: 8px;
+    }
   }
   button {
     background: #ffffff;
@@ -48,7 +51,6 @@ export const CategoryPageSectionWrapper = styled.div`
     line-height: 20px;
     margin-right: 8px;
   }
-  // 마지막 버튼 margin-right 16px 아직 안됐음.
 
   .restaurants {
     width: 100%;
@@ -56,12 +58,19 @@ export const CategoryPageSectionWrapper = styled.div`
     margin-top: 48px;
     display: grid;
     grid-row-gap: 16px;
+    margin-bottom: 72px;
+    a {
+      width: 100%;
+      border-bottom: 1px solid #eaeaea;
+      .restaurant {
+        display: flex;
+      }
+    }
+    a:last-child {
+      border: none;
+    }
   }
-  .restaurant {
-    width: 100%;
-    border-bottom: 1px solid #eaeaea;
-    display: flex;
-  }
+
   .restaurantImage {
     width: 80px;
     height: 80px;

@@ -19,22 +19,28 @@ const CategoryPageSection = () => {
     },
     {
       category: "일식",
-      restaurantName: "쭈꾸미랩소디 강남점",
+      restaurantName: "치킨 송파점",
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
     {
       category: "중식",
-      restaurantName: "쭈꾸미랩소디 강남점",
+      restaurantName: "짜장면 성수점",
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
     {
       category: "양식",
-      restaurantName: "쭈꾸미랩소디 강남점",
+      restaurantName: "리미니 장지점",
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
     {
       category: "카페",
-      restaurantName: "쭈꾸미랩소디 강남점",
+      restaurantName: "더 벤티 천호점",
+      restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
+    },
+
+    {
+      category: "카페",
+      restaurantName: "더 벤티 천호점",
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
   ];
@@ -79,7 +85,10 @@ const CategoryPageSection = () => {
         {(selectCategory === "전체" ? shopList : shopList.filter((shop) => shop.category === selectCategory)).map(
           (shop, index) => {
             return (
-              <Link to={`/categoryRestaurant?value=${shop.restaurantName}`} key={index}>
+              <Link
+                to={`/categoryRestaurant?restaurantName=${shop.restaurantName}&category=${shop.category}`}
+                key={index}
+              >
                 <div className="restaurant">
                   <div className="restaurantImage" />
                   <div className="restaurantInformation">

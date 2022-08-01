@@ -2,7 +2,6 @@ import * as Styled from "./style";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useEffect } from "react";
 
 interface MovieInfo {
   setMenuName: string;
@@ -12,9 +11,13 @@ interface MovieInfo {
 interface Props {
   menu: MovieInfo;
   handleModalClose: () => void;
+  modalIsOpen: boolean;
 }
-const Modal = ({ menu, handleModalClose }: Props) => {
+const Modal = ({ menu, handleModalClose, modalIsOpen }: Props) => {
   const navigate = useNavigate();
+  // if (modalIsOpen) {
+  //   document.body.style.overflow = "hidden";
+  // }
 
   return (
     <Styled.ModalWrapper>

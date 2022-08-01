@@ -4,7 +4,7 @@ export const Line = styled.div`
   width: 100%;
   height: 12px;
   background-color: #f4f4f4;
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 `;
 export const Navbar = styled.div`
   width: 100%;
@@ -80,8 +80,9 @@ export const CategoryRestaurantWrapper = styled.div`
       margin-right: 16px;
     }
   }
+
   .restaurantBestMenu {
-    margin: 24px 0 0 24px;
+    margin: 24px 0 0 0;
     .bestMenu {
       margin-bottom: 16px;
       font-family: "Noto Sans KR";
@@ -91,18 +92,35 @@ export const CategoryRestaurantWrapper = styled.div`
       line-height: 29px;
       letter-spacing: -0.04em;
       color: #000000;
+      margin-left: 24px;
     }
+  }
+
+  .bestMenuInformation {
+    width: 100%;
+    display: flex;
+    margin-bottom: 48px;
+  }
+
+  .manyMenu {
+    margin-left: 24px;
+    margin-bottom: 100px;
+  }
+
+  .manyMenuInformation {
+    width: 100%;
+    display: flex;
+    margin-bottom: 24px;
   }
 
   .menuInformation {
     width: 100%;
     display: flex;
-    margin-bottom: 16px;
+    margin-left: 24px;
   }
-  .bestMenuInformation {
-    width: 100%;
-    display: flex;
-    margin-bottom: 24px;
+  .slick-dots {
+    bottom: 0px;
+    margin-left: 18px;
   }
 
   .menuImage {
@@ -176,10 +194,6 @@ export const CategoryRestaurantWrapper = styled.div`
         margin-bottom: 10px;
       }
     }
-  }
-  .manyMenu {
-    margin-left: 24px;
-    margin-bottom: 100px;
   }
 
   .restaurantInformation {

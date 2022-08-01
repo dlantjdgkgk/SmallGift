@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const MainPageCategoryWrapper = styled.div`
-  margin: 60px 0 0 16px;
+  margin: 48px 0 0 16px;
   .categorySearch {
     font-size: 20px;
     font-weight: bold;
@@ -42,5 +42,4 @@ export const Line = styled.div`
   width: 100%;
   height: 12px;
   background-color: #f4f4f4;
-  margin-bottom: 20px;
 `;

@@ -25,6 +25,7 @@ const CategoryRestaurant = ({}) => {
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "0px",
+    bottom: "0px;",
   };
   const menuList = [
     {
@@ -66,7 +67,6 @@ const CategoryRestaurant = ({}) => {
           </div>
         </div>
       </div>
-
       <div className="restaurantBestMenu">
         <p className="bestMenu">Best 메뉴</p>
         <Slider {...settings}>
@@ -82,7 +82,9 @@ const CategoryRestaurant = ({}) => {
                   setModalIsOpen(!modalIsOpen);
                 }}
               >
-                {modalIsOpen && isSelected ? <Modal menu={menu} handleModalClose={handleModalClose} /> : undefined}
+                {modalIsOpen && isSelected ? (
+                  <Modal menu={menu} handleModalClose={handleModalClose} modalIsOpen={modalIsOpen} />
+                ) : undefined}
                 <div className="menuInformation">
                   <div className="menuImage" />
                   <div className="setMenuInfo">
@@ -113,11 +115,12 @@ const CategoryRestaurant = ({}) => {
           );
         })}
       </div>
+
       {selectButton === "전체 메뉴" ? (
         <div className="manyMenu">
           {menuList.map((menu, index) => {
             return (
-              <div className="bestMenuInformation" key={index} aria-hidden="true">
+              <div className="manyMenuInformation" key={index} aria-hidden="true">
                 <div className="menuImage" />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>

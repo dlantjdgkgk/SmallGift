@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SectionRestaurantWrapper = styled.div`
-  margin: 40px 0 0 16px;
+  margin: 32px 0 0 16px;
   overflow: hidden;
   .location {
     font-size: 20px;

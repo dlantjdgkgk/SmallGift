@@ -5,42 +5,52 @@ import { faSearch, faAlignJustify, faMedal, faCartShopping, faHome } from "@fort
 import { Link, Outlet } from "react-router-dom";
 
 const BottomNav = () => {
-  const [activeNav, setActiveNav] = useState(1);
+  const [activeNav, setActiveNav] = useState(0);
   const datas = [
     {
       icons: faHome,
       Links: "/",
+      name: "홈",
     },
     {
       icons: faAlignJustify,
       Links: "category",
+      name: "카테고리",
     },
     {
       icons: faSearch,
       Links: "search",
+      name: "검색",
     },
     {
       icons: faCartShopping,
       Links: "shop",
+      name: "장바구니",
     },
     {
       icons: faMedal,
       Links: "mypage",
+      name: "마이페이지",
     },
   ];
   return (
     <>
       <Styled.NavWrapper>
-        {/* <Link to="/" className="nav-link" onClick={() => setActiveNav(1)}>
-          <div>
-            <FontAwesomeIcon icon={faHome} c  lassName={activeNav === 1 ? "nav-item active" : "nav-item"} />
-          </div>
-        </Link> */}
-        {datas.map(({ icons, Links }, index) => {
+        {datas.map(({ icons, Links, name }, index) => {
           return (
-            <Link to={Links} className="nav-link" key={index} onClick={() => setActiveNav(index)}>
-              <div>
-                <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
+            <Link
+              to={Links}
+              className="nav-link"
+              key={index}
+              onClick={() => {
+                setActiveNav(index);
+              }}
+            >
+              <div className="iconAndDescription">
+                <div>
+                  <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
+                  <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
+                </div>
               </div>
             </Link>
           );

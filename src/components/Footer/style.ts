@@ -5,6 +5,7 @@ export const FooterWrapper = styled.div`
   background-color: #e2e2e2;
   display: flex;
   flex-direction: column;
+  margin-bottom: 72px;
   div {
     margin: 12px 0 0 8px;
   }

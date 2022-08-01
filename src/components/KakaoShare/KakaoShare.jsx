@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 const KakaoShare = () => {
-  const url = window.location.href;
   const initKakao = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -16,6 +15,7 @@ const KakaoShare = () => {
   }, []);
 
   const shareKakao = () => {
+    console.log(5);
     window.Kakao.Link.sendDefault({
       objectType: "feed",
       content: {
@@ -23,8 +23,8 @@ const KakaoShare = () => {
         description: "#케익 #딸기 #삼평동 #카페 #분위기 #소개팅",
         imageUrl: "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
         link: {
-          mobileWebUrl: url,
-          webUrl: url,
+          mobileWebUrl: "http://localhost:3000/",
+          webUrl: "http://localhost:3000/",
         },
       },
       social: {
@@ -36,8 +36,8 @@ const KakaoShare = () => {
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: url,
-            webUrl: url,
+            mobileWebUrl: "http://localhost:3000/",
+            webUrl: "http://localhost:3000/",
           },
         },
       ],

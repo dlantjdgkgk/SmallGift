@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import * as Styled from "./style";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faClock, faPhone } from "@fortawesome/free-solid-svg-icons";
 import KakaoShare from "components/KakaoShare/KakaoShare";
 import Modal from "components/Modal/Modal";
+import Portal from "components/Portal/Portal";
 
 const CategoryRestaurant = ({}) => {
   const buttons = ["전체 메뉴", "매장 정보"];
@@ -52,7 +52,7 @@ const CategoryRestaurant = ({}) => {
 
   return (
     <Styled.CategoryRestaurantWrapper>
-      <div className="nav" />
+      <div className="nav" id="modal-container" />
       <div className="resturantThumbnail">
         <div className="category">한식</div>
         <div className="restaurantLike">
@@ -82,9 +82,6 @@ const CategoryRestaurant = ({}) => {
                   setModalIsOpen(!modalIsOpen);
                 }}
               >
-                {modalIsOpen && isSelected ? (
-                  <Modal menu={menu} handleModalClose={handleModalClose} modalIsOpen={modalIsOpen} />
-                ) : undefined}
                 <div className="menuInformation">
                   <div className="menuImage" />
                   <div className="setMenuInfo">

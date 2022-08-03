@@ -1,10 +1,14 @@
 import * as Styled from "./style";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const Header = () => {
   const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장
   const [ScrollActive, setScrollActive] = useState(true);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   function handleScroll() {
     if (ScrollY > 40 && ScrollY < 100) {
       setScrollY(window.pageYOffset);
@@ -23,17 +27,47 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     }; //  window 에서 스크롤을 감시를 종료
   });
+
   return (
     <>
       <Styled.HeaderWrapper>
-        {ScrollActive ? (
-          <>
-            <div className="logo">Logo</div>
-            <div>
-              <button type="button">My</button>
-            </div>
-          </>
-        ) : undefined}
+        <div className="container">
+          {ScrollActive ? (
+            <>
+              {pathname === "/" ? (
+                <button
+                  className="logo"
+                  type="button"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  Logo
+                </button>
+              ) : (
+                <button
+                  className="back"
+                  type="button"
+                  onClick={() => {
+                    navigate(-1);
+                  }}
+                >
+                  Back
+                </button>
+              )}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate("/mypage");
+                  }}
+                >
+                  My
+                </button>
+              </div>
+            </>
+          ) : undefined}
+        </div>
       </Styled.HeaderWrapper>
       <Outlet />
     </>

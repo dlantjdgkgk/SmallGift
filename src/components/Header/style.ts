@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.div`
-  min-width: 360px;
-  max-width: 768px;
-  margin: 0 auto;
-  width: 100%;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: space-between;
-  position: sticky;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  z-index: 1;
-  transition: top 0.2s ease-in-out;
+  padding-top: 48px;
+  .container {
+    width: 100%;
+    min-width: 360px;
+    max-width: 768px;
+    background-color: #d9d9d9;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    transition: top 0.4s ease-in-out;
+  }
 
   .logo {
     width: 80px;
@@ -21,10 +21,16 @@ export const HeaderWrapper = styled.div`
     background-color: #a8a8a8;
     margin: 8px 0px 8px 16px;
     font-size: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 12px;
+    letter-spacing: -0.04em;
+    color: #000000;
   }
+
+  .back,
   button {
     width: 32px;
     height: 32px;
@@ -32,5 +38,16 @@ export const HeaderWrapper = styled.div`
     font-size: 8px;
     background-color: #a8a8a8;
     margin: 8px 16px 8px 0px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 12px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  .back {
+    margin-left: 16px;
   }
 `;

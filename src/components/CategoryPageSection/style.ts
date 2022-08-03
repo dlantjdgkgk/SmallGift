@@ -58,7 +58,6 @@ export const CategoryPageSectionWrapper = styled.div`
     margin-top: 48px;
     display: grid;
     grid-row-gap: 16px;
-    margin-bottom: 72px;
     a {
       width: 100%;
       border-bottom: 1px solid #eaeaea;

@@ -1,18 +1,21 @@
 import styled from "styled-components";
 
 export const NavWrapper = styled.div`
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 45px;
-  max-width: 768px;
-  margin: 0 auto;
-  z-index: 1;
-  height: 56px;
-  background-color: white;
-  box-shadow: 0px -2px rgb(0 0 0 / 5%);
+  padding-bottom: 80px;
+  .container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45px;
+    max-width: 768px;
+    margin: 0 auto;
+    z-index: 1;
+    height: 56px;
+    background-color: white;
+    box-shadow: 0px -2px rgb(0 0 0 / 5%);
+  }
+
   .iconAndDescription {
     float: left;
     width: 20%;

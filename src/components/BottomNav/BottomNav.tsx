@@ -14,7 +14,7 @@ const BottomNav = () => {
     },
     {
       icons: faAlignJustify,
-      Links: "category",
+      Links: "category?value=전체",
       name: "카테고리",
     },
     {
@@ -35,28 +35,30 @@ const BottomNav = () => {
   ];
   return (
     <>
-      <Styled.NavWrapper>
-        {datas.map(({ icons, Links, name }, index) => {
-          return (
-            <Link
-              to={Links}
-              className="nav-link"
-              key={index}
-              onClick={() => {
-                setActiveNav(index);
-              }}
-            >
-              <div className="iconAndDescription">
-                <div>
-                  <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
-                  <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
-                </div>
-              </div>
-            </Link>
-          );
-        })}
-      </Styled.NavWrapper>
       <Outlet />
+      <Styled.NavWrapper>
+        <div className="container">
+          {datas.map(({ icons, Links, name }, index) => {
+            return (
+              <Link
+                to={Links}
+                className="nav-link"
+                key={index}
+                onClick={() => {
+                  setActiveNav(index);
+                }}
+              >
+                <div className="iconAndDescription">
+                  <div>
+                    <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
+                    <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </Styled.NavWrapper>
     </>
   );
 };

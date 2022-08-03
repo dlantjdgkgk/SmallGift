@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faClock, faPhone } from "@fortawesome/free-solid-svg-icons";
 import KakaoShare from "components/KakaoShare/KakaoShare";
-import Modal from "components/Modal/Modal";
+import CategoryModal from "components/CategoryModal/CategoryModal";
 import Portal from "components/Portal/Portal";
 
 const CategoryRestaurant = ({}) => {
@@ -82,6 +82,12 @@ const CategoryRestaurant = ({}) => {
                   setModalIsOpen(!modalIsOpen);
                 }}
               >
+                {isSelected && modalIsOpen ? (
+                  <Portal>
+                    <CategoryModal menu={menu} handleModalClose={handleModalClose} />
+                  </Portal>
+                ) : null}
+
                 <div className="menuInformation">
                   <div className="menuImage" />
                   <div className="setMenuInfo">
@@ -116,8 +122,22 @@ const CategoryRestaurant = ({}) => {
       {selectButton === "전체 메뉴" ? (
         <div className="manyMenu">
           {menuList.map((menu, index) => {
+            const isSelected = selectMenu === index;
             return (
-              <div className="manyMenuInformation" key={index} aria-hidden="true">
+              <div
+                className="manyMenuInformation"
+                key={index}
+                aria-hidden="true"
+                onClick={() => {
+                  setSelectMenu(index);
+                  setModalIsOpen(!modalIsOpen);
+                }}
+              >
+                {isSelected && modalIsOpen ? (
+                  <Portal>
+                    <CategoryModal menu={menu} handleModalClose={handleModalClose} />
+                  </Portal>
+                ) : null}
                 <div className="menuImage" />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>

@@ -2,13 +2,11 @@ import * as Styled from "./style";
 import { useState } from "react";
 import queryString from "query-string";
 import { Link, useLocation } from "react-router-dom";
-import { useNavigate } from "react-router";
 
 const CategoryPageSection = () => {
   const [selected, setSelected] = useState("");
   const selectList = ["서울시 강남구 역삼동", "서울시 송파구 가락동"];
   const { pathname } = useLocation();
-  const navigate = useNavigate();
 
   const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const defaultSelect = queryString.parse(window.location.search).value;

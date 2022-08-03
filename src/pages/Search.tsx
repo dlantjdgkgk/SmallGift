@@ -1,5 +1,7 @@
+import SearchPage from "components/SearchPage/SearchPage";
+
 const Search = () => {
-  return <div>상품 검색 페이지</div>;
+  return <SearchPage />;
 };
 
 export default Search;

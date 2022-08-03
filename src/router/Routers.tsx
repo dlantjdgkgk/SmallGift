@@ -22,10 +22,12 @@ const Routers = () => {
               <Route path="/" element={<Main />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/category" element={<Category />} />
-              <Route path="/search" element={<Search />} />
               <Route path="/mypage" element={<MyPage />} />
               <Route path="/categoryRestaurant" element={<CategoryRestaurant />} />
             </Route>
+          </Route>
+          <Route element={<BottomNav />}>
+            <Route path="/search" element={<Search />} />
           </Route>
 
           <Route path="/signup" element={<SignUp />} />

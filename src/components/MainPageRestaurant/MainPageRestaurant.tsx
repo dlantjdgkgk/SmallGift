@@ -1,9 +1,14 @@
 import * as Styled from "./style";
+import Portal from "components/Portal/Portal";
+import AreaModal from "components/AreaModal/AreaModal";
+import { useState } from "react";
 
 const MainPageRestaurant = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   return (
     <Styled.SectionRestaurantWrapper>
-      <p className="location">홍길동님 근처에 있어요</p>
+      <p className="location">지역을 설정해보세요</p>
       <div className="container">
         <div className="addressInformation">
           <p className="address">주소</p>
@@ -11,8 +16,19 @@ const MainPageRestaurant = () => {
         </div>
         <div className="locationButton">
           <p>현재 계신 곳의 위치가 맞나요?</p>
-          <button type="button" aria-label="Click">
+          <button
+            type="button"
+            aria-label="Click"
+            onClick={() => {
+              setModalIsOpen(!modalIsOpen);
+            }}
+          >
             위치 변경하기 {">"}
+            {modalIsOpen ? (
+              <Portal>
+                <AreaModal />
+              </Portal>
+            ) : null}
           </button>
         </div>
       </div>

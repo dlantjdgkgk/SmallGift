@@ -2,22 +2,37 @@ import * as Styled from "./style";
 import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
+import { MovieInfo, Props } from "./types";
 
-interface MovieInfo {
-  setMenuName: string;
-  setMenu: string;
-  price: string;
-}
-interface Props {
-  menu: MovieInfo;
-  handleModalClose: () => void;
-  modalIsOpen: boolean;
-}
 const Modal = ({ menu, handleModalClose, modalIsOpen }: Props) => {
   const navigate = useNavigate();
-  // if (modalIsOpen) {
-  //   document.body.style.overflow = "hidden";
-  // }
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  });
+
+  const handleClickOutside = (e: MouseEvent) => {
+    console.log(e.target);
+    if ((e.target as HTMLDivElement).className === "sc-iBkjds fGjOCA") handleModalClose();
+  };
+
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed;
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = "";
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
 
   return (
     <Styled.ModalWrapper>
@@ -30,6 +45,7 @@ const Modal = ({ menu, handleModalClose, modalIsOpen }: Props) => {
         </div>
         <p className="setMenu">{menu.setMenu}</p>
       </div>
+
       <div className="priceInformation">
         <p className="onePerson">1인 기준</p>
         <p className="price">{menu.price}</p>

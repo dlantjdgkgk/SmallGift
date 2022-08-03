@@ -12,7 +12,7 @@ export const SectionGifticonWrapper = styled.div`
     display: flex;
     width: 100%;
     overflow-x: auto;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
     -ms-overflow-style: none;
     ::-webkit-scrollbar {
       display: none;
@@ -42,10 +42,9 @@ export const SectionGifticonWrapper = styled.div`
 
   .gifticonInformation {
     position: relative;
-    .container {
-      width: 100%;
-      padding-right: 16px;
-    }
+    width: 100%;
+    padding-right: 16px;
+
     .addressInformation {
       width: 100%;
       height: 115px;
@@ -90,8 +89,7 @@ export const SectionGifticonWrapper = styled.div`
         margin-top: 12px;
       }
     }
-    .cafeInformation,
-    .restaurantInformation {
+    .cafeInformation {
       width: 100%;
       height: 41px;
       background-color: #d9d9d9;
@@ -102,9 +100,6 @@ export const SectionGifticonWrapper = styled.div`
         margin-left: 24px;
         align-items: center;
       }
-    }
-    .restaurantInformation {
-      margin-bottom: 56px;
     }
   }
 `;

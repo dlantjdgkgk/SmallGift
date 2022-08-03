@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const ModalWrapper = styled.div`
   width: 100%;
-  height: 60vh;
+  height: 323px;
   background-color: pink;
   border-radius: 16px 16px 0px 0px;
   padding-top: 32px;
   padding-left: 32px;
+
   .setMenuInformation {
     div {
       display: flex;
@@ -45,7 +46,7 @@ export const ModalWrapper = styled.div`
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #a5a5a5;
-      margin-top: 100px;
+      margin-top: 72px;
     }
     .price {
       font-family: "Noto Sans KR";

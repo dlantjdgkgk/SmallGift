@@ -1,10 +1,14 @@
 import * as Styled from "./style";
 import Portal from "components/Portal/Portal";
 import AreaModal from "components/AreaModal/AreaModal";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import useDaumPost from "hooks/useDaumPost";
 
 const MainPageRestaurant = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const handleModalClose = () => setModalIsOpen(false);
+  const { addressState, handleComplete } = useDaumPost();
+  const isData = true;
 
   return (
     <Styled.SectionRestaurantWrapper>
@@ -12,7 +16,11 @@ const MainPageRestaurant = () => {
       <div className="container">
         <div className="addressInformation">
           <p className="address">주소</p>
-          <p className="exactAddress">서울특별시 마포구 양화로7안길ss</p>
+          {isData ? (
+            <p className="exactAddress">서울시 마포구</p>
+          ) : (
+            <p className="exactAddress">서울특별시 마포구 양화로7안길</p>
+          )}
         </div>
         <div className="locationButton">
           <p>현재 계신 곳의 위치가 맞나요?</p>
@@ -20,18 +28,23 @@ const MainPageRestaurant = () => {
             type="button"
             aria-label="Click"
             onClick={() => {
-              setModalIsOpen(!modalIsOpen);
+              setModalIsOpen(true);
             }}
           >
             위치 변경하기 {">"}
             {modalIsOpen ? (
               <Portal>
-                <AreaModal />
+                <AreaModal setModalIsOpen={setModalIsOpen} handleModalClose={handleModalClose} />
               </Portal>
             ) : null}
           </button>
         </div>
       </div>
+
+      <p className="localFoodRecommendations">
+        <span>마포구</span> 근처 가게들의 <br />
+        인기 메뉴를 추천해드릴게요
+      </p>
 
       <div className="restaurants">
         <div className="restaurant">

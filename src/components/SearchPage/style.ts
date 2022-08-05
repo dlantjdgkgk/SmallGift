@@ -18,6 +18,7 @@ export const SearchPageWrapper = styled.div`
     }
     input {
       width: 100%;
+      outline: none;
     }
     input::placeholder {
       font-family: "Noto Sans KR";
@@ -90,18 +91,16 @@ export const SearchPageWrapper = styled.div`
 
   .records {
     display: flex;
-    margin-top: 12px;
-    margin-left: 16px;
-    margin-right: 16px;
+    padding: 12px 16px 0px 16px;
     overflow-x: auto;
-    -ms-overflow-style: none;
     scroll-snap-type: x mandatory;
+    width: 100%;
+    -ms-overflow-style: none;
     ::-webkit-scrollbar {
       display: none;
     }
     .record {
       display: flex;
-      width: 100%;
       height: 31px;
       background: #ffffff;
       border: 1px solid #000000;
@@ -109,9 +108,9 @@ export const SearchPageWrapper = styled.div`
       border-radius: 58px;
       justify-content: center;
       align-items: center;
-      max-width: fit-content;
       margin-right: 8px;
       padding: 8px;
+      white-space: nowrap;
       p {
         font-family: "Noto Sans KR";
         font-style: normal;
@@ -122,6 +121,9 @@ export const SearchPageWrapper = styled.div`
         margin-right: 4px;
       }
     }
+    div:last-child {
+      margin-right: 0px;
+    }
   }
 
   .line {
@@ -129,6 +131,13 @@ export const SearchPageWrapper = styled.div`
     height: 8px;
     background: #f8f8f8;
     margin-top: 32px;
+    margin-bottom: 16px;
+  }
+  .loginLine {
+    width: 100%;
+    height: 8px;
+    background: #f8f8f8;
+    margin-top: 20px;
     margin-bottom: 16px;
   }
   .popularSearch {
@@ -156,16 +165,21 @@ export const SearchPageWrapper = styled.div`
       color: #878787;
     }
   }
+
   .searchListWrapper {
     display: grid;
     row-gap: 10px;
-    margin-left: 16px;
-    margin-right: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
     .searchList {
       display: flex;
       justify-content: space-between;
+      margin-right: 27px;
       .rankAndMenuName {
         display: flex;
+        column-gap: 16px;
+        width: 100%;
+        justify-content: flex-start;
         .rank {
           font-family: "Noto Sans KR";
           font-style: normal;
@@ -174,7 +188,7 @@ export const SearchPageWrapper = styled.div`
           line-height: 20px;
           letter-spacing: -0.04em;
           color: #000000;
-          margin-right: 16px;
+          width: 12px;
         }
         .menuName {
           font-family: "Noto Sans KR";
@@ -188,8 +202,9 @@ export const SearchPageWrapper = styled.div`
       }
       .iconAndRank {
         display: flex;
-        justify-content: center;
+        width: 24px;
         align-items: center;
+        column-gap: 4px;
         .risingRanking {
           font-family: "Noto Sans KR";
           font-style: normal;
@@ -198,7 +213,6 @@ export const SearchPageWrapper = styled.div`
           line-height: 17px;
           letter-spacing: -0.04em;
           color: #000000;
-          margin-left: 4px;
           margin-bottom: 1px;
         }
       }

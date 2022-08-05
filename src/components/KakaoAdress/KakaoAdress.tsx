@@ -1,30 +1,40 @@
-import DaumPostcode from "react-daum-postcode";
-import { useState } from "react";
+import DaumPostcode, { Address } from "react-daum-postcode";
+import styled from "styled-components";
+import { Button } from "@mui/material";
 
-const KakaoAdress = ({ children }: any) => {
-  const [openPostcode, setOpenPostcode] = useState<boolean>(true);
-  console.log(5);
+interface DaumPostModalProps {
+  handleDaumPostOpne: () => void;
+  handleComplete: (data: Address) => void;
+}
+
+const KakaoAdress = ({ handleDaumPostOpne, handleComplete }: DaumPostModalProps) => {
   const handle = {
-    // 주소 선택 이벤트
-    selectAddress: (data: any) => {
-      console.log(`
-                주소: ${data.address},
-                우편번호: ${data.zonecode}
-            `);
-      setOpenPostcode(false);
+    selectAddress: (data: Address) => {
+      handleDaumPostOpne();
+      handleComplete(data);
     },
   };
 
   return (
-    <div>
-      {/* {children} */}
+    <Wrapper>
       <DaumPostcode
         onComplete={handle.selectAddress} // 값을 선택할 경우 실행되는 이벤트
         autoClose={false} // 값을 선택할 경우 사용되는 DOM을 제거하여 자동 닫힘 설정
-        defaultQuery="판교역로 235" // 팝업을 열때 기본적으로 입력되는 검색어
+        defaultQuery="" // 팝업을 열때 기본적으로 입력되는 검색어
+        style={{ height: "100%" }}
       />
-    </div>
+      <Button variant="contained" onClick={handleDaumPostOpne}>
+        뒤로가기
+      </Button>
+    </Wrapper>
   );
 };
+
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export default KakaoAdress;

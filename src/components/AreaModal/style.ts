@@ -52,7 +52,16 @@ export const ModalWrapper = styled.div`
       margin-left: 16px;
       margin-right: 8px;
     }
-    button {
+    .newAddress {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    .findAddress {
       font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
@@ -62,7 +71,7 @@ export const ModalWrapper = styled.div`
       color: #6f6f6f;
     }
   }
-  .selectionComplete {
+  .beforeSelection {
     width: 100%;
     height: 44px;
     border: 1px solid #000000;
@@ -74,5 +83,20 @@ export const ModalWrapper = styled.div`
     line-height: 23px;
     letter-spacing: -0.04em;
     color: #494949;
+  }
+  .afterSelection {
+    width: 100%;
+    height: 44px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: white;
+    background: #494949;
+    z-index: 5;
   }
 `;

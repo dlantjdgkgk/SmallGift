@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SectionGifticonWrapper = styled.div`
+export const SectionGifticonWrapper = styled.section`
   margin-left: 16px;
   overflow: hidden;
   .gifticon {

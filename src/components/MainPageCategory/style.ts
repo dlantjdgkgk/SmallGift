@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const MainPageCategoryWrapper = styled.div`
+export const MainPageCategoryWrapper = styled.section`
   margin: 48px 0 0 16px;
   .categorySearch {
     font-size: 20px;

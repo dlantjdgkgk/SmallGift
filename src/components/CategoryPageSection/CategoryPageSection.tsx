@@ -56,65 +56,71 @@ const CategoryPageSection = () => {
   ];
 
   return (
-    <Styled.CategoryPageSectionWrapper>
-      <select
-        onChange={(e) => {
-          setSelected(e.target.value);
-        }}
-        value={selected}
-      >
-        {selectList.map((item, index) => (
-          <option value={item} key={index}>
-            <p>{item}</p>
-          </option>
-        ))}
-      </select>
-      <p>근처에 있는 가게를 알려드릴게요</p>
+    <>
+      <Styled.CategoryPageSectionWrapper>
+        <select
+          onChange={(e) => {
+            setSelected(e.target.value);
+          }}
+          value={selected}
+        >
+          {selectList.map((item, index) => (
+            <option value={item} key={index}>
+              <p>{item}</p>
+            </option>
+          ))}
+        </select>
+        <p>근처에 있는 가게를 알려드릴게요</p>
+      </Styled.CategoryPageSectionWrapper>
 
-      <div className="selectedCategory">
-        {Categories.map((category, index) => {
-          const isSelected = selectCategory === category;
-          return (
-            <div className="category" key={index}>
-              <button
-                style={isSelected ? { border: "1px solid black" } : undefined}
-                type="button"
-                aria-label="select"
-                onClick={() => {
-                  setSelectCategory(category);
-                  window.history.replaceState("", "", `/category?value=${category}`);
-                }}
-              >
-                {category}
-              </button>
-            </div>
-          );
-        })}
-      </div>
-
-      <div className="restaurants">
-        {(pathname === "/" || selectCategory === "전체"
-          ? shopList
-          : shopList.filter((shop) => shop.category === selectCategory)
-        ).map((shop, index) => {
-          return (
-            <Link
-              to={`/categoryRestaurant?restaurantName=${shop.restaurantName}&category=${shop.category}`}
-              key={index}
-            >
-              <div className="restaurant">
-                <div className="restaurantImage" />
-                <div className="restaurantInformation">
-                  <div className="category">{shop.category}</div>
-                  <p className="restaurantName">{shop.restaurantName}</p>
-                  <p className="restaurantMenu">{shop.restaurantMenu}</p>
-                </div>
+      <Styled.SelectedCategoryWrapper>
+        <div className="selectedCategory">
+          {Categories.map((category, index) => {
+            const isSelected = selectCategory === category;
+            return (
+              <div className="category" key={index}>
+                <button
+                  style={isSelected ? { border: "1px solid black" } : undefined}
+                  type="button"
+                  aria-label="select"
+                  onClick={() => {
+                    setSelectCategory(category);
+                    window.history.replaceState("", "", `/category?value=${category}`);
+                  }}
+                >
+                  {category}
+                </button>
               </div>
-            </Link>
-          );
-        })}
-      </div>
-    </Styled.CategoryPageSectionWrapper>
+            );
+          })}
+        </div>
+      </Styled.SelectedCategoryWrapper>
+
+      <Styled.CategoryRestaurantWrapper>
+        <div className="restaurants">
+          {(pathname === "/" || selectCategory === "전체"
+            ? shopList
+            : shopList.filter((shop) => shop.category === selectCategory)
+          ).map((shop, index) => {
+            return (
+              <Link
+                to={`/restaurantdetail?restaurantName=${shop.restaurantName}&category=${shop.category}`}
+                key={index}
+              >
+                <div className="restaurant">
+                  <div className="restaurantImage" />
+                  <div className="restaurantInformation">
+                    <div className="category">{shop.category}</div>
+                    <p className="restaurantName">{shop.restaurantName}</p>
+                    <p className="restaurantMenu">{shop.restaurantMenu}</p>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </Styled.CategoryRestaurantWrapper>
+    </>
   );
 };
 

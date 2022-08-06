@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
-export const CategoryPageSectionWrapper = styled.div`
-  margin: 32px 0 0 16px;
+export const CategoryPageSectionWrapper = styled.section`
   select {
     width: 196px;
     border: none;
@@ -13,12 +12,16 @@ export const CategoryPageSectionWrapper = styled.div`
     line-height: 29px;
     letter-spacing: -0.04em;
     padding-bottom: 4px;
+    outline: none;
   }
   p {
     margin-top: 7px;
     font-size: 16px;
     font-weight: 400;
   }
+`;
+
+export const SelectedCategoryWrapper = styled.section`
   .selectedCategory {
     margin-top: 25px;
     display: flex;
@@ -51,7 +54,9 @@ export const CategoryPageSectionWrapper = styled.div`
     line-height: 20px;
     margin-right: 8px;
   }
+`;
 
+export const CategoryRestaurantWrapper = styled.section`
   .restaurants {
     width: 100%;
     padding-right: 16px;
@@ -95,6 +100,7 @@ export const CategoryPageSectionWrapper = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 4px;
     }
     .restaurantName {
       font-family: "Noto Sans KR";
@@ -104,6 +110,7 @@ export const CategoryPageSectionWrapper = styled.div`
       line-height: 23px;
       letter-spacing: -0.04em;
       color: #000000;
+      margin-bottom: 11px;
     }
     .restaurantMenu {
       font-family: "Noto Sans KR";

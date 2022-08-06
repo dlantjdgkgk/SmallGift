@@ -8,10 +8,12 @@ const Main = () => {
   return (
     <>
       <Styled.Navbar />
-      <MainPageCategory />
-      <MainPageRestaurant />
-      <Styled.Line />
-      <MainPageGifticon />
+      <Styled.Main>
+        <MainPageCategory />
+        <MainPageRestaurant />
+        <Styled.Line />
+        <MainPageGifticon />
+      </Styled.Main>
       <Footer />
     </>
   );

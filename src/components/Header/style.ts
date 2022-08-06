@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.header`
   padding-top: 48px;
-  .container {
+  .header {
     width: 100%;
     min-width: 360px;
     max-width: 768px;

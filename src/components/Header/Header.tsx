@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <>
       <Styled.HeaderWrapper>
-        <div className="container">
+        <div className="header">
           {ScrollActive ? (
             <>
               {pathname === "/" ? (

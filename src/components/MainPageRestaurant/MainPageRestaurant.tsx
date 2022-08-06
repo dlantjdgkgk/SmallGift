@@ -1,6 +1,6 @@
 import * as Styled from "./style";
-import Portal from "components/Portal/Portal";
-import AreaModal from "components/AreaModal/AreaModal";
+import Portal from "components/Modal/Portal/Portal";
+import AreaModal from "components/Modal/AreaModal/AreaModal";
 import { useRef, useState } from "react";
 import useDaumPost from "hooks/useDaumPost";
 
@@ -13,7 +13,7 @@ const MainPageRestaurant = () => {
   return (
     <Styled.SectionRestaurantWrapper>
       <p className="location">지역을 설정해보세요</p>
-      <div className="container">
+      <div className="sectionContainer">
         <div className="addressInformation">
           <p className="address">주소</p>
           {isData ? (

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SectionRestaurantWrapper = styled.div`
+export const SectionRestaurantWrapper = styled.section`
   margin: 32px 0 0 16px;
   overflow: hidden;
   .location {
@@ -8,7 +8,7 @@ export const SectionRestaurantWrapper = styled.div`
     font-weight: bold;
     margin-bottom: 16px;
   }
-  .container {
+  .sectionContainer {
     width: 100%;
     padding-right: 16px;
   }

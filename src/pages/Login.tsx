@@ -13,8 +13,8 @@ import {
   Container,
   CssBaseline,
 } from "@mui/material";
+import * as Styled from "./style";
 import LoginForm from "components/LoginForm/LoginForm";
-import { loginUser } from "api/user";
 
 const LogIn = () => {
   return (

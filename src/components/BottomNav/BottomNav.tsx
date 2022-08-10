@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import * as Styled from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faAlignJustify, faMedal, faCartShopping, faHome } from "@fortawesome/free-solid-svg-icons";
@@ -38,25 +38,23 @@ const BottomNav = () => {
       <Outlet />
       <Styled.NavWrapper>
         <div className="container">
-          {datas.map(({ icons, Links, name }, index) => {
-            return (
-              <Link
-                to={Links}
-                className="nav-link"
-                key={index}
-                onClick={() => {
-                  setActiveNav(index);
-                }}
-              >
-                <div className="iconAndDescription">
-                  <div>
-                    <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
-                    <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
-                  </div>
+          {datas.map(({ icons, Links, name }, index) => (
+            <Link
+              to={Links}
+              className="nav-link"
+              key={index}
+              onClick={() => {
+                setActiveNav(index);
+              }}
+            >
+              <div className="iconAndDescription">
+                <div>
+                  <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
+                  <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          ))}
         </div>
       </Styled.NavWrapper>
     </>

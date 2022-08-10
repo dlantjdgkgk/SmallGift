@@ -1,11 +1,9 @@
 import * as Styled from "./style";
-import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 // /category 일때는 오류화면을 띄어줘야한다.
 
 const MainPageCategory = () => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
-  const navigate = useNavigate();
   return (
     <>
       <Styled.MainPageCategoryWrapper>

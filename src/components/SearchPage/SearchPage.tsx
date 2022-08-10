@@ -1,18 +1,20 @@
 import * as Styled from "./style";
-import { useRef, useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
-import SearchModal from "components/Modal/SearchModal/SerachModal";
-import Portal from "components/Modal/Portal/Portal";
+import { useState } from "react";
+import PopularSearch from "./PopularSearch";
+
+const wholeTextArray = ["닭발", "닭갈비", "닭볶음탕", "cat", "javascript", "원티드", "프리온보딩", "프론트엔드"];
 
 const SearchPage = () => {
   const [text, setText] = useState("");
-  const [is, setIs] = useState(false);
+  const [is, setIs] = useState(true);
+  const [searchList, setSearchList] = useState(null);
+  const [isHaveInputValue, setIsHaveInputValue] = useState(false);
+  const [dropDownList, setDropDownList] = useState(wholeTextArray);
 
   const onChange = (e) => {
     setText(e.target.value);
+    text && setIsHaveInputValue(true);
   };
-
   const datas = [
     "쭈꾸미",
     "치즈케이크",
@@ -25,78 +27,71 @@ const SearchPage = () => {
     "쭈꾸미",
     "쭈꾸미",
   ];
-
   return (
     <Styled.SearchPageWrapper>
       {text ? (
-        <div className="searchBar">
-          <div />
-          <input value={text} type="text" placeholder="가게명 또는 상품명을 입력하세요" />
-          <button type="button">x</button>
-        </div>
+        <>
+          <div className="searchBar">
+            <div />
+            <input value={text} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
+            <button type="button">x</button>
+          </div>
+          {isHaveInputValue && (
+            <div>
+              {dropDownList.length === 0 && <div>해당하는 단어가 없습니다</div>}
+              {dropDownList
+                .filter((textItem) => textItem.includes(text))
+                .map((dropDownItem, dropDownIndex) => {
+                  return (
+                    <div
+                      key={dropDownIndex}
+                      // onClick={() => clickDropDownItem(dropDownItem)}
+                      // onMouseOver={() => setDropDownItemIndex(dropDownIndex)}
+                      // className={dropDownItemIndex === dropDownIndex ? "selected" : ""}
+                    >
+                      {dropDownItem}
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+        </>
       ) : (
         <>
-          <div className="wrapper">
-            <div className="searchBar">
-              <div />
-              <input value={text} type="text" placeholder="가게명 또는 상품명을 입력하세요" />
-              <button type="button">x</button>
-            </div>
-
-            {is ? (
-              <>
-                <div className="recentSearch">
-                  <p className="recent">최근 검색어</p>
-                  <p className="available">로그인 후 이용할 수 있어요</p>
-                </div>
-                <div className="line" />
-              </>
-            ) : (
-              <>
-                <div className="recentSearchLogin">
-                  <p className="recent">최근 검색어</p>
-                  <button className="totalDelete" type="button" onClick={() => {}}>
-                    전체 삭제
-                  </button>
-                </div>
-                <div className="records">
-                  {datas.map((data, index) => {
-                    return (
-                      <div className="record" key={index}>
-                        <p>{data}</p>
-                      </div>
-                    );
-                  })}
-                </div>
-                <div className="loginLine" />
-              </>
-            )}
+          <div className="searchBar">
+            <div />
+            <input value={text} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
+            <button type="button">x</button>
           </div>
-
-          <div className="popularSearch">
-            <p className="popular">인기 검색어</p>
-            <p className="time">2022년 08월 02일 14:00 기준</p>
-          </div>
-
-          <div className="searchListWrapper">
-            {datas.map((data, index) => {
-              return (
-                <>
-                  <div className="searchList">
-                    <div className="rankAndMenuName">
-                      <div className="rank">{index + 1}</div>
-                      <div className="menuName">{data}</div>
+          {is ? (
+            <>
+              <div className="recentSearch">
+                <p className="recent">최근 검색어</p>
+                <p className="available">로그인 후 이용할 수 있어요</p>
+              </div>
+              <div className="line" />
+            </>
+          ) : (
+            <>
+              <div className="recentSearchLogin">
+                <p className="recent">최근 검색어</p>
+                <button className="totalDelete" type="button" onClick={() => {}}>
+                  전체 삭제
+                </button>
+              </div>
+              <div className="records">
+                {datas.map((data, index) => {
+                  return (
+                    <div className="record" key={index}>
+                      <p>{data}</p>
                     </div>
-                    <div className="iconAndRank">
-                      <FontAwesomeIcon icon={faCaretUp} />
-                      <p className="risingRanking">1</p>
-                    </div>
-                  </div>
-                  <div className="boundaryLine" />
-                </>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
+              <div className="loginLine" />
+            </>
+          )}
+          <PopularSearch />
         </>
       )}
     </Styled.SearchPageWrapper>

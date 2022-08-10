@@ -140,6 +140,9 @@ export const SearchPageWrapper = styled.div`
     margin-top: 20px;
     margin-bottom: 16px;
   }
+`;
+
+export const PopularSearchWrapper = styled.section`
   .popularSearch {
     margin-left: 16px;
     margin-right: 16px;
@@ -165,13 +168,15 @@ export const SearchPageWrapper = styled.div`
       color: #878787;
     }
   }
+`;
 
-  .searchListWrapper {
+export const SearchListWrapper = styled.section`
+  .searchList {
     display: grid;
     row-gap: 10px;
     padding-left: 16px;
     padding-right: 16px;
-    .searchList {
+    .search {
       display: flex;
       justify-content: space-between;
       margin-right: 27px;

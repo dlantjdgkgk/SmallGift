@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignUp from "pages/SignUp";
-import LogIn from "pages/Login";
-import Find from "pages/Find";
 import Main from "pages/Main";
 import Shop from "pages/Shop";
 import Category from "pages/Category";
@@ -11,6 +8,10 @@ import RestaurantDetail from "pages/RestaurantDetail";
 import BottomNav from "components/BottomNav/BottomNav";
 import Header from "components/Header/Header";
 import ScrollTop from "components/Header/ScrollTop/ScrollTop";
+import Payment from "pages/Payment";
+import PaymentCheck from "components/PaymentCheck/PaymentCheck";
+import OrderList from "components/OrderList/OrderList";
+import ChoiceProduct from "components/ChoiceProduct/ChoiceProduct";
 
 const Routers = () => {
   return (
@@ -23,16 +24,18 @@ const Routers = () => {
               <Route path="/shop" element={<Shop />} />
               <Route path="/category" element={<Category />} />
               <Route path="/mypage" element={<MyPage />} />
+              <Route path="/mypage/orderlist" element={<OrderList />} />
+              <Route path="/mypage/like" element={<ChoiceProduct />} />
               <Route path="/restaurantdetail" element={<RestaurantDetail />} />
+              <Route path="/payment/check" element={<PaymentCheck />} />
             </Route>
+          </Route>
+          <Route element={<Header />}>
+            <Route path="/payment" element={<Payment />} />
           </Route>
           <Route element={<BottomNav />}>
             <Route path="/search" element={<Search />} />
           </Route>
-
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-          <Route path="/find" element={<Find />} />
         </Routes>
       </ScrollTop>
     </Router>

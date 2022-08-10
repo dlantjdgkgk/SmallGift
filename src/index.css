@@ -26,10 +26,12 @@ li {
 button,
 input,
 form,
-fieldset {
+fieldset,
+select {
     margin: 0;
     padding: 0;
     background: none;
     border: 0;
     border-radius: none;
+    outline: none;
 }

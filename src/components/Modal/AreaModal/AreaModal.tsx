@@ -13,8 +13,6 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
-  console.log(addressState.jibunAddress);
-
   const handleDaumPostOpne = useCallback(() => setIsDaumPostOpen((prve) => !prve), []);
 
   useEffect(() => {

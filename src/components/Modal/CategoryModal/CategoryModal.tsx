@@ -53,7 +53,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
             type="button"
             className="gift"
             onClick={() => {
-              navigate("/");
+              navigate("/payment");
             }}
           >
             선물하기

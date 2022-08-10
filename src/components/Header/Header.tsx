@@ -55,16 +55,18 @@ const Header = () => {
                   Back
                 </button>
               )}
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    navigate("/mypage");
-                  }}
-                >
-                  My
-                </button>
-              </div>
+              {pathname === "/payment" || pathname === "/paymentcheck" ? undefined : (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      navigate("/mypage");
+                    }}
+                  >
+                    Alert
+                  </button>
+                </div>
+              )}
             </>
           ) : undefined}
         </div>

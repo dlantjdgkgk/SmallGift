@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
+import ReactLoading from "react-loading";
 import { kakaoLogIn } from "../redux/_action/user_action";
+import { LoaderWrap } from "./style";
 
 const Naver = (props) => {
   const dispatch = useDispatch();
@@ -30,7 +32,11 @@ const Naver = (props) => {
     });
   }, []);
 
-  return <p>잠시만 기다려 주세요! 로그인 중입니다.</p>;
+  return (
+    <LoaderWrap>
+      <ReactLoading type="spin" color="#A593E0" />
+    </LoaderWrap>
+  );
 };
 
 export default Naver;

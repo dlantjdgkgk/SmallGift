@@ -57,7 +57,7 @@ const LogInForm = () => {
     dispatch(logInUser(payload)).then((response) => {
       if (response.payload.success) {
         navigate("/");
-        setCookies("token", `Bearer ${response?.payload?.data?.result?.Token}`);
+        setCookies("token", `Bearer ${response?.payload?.data?.token}`);
       } else {
         console.log(response.payload.msg);
       }

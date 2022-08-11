@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import Axios from "axios";
+import React, { useState, useEffect } from "react";
+import queryString from "query-string";
+import axios from "axios";
 import {
   Avatar,
   Box,
@@ -13,8 +14,12 @@ import {
   Container,
   CssBaseline,
 } from "@mui/material";
+import naverImg from "assets/image/naver_oauth.png";
+import kakaoImg from "assets/image/kakao_oauth.png";
 import * as Styled from "./style";
 import LoginForm from "components/LoginForm/LoginForm";
+import { kakaOauthUrl } from "utils/kakaoOAuthUtil";
+import { naverOauthUrl } from "utils/naverOAuthUtil";
 
 const LogIn = () => {
   return (
@@ -28,7 +33,7 @@ const LogIn = () => {
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>dd</Avatar>
+        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }} />
         <Typography component="h1" variant="h5">
           로그인
         </Typography>
@@ -46,6 +51,14 @@ const LogIn = () => {
             </Link>
           </Grid>
         </Grid>
+        <Styled.Oauths>
+          <a href={naverOauthUrl}>
+            <img src={naverImg} alt="naver" />
+          </a>
+          <a href={kakaOauthUrl}>
+            <img src={kakaoImg} alt="kakao" />
+          </a>
+        </Styled.Oauths>
       </Box>
     </Container>
   );

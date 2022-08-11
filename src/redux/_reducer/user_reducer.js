@@ -1,8 +1,13 @@
-import { LOGIN_USER, SIGNUP_USER } from "../_action/types";
+import { KAKAO_OAUTH, LOGIN_USER, SIGNUP_USER } from "../_action/types";
 
 export default function (state = {}, action = {}) {
   switch (action.type) {
     case LOGIN_USER:
+      return {
+        ...state,
+        res: action.payload,
+      };
+    case KAKAO_OAUTH:
       return {
         ...state,
         res: action.payload,

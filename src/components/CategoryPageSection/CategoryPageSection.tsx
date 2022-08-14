@@ -107,14 +107,14 @@ const CategoryPageSection = () => {
                 to={`/restaurantdetail?restaurantName=${shop.restaurantName}&category=${shop.category}`}
                 key={index}
               >
-                <div className="restaurant">
+                <article className="restaurant">
                   <div className="restaurantImage" />
                   <div className="restaurantInformation">
                     <div className="category">{shop.category}</div>
                     <p className="restaurantName">{shop.restaurantName}</p>
                     <p className="restaurantMenu">{shop.restaurantMenu}</p>
                   </div>
-                </div>
+                </article>
               </Link>
             );
           })}

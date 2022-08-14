@@ -5,9 +5,7 @@ import { useState } from "react";
 
 const ReceiverInfo = () => {
   const [foldSection, setFoldSection] = useState(false);
-  const [transmissionBtn, setTransmissionBtn] = useState(false);
-  const transmissionBtns = ["카카오톡", "문자"];
-  const [selectBtn, setSelectBtn] = useState("카카오톡");
+  const [selected, setSelected] = useState("kakao");
 
   const [inputs, setInputs] = useState({
     phone: "",
@@ -46,23 +44,28 @@ const ReceiverInfo = () => {
               <p>나한테 주는 선물이에요😊</p>
             </div>
             <div className="transmissionWay">
-              {transmissionBtns.map((btn, index) => {
-                const isSelected = selectBtn === btn;
-                return (
-                  <button
-                    type="button"
-                    className="transmission"
-                    style={isSelected ? { border: "1px solid#000000" } : undefined}
-                    key={index}
-                    onClick={() => {
-                      setSelectBtn(btn);
-                    }}
-                  >
-                    <div />
-                    <p>{btn}</p>
-                  </button>
-                );
-              })}
+              <button
+                type="button"
+                className="transmission"
+                onClick={() => {
+                  setSelected("kakao");
+                }}
+                style={{ border: selected === "kakao" && "1px solid black" }}
+              >
+                <div />
+                <p>카카오톡</p>
+              </button>
+              <button
+                type="button"
+                className="transmission"
+                onClick={() => {
+                  setSelected("message");
+                }}
+                style={{ border: selected === "message" && "1px solid black" }}
+              >
+                <div />
+                <p>문자</p>
+              </button>
             </div>
             <div className="phone">
               <p>휴대폰</p>

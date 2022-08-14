@@ -4,21 +4,7 @@ import { useNavigate } from "react-router";
 
 const PaymentMethod = () => {
   const navigate = useNavigate();
-  const handleSubmit = () => {};
-  const [cardButton, setCardButton] = useState(false);
-  const [bankButton, setBankButton] = useState(false);
-  const [phoneButton, setPhoneButton] = useState(false);
-  const [selectBtn, setSelectBtn] = useState("카드");
-
-  const handleCard = () => {
-    setCardButton(!cardButton);
-  };
-  const handleBank = () => {
-    setBankButton(!bankButton);
-  };
-  const handlePhone = () => {
-    setPhoneButton(!phoneButton);
-  };
+  const [selected, setSelected] = useState("card");
 
   return (
     <Styled.PaymentMethodSection>
@@ -27,8 +13,8 @@ const PaymentMethod = () => {
         <button
           type="button"
           className="card"
-          onClick={handleCard}
-          style={cardButton ? { border: "1px solid black" } : null}
+          onClick={() => setSelected("card")}
+          style={{ border: selected === "card" && "1px solid black" }}
         >
           <div />
           <p>카드</p>
@@ -36,8 +22,8 @@ const PaymentMethod = () => {
         <button
           type="button"
           className="bank"
-          onClick={handleBank}
-          style={bankButton ? { border: "1px solid black" } : null}
+          onClick={() => setSelected("bank")}
+          style={{ border: selected === "bank" && "1px solid black" }}
         >
           <div />
           <p>무통장입금</p>
@@ -45,8 +31,8 @@ const PaymentMethod = () => {
         <button
           type="button"
           className="phone"
-          onClick={handlePhone}
-          style={phoneButton ? { border: "1px solid black" } : null}
+          onClick={() => setSelected("phone")}
+          style={{ border: selected === "phone" && "1px solid black" }}
         >
           <div />
           <p>휴대폰</p>
@@ -55,7 +41,6 @@ const PaymentMethod = () => {
       <div className="payment">
         <button
           type="button"
-          onSubmit={handleSubmit}
           onClick={() => {
             navigate("/payment/check");
           }}

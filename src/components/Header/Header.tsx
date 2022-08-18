@@ -9,7 +9,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  function handleScroll() {
+  const handleScroll = () => {
     if (ScrollY > 40 && ScrollY < 100) {
       setScrollY(window.pageYOffset);
       setScrollActive(false);
@@ -17,7 +17,7 @@ const Header = () => {
       setScrollY(window.pageYOffset);
       setScrollActive(true);
     }
-  }
+  };
   useEffect(() => {
     const scrollListener = () => {
       window.addEventListener("scroll", handleScroll);
@@ -55,12 +55,12 @@ const Header = () => {
                   Back
                 </button>
               )}
-              {pathname === "/payment" || pathname === "/paymentcheck" ? undefined : (
+              {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? undefined : (
                 <div>
                   <button
                     type="button"
                     onClick={() => {
-                      navigate("/mypage");
+                      navigate("/alert");
                     }}
                   >
                     Alert

@@ -8,7 +8,7 @@ export const Line = styled.div`
   background-color: #f4f4f4;
   margin-bottom: 32px;
 `;
-export const Navbar = styled.nav`
+export const Section = styled.section`
   width: 100%;
   height: 212px;
   background-color: #c1c1c1;

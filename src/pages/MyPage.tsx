@@ -26,7 +26,7 @@ const MyPage = () => {
               type="button"
               className="more"
               onClick={() => {
-                navigate("/payment/orderlist");
+                navigate("/mypage/orderlist");
               }}
             >
               더보기 <span>{">"}</span>

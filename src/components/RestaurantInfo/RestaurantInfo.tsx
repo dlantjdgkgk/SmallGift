@@ -54,11 +54,11 @@ const RestaurantInfo = () => {
       </div>
 
       {selectButton === "전체 메뉴" ? (
-        <div className="manyMenu">
+        <section className="manyMenu">
           {menuList.map((menu, index) => {
             const isSelected = selectMenu === index;
             return (
-              <div
+              <article
                 className="manyMenuInformation"
                 key={index}
                 aria-hidden="true"
@@ -78,10 +78,10 @@ const RestaurantInfo = () => {
                   <p className="setMenu">{menu.setMenu}</p>
                   <p className="price">{menu.price}</p>
                 </div>
-              </div>
+              </article>
             );
           })}
-        </div>
+        </section>
       ) : (
         <div className="restaurantInformation">
           <div className="addressInformation">

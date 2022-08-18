@@ -7,8 +7,8 @@ import * as Styled from "./style";
 const Main = () => {
   return (
     <>
-      <Styled.Navbar />
       <Styled.Main>
+        <Styled.Section />
         <MainPageCategory />
         <MainPageRestaurant />
         <Styled.Line />

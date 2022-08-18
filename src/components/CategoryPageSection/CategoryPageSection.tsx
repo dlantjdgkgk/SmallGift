@@ -103,10 +103,7 @@ const CategoryPageSection = () => {
             : shopList.filter((shop) => shop.category === selectCategory)
           ).map((shop, index) => {
             return (
-              <Link
-                to={`/restaurantdetail?restaurantName=${shop.restaurantName}&category=${shop.category}`}
-                key={index}
-              >
+              <Link to={`/category/${shop.restaurantName}`} key={index}>
                 <article className="restaurant">
                   <div className="restaurantImage" />
                   <div className="restaurantInformation">

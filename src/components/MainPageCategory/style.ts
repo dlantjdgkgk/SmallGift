@@ -17,7 +17,7 @@ export const MainPageCategoryWrapper = styled.section`
     ::-webkit-scrollbar {
       display: none;
     }
-    .FoodCategory {
+    .foodCategory {
       display: flex;
       flex-direction: column;
       text-align: center;

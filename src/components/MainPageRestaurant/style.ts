@@ -3,12 +3,15 @@ import styled from "styled-components";
 export const SectionRestaurantWrapper = styled.section`
   margin: 32px 0 0 16px;
   overflow: hidden;
+`;
+
+export const LocationWrapper = styled.div`
   .location {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 16px;
   }
-  .sectionContainer {
+  .locationContainer {
     width: 100%;
     padding-right: 16px;
   }
@@ -40,6 +43,9 @@ export const SectionRestaurantWrapper = styled.section`
       font-weight: bold;
     }
   }
+`;
+
+export const RestaurantWrapper = styled.div`
   .restaurants {
     display: flex;
     margin-bottom: 40px;

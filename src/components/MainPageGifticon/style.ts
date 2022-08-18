@@ -17,13 +17,12 @@ export const SectionGifticonWrapper = styled.section`
     ::-webkit-scrollbar {
       display: none;
     }
-    .area {
-      margin-right: 16px;
-    }
+
     button {
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-right: 16px;
       height: 31px;
       border: 1px solid gray;
       border-radius: 8px;
@@ -95,10 +94,9 @@ export const SectionGifticonWrapper = styled.section`
       background-color: #d9d9d9;
       margin-bottom: 16px;
       border-radius: 8px;
-      div {
+      p {
         display: flex;
         margin-left: 24px;
-        align-items: center;
       }
     }
   }

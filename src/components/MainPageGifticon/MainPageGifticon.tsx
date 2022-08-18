@@ -83,18 +83,17 @@ const MainPageGifticon = () => {
         {koreaAreas.map((area, index) => {
           const isSelected = selectButton === area;
           return (
-            <div className="area" key={index}>
-              <button
-                type="button"
-                aria-label="Click"
-                onClick={() => {
-                  setSelectButton(area);
-                }}
-                style={isSelected ? { backgroundColor: "#5E5E5E", color: "white" } : undefined}
-              >
-                {area}
-              </button>
-            </div>
+            <button
+              type="button"
+              aria-label="Click"
+              key={index}
+              onClick={() => {
+                setSelectButton(area);
+              }}
+              style={isSelected ? { backgroundColor: "#5E5E5E", color: "white" } : undefined}
+            >
+              {area}
+            </button>
           );
         })}
       </div>
@@ -105,21 +104,17 @@ const MainPageGifticon = () => {
           .map((shop, index) => {
             return index === 0 ? (
               <Link to={`/category?value=${shop.category}`}>
-                <div key={index}>
-                  <button className="addressInformation" type="button" aria-label="Click">
-                    <div className="category">{shop.category}</div>
-                    <div className="restaurantName">{shop.restaurantName}</div>
-                    <div className="restaurantAddress">{shop.address}</div>
-                  </button>
-                </div>
+                <button className="addressInformation" type="button" aria-label="Click" key={index}>
+                  <p className="category">{shop.category}</p>
+                  <p className="restaurantName">{shop.restaurantName}</p>
+                  <p className="restaurantAddress">{shop.address}</p>
+                </button>
               </Link>
             ) : (
               <Link to={`/category?value=${shop.category}`}>
-                <div key={index}>
-                  <button className="cafeInformation" type="button" aria-label="Click">
-                    <div>{shop.restaurantName}</div>
-                  </button>
-                </div>
+                <button className="cafeInformation" type="button" aria-label="Click" key={index}>
+                  <p>{shop.restaurantName}</p>
+                </button>
               </Link>
             );
           })}

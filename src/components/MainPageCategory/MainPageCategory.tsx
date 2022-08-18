@@ -8,18 +8,18 @@ const MainPageCategory = () => {
     <>
       <Styled.MainPageCategoryWrapper>
         <p className="categorySearch">카테고리별로 탐색해보세요</p>
-        <div className="categories">
+        <section className="categories">
           {categories.map((category, index) => {
             return (
               <Link to={`/category?value=${category}`} key={index} style={{ color: "black" }}>
-                <div className="FoodCategory">
+                <article className="foodCategory">
                   <button type="button" aria-label="Click" />
                   <p>{category}</p>
-                </div>
+                </article>
               </Link>
             );
           })}
-        </div>
+        </section>
       </Styled.MainPageCategoryWrapper>
       <Styled.Line />
     </>

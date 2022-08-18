@@ -1,9 +1,9 @@
 import * as Styled from "./style";
-import RestaurantNav from "components/RestaurantNav/RestaurantNav";
+import RestaurantNav from "components/RestaurantSection/RestaurantSection";
 import RestaurantBestMenu from "components/RestaurantBestMenu/RestaurantBestMenu";
 import RestaurantInfo from "components/RestaurantInfo/RestaurantInfo";
 
-const RestaurantDetail = () => {
+const CategoryDetail = () => {
   return (
     <Styled.CategoryRestaurantWrapper>
       <RestaurantNav />
@@ -14,4 +14,4 @@ const RestaurantDetail = () => {
   );
 };
 
-export default RestaurantDetail;
+export default CategoryDetail;

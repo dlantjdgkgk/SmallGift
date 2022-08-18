@@ -46,40 +46,38 @@ const RestaurantBestMenu = () => {
 
   return (
     <Styled.BestMenuWrapper>
-      <div className="restaurantBestMenu">
-        <p className="bestMenu">Best 메뉴</p>
-        <Slider {...settings}>
-          {menuList.map((menu, index) => {
-            const isSelected = selectMenu === index;
-            return (
-              <div
-                className="bestMenuInformation"
-                key={index}
-                aria-hidden="true"
-                onClick={() => {
-                  setSelectMenu(index);
-                  setModalIsOpen(!modalIsOpen);
-                }}
-              >
-                {isSelected && modalIsOpen ? (
-                  <Portal>
-                    <CategoryModal menu={menu} handleModalClose={handleModalClose} />
-                  </Portal>
-                ) : null}
+      <p className="bestMenu">Best 메뉴</p>
+      <Slider {...settings}>
+        {menuList.map((menu, index) => {
+          const isSelected = selectMenu === index;
+          return (
+            <section
+              className="bestMenuInformation"
+              key={index}
+              aria-hidden="true"
+              onClick={() => {
+                setSelectMenu(index);
+                setModalIsOpen(!modalIsOpen);
+              }}
+            >
+              {isSelected && modalIsOpen ? (
+                <Portal>
+                  <CategoryModal menu={menu} handleModalClose={handleModalClose} />
+                </Portal>
+              ) : null}
 
-                <div className="menuInformation">
-                  <div className="menuImage" />
-                  <div className="setMenuInfo">
-                    <div className="setMenuName">{menu.setMenuName}</div>
-                    <p className="setMenu">{menu.setMenu}</p>
-                    <p className="price">{menu.price}</p>
-                  </div>
+              <article className="menuInformation">
+                <div className="menuImage" />
+                <div className="setMenuInfo">
+                  <div className="setMenuName">{menu.setMenuName}</div>
+                  <p className="setMenu">{menu.setMenu}</p>
+                  <p className="price">{menu.price}</p>
                 </div>
-              </div>
-            );
-          })}
-        </Slider>
-      </div>
+              </article>
+            </section>
+          );
+        })}
+      </Slider>
     </Styled.BestMenuWrapper>
   );
 };

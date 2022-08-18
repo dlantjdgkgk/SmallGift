@@ -1,14 +1,17 @@
 import * as Styled from "./style";
 import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
+import { useParams } from "react-router-dom";
 
-const RestaurantNav = () => {
+const RestaurantSection = () => {
+  const { id } = useParams();
+
   return (
-    <Styled.RestaurantNavWrapper>
-      <div className="nav" />
+    <Styled.RestaurantSectionWrapper>
+      <div className="section" />
       <div className="resturantThumbnail">
         <div className="category">한식</div>
         <div className="restaurantLike">
-          <div className="restaurantName">쭈꾸미랩소디 강남점</div>
+          <div className="restaurantName">{id}</div>
           <div className="likeAndShareButton">
             <button type="button" className="like">
               Like
@@ -19,7 +22,7 @@ const RestaurantNav = () => {
           </div>
         </div>
       </div>
-    </Styled.RestaurantNavWrapper>
+    </Styled.RestaurantSectionWrapper>
   );
 };
-export default RestaurantNav;
+export default RestaurantSection;

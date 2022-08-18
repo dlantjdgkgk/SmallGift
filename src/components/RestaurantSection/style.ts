@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const RestaurantNavWrapper = styled.nav`
-  .nav {
+export const RestaurantSectionWrapper = styled.section`
+  .section {
     height: 192px;
     background-color: #c1c1c1;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) -55.86%, rgba(0, 0, 0, 0.7) 100%);

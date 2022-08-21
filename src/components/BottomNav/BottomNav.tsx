@@ -6,7 +6,7 @@ import { data } from "./data";
 
 const BottomNav = () => {
   const [activeNav, setActiveNav] = useState(0);
-
+  const a = 1;
   return (
     <>
       <Outlet />

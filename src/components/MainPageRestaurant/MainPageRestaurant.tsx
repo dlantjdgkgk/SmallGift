@@ -42,10 +42,10 @@ const MainPageRestaurant = () => {
       </Styled.LocationWrapper>
 
       <Styled.RestaurantWrapper>
-        <p className="localFoodRecommendations">
+        {/* <p className="localFoodRecommendations">
           <span>마포구</span> 근처 가게들의 <br />
           인기 메뉴를 추천해드릴게요
-        </p>
+        </p> */}
         <section className="restaurants">
           <article className="restaurant">
             <div className="category">일식</div>

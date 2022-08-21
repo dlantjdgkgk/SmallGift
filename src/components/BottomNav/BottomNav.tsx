@@ -1,13 +1,11 @@
 import React, { useMemo, useState } from "react";
 import * as Styled from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { data } from "./data";
 
 const BottomNav = () => {
   const [activeNav, setActiveNav] = useState(0);
-  const { pathname } = useLocation();
-  const a = 1;
 
   return (
     <>

@@ -1,13 +1,21 @@
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useEffect } from "react";
 import { Props } from "./types";
-import Portal from "components/Modal/Portal/Portal";
 
 const CategoryModal = ({ menu, handleModalClose }: Props) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  });
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
+  };
 
   useEffect(() => {
     document.body.style.cssText = `
@@ -23,44 +31,39 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
   }, []);
 
   return (
-    <Portal>
-      <Styled.Background>
-        <Styled.ModalWrapper>
-          <div className="setMenuInformation">
-            <div>
-              <p className="setName">{menu.setMenuName}</p>
-              <button type="button" onClick={handleModalClose}>
-                <FontAwesomeIcon icon={faXmark} />
-              </button>
-            </div>
-            <p className="setMenu">{menu.setMenu}</p>
+    <Styled.Background id="modal-container">
+      <Styled.ModalWrapper>
+        <div className="setMenuInformation">
+          <div>
+            <p className="setName">{menu.setMenuName}</p>
           </div>
+          <p className="setMenu">{menu.setMenu}</p>
+        </div>
 
-          <div className="priceInformation">
-            <p className="onePerson">1인 기준</p>
-            <p className="price">{menu.price}</p>
-          </div>
-          <button
-            type="button"
-            className="shoppingBasket"
-            onClick={() => {
-              navigate("/shop");
-            }}
-          >
-            장바구니
-          </button>
-          <button
-            type="button"
-            className="gift"
-            onClick={() => {
-              navigate("/payment");
-            }}
-          >
-            선물하기
-          </button>
-        </Styled.ModalWrapper>
-      </Styled.Background>
-    </Portal>
+        <div className="priceInformation">
+          <p className="onePerson">1인 기준</p>
+          <p className="price">{menu.price}</p>
+        </div>
+        <button
+          type="button"
+          className="shoppingBasket"
+          onClick={() => {
+            navigate("/shop");
+          }}
+        >
+          장바구니
+        </button>
+        <button
+          type="button"
+          className="gift"
+          onClick={() => {
+            navigate("/payment");
+          }}
+        >
+          선물하기
+        </button>
+      </Styled.ModalWrapper>
+    </Styled.Background>
   );
 };
 

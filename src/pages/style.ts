@@ -8,10 +8,12 @@ export const Line = styled.div`
   background-color: #f4f4f4;
   margin-bottom: 32px;
 `;
-export const Section = styled.section`
-  width: 100%;
-  height: 212px;
-  background-color: #c1c1c1;
+export const Section = styled.div`
+  background-repeat: no-repeat;
+  img {
+    width: 100%;
+    display: block;
+  }
 `;
 
 export const CategoryWrapper = styled.main`

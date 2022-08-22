@@ -1,19 +1,39 @@
 import styled from "styled-components";
 
 export const SectionRestaurantWrapper = styled.section`
-  margin: 32px 0 0 16px;
+  margin: 32px 16px 0 16px;
   overflow: hidden;
 `;
 
 export const LocationWrapper = styled.div`
   .location {
-    font-size: 20px;
-    font-weight: bold;
     margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 29px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    button {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      /* identical to box height */
+      letter-spacing: -0.04em;
+      color: #969696;
+    }
   }
+
   .locationContainer {
     width: 100%;
-    padding-right: 16px;
+    margin-bottom: 27px;
   }
   .addressInformation {
     display: flex;
@@ -21,13 +41,27 @@ export const LocationWrapper = styled.div`
     background-color: #d9d9d9;
     padding: 10px;
     align-items: center;
+    img {
+      margin-right: 7px;
+    }
     .address {
-      font-size: 14px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #000000;
+      margin-right: 12px;
     }
     .exactAddress {
-      font-size: 14px;
-      margin-left: 12px;
-      font-weight: bold;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #3d3d3d;
     }
   }
   .locationButton {
@@ -66,10 +100,8 @@ export const RestaurantWrapper = styled.div`
         height: 24px;
         background-color: #5e5e5e;
         font-size: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         margin: 8px 0 0 8px;
+        border-radius: 8px;
       }
       button {
         width: 124px;
@@ -81,14 +113,33 @@ export const RestaurantWrapper = styled.div`
 
     .restaurantInformation {
       font-family: "Noto Sans KR";
-      .restaurantName,
-      .menuPrice {
-        font-size: 12px;
+      .restaurantName {
+        font-family: "Noto Sans KR";
+        font-style: normal;
         font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+        letter-spacing: -0.04em;
+        color: #969696;
       }
       .restaurantMenu {
-        font-weight: 700;
+        font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 500;
         font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.04em;
+        color: #000000;
+      }
+      .menuPrice {
+        font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: -0.04em;
+        color: #000000;
+        margin-top: 22px;
       }
     }
   }

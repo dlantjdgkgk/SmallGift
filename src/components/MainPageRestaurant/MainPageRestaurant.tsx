@@ -1,42 +1,56 @@
 import * as Styled from "./style";
 import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { apiInstance } from "../../api/setting";
+import Locate from "../../assets/image/Locate.png";
+import Food from "../../assets/image/foodThumbnail.png";
 
 const MainPageRestaurant = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [result, setResult] = useState(null);
   const handleModalClose = () => setModalIsOpen(false);
-  const isData = true;
+
+  const memberId = 15;
+  const userLocateAPI = async () => {
+    try {
+      const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
+      setResult(res);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    userLocateAPI();
+  }, []);
 
   return (
     <Styled.SectionRestaurantWrapper>
       <Styled.LocationWrapper>
-        <p className="location">지역을 설정해보세요</p>
+        <div className="location">
+          <p>지역을 설정해보세요</p>
+          <button
+            type="button"
+            aria-label="Click"
+            onClick={() => {
+              setModalIsOpen(true);
+            }}
+          >
+            위치 변경하기 {">"}
+            {modalIsOpen ? (
+              <Portal>
+                <AreaModal setModalIsOpen={setModalIsOpen} handleModalClose={handleModalClose} />
+              </Portal>
+            ) : null}
+          </button>
+        </div>
+
         <div className="locationContainer">
           <div className="addressInformation">
+            <img src={Locate} />
             <p className="address">주소</p>
-            {isData ? (
-              <p className="exactAddress">서울시 마포구</p>
-            ) : (
-              <p className="exactAddress">서울특별시 마포구 양화로7안길</p>
-            )}
-          </div>
-          <div className="locationButton">
-            <p>현재 계신 곳의 위치가 맞나요?</p>
-            <button
-              type="button"
-              aria-label="Click"
-              onClick={() => {
-                setModalIsOpen(true);
-              }}
-            >
-              위치 변경하기 {">"}
-              {modalIsOpen ? (
-                <Portal>
-                  <AreaModal setModalIsOpen={setModalIsOpen} handleModalClose={handleModalClose} />
-                </Portal>
-              ) : null}
-            </button>
+            <p className="exactAddress">서울특별시 마포구 양화로7안길 2-1</p>
           </div>
         </div>
       </Styled.LocationWrapper>
@@ -48,7 +62,9 @@ const MainPageRestaurant = () => {
         </p> */}
         <section className="restaurants">
           <article className="restaurant">
-            <div className="category">일식</div>
+            <button className="category" type="button">
+              일식
+            </button>
             <button type="button" aria-label="Click" />
             <div className="restaurantInformation">
               <p className="restaurantName">카멜로 연남</p>
@@ -57,7 +73,9 @@ const MainPageRestaurant = () => {
             </div>
           </article>
           <article className="restaurant">
-            <div className="category">카페</div>
+            <button className="category" type="button">
+              일식
+            </button>
             <button type="button" aria-label="Click" />
             <div className="restaurantInformation">
               <p className="restaurantName">모센즈 스위트</p>
@@ -66,7 +84,9 @@ const MainPageRestaurant = () => {
             </div>
           </article>
           <article className="restaurant">
-            <div className="category">한식</div>
+            <button className="category" type="button">
+              일식
+            </button>
             <button type="button" aria-label="Click" />
             <div className="restaurantInformation">
               <p className="restaurantName">아뜨뜨</p>

@@ -40,42 +40,44 @@ export const SectionGifticonWrapper = styled.section`
   }
 
   .gifticonInformation {
-    position: relative;
     width: 100%;
     padding-right: 16px;
-
     .addressInformation {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-      height: 115px;
-      background-color: #d9d9d9;
+      height: 230px;
+      border: 1px solid #e8e8e8;
+      border-radius: 0px 0px 8px 8px;
       margin-bottom: 16px;
       border-radius: 8px;
       .category {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        margin: 16px 0 4px 24px;
+        margin: 16px 0 4px 16px;
         width: 46px;
         height: 24px;
-        top: 0px;
-        background-color: #5e5e5e;
+        border: 1px solid #6600cc;
+        border-radius: 4px;
         font-family: "Noto Sans KR";
         font-style: normal;
-        font-weight: 400;
+        font-weight: 500;
         font-size: 12px;
         line-height: 17px;
         letter-spacing: -0.04em;
-        color: #f4f4f4;
+        color: #6600cc;
       }
-
       .restaurantName {
-        display: flex;
-        margin-left: 24px;
-        margin-top: 28px;
+        margin-top: 5px;
+        margin-left: 16px;
         font-size: 16px;
         font-weight: 700;
         line-height: 23px;
+        font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 23px;
+        letter-spacing: -0.04em;
+        color: #000000;
       }
       .restaurantAddress {
         font-family: "Noto Sans KR";
@@ -83,20 +85,10 @@ export const SectionGifticonWrapper = styled.section`
         font-weight: 400;
         font-size: 13px;
         line-height: 19px;
-        display: flex;
-        margin-left: 24px;
-        margin-top: 12px;
-      }
-    }
-    .cafeInformation {
-      width: 100%;
-      height: 41px;
-      background-color: #d9d9d9;
-      margin-bottom: 16px;
-      border-radius: 8px;
-      p {
-        display: flex;
-        margin-left: 24px;
+        letter-spacing: -0.04em;
+        color: #000000;
+        margin-top: 5px;
+        margin-left: 16px;
       }
     }
   }

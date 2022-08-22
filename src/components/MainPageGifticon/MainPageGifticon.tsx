@@ -1,18 +1,11 @@
 import * as Styled from "./style";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import food from "../../assets/image/food.png";
 
 const MainPageGifticon = () => {
   const koreaAreas = ["서울/경기도", "강원도", "충청도", "전라도", "경기도", "제주도"];
   const [selectButton, setSelectButton] = useState("서울/경기도");
-  const [activeContainer, setActiveContainer] = useState(0);
-
-  // setInterval에는 +1 씩 되다가 컨테이너 length 이상 되면 0으로 다시 돌아가는 함수
-  // active된거에만 클래스명 줘서 css로 효과내면 될듯?
-  useEffect(() => {
-    const swapActiveConatiner = setInterval(() => {}, 2000);
-    return () => clearInterval(swapActiveConatiner);
-  }, []);
 
   const localPopularGifticon = [
     {
@@ -25,13 +18,13 @@ const MainPageGifticon = () => {
       local: "서울/경기도",
       category: "카페",
       restaurantName: "벙커힐",
-      address: "서울 송파구 강남대로9길 22 2층",
+      address: "서울 송파구 강남대로9길 23 2층",
     },
     {
       local: "서울/경기도",
       category: "양식",
       restaurantName: "남미플랜트랩",
-      address: "서울 양천구 강남대로9길 22 2층",
+      address: "서울 양천구 강남대로9길 24 2층",
     },
 
     {
@@ -79,7 +72,7 @@ const MainPageGifticon = () => {
   return (
     <Styled.SectionGifticonWrapper>
       <p className="gifticon">지역별 인기있는 기프티콘이에요</p>
-      <div className="areas">
+      <section className="areas">
         {koreaAreas.map((area, index) => {
           const isSelected = selectButton === area;
           return (
@@ -96,29 +89,26 @@ const MainPageGifticon = () => {
             </button>
           );
         })}
-      </div>
+      </section>
 
-      <div className="gifticonInformation">
+      <section className="gifticonInformation">
         {localPopularGifticon
           .filter((item) => item.local === selectButton)
           .map((shop, index) => {
-            return index === 0 ? (
-              <Link to={`/category?value=${shop.category}`}>
-                <button className="addressInformation" type="button" aria-label="Click" key={index}>
-                  <p className="category">{shop.category}</p>
+            return (
+              <Link to={`/category?value=${shop.category} `} key={index}>
+                <article className="addressInformation" aria-label="Click">
+                  <img src={food} />
+                  <button className="category" type="button">
+                    {shop.category}
+                  </button>
                   <p className="restaurantName">{shop.restaurantName}</p>
                   <p className="restaurantAddress">{shop.address}</p>
-                </button>
-              </Link>
-            ) : (
-              <Link to={`/category?value=${shop.category}`}>
-                <button className="cafeInformation" type="button" aria-label="Click" key={index}>
-                  <p>{shop.restaurantName}</p>
-                </button>
+                </article>
               </Link>
             );
           })}
-      </div>
+      </section>
     </Styled.SectionGifticonWrapper>
   );
 };

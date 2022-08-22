@@ -64,7 +64,7 @@ const RestaurantInfo = () => {
                 aria-hidden="true"
                 onClick={() => {
                   setSelectMenu(index);
-                  setModalIsOpen(!modalIsOpen);
+                  setModalIsOpen(true);
                 }}
               >
                 {isSelected && modalIsOpen ? (

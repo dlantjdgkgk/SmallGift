@@ -2,6 +2,8 @@ import * as Styled from "./style";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import Alarm from "../../assets/image/Alarm.png";
+import Logo from "../../assets/image/Logo.png";
 
 const Header = () => {
   const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장
@@ -42,7 +44,7 @@ const Header = () => {
                     navigate("/");
                   }}
                 >
-                  Logo
+                  <img src={Logo} />
                 </button>
               ) : (
                 <button
@@ -63,7 +65,7 @@ const Header = () => {
                       navigate("/alert");
                     }}
                   >
-                    Alert
+                    <img src={Alarm} />
                   </button>
                 </div>
               )}

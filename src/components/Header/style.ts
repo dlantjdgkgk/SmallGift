@@ -6,9 +6,10 @@ export const HeaderWrapper = styled.header`
     width: 100%;
     min-width: 360px;
     max-width: 768px;
-    background-color: #d9d9d9;
+    background-color: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0px;
     z-index: 1;
@@ -16,18 +17,10 @@ export const HeaderWrapper = styled.header`
   }
 
   .logo {
-    width: 80px;
-    height: 32px;
-    background-color: #a8a8a8;
+    width: 22px;
+    height: 30px;
+    background-color: white;
     margin: 8px 0px 8px 16px;
-    font-size: 8px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 12px;
-    letter-spacing: -0.04em;
-    color: #000000;
   }
 
   .back,
@@ -35,17 +28,8 @@ export const HeaderWrapper = styled.header`
     width: 32px;
     height: 32px;
     border: none;
-    font-size: 8px;
-    background-color: #a8a8a8;
+    background-color: white;
     margin: 8px 16px 8px 0px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 8px;
-    line-height: 12px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: #000000;
   }
   .back {
     margin-left: 16px;

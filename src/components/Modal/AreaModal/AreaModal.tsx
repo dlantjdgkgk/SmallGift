@@ -1,8 +1,8 @@
 import * as Styled from "./style";
-import Portal from "components/Modal/Portal/Portal";
 import { useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
 import useDaumPost from "hooks/useDaumPost";
+import { apiInstance } from "../../../api/setting";
 
 interface Props {
   setModalIsOpen: any;
@@ -17,14 +17,25 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
-
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
   });
 
   const handleClickOutside = (e: MouseEvent) => {
-    if ((e.target as HTMLDivElement).className === "sc-eCYdqJ eLAAmI") handleModalClose();
+    if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
+  };
+
+  const handleClick = async () => {
+    try {
+      const payload = {
+        locate: addressState.jibunAddress,
+        memberId: 15,
+      };
+      await apiInstance.post("/api/user/locate", payload);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -41,55 +52,54 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
   }, []);
 
   return (
-    <Portal>
-      <Styled.Background>
-        {isDaumPostOpen ? (
-          <KakaoAdress handleDaumPostOpne={handleDaumPostOpne} handleComplete={handleComplete} />
-        ) : (
-          <Styled.ModalWrapper>
-            <p>지역 설정하기</p>
+    <Styled.Background id="modal-container">
+      {isDaumPostOpen ? (
+        <KakaoAdress handleDaumPostOpne={handleDaumPostOpne} handleComplete={handleComplete} />
+      ) : (
+        <Styled.ModalWrapper>
+          <p>지역 설정하기</p>
 
-            {addressState.jibunAddress ? (
-              <>
-                <div
-                  className="postalCode"
-                  aria-hidden="true"
-                  onClick={handleDaumPostOpne}
-                  style={{ border: "1px solid #000000" }}
-                >
-                  <div />
-                  <button type="button" className="newAddress">
-                    {addressState.jibunAddress}
-                  </button>
-                </div>
-                <button
-                  type="button"
-                  className="afterSelection"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setModalIsOpen(false);
-                  }}
-                >
-                  선택완료
+          {addressState.jibunAddress ? (
+            <>
+              <div
+                className="postalCode"
+                aria-hidden="true"
+                onClick={handleDaumPostOpne}
+                style={{ border: "1px solid #000000" }}
+              >
+                <div />
+                <button type="button" className="newAddress">
+                  {addressState.jibunAddress}
                 </button>
-              </>
-            ) : (
-              <>
-                <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
-                  <div />
-                  <button type="button" className="findAddress">
-                    우편번호로 찾기
-                  </button>
-                </div>
-                <button type="button" className="beforeSelection">
-                  선택완료
+              </div>
+              <button
+                type="button"
+                className="afterSelection"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setModalIsOpen(false);
+                  handleClick();
+                }}
+              >
+                선택완료
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
+                <div />
+                <button type="button" className="findAddress">
+                  우편번호로 찾기
                 </button>
-              </>
-            )}
-          </Styled.ModalWrapper>
-        )}
-      </Styled.Background>
-    </Portal>
+              </div>
+              <button type="button" className="beforeSelection">
+                선택완료
+              </button>
+            </>
+          )}
+        </Styled.ModalWrapper>
+      )}
+    </Styled.Background>
   );
 };
 export default AreaModal;

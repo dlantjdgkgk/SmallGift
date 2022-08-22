@@ -18,7 +18,7 @@ export const NavWrapper = styled.div`
 
   .iconAndDescription {
     float: left;
-    width: 20%;
+    width: 25%;
     height: 100%;
     line-height: 45px;
     justify-content: center;

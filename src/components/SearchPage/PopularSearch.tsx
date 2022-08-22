@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import * as Styled from "./style";
+import { useEffect } from "react";
 
 const PopularSearch = () => {
   const datas = [
@@ -15,6 +16,7 @@ const PopularSearch = () => {
     "쭈꾸미",
     "쭈꾸미",
   ];
+
   return (
     <Styled.PopularSearchWrapper>
       <div className="popularSearch">

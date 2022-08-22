@@ -1,4 +1,4 @@
-import { faSearch, faAlignJustify, faMedal, faCartShopping, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faAlignJustify, faMedal, faHome } from "@fortawesome/free-solid-svg-icons";
 
 export const data = [
   {

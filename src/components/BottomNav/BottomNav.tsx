@@ -1,13 +1,10 @@
-import React, { useMemo, useState } from "react";
 import * as Styled from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { data } from "./data";
 
 const BottomNav = () => {
-  const [activeNav, setActiveNav] = useState(0);
-  const a = 1;
-  const b = 3;
+  const { pathname } = useLocation();
   return (
     <>
       <Outlet />
@@ -15,18 +12,14 @@ const BottomNav = () => {
         <div className="container">
           {data.map(({ icons, Links, name }, index) => {
             return (
-              <Link
-                to={Links}
-                className="nav-link"
-                key={index}
-                onClick={() => {
-                  setActiveNav(index);
-                }}
-              >
+              <Link to={Links} className="nav-link" key={index}>
                 <div className="iconAndDescription">
                   <div>
-                    <FontAwesomeIcon icon={icons} className={activeNav === index ? "nav-item active" : "nav-item"} />
-                    <p className={activeNav === index ? "nav-item active" : "nav-item"}>{name}</p>
+                    <FontAwesomeIcon
+                      icon={icons}
+                      className={pathname.split("/")[1] === Links ? "nav-item active" : "nav-item"}
+                    />
+                    <p className={pathname.split("/")[1] === Links ? "nav-item active" : "nav-item"}>{name}</p>
                   </div>
                 </div>
               </Link>

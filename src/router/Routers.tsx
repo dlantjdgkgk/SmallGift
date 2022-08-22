@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 const Main = lazy(() => import("pages/Main"));
-const Shop = lazy(() => import("pages/Shop"));
 const Category = lazy(() => import("pages/Category"));
 const Search = lazy(() => import("pages/Search"));
 const MyPage = lazy(() => import("pages/MyPage"));
@@ -28,7 +27,6 @@ const Routers = () => {
             <Route element={<Header />}>
               <Route element={<BottomNav />}>
                 <Route path="/" element={<Main />} />
-                <Route path="/shop" element={<Shop />} />
                 <Route path="/category" element={<Category />} />{" "}
                 <Route path="/category/:id" element={<CategoryDetail />} />
                 <Route path="/mypage" element={<MyPage />} />

@@ -3,12 +3,12 @@ import { faSearch, faAlignJustify, faMedal, faCartShopping, faHome } from "@fort
 export const data = [
   {
     icons: faHome,
-    Links: "/",
+    Links: "",
     name: "홈",
   },
   {
     icons: faAlignJustify,
-    Links: "category?value=전체",
+    Links: "category",
     name: "카테고리",
   },
   {
@@ -16,11 +16,7 @@ export const data = [
     Links: "search",
     name: "검색",
   },
-  {
-    icons: faCartShopping,
-    Links: "shop",
-    name: "장바구니",
-  },
+
   {
     icons: faMedal,
     Links: "mypage",

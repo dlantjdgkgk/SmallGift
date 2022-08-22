@@ -142,6 +142,20 @@ export const SearchPageWrapper = styled.div`
   }
 `;
 
+export const DropDownItem = styled.div`
+  padding: 20px 8px 8px 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-bottom: 1px solid #e7e7e7;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: gray;
+`;
+
 export const PopularSearchWrapper = styled.section`
   .popularSearch {
     margin-left: 16px;

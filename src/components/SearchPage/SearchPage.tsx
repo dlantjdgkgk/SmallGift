@@ -1,20 +1,58 @@
 import * as Styled from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PopularSearch from "./PopularSearch";
+import { apiInstance } from "../../api/setting";
 
 const wholeTextArray = ["닭발", "닭갈비", "닭볶음탕", "cat", "javascript", "원티드", "프리온보딩", "프론트엔드"];
 
 const SearchPage = () => {
-  const [text, setText] = useState("");
-  const [is, setIs] = useState(true);
-  const [searchList, setSearchList] = useState(null);
+  const [is, setIs] = useState(false);
+
   const [isHaveInputValue, setIsHaveInputValue] = useState(false);
   const [dropDownList, setDropDownList] = useState(wholeTextArray);
+  const [inputValue, setInputValue] = useState("");
 
-  const onChange = (e) => {
-    setText(e.target.value);
-    text && setIsHaveInputValue(true);
+  const showDropDownList = () => {
+    if (inputValue === "") {
+      setIsHaveInputValue(false);
+      setDropDownList([]);
+    } else {
+      const choosenTextList = wholeTextArray.filter((textItem) => textItem.includes(inputValue));
+      setDropDownList(choosenTextList);
+    }
   };
+
+  const onChange = (event) => {
+    setInputValue(event.target.value);
+    setIsHaveInputValue(true);
+  };
+
+  const handleClick = async () => {
+    try {
+      const payload = {
+        keyword: inputValue,
+        memberId: 15,
+      };
+      await apiInstance.post("/api/user/keyword", payload);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const topTenAPI = async () => {
+    try {
+      const res = await apiInstance.get("/api/user/common/keyword/top10");
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    topTenAPI();
+  }, []);
+  useEffect(showDropDownList, [inputValue]);
+
   const datas = [
     "쭈꾸미",
     "치즈케이크",
@@ -29,38 +67,33 @@ const SearchPage = () => {
   ];
   return (
     <Styled.SearchPageWrapper>
-      {text ? (
+      {inputValue ? (
         <>
           <div className="searchBar">
             <div />
-            <input value={text} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
+            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
             <button type="button">x</button>
           </div>
           {isHaveInputValue && (
-            <div>
-              {dropDownList.length === 0 && <div>해당하는 단어가 없습니다</div>}
-              {dropDownList
-                .filter((textItem) => textItem.includes(text))
-                .map((dropDownItem, dropDownIndex) => {
-                  return (
-                    <div
-                      key={dropDownIndex}
-                      // onClick={() => clickDropDownItem(dropDownItem)}
-                      // onMouseOver={() => setDropDownItemIndex(dropDownIndex)}
-                      // className={dropDownItemIndex === dropDownIndex ? "selected" : ""}
-                    >
-                      {dropDownItem}
-                    </div>
-                  );
-                })}
-            </div>
+            <>
+              {dropDownList.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
+              {dropDownList.map((dropDownItem, dropDownIndex) => {
+                return (
+                  <Styled.DropDownItem key={dropDownIndex} onClick={handleClick}>
+                    {dropDownItem.split(inputValue)[0]}
+                    <span style={{ color: "black" }}>{inputValue}</span>
+                    {dropDownItem.split(inputValue)[1]}
+                  </Styled.DropDownItem>
+                );
+              })}
+            </>
           )}
         </>
       ) : (
         <>
           <div className="searchBar">
             <div />
-            <input value={text} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
+            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
             <button type="button">x</button>
           </div>
           {is ? (

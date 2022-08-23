@@ -75,10 +75,9 @@ export const CategoryRestaurantWrapper = styled.section`
     }
   }
 
-  .restaurantImage {
+  img {
     width: 80px;
     height: 80px;
-    background: #d9d9d9;
     margin-bottom: 16px;
   }
   .restaurantInformation {
@@ -86,20 +85,17 @@ export const CategoryRestaurantWrapper = styled.section`
     display: flex;
     flex-direction: column;
     .category {
-      width: 32px;
-      height: 20px;
-      background: #5e5e5e;
+      width: 36px;
+      height: 23px;
+      background: #6600cc;
       border-radius: 2px;
       font-family: "Noto Sans KR";
       font-style: normal;
-      font-weight: 400;
-      font-size: 11px;
-      line-height: 16px;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 19px;
       letter-spacing: -0.04em;
-      color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: #ffffff;
       margin-bottom: 4px;
     }
     .restaurantName {
@@ -110,16 +106,16 @@ export const CategoryRestaurantWrapper = styled.section`
       line-height: 23px;
       letter-spacing: -0.04em;
       color: #000000;
-      margin-bottom: 11px;
     }
     .restaurantMenu {
       font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
-      font-size: 13px;
+      font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #8f8f8f;
+      margin-top: 8px;
     }
   }
 `;

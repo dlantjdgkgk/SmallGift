@@ -80,7 +80,7 @@ const CategoryPageSection = () => {
             return (
               <div className="category" key={index}>
                 <button
-                  style={isSelected ? { border: "1px solid black" } : undefined}
+                  style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : undefined}
                   type="button"
                   aria-label="select"
                   onClick={() => {
@@ -105,9 +105,11 @@ const CategoryPageSection = () => {
             return (
               <Link to={`/category/${shop.restaurantName}`} key={index}>
                 <article className="restaurant">
-                  <div className="restaurantImage" />
+                  <img src="img/CafeImage.png" />
                   <div className="restaurantInformation">
-                    <div className="category">{shop.category}</div>
+                    <button className="category" type="button">
+                      {shop.category}
+                    </button>
                     <p className="restaurantName">{shop.restaurantName}</p>
                     <p className="restaurantMenu">{shop.restaurantMenu}</p>
                   </div>

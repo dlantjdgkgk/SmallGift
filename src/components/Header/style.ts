@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  padding-top: 48px;
+  padding-top: ${(props) => (props.isCategory ? "0px" : "48px")};
   .header {
     width: 100%;
     min-width: 360px;
     max-width: 768px;
-    background-color: white;
+    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,7 +19,7 @@ export const HeaderWrapper = styled.header`
   .logo {
     width: 22px;
     height: 30px;
-    background-color: white;
+    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
     margin: 8px 0px 8px 16px;
   }
 
@@ -28,7 +28,7 @@ export const HeaderWrapper = styled.header`
     width: 32px;
     height: 32px;
     border: none;
-    background-color: white;
+    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
     margin: 8px 16px 8px 0px;
   }
   .back {

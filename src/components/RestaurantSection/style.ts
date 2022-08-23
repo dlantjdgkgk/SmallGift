@@ -1,31 +1,30 @@
 import styled from "styled-components";
 
 export const RestaurantSectionWrapper = styled.section`
-  .section {
-    height: 192px;
-    background-color: #c1c1c1;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) -55.86%, rgba(0, 0, 0, 0.7) 100%);
+  img {
+    width: 100%;
+    display: block;
+    z-index: 9999;
   }
+
   .resturantThumbnail {
     .category {
+      background: #6600cc;
+      border-radius: 2px;
       position: absolute;
       top: 0;
-      width: 32px;
-      height: 20px;
-      background: #5e5e5e;
+      width: 36px;
+      height: 23px;
       border-radius: 2px;
       font-family: "Noto Sans KR";
       font-style: normal;
-      font-weight: 400;
-      font-size: 11px;
-      line-height: 16px;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 19px;
       letter-spacing: -0.04em;
-      color: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      color: #ffffff;
       margin-left: 24px;
-      margin-top: 110px;
+      margin-top: 128px;
     }
     .restaurantLike {
       width: 100%;

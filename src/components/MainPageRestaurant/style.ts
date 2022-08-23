@@ -98,29 +98,24 @@ export const RestaurantWrapper = styled.div`
         color: white;
         width: 46px;
         height: 24px;
-        background-color: #5e5e5e;
+        background-color: black;
         font-size: 12px;
         margin: 8px 0 0 8px;
         border-radius: 8px;
-      }
-      button {
-        width: 124px;
-        height: 124px;
-        background-color: #d9d9d9;
-        margin-bottom: 8px;
       }
     }
 
     .restaurantInformation {
       font-family: "Noto Sans KR";
       .restaurantName {
-        font-family: "Noto Sans KR";
+        font-family: "Noto Sans KR", sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
         line-height: 17px;
         letter-spacing: -0.04em;
         color: #969696;
+        margin-top: 8px;
       }
       .restaurantMenu {
         font-family: "Noto Sans KR";

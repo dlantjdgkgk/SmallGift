@@ -32,7 +32,11 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
         locate: addressState.jibunAddress,
         memberId: 15,
       };
-      await apiInstance.post("/api/user/locate", payload);
+
+      const res = await apiInstance.post("/api/user/locate", payload);
+      // 보통은 여기서 수정하거든여?? 전역 state를
+      // 여기 locate랑 전역 state 라서 여기서 바꾸면
+      console.log(res);
     } catch (error) {
       console.log(error);
     }

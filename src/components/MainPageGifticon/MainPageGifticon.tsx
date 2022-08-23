@@ -1,7 +1,6 @@
 import * as Styled from "./style";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import food from "../../assets/image/food.png";
 
 const MainPageGifticon = () => {
   const koreaAreas = ["서울/경기도", "강원도", "충청도", "전라도", "경기도", "제주도"];
@@ -83,7 +82,7 @@ const MainPageGifticon = () => {
               onClick={() => {
                 setSelectButton(area);
               }}
-              style={isSelected ? { backgroundColor: "#5E5E5E", color: "white" } : undefined}
+              style={isSelected ? { backgroundColor: "#6600CC", color: "white" } : undefined}
             >
               {area}
             </button>
@@ -98,7 +97,7 @@ const MainPageGifticon = () => {
             return (
               <Link to={`/category?value=${shop.category} `} key={index}>
                 <article className="addressInformation" aria-label="Click">
-                  <img src={food} />
+                  <img src="img/food.png" />
                   <button className="category" type="button">
                     {shop.category}
                   </button>

@@ -33,6 +33,7 @@ export const MainPageCategoryWrapper = styled.section`
         font-size: 14px;
         font-weight: bold;
         font-family: "Noto Sans KR";
+        margin-top: 8px;
       }
     }
   }

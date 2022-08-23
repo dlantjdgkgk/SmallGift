@@ -2,14 +2,17 @@ import * as Styled from "./style";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import Alarm from "../../assets/image/Alarm.png";
-import Logo from "../../assets/image/Logo.png";
+import BackSVG from "./BackSVG";
+import AlarmSVG from "./AlarmSVG";
 
 const Header = () => {
   const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장
   const [ScrollActive, setScrollActive] = useState(true);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const [isCategory, setCategory] = useState(false);
+
+  const regex = /^(\/category\/)/;
 
   const handleScroll = () => {
     if (ScrollY > 40 && ScrollY < 100) {
@@ -30,9 +33,11 @@ const Header = () => {
     }; //  window 에서 스크롤을 감시를 종료
   });
 
+  useEffect(() => setCategory(regex.test(pathname)), [pathname]);
+
   return (
     <>
-      <Styled.HeaderWrapper>
+      <Styled.HeaderWrapper isCategory={isCategory}>
         <div className="header">
           {ScrollActive ? (
             <>
@@ -44,7 +49,7 @@ const Header = () => {
                     navigate("/");
                   }}
                 >
-                  <img src={Logo} />
+                  <img src="/img/Logo.png" />
                 </button>
               ) : (
                 <button
@@ -54,7 +59,8 @@ const Header = () => {
                     navigate(-1);
                   }}
                 >
-                  Back
+                  {/* <img src="/img/Back.png" /> */}
+                  <BackSVG fill={isCategory ? "white" : undefined} />
                 </button>
               )}
               {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? undefined : (
@@ -65,7 +71,8 @@ const Header = () => {
                       navigate("/alert");
                     }}
                   >
-                    <img src={Alarm} />
+                    {/* <img src="/img/Alarm.png" /> */}
+                    <AlarmSVG fill={isCategory ? "white" : undefined} />
                   </button>
                 </div>
               )}

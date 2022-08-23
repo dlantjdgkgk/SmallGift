@@ -3,21 +3,27 @@ import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
 import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
-import Locate from "../../assets/image/Locate.png";
-import Food from "../../assets/image/foodThumbnail.png";
+import LocateInfo from "./Locate";
 
 const MainPageRestaurant = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [result, setResult] = useState(null);
+  const [locate, setLocate] = useState(null);
   const handleModalClose = () => setModalIsOpen(false);
 
   const memberId = 15;
   const userLocateAPI = async () => {
     try {
+      // 여기가 화면 들어갈때 부르는 부분일거같은데 원래는 여기 locate랑
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
-      setResult(res);
+      console.log(res);
+      setLocate(res);
     } catch (error) {
       console.log(error.message);
+      // 여기도 바껴서 같이 바껴서 그렇게 쓰는거에영
+      // 확실히 이해했습니다.
+      // 그러면 rtk 바로 도입해서 이 부분은 제가 해보고
+      // 말씀드리겠습니다! 넹 아 그리고 혹시 이거 깃에 올라가있나여?
+      // 네네 있습니다 . 왜유?
     }
   };
 
@@ -45,12 +51,17 @@ const MainPageRestaurant = () => {
             ) : null}
           </button>
         </div>
+        {/* <LocateInfo locate={locate?.data} /> */}
 
         <div className="locationContainer">
           <div className="addressInformation">
-            <img src={Locate} />
+            <img src="img/locate.png" />
             <p className="address">주소</p>
-            <p className="exactAddress">서울특별시 마포구 양화로7안길 2-1</p>
+            {locate ? (
+              <p className="exactAddress">{locate.data}</p>
+            ) : (
+              <p className="exactAddress">서울특별시 마포구 양화로7안길 2-1</p>
+            )}
           </div>
         </div>
       </Styled.LocationWrapper>
@@ -65,7 +76,7 @@ const MainPageRestaurant = () => {
             <button className="category" type="button">
               일식
             </button>
-            <button type="button" aria-label="Click" />
+            <img src="img/RestaurantMenu.png" />
             <div className="restaurantInformation">
               <p className="restaurantName">카멜로 연남</p>
               <p className="restaurantMenu">버터 봉골레 파스타</p>
@@ -76,7 +87,7 @@ const MainPageRestaurant = () => {
             <button className="category" type="button">
               일식
             </button>
-            <button type="button" aria-label="Click" />
+            <img src="img/RestaurantMenu.png" />
             <div className="restaurantInformation">
               <p className="restaurantName">모센즈 스위트</p>
               <p className="restaurantMenu">모센 라떼</p>
@@ -87,7 +98,7 @@ const MainPageRestaurant = () => {
             <button className="category" type="button">
               일식
             </button>
-            <button type="button" aria-label="Click" />
+            <img src="img/RestaurantMenu.png" />
             <div className="restaurantInformation">
               <p className="restaurantName">아뜨뜨</p>
               <p className="restaurantMenu">소고기 솥밥</p>

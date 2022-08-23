@@ -7,9 +7,11 @@ const RestaurantSection = () => {
 
   return (
     <Styled.RestaurantSectionWrapper>
-      <div className="section" />
+      <img src="/img/RestaurantInfo.png" />
       <div className="resturantThumbnail">
-        <div className="category">한식</div>
+        <button className="category" type="button">
+          한식
+        </button>
         <div className="restaurantLike">
           <div className="restaurantName">{id}</div>
           <div className="likeAndShareButton">

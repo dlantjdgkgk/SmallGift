@@ -45,6 +45,6 @@ export const NavWrapper = styled.div`
   }
 
   .active {
-    color: black;
+    color: #6600cc;
   }
 `;

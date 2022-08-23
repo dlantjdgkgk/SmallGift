@@ -13,17 +13,11 @@ const MainPageRestaurant = () => {
   const memberId = 15;
   const userLocateAPI = async () => {
     try {
-      // 여기가 화면 들어갈때 부르는 부분일거같은데 원래는 여기 locate랑
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       console.log(res);
       setLocate(res);
     } catch (error) {
       console.log(error.message);
-      // 여기도 바껴서 같이 바껴서 그렇게 쓰는거에영
-      // 확실히 이해했습니다.
-      // 그러면 rtk 바로 도입해서 이 부분은 제가 해보고
-      // 말씀드리겠습니다! 넹 아 그리고 혹시 이거 깃에 올라가있나여?
-      // 네네 있습니다 . 왜유?
     }
   };
 

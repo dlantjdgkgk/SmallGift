@@ -1,22 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import * as Styled from "./style";
-import { useEffect } from "react";
 
-const PopularSearch = () => {
-  const datas = [
-    "쭈꾸미",
-    "치즈케이크",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-  ];
+interface IProps {
+  topTenData: string[];
+}
 
+const PopularSearch = ({ topTenData }: IProps) => {
   return (
     <Styled.PopularSearchWrapper>
       <div className="popularSearch">
@@ -26,7 +16,7 @@ const PopularSearch = () => {
 
       <Styled.SearchListWrapper>
         <div className="searchList">
-          {datas.map((data, index) => {
+          {topTenData?.map((data, index) => {
             return (
               <>
                 <div className="search">
@@ -36,7 +26,7 @@ const PopularSearch = () => {
                   </div>
                   <div className="iconAndRank">
                     <FontAwesomeIcon icon={faCaretUp} />
-                    <p className="risingRanking">1</p>
+                    <p className="risingRanking">1 </p>
                   </div>
                 </div>
                 <div className="boundaryLine" />

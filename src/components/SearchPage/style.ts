@@ -3,18 +3,23 @@ import styled from "styled-components";
 export const SearchPageWrapper = styled.div`
   overflow: hidden;
   width: 100%;
+  padding-right: 16px;
   .searchBar {
     width: 100%;
     height: 48px;
     background: #eeeeee;
     display: flex;
     align-items: center;
-    div {
-      width: 24px;
-      height: 24px;
-      background: red;
-      margin-left: 16px;
+    border-radius: 8px;
+    margin-top: 4px;
+    .back {
+      width: 56px;
+      height: 48px;
       margin-right: 8px;
+      background-color: white;
+    }
+    .cancel {
+      padding-right: 12px;
     }
     input {
       width: 100%;
@@ -28,13 +33,6 @@ export const SearchPageWrapper = styled.div`
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #6f6f6f;
-    }
-    button {
-      width: 20px;
-      height: 20px;
-      background: #d9d9d9;
-      border-radius: 1000px;
-      margin-right: 16px;
     }
   }
 
@@ -67,7 +65,6 @@ export const SearchPageWrapper = styled.div`
     justify-content: space-between;
     margin-top: 24px;
     margin-left: 16px;
-    margin-right: 16px;
     .recent {
       font-family: "Noto Sans KR";
       font-style: normal;
@@ -91,7 +88,7 @@ export const SearchPageWrapper = styled.div`
 
   .records {
     display: flex;
-    padding: 12px 16px 0px 16px;
+    padding: 12px 0px 0px 16px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     width: 100%;
@@ -103,7 +100,7 @@ export const SearchPageWrapper = styled.div`
       display: flex;
       height: 31px;
       background: #ffffff;
-      border: 1px solid #000000;
+      border: 1px solid #ececec;
       box-shadow: 0px 2px 8px rgba(197, 197, 197, 0.26);
       border-radius: 58px;
       justify-content: center;
@@ -118,7 +115,6 @@ export const SearchPageWrapper = styled.div`
         font-size: 14px;
         line-height: 20px;
         color: #000000;
-        margin-right: 4px;
       }
     }
     div:last-child {
@@ -159,7 +155,7 @@ export const DropDownItem = styled.div`
 export const PopularSearchWrapper = styled.section`
   .popularSearch {
     margin-left: 16px;
-    margin-right: 16px;
+
     margin-bottom: 24px;
     display: flex;
     justify-content: space-between;
@@ -189,7 +185,6 @@ export const SearchListWrapper = styled.section`
     display: grid;
     row-gap: 10px;
     padding-left: 16px;
-    padding-right: 16px;
     .search {
       display: flex;
       justify-content: space-between;
@@ -206,7 +201,7 @@ export const SearchListWrapper = styled.section`
           font-size: 14px;
           line-height: 20px;
           letter-spacing: -0.04em;
-          color: #000000;
+          color: #6600cc;
           width: 12px;
         }
         .menuName {

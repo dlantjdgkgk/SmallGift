@@ -2,14 +2,16 @@ import * as Styled from "./style";
 import { useEffect, useState } from "react";
 import PopularSearch from "./PopularSearch";
 import { apiInstance } from "../../api/setting";
-import Back from "../../assets/image/Back.png";
 import { useNavigate } from "react-router";
+import { wholeTextArray } from "./data";
 
 const SearchPage = () => {
-  const [is, setIs] = useState(false);
-  const wholeTextArray = ["닭발", "닭갈비", "닭볶음탕", "cat", "javascript", "원티드", "프리온보딩", "프론트엔드"];
-
   const navigate = useNavigate();
+  const [is, setIs] = useState(false);
+
+  const [topTenData, setTopTenData] = useState(null);
+  const [keyWord, setKeyWord] = useState(null);
+
   const [isHaveInputValue, setIsHaveInputValue] = useState(false);
   const [dropDownList, setDropDownList] = useState(wholeTextArray);
   const [inputValue, setInputValue] = useState("");
@@ -30,6 +32,29 @@ const SearchPage = () => {
     setIsHaveInputValue(true);
   };
 
+  const topTenAPI = async () => {
+    try {
+      const topTen = await apiInstance.get("/api/user/common/keyword/top10");
+      setTopTenData(topTen.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const keyWordAPI = async () => {
+    try {
+      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
+      setKeyWord(keyWordData.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    keyWordAPI();
+    topTenAPI();
+  }, []);
+
   const handleClick = async () => {
     try {
       const payload = {
@@ -46,41 +71,34 @@ const SearchPage = () => {
     handleClick();
   }, [selecttext]);
 
-  const topTenAPI = async () => {
-    try {
-      const res = await apiInstance.get("/api/user/common/keyword/top10");
-      console.log(res.data.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    topTenAPI();
-  }, []);
+  const handleDelete = () => {};
 
   useEffect(showDropDownList, [inputValue]);
 
-  const datas = [
-    "쭈꾸미",
-    "치즈케이크",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-    "쭈꾸미",
-  ];
   return (
     <Styled.SearchPageWrapper>
       {inputValue ? (
         <>
           <div className="searchBar">
-            <div />
-            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
-            <button type="button">x</button>
+            <button
+              type="button"
+              onClick={() => {
+                navigate(-1);
+              }}
+              className="back"
+            >
+              <img src="/img/Back.png" />
+            </button>
+            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
+            <button
+              type="button"
+              onClick={() => {
+                setInputValue("");
+              }}
+              className="cancel"
+            >
+              <img src="/img/Cancel.png" />
+            </button>
           </div>
           {isHaveInputValue && (
             <>
@@ -105,17 +123,16 @@ const SearchPage = () => {
       ) : (
         <>
           <div className="searchBar">
-            {/* <button
+            <button
               type="button"
               onClick={() => {
                 navigate(-1);
               }}
+              className="back"
             >
-              <img src={Back} />
-            </button> */}
-            <div />
-            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명을 입력하세요" />
-            <button type="button">x</button>
+              <img src="/img/Back.png" />
+            </button>
+            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
           </div>
           {is ? (
             <>
@@ -129,12 +146,12 @@ const SearchPage = () => {
             <>
               <div className="recentSearchLogin">
                 <p className="recent">최근 검색어</p>
-                <button className="totalDelete" type="button" onClick={() => {}}>
+                <button className="totalDelete" type="button" onClick={handleDelete}>
                   전체 삭제
                 </button>
               </div>
               <div className="records">
-                {datas.map((data, index) => {
+                {keyWord?.map((data, index) => {
                   return (
                     <div className="record" key={index}>
                       <p>{data}</p>
@@ -145,7 +162,7 @@ const SearchPage = () => {
               <div className="loginLine" />
             </>
           )}
-          <PopularSearch />
+          <PopularSearch topTenData={topTenData} />
         </>
       )}
     </Styled.SearchPageWrapper>

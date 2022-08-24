@@ -58,7 +58,6 @@ const Header = () => {
                     navigate(-1);
                   }}
                 >
-                  {/* <img src="/img/Back.png" /> */}
                   <BackSVG fill={isCategory ? "white" : undefined} />
                 </button>
               )}
@@ -70,7 +69,6 @@ const Header = () => {
                       navigate("/alert");
                     }}
                   >
-                    {/* <img src="/img/Alarm.png" /> */}
                     <img src="/img/Alarm.png" />
                   </button>
                 </div>

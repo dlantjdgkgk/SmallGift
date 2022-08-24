@@ -67,7 +67,7 @@ const RestaurantBestMenu = () => {
               ) : null}
 
               <article className="menuInformation">
-                <div className="menuImage" />
+                <img src="/img/foodThumbnail.png" />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>
                   <p className="setMenu">{menu.setMenu}</p>

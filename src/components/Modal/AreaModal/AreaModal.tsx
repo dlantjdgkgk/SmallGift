@@ -7,9 +7,11 @@ import { apiInstance } from "../../../api/setting";
 interface Props {
   setModalIsOpen: any;
   handleModalClose(): void;
+  flag: boolean;
+  setFlag(active: boolean): void;
 }
 
-const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
+const AreaModal = ({ setModalIsOpen, handleModalClose, setFlag, flag }: Props) => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
@@ -32,8 +34,8 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
         locate: addressState.jibunAddress,
         memberId: 15,
       };
-
       const res = await apiInstance.post("/api/user/locate", payload);
+      setFlag(!flag);
       console.log(res);
     } catch (error) {
       console.log(error);
@@ -59,17 +61,13 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
         <KakaoAdress handleDaumPostOpne={handleDaumPostOpne} handleComplete={handleComplete} />
       ) : (
         <Styled.ModalWrapper>
-          <p>지역 설정하기</p>
+          <p className="locateSelection">지역 설정하기</p>
 
           {addressState.jibunAddress ? (
             <>
-              <div
-                className="postalCode"
-                aria-hidden="true"
-                onClick={handleDaumPostOpne}
-                style={{ border: "1px solid #000000" }}
-              >
-                <div />
+              <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
+                <img src="/img/Locate.png" />
+                <p className="address">주소</p>
                 <button type="button" className="newAddress">
                   {addressState.jibunAddress}
                 </button>
@@ -89,7 +87,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose }: Props) => {
           ) : (
             <>
               <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
-                <div />
+                <img src="/img/Locate.png" />
                 <button type="button" className="findAddress">
                   우편번호로 찾기
                 </button>

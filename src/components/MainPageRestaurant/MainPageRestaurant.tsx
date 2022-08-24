@@ -3,11 +3,11 @@ import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
 import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
-import LocateInfo from "./Locate";
 
 const MainPageRestaurant = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [locate, setLocate] = useState(null);
+  const [flag, setFlag] = useState(false);
   const handleModalClose = () => setModalIsOpen(false);
 
   const memberId = 15;
@@ -15,7 +15,7 @@ const MainPageRestaurant = () => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       console.log(res);
-      setLocate(res);
+      setLocate(res.data);
     } catch (error) {
       console.log(error.message);
     }
@@ -23,7 +23,7 @@ const MainPageRestaurant = () => {
 
   useEffect(() => {
     userLocateAPI();
-  }, []);
+  }, [flag]);
 
   return (
     <Styled.SectionRestaurantWrapper>
@@ -40,7 +40,12 @@ const MainPageRestaurant = () => {
             위치 변경하기 {">"}
             {modalIsOpen ? (
               <Portal>
-                <AreaModal setModalIsOpen={setModalIsOpen} handleModalClose={handleModalClose} />
+                <AreaModal
+                  setModalIsOpen={setModalIsOpen}
+                  handleModalClose={handleModalClose}
+                  setFlag={setFlag}
+                  flag={flag}
+                />
               </Portal>
             ) : null}
           </button>
@@ -52,7 +57,7 @@ const MainPageRestaurant = () => {
             <img src="img/locate.png" />
             <p className="address">주소</p>
             {locate ? (
-              <p className="exactAddress">{locate.data}</p>
+              <p className="exactAddress">{locate}</p>
             ) : (
               <p className="exactAddress">서울특별시 마포구 양화로7안길 2-1</p>
             )}

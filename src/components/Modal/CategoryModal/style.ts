@@ -51,7 +51,7 @@ export const ModalWrapper = styled.div`
       font-size: 16px;
       line-height: 23px;
       letter-spacing: -0.04em;
-      color: #000000;
+      color: #8f8f8f;
       margin-top: 8px;
     }
   }
@@ -66,6 +66,11 @@ export const ModalWrapper = styled.div`
       color: #a5a5a5;
       margin-top: 72px;
     }
+    .priceAndButton {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 32px;
+    }
     .price {
       font-family: "Noto Sans KR";
       font-style: normal;
@@ -73,15 +78,18 @@ export const ModalWrapper = styled.div`
       font-size: 24px;
       line-height: 35px;
       letter-spacing: -0.04em;
-      color: #000000;
+      color: #6600cc;
       margin-top: 2px;
       margin-bottom: 24px;
+    }
+    .share {
+      margin-right: 8px;
     }
   }
   .shoppingBasket {
     width: 140px;
     height: 44px;
-    background: #494949;
+    border: 1px solid #6600cc;
     border-radius: 4px;
     font-family: "Noto Sans KR";
     font-style: normal;
@@ -89,12 +97,12 @@ export const ModalWrapper = styled.div`
     font-size: 16px;
     line-height: 23px;
     letter-spacing: -0.04em;
-    color: #ffffff;
+    color: #6600cc;
   }
   .gift {
     width: 140px;
     height: 44px;
-    border: 1px solid #494949;
+    background: #6600cc;
     border-radius: 4px;
     font-family: "Noto Sans KR";
     font-style: normal;
@@ -102,7 +110,7 @@ export const ModalWrapper = styled.div`
     font-size: 16px;
     line-height: 23px;
     letter-spacing: -0.04em;
-    color: #494949;
+    color: white;
     margin-left: 16px;
   }
 `;

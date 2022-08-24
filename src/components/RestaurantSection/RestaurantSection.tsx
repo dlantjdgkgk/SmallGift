@@ -1,6 +1,6 @@
 import * as Styled from "./style";
 import { useParams } from "react-router-dom";
-import LikeSVG from "./LikeSVG";
+import LikeSVG from "../LikeSVG/LikeSVG";
 import { useState } from "react";
 
 const RestaurantSection = () => {
@@ -18,7 +18,7 @@ const RestaurantSection = () => {
         <div className="restaurantLike">
           <div className="restaurantName">{id}</div>
           <button type="button" onClick={() => setLike(!like)}>
-            <LikeSVG fill={like ? "red" : "white"} />
+            <LikeSVG fill={like ? "white" : undefined} />
           </button>
         </div>
       </div>

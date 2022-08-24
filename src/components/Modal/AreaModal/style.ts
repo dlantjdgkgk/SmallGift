@@ -27,7 +27,7 @@ export const ModalWrapper = styled.div`
   background: #ffffff;
   box-shadow: 0px -8px 16px rgba(184, 184, 184, 0.25);
 
-  p {
+  .locateSelection {
     font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
@@ -45,21 +45,30 @@ export const ModalWrapper = styled.div`
     background: #eeeeee;
     display: flex;
     align-items: center;
-    div {
+    img {
       width: 24px;
       height: 24px;
-      background: #a6a6a6;
-      margin-left: 16px;
-      margin-right: 8px;
+      margin-left: 8px;
+      margin-right: 2px;
     }
-    .newAddress {
+    .address {
       font-family: "Noto Sans KR";
       font-style: normal;
-      font-weight: 500;
+      font-weight: 700;
       font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #000000;
+      margin-right: 12px;
+    }
+    .newAddress {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #3d3d3d;
     }
     .findAddress {
       font-family: "Noto Sans KR";
@@ -68,21 +77,22 @@ export const ModalWrapper = styled.div`
       font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
-      color: #6f6f6f;
+      color: #8c8c8c;
     }
   }
   .beforeSelection {
     width: 100%;
     height: 44px;
-    border: 1px solid #000000;
+    border: 1px solid #cacaca;
     border-radius: 4px;
     font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 23px;
+    text-align: center;
     letter-spacing: -0.04em;
-    color: #494949;
+    color: #686868;
   }
   .afterSelection {
     width: 100%;
@@ -96,7 +106,7 @@ export const ModalWrapper = styled.div`
     line-height: 23px;
     letter-spacing: -0.04em;
     color: white;
-    background: #494949;
+    background: #6600cc;
     z-index: 5;
   }
 `;

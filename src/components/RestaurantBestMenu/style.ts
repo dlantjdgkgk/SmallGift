@@ -24,6 +24,10 @@ export const BestMenuWrapper = styled.section`
     display: flex;
     margin-bottom: 48px;
   }
+  img {
+    width: 92px;
+    height: 92px;
+  }
 
   .menuInformation {
     width: 100%;

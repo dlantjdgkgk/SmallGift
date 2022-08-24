@@ -41,13 +41,13 @@ const RestaurantInfo = () => {
           const isSelected = selectButton === button;
           return (
             <button
-              style={isSelected ? { borderBottom: " 2px solid black", fontWeight: "700" } : undefined}
+              style={isSelected ? { borderBottom: " 2px solid #6600CC", fontWeight: "700" } : undefined}
               type="button"
               aria-label="Click"
               onClick={() => setSelectButton(button)}
               key={index}
             >
-              <p>{button}</p>
+              <p style={isSelected ? { color: "#6600CC", fontWeight: "700" } : undefined}>{button}</p>
             </button>
           );
         })}
@@ -72,7 +72,7 @@ const RestaurantInfo = () => {
                     <CategoryModal menu={menu} handleModalClose={handleModalClose} />
                   </Portal>
                 ) : null}
-                <div className="menuImage" />
+                <img src="/img/foodThumbnail.png" />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>
                   <p className="setMenu">{menu.setMenu}</p>

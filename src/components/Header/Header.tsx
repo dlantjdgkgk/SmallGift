@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
-import AlarmSVG from "./AlarmSVG";
 
 const Header = () => {
   const [ScrollY, setScrollY] = useState(0); // window 의 pageYOffset값을 저장
@@ -72,7 +71,7 @@ const Header = () => {
                     }}
                   >
                     {/* <img src="/img/Alarm.png" /> */}
-                    <AlarmSVG fill={isCategory ? "white" : undefined} />
+                    <img src="/img/Alarm.png" />
                   </button>
                 </div>
               )}

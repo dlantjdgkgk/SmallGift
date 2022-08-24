@@ -54,7 +54,7 @@ const MainPageRestaurant = () => {
 
         <div className="locationContainer">
           <div className="addressInformation">
-            <img src="img/locate.png" />
+            <img src="/img/locate.png" />
             <p className="address">주소</p>
             {locate ? (
               <p className="exactAddress">{locate}</p>

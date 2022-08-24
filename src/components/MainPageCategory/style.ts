@@ -30,9 +30,13 @@ export const MainPageCategoryWrapper = styled.section`
         margin-bottom: 8px;
       }
       p {
-        font-size: 14px;
-        font-weight: bold;
         font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.04em;
+        color: #969696;
         margin-top: 8px;
       }
     }

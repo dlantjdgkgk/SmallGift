@@ -40,8 +40,11 @@ export const SectionGifticonWrapper = styled.section`
   }
 
   .gifticonInformation {
-    width: 100%;
     padding-right: 16px;
+    img {
+      width: 100%;
+      max-height: 114px;
+    }
     .addressInformation {
       display: flex;
       flex-direction: column;

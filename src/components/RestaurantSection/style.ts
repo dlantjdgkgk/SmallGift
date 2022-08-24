@@ -1,20 +1,24 @@
 import styled from "styled-components";
 
 export const RestaurantSectionWrapper = styled.section`
-  img {
+  position: relative;
+  .shadow {
+    position: absolute;
     width: 100%;
     display: block;
-    z-index: 9999;
   }
-
+  .picture {
+    width: 100%;
+    display: block;
+  }
   .resturantThumbnail {
+    margin-left: 24px;
     .category {
-      background: #6600cc;
-      border-radius: 2px;
       position: absolute;
-      top: 0;
+      bottom: 0;
       width: 36px;
       height: 23px;
+      margin-bottom: 64px;
       border-radius: 2px;
       font-family: "Noto Sans KR";
       font-style: normal;
@@ -23,18 +27,18 @@ export const RestaurantSectionWrapper = styled.section`
       line-height: 19px;
       letter-spacing: -0.04em;
       color: #ffffff;
-      margin-left: 24px;
-      margin-top: 128px;
+      background: #6600cc;
+      border-radius: 2px;
     }
     .restaurantLike {
-      width: 100%;
-      position: absolute;
-      top: 0;
       display: flex;
       justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
       margin-top: 4px;
-      padding-right: 16px;
-      padding-left: 24px;
+      padding-right: 40px;
     }
     .restaurantName {
       font-family: "Noto Sans KR";
@@ -44,25 +48,14 @@ export const RestaurantSectionWrapper = styled.section`
       line-height: 35px;
       letter-spacing: -0.04em;
       color: #ffffff;
-      margin-top: 136px;
+      margin-top: auto;
+      margin-bottom: 28px;
     }
-    .like,
-    .share {
+    button {
       width: 32px;
       height: 32px;
-      background: #737373;
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 8px;
-      line-height: 12px;
-      text-align: center;
-      letter-spacing: -0.04em;
-      color: #000000;
-      margin-top: 4px;
-    }
-    .like {
-      margin-right: 16px;
+      margin-top: auto;
+      margin-bottom: 28px;
     }
   }
 `;

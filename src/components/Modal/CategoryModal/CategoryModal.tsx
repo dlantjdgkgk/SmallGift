@@ -1,10 +1,13 @@
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Props } from "./types";
+import LikeSVG from "components/LikeSVG/LikeSVG";
+import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
 
 const CategoryModal = ({ menu, handleModalClose }: Props) => {
   const navigate = useNavigate();
+  const [like, setLike] = useState(false);
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -42,7 +45,17 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
 
         <div className="priceInformation">
           <p className="onePerson">1인 기준</p>
-          <p className="price">{menu.price}</p>
+          <div className="priceAndButton">
+            <p className="price">{menu.price}</p>
+            <div className="button">
+              <button type="button" className="share">
+                <KakaoShare />
+              </button>
+              <button type="button" onClick={() => setLike(!like)}>
+                <LikeSVG fill={like ? "red" : undefined} />
+              </button>
+            </div>
+          </div>
         </div>
         <button
           type="button"

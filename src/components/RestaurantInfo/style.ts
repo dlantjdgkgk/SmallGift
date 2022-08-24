@@ -14,7 +14,6 @@ export const RestaurantInfoWrapper = styled.section`
         line-height: 23px;
         text-align: center;
         letter-spacing: -0.04em;
-        color: #000000;
         margin-bottom: 10px;
       }
     }
@@ -22,6 +21,10 @@ export const RestaurantInfoWrapper = styled.section`
   .manyMenu {
     margin-left: 24px;
     margin-bottom: 100px;
+  }
+  img {
+    width: 92px;
+    height: 92px;
   }
 
   .manyMenuInformation {

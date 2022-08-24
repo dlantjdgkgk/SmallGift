@@ -46,7 +46,7 @@ const KakaoShare = () => {
 
   return (
     <div className="share-node" onClick={shareKakao} aria-hidden="true">
-      Share
+      <img src="/img/Share.png" />
     </div>
   );
 };

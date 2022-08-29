@@ -2,10 +2,9 @@ import * as Styled from "./style";
 import { useState } from "react";
 import queryString from "query-string";
 import { Link, useLocation } from "react-router-dom";
+import Region from "./Region";
 
 const CategoryPageSection = () => {
-  const [selected, setSelected] = useState("");
-  const selectList = ["서울시 강남구 역삼동", "서울시 송파구 가락동"];
   const { pathname } = useLocation();
 
   const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
@@ -57,22 +56,7 @@ const CategoryPageSection = () => {
 
   return (
     <>
-      <Styled.CategoryPageSectionWrapper>
-        <select
-          onChange={(e) => {
-            setSelected(e.target.value);
-          }}
-          value={selected}
-        >
-          {selectList.map((item, index) => (
-            <option value={item} key={index}>
-              <p>{item}</p>
-            </option>
-          ))}
-        </select>
-        <p>근처에 있는 가게를 알려드릴게요</p>
-      </Styled.CategoryPageSectionWrapper>
-
+      <Region />
       <Styled.SelectedCategoryWrapper>
         <div className="selectedCategory">
           {Categories.map((category, index) => {

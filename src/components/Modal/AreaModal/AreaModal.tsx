@@ -1,12 +1,12 @@
 import * as Styled from "./style";
-import { useCallback, useEffect, useState } from "react";
+import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
 import useDaumPost from "hooks/useDaumPost";
 import { apiInstance } from "../../../api/setting";
 
 interface Props {
-  setModalIsOpen: any;
-  handleModalClose(): void;
+  setModalIsOpen: React.Dispatch<SetStateAction<boolean>>;
+  handleModalClose: () => void;
   flag: boolean;
   setFlag(active: boolean): void;
 }

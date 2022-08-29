@@ -10,9 +10,9 @@ const BottomNav = () => {
       <Outlet />
       <Styled.NavWrapper>
         <div className="container">
-          {data.map(({ icons, Links, name }, index) => {
+          {data.map(({ icons, Links, name, id }) => {
             return (
-              <Link to={Links} className="nav-link" key={index}>
+              <Link to={Links} className="nav-link" key={id}>
                 <div className="iconAndDescription">
                   <div>
                     <FontAwesomeIcon

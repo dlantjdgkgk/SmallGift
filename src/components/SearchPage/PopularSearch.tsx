@@ -19,7 +19,7 @@ const PopularSearch = ({ topTenData }: IProps) => {
           {topTenData?.map((data, index) => {
             return (
               <>
-                <div className="search">
+                <div className="search" key={index}>
                   <div className="rankAndMenuName">
                     <div className="rank">{index + 1}</div>
                     <div className="menuName">{data}</div>

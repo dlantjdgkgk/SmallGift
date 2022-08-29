@@ -1,5 +1,28 @@
 import styled from "styled-components";
 
+export const DropDownItem = styled.div`
+  padding: 20px 8px 8px 16px;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-bottom: 1px solid #e7e7e7;
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: #000000;
+  span {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+`;
+
 export const SearchPageWrapper = styled.div`
   overflow: hidden;
   width: 100%;
@@ -15,8 +38,9 @@ export const SearchPageWrapper = styled.div`
     .back {
       width: 56px;
       height: 48px;
-      margin-right: 8px;
+      padding-right: 16px;
       background-color: white;
+      padding-left: 16px;
     }
     .cancel {
       padding-right: 12px;
@@ -24,6 +48,7 @@ export const SearchPageWrapper = styled.div`
     input {
       width: 100%;
       outline: none;
+      padding-left: 16px;
     }
     input::placeholder {
       font-family: "Noto Sans KR";
@@ -34,6 +59,19 @@ export const SearchPageWrapper = styled.div`
       letter-spacing: -0.04em;
       color: #6f6f6f;
     }
+  }
+
+  .recomendation {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-left: 16px;
+    margin-top: 32px;
+    margin-bottom: 5px;
   }
 
   .recentSearch {
@@ -136,20 +174,6 @@ export const SearchPageWrapper = styled.div`
     margin-top: 20px;
     margin-bottom: 16px;
   }
-`;
-
-export const DropDownItem = styled.div`
-  padding: 20px 8px 8px 16px;
-  margin-left: 16px;
-  margin-right: 16px;
-  border-bottom: 1px solid #e7e7e7;
-  font-family: "Noto Sans KR";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.04em;
-  color: gray;
 `;
 
 export const PopularSearchWrapper = styled.section`

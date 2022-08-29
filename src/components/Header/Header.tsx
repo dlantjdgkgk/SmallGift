@@ -10,6 +10,7 @@ const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [isCategory, setCategory] = useState(false);
+  console.log(pathname);
 
   const regex = /^(\/category\/)/;
 
@@ -61,6 +62,9 @@ const Header = () => {
                   <BackSVG fill={isCategory ? "white" : undefined} />
                 </button>
               )}
+              {pathname === "/mypage/orderlist" ? <p className="pageDescription">주문내역조회</p> : undefined}
+              {pathname === "/mypage/like" ? <p className="pageDescription">찜한상품</p> : undefined}
+
               {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? undefined : (
                 <div>
                   <button

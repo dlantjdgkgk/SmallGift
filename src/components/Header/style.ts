@@ -34,4 +34,13 @@ export const HeaderWrapper = styled.header`
   .back {
     margin-left: 16px;
   }
+  .pageDescription {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
 `;

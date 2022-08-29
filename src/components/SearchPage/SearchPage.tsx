@@ -7,21 +7,19 @@ import { useNavigate } from "react-router";
 const SearchPage = () => {
   const navigate = useNavigate();
   const [is, setIs] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const [topTenData, setTopTenData] = useState(null);
   const [keyWord, setKeyWord] = useState(null);
   const [recommendationData, setRecommendationData] = useState(null);
 
-  const [isHaveInputValue, setIsHaveInputValue] = useState(false);
-  const [inputValue, setInputValue] = useState("");
-
   const onChange = (event) => {
     setInputValue(event.target.value);
-    setIsHaveInputValue(true);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
+    keyWordPostAPI(inputValue);
     navigate("/");
   };
 
@@ -79,7 +77,7 @@ const SearchPage = () => {
     topTenAPI();
   }, []);
 
-  const handleClick = async (dropDownItem) => {
+  const keyWordPostAPI = async (dropDownItem) => {
     try {
       const payload = {
         keyword: dropDownItem,
@@ -94,66 +92,50 @@ const SearchPage = () => {
 
   return (
     <Styled.SearchPageWrapper>
+      <form action="post" onSubmit={onSubmit}>
+        <div className="searchBar">
+          <button
+            type="button"
+            onClick={() => {
+              navigate(-1);
+            }}
+            className="back"
+          >
+            <img src="/img/Back.png" />
+          </button>
+          <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
+          <button
+            type="button"
+            onClick={() => {
+              setInputValue("");
+            }}
+            className="cancel"
+          >
+            <img src="/img/Cancel.png" />
+          </button>
+        </div>
+      </form>
       {inputValue ? (
         <>
-          <div className="searchBar">
-            <button
-              type="button"
-              onClick={() => {
-                navigate(-1);
-              }}
-              className="back"
-            >
-              <img src="/img/Back.png" />
-            </button>
-            <form action="post" onSubmit={onSubmit}>
-              <input value={inputValue} type="text" onChange={onChange} />
-            </form>
-            <button
-              type="button"
-              onClick={() => {
-                setInputValue("");
-              }}
-              className="cancel"
-            >
-              <img src="/img/Cancel.png" />
-            </button>
-          </div>
-          {isHaveInputValue && (
-            <>
-              <p className="recomendation">추천 검색어</p>
-              {recommendationData?.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
-              {recommendationData?.map((dropDownItem, dropDownIndex) => {
-                return (
-                  <Styled.DropDownItem
-                    key={dropDownIndex}
-                    onClick={() => {
-                      handleClick(dropDownItem);
-                    }}
-                  >
-                    {dropDownItem.split(inputValue)[0]}
-                    <span>{inputValue}</span>
-                    {dropDownItem.split(inputValue)[1]}
-                  </Styled.DropDownItem>
-                );
-              })}
-            </>
-          )}
+          <p className="recomendation">추천 검색어</p>
+          {recommendationData?.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
+          {recommendationData?.map((dropDownItem, dropDownIndex) => {
+            return (
+              <Styled.DropDownItem
+                key={dropDownIndex}
+                onClick={() => {
+                  keyWordPostAPI(dropDownItem);
+                }}
+              >
+                {dropDownItem.split(inputValue)[0]}
+                <span>{inputValue}</span>
+                {dropDownItem.split(inputValue)[1]}
+              </Styled.DropDownItem>
+            );
+          })}
         </>
       ) : (
         <>
-          <div className="searchBar">
-            <button
-              type="button"
-              onClick={() => {
-                navigate(-1);
-              }}
-              className="back"
-            >
-              <img src="/img/Back.png" />
-            </button>
-            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
-          </div>
           {is ? (
             <>
               <div className="recentSearch">
@@ -182,7 +164,7 @@ const SearchPage = () => {
               <div className="loginLine" />
             </>
           )}
-          <PopularSearch topTenData={topTenData} />
+          <PopularSearch />
         </>
       )}
     </Styled.SearchPageWrapper>

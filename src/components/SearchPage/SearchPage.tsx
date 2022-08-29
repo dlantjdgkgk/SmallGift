@@ -24,6 +24,7 @@ const SearchPage = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    navigate("/");
   };
 
   const topTenAPI = async () => {
@@ -107,7 +108,9 @@ const SearchPage = () => {
             >
               <img src="/img/Back.png" />
             </button>
-            <input value={inputValue} type="text" onChange={onChange} />
+            <form action="post" onSubmit={onSubmit}>
+              <input value={inputValue} type="search" onChange={onChange} />
+            </form>
             <button
               type="button"
               onClick={() => {

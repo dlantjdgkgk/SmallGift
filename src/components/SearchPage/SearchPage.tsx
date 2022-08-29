@@ -16,15 +16,8 @@ const SearchPage = () => {
   const [inputValue, setInputValue] = useState("");
 
   const onChange = (event) => {
-    console.log(event);
-    console.log(event.target);
     setInputValue(event.target.value);
     setIsHaveInputValue(true);
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    navigate("/");
   };
 
   const topTenAPI = async () => {
@@ -108,9 +101,7 @@ const SearchPage = () => {
             >
               <img src="/img/Back.png" />
             </button>
-            <form action="post" onSubmit={onSubmit}>
-              <input value={inputValue} type="search" onChange={onChange} />
-            </form>
+            <input value={inputValue} type="text" onChange={onChange} />
             <button
               type="button"
               onClick={() => {

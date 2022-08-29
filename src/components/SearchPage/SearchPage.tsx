@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import PopularSearch from "./PopularSearch";
 import { apiInstance } from "../../api/setting";
 import { useNavigate } from "react-router";
-import { wholeTextArray } from "./data";
 
 const SearchPage = () => {
   const navigate = useNavigate();
@@ -11,27 +10,20 @@ const SearchPage = () => {
 
   const [topTenData, setTopTenData] = useState(null);
   const [keyWord, setKeyWord] = useState(null);
-  const [deleteKeyWord, setDeleteKeyWord] = useState(null);
-  const [isDelete, setIsDelete] = useState(false);
   const [recommendationData, setRecommendationData] = useState(null);
 
   const [isHaveInputValue, setIsHaveInputValue] = useState(false);
-  const [dropDownList, setDropDownList] = useState(wholeTextArray);
   const [inputValue, setInputValue] = useState("");
 
-  const showDropDownList = () => {
-    if (inputValue === "") {
-      setIsHaveInputValue(false);
-      setDropDownList([]);
-    } else {
-      const choosenTextList = wholeTextArray.filter((textItem) => textItem.includes(inputValue));
-      setDropDownList(choosenTextList);
-    }
-  };
-
   const onChange = (event) => {
+    console.log(event);
+    console.log(event.target);
     setInputValue(event.target.value);
     setIsHaveInputValue(true);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
   };
 
   const topTenAPI = async () => {
@@ -56,6 +48,7 @@ const SearchPage = () => {
   const recommendationAPI = async () => {
     try {
       const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
+      console.log(result.data.data);
       setRecommendationData(result.data.data);
     } catch (error) {
       console.log(error);
@@ -63,13 +56,20 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    recommendationAPI();
+    const debounce = setTimeout(() => {
+      if (inputValue) recommendationAPI();
+    }, 200);
+    return () => {
+      clearTimeout(debounce);
+    };
   }, [inputValue]);
 
   const handleDelete = async () => {
     try {
       const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=15");
-      setDeleteKeyWord(deleteKeyWordData);
+      if (deleteKeyWordData.status === 200) {
+        keyWordAPI();
+      }
     } catch (error) {
       console.log(error);
     }
@@ -93,8 +93,6 @@ const SearchPage = () => {
     }
   };
 
-  useEffect(showDropDownList, [inputValue]);
-
   return (
     <Styled.SearchPageWrapper>
       {inputValue ? (
@@ -109,7 +107,7 @@ const SearchPage = () => {
             >
               <img src="/img/Back.png" />
             </button>
-            <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
+            <input value={inputValue} type="text" onChange={onChange} />
             <button
               type="button"
               onClick={() => {
@@ -123,15 +121,14 @@ const SearchPage = () => {
           {isHaveInputValue && (
             <>
               <p className="recomendation">추천 검색어</p>
-              {recommendationData.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
-              {recommendationData.map((dropDownItem, dropDownIndex) => {
+              {recommendationData?.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
+              {recommendationData?.map((dropDownItem, dropDownIndex) => {
                 return (
                   <Styled.DropDownItem
                     key={dropDownIndex}
                     onClick={() => {
                       handleClick(dropDownItem);
                     }}
-                    type="search"
                   >
                     {dropDownItem.split(inputValue)[0]}
                     <span>{inputValue}</span>

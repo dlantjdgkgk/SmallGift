@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
 
 const MainPageRestaurant = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState(null);
   const [flag, setFlag] = useState(false);
   const handleModalClose = () => setModalIsOpen(false);

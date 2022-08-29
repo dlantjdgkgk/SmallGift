@@ -20,6 +20,10 @@ const SearchPage = () => {
     setIsHaveInputValue(true);
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+
   const topTenAPI = async () => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
@@ -101,7 +105,9 @@ const SearchPage = () => {
             >
               <img src="/img/Back.png" />
             </button>
-            <input value={inputValue} type="text" onChange={onChange} />
+            <form action="post" onSubmit={onSubmit}>
+              <input value={inputValue} type="text" onChange={onChange} />
+            </form>
             <button
               type="button"
               onClick={() => {

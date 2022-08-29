@@ -2,10 +2,14 @@ import Footer from "components/Footer/Footer";
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import LikeSVG from "components/LikeSVG/LikeSVG";
+import { useState } from "react";
 
 const MyPage = () => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const navigate = useNavigate();
+  const [like, setLike] = useState(false);
+
   return (
     <>
       <Styled.MypageWrapper>
@@ -65,8 +69,8 @@ const MyPage = () => {
               <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
               <p className="price">15,000원</p>
             </div>
-            <button type="button" className="like">
-              like
+            <button type="button" onClick={() => setLike(!like)} className="like">
+              <LikeSVG fill={like ? "red" : undefined} />
             </button>
           </div>
         </Styled.ChoiceProductSection>

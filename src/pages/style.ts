@@ -244,9 +244,10 @@ export const RecentOrderSection = styled.section`
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    text-align: right;
     letter-spacing: -0.04em;
     color: #9d9d9d;
+    display: flex;
+    align-items: center;
     span {
       font-size: 20px;
       margin-left: 6px;
@@ -351,7 +352,8 @@ export const ChoiceProductSection = styled.section`
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    text-align: right;
+    display: flex;
+    align-items: center;
     letter-spacing: -0.04em;
     color: #9d9d9d;
     span {
@@ -407,7 +409,6 @@ export const ChoiceProductSection = styled.section`
   .like {
     width: 32px;
     height: 32px;
-    background: #737373;
     position: absolute;
     right: 0;
     top: 0;

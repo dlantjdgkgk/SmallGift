@@ -11,11 +11,13 @@ const SearchPage = () => {
 
   const [topTenData, setTopTenData] = useState(null);
   const [keyWord, setKeyWord] = useState(null);
+  const [deleteKeyWord, setDeleteKeyWord] = useState(null);
+  const [isDelete, setIsDelete] = useState(false);
+  const [recommendationData, setRecommendationData] = useState(null);
 
   const [isHaveInputValue, setIsHaveInputValue] = useState(false);
   const [dropDownList, setDropDownList] = useState(wholeTextArray);
   const [inputValue, setInputValue] = useState("");
-  const [selecttext, setSelecttext] = useState("");
 
   const showDropDownList = () => {
     if (inputValue === "") {
@@ -44,7 +46,30 @@ const SearchPage = () => {
   const keyWordAPI = async () => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
+      console.log(keyWordData);
       setKeyWord(keyWordData.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const recommendationAPI = async () => {
+    try {
+      const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
+      setRecommendationData(result.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    recommendationAPI();
+  }, [inputValue]);
+
+  const handleDelete = async () => {
+    try {
+      const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=15");
+      setDeleteKeyWord(deleteKeyWordData);
     } catch (error) {
       console.log(error);
     }
@@ -55,23 +80,18 @@ const SearchPage = () => {
     topTenAPI();
   }, []);
 
-  const handleClick = async () => {
+  const handleClick = async (dropDownItem) => {
     try {
       const payload = {
-        keyword: selecttext,
+        keyword: dropDownItem,
         memberId: 15,
       };
-      console.log(await apiInstance.post("/api/user/keyword", payload));
+      await apiInstance.post("/api/user/keyword", payload);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    handleClick();
-  }, [selecttext]);
-
-  const handleDelete = () => {};
 
   useEffect(showDropDownList, [inputValue]);
 
@@ -102,17 +122,19 @@ const SearchPage = () => {
           </div>
           {isHaveInputValue && (
             <>
-              {dropDownList.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
-              {dropDownList.map((dropDownItem, dropDownIndex) => {
+              <p className="recomendation">추천 검색어</p>
+              {recommendationData.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
+              {recommendationData.map((dropDownItem, dropDownIndex) => {
                 return (
                   <Styled.DropDownItem
                     key={dropDownIndex}
                     onClick={() => {
-                      setSelecttext(dropDownItem);
+                      handleClick(dropDownItem);
                     }}
+                    type="search"
                   >
                     {dropDownItem.split(inputValue)[0]}
-                    <span style={{ color: "black" }}>{inputValue}</span>
+                    <span>{inputValue}</span>
                     {dropDownItem.split(inputValue)[1]}
                   </Styled.DropDownItem>
                 );

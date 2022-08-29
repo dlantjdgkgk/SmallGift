@@ -22,6 +22,7 @@ const SearchPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    navigate("/");
   };
 
   const topTenAPI = async () => {

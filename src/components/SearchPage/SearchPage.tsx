@@ -26,6 +26,7 @@ const SearchPage = () => {
   const topTenAPI = async () => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
+      console.log(topTen);
       setTopTenData(topTen.data.data);
     } catch (error) {
       console.log(error);
@@ -53,7 +54,12 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    recommendationAPI();
+    const debounce = setTimeout(() => {
+      if (inputValue) recommendationAPI();
+    }, 200);
+    return () => {
+      clearTimeout(debounce);
+    };
   }, [inputValue]);
 
   const handleDelete = async () => {

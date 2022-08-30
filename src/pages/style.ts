@@ -188,10 +188,16 @@ export const LoginSection = styled.section`
   .loginInfo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     background: #f2f2f2;
     border-radius: 8px;
     height: 42px;
+    margin-top: 12px;
+    .imgAndEmail {
+      display: flex;
+      align-items: center;
+    }
   }
   img {
     width: 24px;
@@ -206,7 +212,6 @@ export const LoginSection = styled.section`
     font-size: 14px;
     line-height: 20px;
     color: #000000;
-    margin-right: 73px;
   }
   .logout {
     font-family: "Noto Sans KR";
@@ -217,6 +222,7 @@ export const LoginSection = styled.section`
     letter-spacing: -0.04em;
     text-decoration-line: underline;
     color: #9d9d9d;
+    margin-right: 20px;
   }
 `;
 

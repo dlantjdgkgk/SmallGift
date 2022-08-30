@@ -16,8 +16,10 @@ const MyPage = () => {
         <Styled.LoginSection>
           <p className="login">로그인 정보</p>
           <div className="loginInfo">
-            <img src="/img/Kakao.png" />
-            <p className="email">abc123@naver.com</p>
+            <div className="imgAndEmail">
+              <img src="/img/Kakao.png" />
+              <p className="email">abc123@naver.com</p>
+            </div>
             <button type="button" className="logout">
               로그아웃
             </button>

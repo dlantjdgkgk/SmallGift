@@ -53,12 +53,7 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    const debounce = setTimeout(() => {
-      if (inputValue) recommendationAPI();
-    }, 200);
-    return () => {
-      clearTimeout(debounce);
-    };
+    recommendationAPI();
   }, [inputValue]);
 
   const handleDelete = async () => {
@@ -104,15 +99,17 @@ const SearchPage = () => {
             <img src="/img/Back.png" />
           </button>
           <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
-          <button
-            type="button"
-            onClick={() => {
-              setInputValue("");
-            }}
-            className="cancel"
-          >
-            <img src="/img/Cancel.png" />
-          </button>
+          {inputValue ? (
+            <button
+              type="button"
+              onClick={() => {
+                setInputValue("");
+              }}
+              className="cancel"
+            >
+              <img src="/img/Cancel.png" />
+            </button>
+          ) : null}
         </div>
       </form>
       {inputValue ? (

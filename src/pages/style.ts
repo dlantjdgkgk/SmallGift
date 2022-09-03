@@ -478,7 +478,6 @@ export const BoundaryLine = styled.div`
   width: 100%;
   height: 12px;
   background: #f4f4f4;
-  margin-bottom: 16px;
 `;
 
 export const OptionSection = styled.section`
@@ -503,5 +502,278 @@ export const OptionSection = styled.section`
     button {
       font-size: 20px;
     }
+  }
+`;
+
+export const BuyInfoWrapper = styled.main`
+  .errorMessage {
+    width: 100%;
+    color: white;
+    border-radius: 5px;
+    background: #6600cc;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+`;
+
+export const SenderInfoSection = styled.section`
+  margin: 16px 0 0 0;
+  padding-left: 16px;
+  .senderInfo {
+    padding-right: 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+`;
+
+export const FormSender = styled.section`
+  padding-right: 16px;
+  .checkInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    input {
+      width: 20px;
+      height: 20px;
+      background: #6600cc;
+      border: 1px solid #3b0076;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #636363;
+    }
+  }
+  .nickName,
+  .phone,
+  .emailInfo {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    label {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      width: 80px;
+    }
+    input {
+      width: 100%;
+      height: 40px;
+      background: #f2f2f2;
+      border-radius: 8px;
+      margin-left: 12px;
+      padding-left: 12px;
+      border: 1px solid #b6b6b6;
+    }
+    input::placeholder {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #636363;
+    }
+  }
+`;
+
+export const ReceiverInfoSection = styled.section`
+  margin: 16px 0 0 0;
+  padding-left: 16px;
+  .receiveInfo {
+    padding-right: 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+`;
+
+export const FormReceiver = styled.section`
+  padding-right: 4px;
+  .checkInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    input {
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #636363;
+    }
+  }
+  .transmissionWay {
+    display: flex;
+  }
+  .transmission {
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      margin-right: 12px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+  }
+
+  .phone {
+    display: flex;
+    margin-bottom: 16px;
+    align-items: center;
+    margin-top: 24px;
+    padding-right: 12px;
+    label {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      width: 80px;
+    }
+    input {
+      width: 100%;
+      height: 40px;
+      background: #f2f2f2;
+      border-radius: 8px;
+      margin-left: 12px;
+      padding-left: 12px;
+    }
+    input::placeholder {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #636363;
+    }
+  }
+`;
+
+export const PaymentMethodSection = styled.section`
+  margin-top: 24px;
+  padding-left: 16px;
+  padding-right: 4px;
+  p {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  .method {
+    display: flex;
+
+    margin-top: 16px;
+  }
+  .card,
+  .bank,
+  .phone {
+    height: 48px;
+    background: #ffffff;
+    border: 1px solid #c8c8c8;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+    div {
+      width: 24px;
+      height: 24px;
+      background: #d9d9d9;
+      border-radius: 4px;
+      margin-right: 12px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+  }
+  .card {
+    width: 27%;
+  }
+  .bank {
+    width: 42%;
+  }
+  .phone {
+    width: 31%;
+  }
+  .payment {
+    padding-right: 12px;
+    margin-bottom: 74px;
+    margin-top: 64px;
+  }
+  button {
+    width: 100%;
+    height: 44px;
+    background: #6600cc;
+    border-radius: 4px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #ffffff;
   }
 `;

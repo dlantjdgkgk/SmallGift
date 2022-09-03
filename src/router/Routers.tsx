@@ -16,7 +16,7 @@ const PaymentCheck = lazy(() => import("components/PaymentCheck/PaymentCheck"));
 const OrderList = lazy(() => import("components/OrderList/OrderList"));
 const NotFound = lazy(() => import("components/NotFound/NotFound"));
 const ChoiceProduct = lazy(() => import("components/ChoiceProduct/ChoiceProduct"));
-const Spinner = lazy(() => import("components/Spinner/Spinner"));
+const Spinner = lazy(() => import("elements/Spinner"));
 
 const Routers = () => {
   return (

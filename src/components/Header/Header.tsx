@@ -10,7 +10,6 @@ const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [isCategory, setCategory] = useState(false);
-  console.log(pathname);
 
   const regex = /^(\/category\/)/;
 

@@ -3,9 +3,15 @@ import { useState } from "react";
 import queryString from "query-string";
 import { Link, useLocation } from "react-router-dom";
 import Region from "./Region";
+import useScrollToggle from "hooks/useScrollToggle";
 
 const CategoryPageSection = () => {
   const { pathname } = useLocation();
+  const scrollFlag = useScrollToggle(false);
+
+  const moveToTop = () => {
+    document.documentElement.scrollTop = 0;
+  };
 
   const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const defaultSelect = queryString.parse(window.location.search).value;
@@ -80,6 +86,8 @@ const CategoryPageSection = () => {
         </div>
       </Styled.SelectedCategoryWrapper>
 
+      <Styled.BoundaryLine />
+
       <Styled.CategoryRestaurantWrapper>
         <div className="restaurants">
           {(pathname === "/" || selectCategory === "전체"
@@ -101,6 +109,9 @@ const CategoryPageSection = () => {
               </Link>
             );
           })}
+          <button type="button" className="top" onClick={moveToTop}>
+            {scrollFlag && <img src="/img/Top.png" />}
+          </button>
         </div>
       </Styled.CategoryRestaurantWrapper>
     </>

@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const CategoryPageSectionWrapper = styled.section`
+  margin-left: 16px;
   select {
     width: 196px;
     border: none;
     border-bottom: 2px solid black;
-    font-size: 18px;
     font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
+    font-size: 20px;
     line-height: 29px;
     letter-spacing: -0.04em;
     padding-bottom: 4px;
@@ -16,12 +17,17 @@ export const CategoryPageSectionWrapper = styled.section`
   }
   p {
     margin-top: 7px;
-    font-size: 16px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
     font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
   }
 `;
 
 export const SelectedCategoryWrapper = styled.section`
+  margin-left: 16px;
   .selectedCategory {
     margin-top: 25px;
     display: flex;
@@ -56,11 +62,21 @@ export const SelectedCategoryWrapper = styled.section`
   }
 `;
 
+export const BoundaryLine = styled.div`
+  width: 100%;
+  height: 12px;
+  background: #f4f4f4;
+  margin-top: 16px;
+  margin-left: 0px;
+`;
+
 export const CategoryRestaurantWrapper = styled.section`
+  position: relative;
+  margin-left: 16px;
   .restaurants {
     width: 100%;
     padding-right: 16px;
-    margin-top: 48px;
+    margin-top: 24px;
     display: grid;
     grid-row-gap: 16px;
     a {
@@ -117,5 +133,10 @@ export const CategoryRestaurantWrapper = styled.section`
       color: #8f8f8f;
       margin-top: 8px;
     }
+  }
+  .top {
+    position: fixed;
+    bottom: 36px;
+    right: 6px;
   }
 `;

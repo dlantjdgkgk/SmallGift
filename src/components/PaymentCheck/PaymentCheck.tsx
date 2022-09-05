@@ -23,7 +23,7 @@ const PaymentCheck = () => {
               navigate("/mypage/orderlist");
             }}
           >
-            구매내역 보러가기
+            주문내역 보러가기
           </button>
           <button
             type="button"

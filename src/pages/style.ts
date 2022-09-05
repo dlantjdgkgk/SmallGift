@@ -17,7 +17,7 @@ export const Section = styled.div`
 `;
 
 export const CategoryWrapper = styled.main`
-  margin: 32px 0 0 16px;
+  margin: 32px 0 0 0px;
 `;
 
 export const CategoryRestaurantWrapper = styled.main`

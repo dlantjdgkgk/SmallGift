@@ -28,7 +28,7 @@ const Payment = () => {
 
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
     console.log(JSON.stringify(data));
-    navigate("/");
+    navigate("/payment/check");
   };
 
   return (
@@ -170,7 +170,7 @@ const Payment = () => {
         </Styled.ReceiverInfoSection>
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
-          <p className="paymentMethod">결제 수단</p>
+          {/* <p className="paymentMethod">결제 수단</p>
           <div className="method">
             <button
               type="button"
@@ -196,7 +196,7 @@ const Payment = () => {
             >
               <p>휴대폰</p>
             </button>
-          </div>
+          </div> */}
           <div className="payment">
             <button type="submit">15,000원 결제하기</button>
           </div>

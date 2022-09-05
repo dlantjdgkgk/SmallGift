@@ -61,7 +61,7 @@ export const PaymentCheckSection = styled.section`
   .orderList {
     width: 72%;
     height: 44px;
-    background: #494949;
+    background: #6600cc;
     border-radius: 4px;
     margin-right: 16px;
     font-family: "Noto Sans KR";
@@ -75,7 +75,7 @@ export const PaymentCheckSection = styled.section`
   }
   .confirm {
     width: 28%;
-    border: 1px solid #494949;
+    border: 1px solid #cccccc;
     border-radius: 4px;
     height: 44px;
     font-family: "Noto Sans KR";

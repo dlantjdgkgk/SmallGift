@@ -85,22 +85,25 @@ export const OrderSection = styled.section`
     margin-bottom: 24px;
     display: flex;
   }
-
   button {
+    width: 50%;
     height: 44px;
-    background: #f2f2f2;
-    border: 1px solid #000000;
-    border-radius: 8px;
     font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 23px;
     letter-spacing: -0.04em;
-    color: #000000;
-    width: 50%;
+    border-radius: 8px;
+    background: #ffffff;
   }
   .cancel {
     margin-right: 12px;
+    border: 1px solid #cccccc;
+    color: #494949;
+  }
+  .purchase {
+    border: 1px solid #6600cc;
+    color: #6600cc;
   }
 `;

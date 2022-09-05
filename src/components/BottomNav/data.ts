@@ -1,4 +1,4 @@
-import { faSearch, faAlignJustify, faMedal, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faAlignJustify, faMedal, faHome, faUser } from "@fortawesome/free-solid-svg-icons";
 
 export const data = [
   {
@@ -21,7 +21,7 @@ export const data = [
   },
 
   {
-    icons: faMedal,
+    icons: faUser,
     Links: "mypage",
     name: "마이페이지",
     id: 3,

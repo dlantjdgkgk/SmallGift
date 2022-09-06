@@ -644,7 +644,7 @@ export const FormReceiver = styled.section`
     background: #ffffff;
     border: 1px solid #c8c8c8;
     border-radius: 8px;
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

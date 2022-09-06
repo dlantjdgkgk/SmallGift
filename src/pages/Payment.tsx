@@ -140,17 +140,6 @@ const Payment = () => {
                   <img src="/img/Kakao.png" />
                   <p>카카오톡</p>
                 </button>
-                <button
-                  type="button"
-                  className="transmission"
-                  onClick={() => {
-                    setSelectedTransmission("message");
-                  }}
-                  style={{ border: selectedTransmission === "message" && "1px solid #6600CC" }}
-                >
-                  <img src="/img/Message.png" />
-                  <p>문자</p>
-                </button>
               </div>
               <div className="phone">
                 <label htmlFor="발송인명">휴대폰</label>

@@ -71,7 +71,6 @@ export const BoundaryLine = styled.div`
 `;
 
 export const CategoryRestaurantWrapper = styled.section`
-  position: relative;
   margin-left: 16px;
   .restaurants {
     width: 100%;
@@ -87,7 +86,7 @@ export const CategoryRestaurantWrapper = styled.section`
       }
     }
     a:last-child {
-      border: none;
+      border: 3px solid red;
     }
   }
 

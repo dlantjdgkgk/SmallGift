@@ -1,6 +1,10 @@
 import { useEffect } from "react";
 
-const KakaoShare = () => {
+interface IProps {
+  parameter: string;
+}
+
+const KakaoShare = ({ parameter }: IProps) => {
   const initKakao = () => {
     if (window.Kakao) {
       const kakao = window.Kakao;
@@ -22,8 +26,8 @@ const KakaoShare = () => {
         description: "#케익 #딸기 #삼평동 #카페 #분위기 #소개팅",
         imageUrl: "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
         link: {
-          mobileWebUrl: "https://smallgift.pages.dev",
-          webUrl: "https://smallgift.pages.dev",
+          mobileWebUrl: `https://smallgift.pages.dev/category/${parameter}`,
+          webUrl: `https://smallgift.pages.dev/category/${parameter}`,
         },
       },
       social: {
@@ -35,8 +39,8 @@ const KakaoShare = () => {
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: "https://smallgift.pages.dev",
-            webUrl: "https://smallgift.pages.dev",
+            mobileWebUrl: `https://smallgift.pages.dev/category/${parameter}`,
+            webUrl: `https://smallgift.pages.dev/category/${parameter}`,
           },
         },
       ],

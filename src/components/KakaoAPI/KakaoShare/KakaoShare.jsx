@@ -15,16 +15,15 @@ const KakaoShare = () => {
   }, []);
 
   const shareKakao = () => {
-    console.log(5);
     window.Kakao.Link.sendDefault({
       objectType: "feed",
       content: {
-        title: "딸기 치즈 케익",
+        title: "스몰기프트",
         description: "#케익 #딸기 #삼평동 #카페 #분위기 #소개팅",
         imageUrl: "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
         link: {
-          mobileWebUrl: "http://localhost:3000/",
-          webUrl: "http://localhost:3000/",
+          mobileWebUrl: "https://smallgift.pages.dev",
+          webUrl: "https://smallgift.pages.dev",
         },
       },
       social: {
@@ -36,8 +35,8 @@ const KakaoShare = () => {
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: "http://localhost:3000/",
-            webUrl: "http://localhost:3000/",
+            mobileWebUrl: "https://smallgift.pages.dev",
+            webUrl: "https://smallgift.pages.dev",
           },
         },
       ],

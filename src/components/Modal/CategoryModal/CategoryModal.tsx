@@ -1,5 +1,5 @@
 import * as Styled from "./style";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
@@ -8,6 +8,8 @@ import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
 const CategoryModal = ({ menu, handleModalClose }: Props) => {
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
+  const params = useParams();
+  const parameter = params.id;
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -49,7 +51,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
             <p className="price">{menu.price}</p>
             <div className="button">
               <button type="button" className="share">
-                <KakaoShare />
+                <KakaoShare parameter={parameter} />
               </button>
               <button type="button" onClick={() => setLike(!like)}>
                 <LikeSVG fill={like ? "red" : undefined} />

@@ -10,7 +10,10 @@ const CategoryPageSection = () => {
   const scrollFlag = useScrollToggle(false);
 
   const moveToTop = () => {
-    document.documentElement.scrollTop = 0;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];

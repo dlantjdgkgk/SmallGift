@@ -123,7 +123,7 @@ const SearchPage = () => {
           <p className="recomendation">추천 검색어</p>
           {!recommendationData && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
           {recommendationData?.map((dropDownItem, dropDownIndex) => {
-            return dropDownItem.indexOf(inputValue) === -1 ? undefined : (
+            return dropDownItem.indexOf(inputValue) === -1 ? null : (
               <Styled.DropDownItem
                 key={dropDownIndex}
                 onClick={() => {

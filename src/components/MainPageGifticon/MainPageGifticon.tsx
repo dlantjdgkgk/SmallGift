@@ -82,7 +82,7 @@ const MainPageGifticon = () => {
               onClick={() => {
                 setSelectButton(area);
               }}
-              style={isSelected ? { backgroundColor: "#6600CC", color: "white" } : undefined}
+              style={isSelected ? { backgroundColor: "#6600CC", color: "white" } : null}
             >
               {area}
             </button>

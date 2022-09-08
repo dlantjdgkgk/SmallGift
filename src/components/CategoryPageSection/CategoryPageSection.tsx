@@ -73,7 +73,7 @@ const CategoryPageSection = () => {
             return (
               <div className="category" key={index}>
                 <button
-                  style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : undefined}
+                  style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : null}
                   type="button"
                   aria-label="select"
                   onClick={() => {

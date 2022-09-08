@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import Cancellation from "components/Cancellation/Cancellation";
+import CancellationDetail from "components/CancellationDetail/CancellationDetail";
 
 const Main = lazy(() => import("pages/Main"));
 const Category = lazy(() => import("pages/Category"));
@@ -34,6 +36,8 @@ const Routers = () => {
                 <Route path="/mypage/orderlist" element={<OrderList />} />
                 <Route path="/mypage/like" element={<ChoiceProduct />} />
                 <Route path="/payment/check" element={<PaymentCheck />} />
+                <Route path="/mypage/refund" element={<Cancellation />} />
+                <Route path="/mypage/refund/:id" element={<CancellationDetail />} />
               </Route>
             </Route>
             <Route element={<Header />}>

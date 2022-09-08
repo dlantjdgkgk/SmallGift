@@ -54,10 +54,10 @@ const Header = () => {
               <BackSVG fill={isCategory ? "white" : undefined} />
             </button>
           )}
-          {pathname === "/mypage/orderlist" ? <p className="pageDescription">주문내역조회</p> : undefined}
-          {pathname === "/mypage/like" ? <p className="pageDescription">찜한상품</p> : undefined}
+          {pathname === "/mypage/orderlist" && <p className="pageDescription">주문내역조회</p>}
+          {pathname === "/mypage/like" && <p className="pageDescription">찜한상품</p>}
 
-          {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? undefined : (
+          {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? null : (
             <div>
               <button
                 type="button"

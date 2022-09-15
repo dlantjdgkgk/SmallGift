@@ -3,28 +3,94 @@ import * as Styled from "./style";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LikeSVG from "components/LikeSVG/LikeSVG";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { apiInstance } from "api/setting";
 
 const MyPage = () => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies([]);
+  const [userInfo, setUserInfo] = useState(null);
+  const [socialLogin, setSocialLogin] = useState(true);
+  const memberId = 15;
+
+  const Logout = async () => {
+    await removeCookie("token");
+  };
+
+  const userInfoAPI = async () => {
+    try {
+      const result = await apiInstance.get(`/api/user/userInfo?memberId=${memberId}`);
+      console.log(result);
+      setUserInfo(result.data.data);
+      const { code, msg } = result.data;
+      if (code >= 400) console.log("FAIL", code, msg);
+    } catch (error) {
+      console.error("API CALL FAILURE", error);
+    }
+  };
+
+  useEffect(() => {
+    userInfoAPI();
+  }, []);
 
   return (
     <>
       <Styled.MypageWrapper>
+        <Styled.Welcome>
+          <h1>
+            안녕하세요 <span>김연수</span>님!
+          </h1>
+          <h1>선물하기 딱 좋은 날이네요😊</h1>
+        </Styled.Welcome>
         <Styled.LoginSection>
           <p className="login">로그인 정보</p>
           <div className="loginInfo">
             <div className="imgAndEmail">
-              <img src="/img/Kakao.png" />
+              {socialLogin && <img src="/img/Kakao.png" />}
               <p className="email">abc123@naver.com</p>
             </div>
-            <button type="button" className="logout">
+            <button type="button" className="logout" onClick={Logout}>
               로그아웃
             </button>
           </div>
         </Styled.LoginSection>
+        <Styled.MemberInfoSection>
+          <div className="memberInfo">
+            <h1>회원정보</h1>
+            <button
+              type="button"
+              className="modify"
+              onClick={() => {
+                navigate("/mypage/modify");
+              }}
+            >
+              <span>수정하기</span>
+              <img src="/img/Arrow.png" />
+            </button>
+          </div>
+          <div className="name">
+            <label htmlFor="name">이름</label>
+            <span>{userInfo?.userName}</span>
+          </div>
+          <div className="email">
+            <label htmlFor="email">이메일</label>
+            <span>antjdgk@gmail.com</span>
+          </div>
+          <div className="phone">
+            <label htmlFor="phone">연락처</label>
+            <span>{userInfo?.userPhone}</span>
+          </div>
+          <div className="account">
+            <label htmlFor="account">환불계좌</label>
+            <span>
+              {userInfo?.accountNumber}({userInfo?.accountBank})
+            </span>
+          </div>
+        </Styled.MemberInfoSection>
+        <Styled.BoundaryLine />
         <Styled.RecentOrderSection>
           <div className="recentOrderList">
             <p className="recentOrder">최근 주문 내역</p>
@@ -35,7 +101,8 @@ const MyPage = () => {
                 navigate("/mypage/orderlist");
               }}
             >
-              더보기 <span>{">"}</span>
+              <span>더보기</span>
+              <img src="/img/Arrow.png" />
             </button>
           </div>
           <p className="purchaseDate">2022년 08월 07일 구매</p>
@@ -61,18 +128,25 @@ const MyPage = () => {
                 navigate("/mypage/like");
               }}
             >
-              더보기 <span>{">"}</span>
+              <span>더보기</span>
+              <img src="/img/Arrow.png" />
             </button>
           </div>
           <div className="gifticonInfo">
-            <img src="/img/foodThumbnail.png" />
-            <div className="setInfo">
-              <p className="setName">쭈차돌세트</p>
-              <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
-              <p className="price">15,000원</p>
+            <div className="locate">
+              <img src="/img/LocateWhite.png" />
+              <p>쭈꾸미랩소디 강남점</p>
+            </div>
+            <div className="menuInfo">
+              <img src="/img/foodThumbnail.png" className="thumbnail" />
+              <div className="setInfo">
+                <p className="setName">쭈차돌세트</p>
+                <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
+                <p className="price">15,000원</p>
+              </div>
             </div>
             <button type="button" onClick={() => setLike(!like)} className="like">
-              <LikeSVG fill={like ? "red" : undefined} />
+              <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
             </button>
           </div>
         </Styled.ChoiceProductSection>
@@ -101,15 +175,20 @@ const MyPage = () => {
           <div className="options">
             <div className="option">
               <p>취소/환불내역</p>
-              <button type="button">{">"}</button>
-            </div>
-            <div className="option">
-              <p>회원정보 변경</p>
-              <button type="button">{">"}</button>
+              <button
+                type="button"
+                onClick={() => {
+                  navigate("/mypage/refund");
+                }}
+              >
+                <img src="/img/ArrowBlack.png" />
+              </button>
             </div>
             <div className="option">
               <p>고객센터</p>
-              <button type="button">{">"}</button>
+              <button type="button">
+                <img src="/img/ArrowBlack.png" />
+              </button>
             </div>
           </div>
         </Styled.OptionSection>

@@ -818,63 +818,10 @@ export const FormReceiver = styled.section`
 `;
 
 export const PaymentMethodSection = styled.section`
-  margin-top: 24px;
-  padding-left: 16px;
-  padding-right: 4px;
-  p {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: -0.04em;
-    color: #000000;
-  }
-  .method {
-    display: flex;
-
-    margin-top: 16px;
-  }
-  .card,
-  .bank,
-  .phone {
-    height: 48px;
-    background: #ffffff;
-    border: 1px solid #c8c8c8;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 12px;
-    div {
-      width: 24px;
-      height: 24px;
-      background: #d9d9d9;
-      border-radius: 4px;
-      margin-right: 12px;
-    }
-    p {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
-  }
-  .card {
-    width: 27%;
-  }
-  .bank {
-    width: 42%;
-  }
-  .phone {
-    width: 31%;
-  }
   .payment {
-    padding-right: 12px;
-    margin-bottom: 74px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-bottom: 32px;
     margin-top: 64px;
   }
   button {

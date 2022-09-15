@@ -15,22 +15,22 @@ const RestaurantInfo = () => {
     {
       setMenuName: "쭈차돌세트",
       setMenu: "쭈꾸미+차돌+묵사밥+볶음밥",
-      price: "15,000원",
+      price: "15,000",
     },
     {
       setMenuName: "삼겹살세트",
       setMenu: "삼겹살+묵사밥+볶음밥",
-      price: "16,000원",
+      price: "16,000",
     },
     {
       setMenuName: "목살세트",
       setMenu: "목살+묵사밥+볶음밥",
-      price: "17,000원",
+      price: "17,000",
     },
     {
       setMenuName: "항정살세트",
       setMenu: "항정살+묵사밥+볶음밥",
-      price: "18,000원",
+      price: "18,000",
     },
   ];
 
@@ -76,7 +76,7 @@ const RestaurantInfo = () => {
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>
                   <p className="setMenu">{menu.setMenu}</p>
-                  <p className="price">{menu.price}</p>
+                  <p className="price">{menu.price}원</p>
                 </div>
               </article>
             );

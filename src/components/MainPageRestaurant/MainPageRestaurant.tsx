@@ -14,7 +14,6 @@ const MainPageRestaurant = () => {
   const userLocateAPI = async () => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
-      console.log(res);
       setLocate(res.data);
     } catch (error) {
       console.log(error.message);
@@ -37,7 +36,9 @@ const MainPageRestaurant = () => {
               setModalIsOpen(true);
             }}
           >
-            위치 변경하기 {">"}
+            <div className="locationBtn">
+              위치 변경하기 <img src="/img/Arrow.png" />
+            </div>
             {modalIsOpen ? (
               <Portal>
                 <AreaModal
@@ -50,7 +51,6 @@ const MainPageRestaurant = () => {
             ) : null}
           </button>
         </div>
-        {/* <LocateInfo locate={locate?.data} /> */}
 
         <div className="locationContainer">
           <div className="addressInformation">

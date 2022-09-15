@@ -26,10 +26,21 @@ export const LocationWrapper = styled.div`
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
-      /* identical to box height */
       letter-spacing: -0.04em;
       color: #969696;
     }
+    img {
+      margin-left: 4px;
+    }
+  }
+  .locationBtn {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #969696;
   }
 
   .locationContainer {
@@ -39,17 +50,18 @@ export const LocationWrapper = styled.div`
   .addressInformation {
     display: flex;
     width: 100%;
-    background-color: #d9d9d9;
     padding: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
     align-items: center;
     img {
-      margin-right: 7px;
+      margin-right: 2px;
     }
     .address {
       font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #000000;
@@ -59,7 +71,7 @@ export const LocationWrapper = styled.div`
       font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
       color: #3d3d3d;

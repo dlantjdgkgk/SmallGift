@@ -71,7 +71,7 @@
             { "argsIgnorePattern": "^_" }
         ],
         "prefer-const": ["warn"],
-        "prefer-destructuring": ["error", { "object": true, "array": false }],
+        "prefer-destructuring": ["warn", { "object": true, "array": false }],
         "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "lines-between-class-members": "off",
         "jsx-a11y/click-events-have-key-events": "off",

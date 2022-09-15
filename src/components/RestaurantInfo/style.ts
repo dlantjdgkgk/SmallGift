@@ -37,6 +37,10 @@ export const RestaurantInfoWrapper = styled.section`
     flex-direction: column;
     margin-left: 24px;
     margin-right: 24px;
+    img {
+      width: 24px;
+      height: 24px;
+    }
     .addressInformation {
       display: flex;
       flex-direction: column;
@@ -45,7 +49,20 @@ export const RestaurantInfoWrapper = styled.section`
     .restaurantAddress {
       display: flex;
       align-items: center;
-      margin-bottom: 46px;
+      margin-bottom: 6px;
+    }
+    .detailAddress {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.04em;
+      color: #595959;
+      margin-bottom: 16px;
+      margin-left: 34px;
     }
     .address,
     .hours,
@@ -59,7 +76,7 @@ export const RestaurantInfoWrapper = styled.section`
       align-items: center;
       letter-spacing: -0.04em;
       color: #000000;
-      margin-left: 15.92px;
+      margin-left: 10px;
     }
     .map {
       width: 100%;

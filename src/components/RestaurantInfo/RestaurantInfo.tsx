@@ -86,14 +86,15 @@ const RestaurantInfo = () => {
         <div className="restaurantInformation">
           <div className="addressInformation">
             <div className="restaurantAddress">
-              <FontAwesomeIcon icon={faLocationDot} color="#BDBDBD" />
+              <img src="/img/LocateWhite.png" />
               <p className="address">주소</p>
             </div>
+            <p className="detailAddress">서울 강남구 강남대로98길 12-3 1층</p>
             <div className="map" />
           </div>
           <div className="restaurantOperatingHours">
             <div className="operatingHours">
-              <FontAwesomeIcon icon={faClock} color="#BDBDBD" />
+              <img src="/img/BusinessHours.png" />
               <p className="hours">영업시간</p>
             </div>
             <div className="hourInformation">
@@ -104,7 +105,7 @@ const RestaurantInfo = () => {
           </div>
           <div className="phoneNumberInformation">
             <div className="phone">
-              <FontAwesomeIcon icon={faPhone} color="#BDBDBD" />
+              <img src="/img/PhoneNumber.png" />
               <p className="phoneNumberKorean">전화번호</p>
             </div>
             <p className="phoneNumber">0507 - 1448 - 5243</p>

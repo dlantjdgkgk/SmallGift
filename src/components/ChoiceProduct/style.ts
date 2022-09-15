@@ -16,8 +16,8 @@ export const ProductFilterSection = styled.section`
     font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 23px;
     letter-spacing: -0.04em;
     color: #000000;
   }
@@ -40,27 +40,45 @@ export const ChoiceProductSection = styled.section`
   .gifticonInfo {
     display: flex;
     flex-direction: column;
-    position: relative;
-    width: 100%;
-    height: 166px;
     margin-bottom: 16px;
+    width: 100%;
+    height: 195px;
     border: 1px solid #e4e4e4;
     border-radius: 8px;
-    padding-top: 16px;
+    align-items: center;
+    position: relative;
     padding-left: 16px;
     padding-right: 16px;
-    .InfoAndBtn {
-      display: flex;
+  }
+  .locate {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 2px;
+      margin-bottom: 13px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      letter-spacing: -0.04em;
+      color: #9f9f9f;
     }
   }
-  img {
+
+  .menuInfo {
+    display: flex;
+    width: 100%;
+  }
+  .thumbnail {
     width: 72px;
     height: 72px;
     margin-right: 16px;
-  }
-  .setInfo {
-    display: flex;
-    flex-direction: column;
   }
   .setName {
     font-family: "Noto Sans KR";
@@ -92,20 +110,19 @@ export const ChoiceProductSection = styled.section`
     margin-top: 12px;
   }
   .like {
-    width: 32px;
-    height: 32px;
-    background: #737373;
+    width: 24px;
+    height: 24px;
     position: absolute;
     right: 0;
     top: 0;
-    margin-top: 16px;
     margin-right: 16px;
+    margin-top: 16px;
   }
   .order {
     width: 100%;
     height: 44px;
-    background: #f2f2f2;
-    border: 1px solid #000000;
+    background: #ffffff;
+    border: 1px solid #6600cc;
     border-radius: 8px;
     margin-top: 16px;
     font-family: "Noto Sans KR";
@@ -115,6 +132,6 @@ export const ChoiceProductSection = styled.section`
     line-height: 23px;
     text-align: center;
     letter-spacing: -0.04em;
-    color: #000000;
+    color: #6600cc;
   }
 `;

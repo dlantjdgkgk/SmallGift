@@ -1,8 +1,12 @@
 import { useState } from "react";
 import * as Styled from "./style";
+import LikeSVG from "components/LikeSVG/LikeSVG";
+import { useNavigate } from "react-router";
 
 const ChoiceProduct = () => {
+  const [like, setLike] = useState(false);
   const [selected, setSelected] = useState("");
+  const navigate = useNavigate();
   return (
     <Styled.ChoiceProductWrapper>
       <Styled.ProductFilterSection>
@@ -30,35 +34,49 @@ const ChoiceProduct = () => {
       </Styled.ProductFilterSection>
       <Styled.ChoiceProductSection>
         <div className="gifticonInfo">
-          <div className="InfoAndBtn">
-            <img src="/img/foodThumbnail.png" />
+          <div className="locate">
+            <img src="/img/LocateWhite.png" />
+            <p>쭈꾸미랩소디 강남점</p>
+          </div>
+          <div className="menuInfo">
+            <img src="/img/foodThumbnail.png" className="thumbnail" />
             <div className="setInfo">
               <p className="setName">쭈차돌세트</p>
               <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
               <p className="price">15,000원</p>
             </div>
-            <button type="button" className="like">
-              like
-            </button>
           </div>
-          <button className="order" type="button">
+          <button type="button" onClick={() => setLike(!like)} className="like">
+            <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
+          </button>
+          <button
+            className="order"
+            type="button"
+            onClick={() => {
+              navigate("/payment");
+            }}
+          >
             바로 주문하기
           </button>
         </div>
       </Styled.ChoiceProductSection>
       <Styled.ChoiceProductSection>
         <div className="gifticonInfo">
-          <div className="InfoAndBtn">
-            <img src="/img/foodThumbnail.png" />
+          <div className="locate">
+            <img src="/img/LocateWhite.png" />
+            <p>쭈꾸미랩소디 강남점</p>
+          </div>
+          <div className="menuInfo">
+            <img src="/img/foodThumbnail.png" className="thumbnail" />
             <div className="setInfo">
               <p className="setName">쭈차돌세트</p>
               <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
               <p className="price">15,000원</p>
             </div>
-            <button type="button" className="like">
-              like
-            </button>
           </div>
+          <button type="button" onClick={() => setLike(!like)} className="like">
+            <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
+          </button>
           <button className="order" type="button">
             바로 주문하기
           </button>

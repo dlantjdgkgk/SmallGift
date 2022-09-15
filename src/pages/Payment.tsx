@@ -6,8 +6,18 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IUserFormInput } from "./types";
+import { useLocation } from "react-router-dom";
+import MenuType from "components/BuyInfo/MenuType";
+
+interface PropsType {
+  menu: MenuType;
+}
 
 const Payment = () => {
+  const location = useLocation();
+  const result = location.state as PropsType;
+  const menu: MenuType = result?.menu;
+
   const navigate = useNavigate();
   const [foldSenderSection, setFoldSenderSection] = useState(false);
   const [foldReceiverSection, setFoldReceiverSection] = useState(false);
@@ -27,7 +37,7 @@ const Payment = () => {
 
   return (
     <Styled.BuyInfoWrapper>
-      <ProductInfo />
+      <ProductInfo menu={menu} />
       <Styled.BoundaryLine />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Styled.SenderInfoSection>
@@ -153,35 +163,8 @@ const Payment = () => {
         </Styled.ReceiverInfoSection>
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
-          {/* <p className="paymentMethod">결제 수단</p>
-          <div className="method">
-            <button
-              type="button"
-              className="card"
-              onClick={() => setSelectedPayment("card")}
-              style={{ border: selectedPayment === "card" && "1px solid  #6600CC" }}
-            >
-              <p>카드</p>
-            </button>
-            <button
-              type="button"
-              className="bank"
-              onClick={() => setSelectedPayment("bank")}
-              style={{ border: selectedPayment === "bank" && "1px solid  #6600CC" }}
-            >
-              <p>무통장입금</p>
-            </button>
-            <button
-              type="button"
-              className="phone"
-              onClick={() => setSelectedPayment("phone")}
-              style={{ border: selectedPayment === "phone" && "1px solid #6600CC" }}
-            >
-              <p>휴대폰</p>
-            </button>
-          </div> */}
           <div className="payment">
-            <button type="submit">15,000원 결제하기</button>
+            <button type="submit">{menu?.price}원 결제하기</button>
           </div>
         </Styled.PaymentMethodSection>
       </form>

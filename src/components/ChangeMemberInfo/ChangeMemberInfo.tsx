@@ -20,7 +20,7 @@ const ChangeMemberInfo = () => {
 
   const deleteAPI = async () => {
     try {
-      console.log(await apiInstance.delete("/api/user/delete/23"));
+      console.log(await apiInstance.delete("/api/user/delete/35"));
     } catch (error) {
       console.log(error);
     }

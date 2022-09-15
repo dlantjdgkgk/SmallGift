@@ -54,7 +54,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
                 <KakaoShare parameter={parameter} />
               </button>
               <button type="button" onClick={() => setLike(!like)}>
-                <LikeSVG fill={like ? "red" : undefined} />
+                <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
               </button>
             </div>
           </div>

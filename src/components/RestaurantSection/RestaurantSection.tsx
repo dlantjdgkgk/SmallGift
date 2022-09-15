@@ -18,7 +18,7 @@ const RestaurantSection = () => {
         <div className="restaurantLike">
           <div className="restaurantName">{id}</div>
           <button type="button" onClick={() => setLike(!like)}>
-            <LikeSVG fill={like ? "white" : undefined} />
+            <LikeSVG fill={like ? "white" : undefined} stroke={like ? "transparent" : "gray"} />
           </button>
         </div>
       </div>

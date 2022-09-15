@@ -26,8 +26,7 @@ const SearchPage = () => {
   const topTenAPI = async () => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
-      console.log(topTen);
-      setTopTenData(topTen.data.data);
+      setTopTenData(topTen.data.data.keywordTopTen);
     } catch (error) {
       console.log(error);
     }
@@ -36,18 +35,16 @@ const SearchPage = () => {
   const keyWordAPI = async () => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
-      console.log(keyWordData);
-      setKeyWord(keyWordData.data.data);
+      setKeyWord(keyWordData.data.data.userKeywords);
     } catch (error) {
-      console.log(error);
+      throw new Error("에러");
     }
   };
 
   const recommendationAPI = async () => {
     try {
       const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
-      console.log(result.data.data);
-      setRecommendationData(result.data.data);
+      setRecommendationData(result.data.data.recommendationTopTen);
     } catch (error) {
       console.log(error);
     }
@@ -122,17 +119,17 @@ const SearchPage = () => {
         <>
           <p className="recomendation">추천 검색어</p>
           {!recommendationData && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
-          {recommendationData?.map((dropDownItem, dropDownIndex) => {
-            return dropDownItem.indexOf(inputValue) === -1 ? null : (
+          {recommendationData?.map((dropDownItem) => {
+            return dropDownItem.data.indexOf(inputValue) === -1 ? null : (
               <Styled.DropDownItem
-                key={dropDownIndex}
+                key={dropDownItem.id}
                 onClick={() => {
-                  keyWordPostAPI(dropDownItem);
+                  keyWordPostAPI(dropDownItem.data);
                 }}
               >
-                {dropDownItem.split(inputValue)[0]}
+                {dropDownItem.data.split(inputValue)[0]}
                 <span>{inputValue}</span>
-                {dropDownItem.split(inputValue)[1]}
+                {dropDownItem.data.split(inputValue)[1]}
               </Styled.DropDownItem>
             );
           })}
@@ -156,10 +153,10 @@ const SearchPage = () => {
                 </button>
               </div>
               <div className="records">
-                {keyWord?.map((data, index) => {
+                {keyWord?.map((data) => {
                   return (
-                    <div className="record" key={index}>
-                      <p>{data}</p>
+                    <div className="record" key={data.id}>
+                      <p>{data.data}</p>
                     </div>
                   );
                 })}
@@ -167,7 +164,7 @@ const SearchPage = () => {
               <div className="loginLine" />
             </>
           )}
-          <PopularSearch />
+          <PopularSearch topTenData={topTenData} />
         </>
       )}
     </Styled.SearchPageWrapper>

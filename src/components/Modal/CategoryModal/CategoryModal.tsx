@@ -1,12 +1,12 @@
 import * as Styled from "./style";
-import { useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
+import { Link } from "react-router-dom";
 
 const CategoryModal = ({ menu, handleModalClose }: Props) => {
-  const navigate = useNavigate();
   const [like, setLike] = useState(false);
   const params = useParams();
   const parameter = params.id;
@@ -48,7 +48,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
         <div className="priceInformation">
           <p className="onePerson">1인 기준</p>
           <div className="priceAndButton">
-            <p className="price">{menu.price}</p>
+            <p className="price">{menu.price}원</p>
             <div className="button">
               <button type="button" className="share">
                 <KakaoShare parameter={parameter} />
@@ -59,24 +59,11 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
             </div>
           </div>
         </div>
-        <button
-          type="button"
-          className="shoppingBasket"
-          onClick={() => {
-            navigate("/shop");
-          }}
-        >
-          장바구니
-        </button>
-        <button
-          type="button"
-          className="gift"
-          onClick={() => {
-            navigate("/payment");
-          }}
-        >
-          선물하기
-        </button>
+        <Link to="/payment" state={{ menu }}>
+          <button type="button" className="gift">
+            선물하기
+          </button>
+        </Link>
       </Styled.ModalWrapper>
     </Styled.Background>
   );

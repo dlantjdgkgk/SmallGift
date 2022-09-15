@@ -3,22 +3,16 @@ import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import * as Styled from "./style";
 import React from "react";
 
-interface IProps {
-  topTenData: string[];
+interface TopTenData {
+  id: number;
+  data: string;
 }
 
-const datas = [
-  {
-    id: 0,
-    data: "볶음밥",
-  },
-  {
-    id: 1,
-    data: "강아지",
-  },
-];
+interface IPopularSearchProps {
+  topTenData: TopTenData[];
+}
 
-const PopularSearch = () => {
+const PopularSearch = ({ topTenData }: IPopularSearchProps) => {
   return (
     <Styled.PopularSearchWrapper>
       <div className="popularSearch">
@@ -28,12 +22,12 @@ const PopularSearch = () => {
 
       <Styled.SearchListWrapper>
         <div className="searchList">
-          {datas.map((data) => {
+          {topTenData?.map((data) => {
             return (
               <React.Fragment key={data.id}>
                 <div className="search">
                   <div className="rankAndMenuName">
-                    <div className="rank">{data.id + 1}</div>
+                    <div className="rank">{data.id}</div>
                     <div className="menuName">{data.data}</div>
                   </div>
                   <div className="iconAndRank">

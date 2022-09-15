@@ -169,8 +169,22 @@ export const PaymentCompleteSection = styled.section`
   }
 `;
 
-export const MypageWrapper = styled.main`
-  margin-top: 24px;
+export const MypageWrapper = styled.main``;
+
+export const Welcome = styled.section`
+  margin: 38px 0px 45px 16px;
+  h1 {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  span {
+    font-weight: 700;
+  }
 `;
 
 export const LoginSection = styled.section`
@@ -203,7 +217,6 @@ export const LoginSection = styled.section`
     width: 24px;
     height: 24px;
     margin-left: 16px;
-    margin-right: 16px;
   }
   .email {
     font-family: "Noto Sans KR";
@@ -212,6 +225,7 @@ export const LoginSection = styled.section`
     font-size: 14px;
     line-height: 20px;
     color: #000000;
+    margin-left: 16px;
   }
   .logout {
     font-family: "Noto Sans KR";
@@ -223,6 +237,64 @@ export const LoginSection = styled.section`
     text-decoration-line: underline;
     color: #9d9d9d;
     margin-right: 20px;
+  }
+`;
+
+export const MemberInfoSection = styled.section`
+  margin: 40px 16px 0 16px;
+  .memberInfo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    h1 {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 26px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    span {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: right;
+      letter-spacing: -0.04em;
+      color: #9d9d9d;
+      margin-right: 14px;
+    }
+  }
+  .name,
+  .email,
+  .phone,
+  .account {
+    display: flex;
+    margin-bottom: 6px;
+    label {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #8f8f8f;
+      width: 64px;
+    }
+    span {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+  }
+  .account {
+    margin-bottom: 34px;
   }
 `;
 
@@ -255,8 +327,15 @@ export const RecentOrderSection = styled.section`
     display: flex;
     align-items: center;
     span {
-      font-size: 20px;
-      margin-left: 6px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: right;
+      letter-spacing: -0.04em;
+      color: #9d9d9d;
+      margin-right: 14px;
     }
   }
   .purchaseDate {
@@ -341,7 +420,7 @@ export const ChoiceProductSection = styled.section`
   .choiceProduct {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
   }
   .choice {
     font-family: "Noto Sans KR";
@@ -363,21 +442,56 @@ export const ChoiceProductSection = styled.section`
     letter-spacing: -0.04em;
     color: #9d9d9d;
     span {
-      font-size: 20px;
-      margin-left: 6px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      text-align: right;
+      letter-spacing: -0.04em;
+      color: #9d9d9d;
+      margin-right: 14px;
     }
   }
   .gifticonInfo {
     display: flex;
+    flex-direction: column;
     margin-bottom: 24px;
     width: 100%;
-    height: 104px;
+    height: 153px;
     border: 1px solid #e4e4e4;
     border-radius: 8px;
     align-items: center;
     position: relative;
   }
-  img {
+
+  .locate {
+    display: flex;
+    width: 100%;
+    margin-left: 16px;
+    margin-top: 16px;
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 2px;
+      margin-bottom: 13px;
+    }
+    p {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 17px;
+      letter-spacing: -0.04em;
+      color: #9f9f9f;
+    }
+  }
+
+  .menuInfo {
+    display: flex;
+    width: 100%;
+  }
+  .thumbnail {
     width: 72px;
     height: 72px;
     margin-left: 16px;
@@ -413,8 +527,8 @@ export const ChoiceProductSection = styled.section`
     margin-top: 12px;
   }
   .like {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     position: absolute;
     right: 0;
     top: 0;
@@ -483,6 +597,7 @@ export const BoundaryLine = styled.div`
 export const OptionSection = styled.section`
   padding-left: 16px;
   padding-right: 30px;
+  margin-top: 16px;
   .options {
     display: grid;
     row-gap: 32px;

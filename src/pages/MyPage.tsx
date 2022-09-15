@@ -18,6 +18,7 @@ const MyPage = () => {
 
   const Logout = async () => {
     await removeCookie("token");
+    console.log("로그아웃 되었습니다.");
   };
 
   const userInfoAPI = async () => {
@@ -41,7 +42,7 @@ const MyPage = () => {
       <Styled.MypageWrapper>
         <Styled.Welcome>
           <h1>
-            안녕하세요 <span>김연수</span>님!
+            안녕하세요 <span>{userInfo?.userName}</span>님!
           </h1>
           <h1>선물하기 딱 좋은 날이네요😊</h1>
         </Styled.Welcome>

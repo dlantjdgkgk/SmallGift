@@ -86,21 +86,8 @@ export const ModalWrapper = styled.div`
       margin-right: 8px;
     }
   }
-  .shoppingBasket {
-    width: 140px;
-    height: 44px;
-    border: 1px solid #6600cc;
-    border-radius: 4px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    letter-spacing: -0.04em;
-    color: #6600cc;
-  }
   .gift {
-    width: 140px;
+    width: 296px;
     height: 44px;
     background: #6600cc;
     border-radius: 4px;
@@ -111,6 +98,5 @@ export const ModalWrapper = styled.div`
     line-height: 23px;
     letter-spacing: -0.04em;
     color: white;
-    margin-left: 16px;
   }
 `;

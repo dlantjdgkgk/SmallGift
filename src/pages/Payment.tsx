@@ -5,19 +5,13 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { IUserFormInput } from "./types";
 
 const Payment = () => {
-  interface IUserFormInput {
-    nickName?: string;
-    senderPhone?: string;
-    email?: string;
-    receiverPhone?: string;
-  }
   const navigate = useNavigate();
   const [foldSenderSection, setFoldSenderSection] = useState(false);
   const [foldReceiverSection, setFoldReceiverSection] = useState(false);
   const [selectedTransmission, setSelectedTransmission] = useState("kakao");
-  const [selectedPayment, setSelectedPayment] = useState("card");
 
   const {
     register,

@@ -22,17 +22,17 @@ export const HeaderWrapper = styled.header`
     background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
     margin: 8px 0px 8px 16px;
   }
-
   .back,
-  button {
+  .alert {
     width: 32px;
     height: 32px;
     border: none;
     background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
-    margin: 8px 16px 8px 0px;
+    margin: 8px 16px 0px 16px;
   }
   .back {
-    margin-left: 16px;
+    width: 32px;
+    height: 36px;
   }
   .pageDescription {
     font-family: "Noto Sans KR";

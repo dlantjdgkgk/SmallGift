@@ -165,14 +165,14 @@ export const SearchPageWrapper = styled.div`
     height: 8px;
     background: #f8f8f8;
     margin-top: 32px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
   .loginLine {
     width: 100%;
     height: 8px;
     background: #f8f8f8;
     margin-top: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 `;
 
@@ -215,9 +215,8 @@ export const SearchListWrapper = styled.section`
       margin-right: 27px;
       .rankAndMenuName {
         display: flex;
-        column-gap: 16px;
+        column-gap: 14px;
         width: 100%;
-        justify-content: flex-start;
         .rank {
           font-family: "Noto Sans KR";
           font-style: normal;
@@ -227,6 +226,7 @@ export const SearchListWrapper = styled.section`
           letter-spacing: -0.04em;
           color: #6600cc;
           width: 12px;
+          margin-left: 6px;
         }
         .menuName {
           font-family: "Noto Sans KR";

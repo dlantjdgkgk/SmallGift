@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
+import AlarmSVG from "./AlarmSVG";
 
 const Header = () => {
   const [scrollFlag, setScrollFlag] = useState(true);
@@ -56,6 +57,8 @@ const Header = () => {
           )}
           {pathname === "/mypage/orderlist" && <p className="pageDescription">주문내역조회</p>}
           {pathname === "/mypage/like" && <p className="pageDescription">찜한상품</p>}
+          {pathname === "/mypage/refund" && <p className="pageDescription">취소/환불내역</p>}
+          {pathname === "/mypage/modify" && <p className="pageDescription">회원 정보 변경</p>}
 
           {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? null : (
             <div>
@@ -64,8 +67,9 @@ const Header = () => {
                 onClick={() => {
                   navigate("/alert");
                 }}
+                className="alert"
               >
-                <img src="/img/Alarm.png" />
+                <AlarmSVG fill={isCategory ? "white" : undefined} />
               </button>
             </div>
           )}

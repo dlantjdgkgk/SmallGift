@@ -85,8 +85,9 @@ export const OrderSection = styled.section`
     margin-bottom: 24px;
     display: flex;
   }
-  button {
-    width: 50%;
+  button,
+  a {
+    width: 100%;
     height: 44px;
     font-family: "Noto Sans KR";
     font-style: normal;

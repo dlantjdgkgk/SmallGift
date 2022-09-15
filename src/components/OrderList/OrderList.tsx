@@ -1,20 +1,23 @@
-import { useCallback } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import * as Styled from "./style";
 
 const OrderList = () => {
   const gifticonList = [
     {
-      nickName: "기면수",
-      restaurantName: "쭈꾸미랩소디 강남점",
-      setMenu: "쭈차돌세트",
-      price: "15,000",
+      nickName: "이무성",
+      restaurantName: "리미니 장지점",
+      setMenuName: "파스타세트",
+      setMenu: "쭈꾸미+차돌+묵사밥+볶음밥",
+      price: "25,000",
     },
-    { nickName: "기면수", restaurantName: "쭈꾸미랩소디 강남점", setMenu: "쭈차돌세트", price: "15,000" },
-    { nickName: "기면수", restaurantName: "쭈꾸미랩소디 강남점", setMenu: "쭈차돌세트", price: "15,000" },
-    { nickName: "기면수", restaurantName: "쭈꾸미랩소디 강남점", setMenu: "쭈차돌세트", price: "15,000" },
-    { nickName: "기면수", restaurantName: "쭈꾸미랩소디 강남점", setMenu: "쭈차돌세트", price: "15,000" },
-    { nickName: "기면수", restaurantName: "쭈꾸미랩소디 강남점", setMenu: "쭈차돌세트", price: "15,000" },
+    {
+      nickName: "김지동",
+      restaurantName: "김지동 짱짱",
+      setMenuName: "김지동세트",
+      setMenu: "쭈꾸미+차돌+묵사밥+볶음밥2",
+      price: "20,000",
+    },
   ];
   const navigate = useNavigate();
 
@@ -37,7 +40,8 @@ const OrderList = () => {
               </div>
               <div className="restaurantInfo">
                 <p className="restaurantName">{gifticon.restaurantName}</p>
-                <p className="setName">{gifticon.setMenu}</p>
+                <p className="setName">{gifticon.setMenuName}</p>
+                {/* <p className="setMenu">{gifticon.setMenu}</p> */}
                 <p className="price">{gifticon.price}원</p>
               </div>
             </div>
@@ -45,15 +49,11 @@ const OrderList = () => {
               <button type="button" className="cancel" onClick={showConfirm}>
                 주문 취소하기
               </button>
-              <button
-                type="button"
-                className="purchase"
-                onClick={() => {
-                  navigate("/payment");
-                }}
-              >
-                재구매하기
-              </button>
+              <Link to="/payment" state={{ menu: gifticon }}>
+                <button type="button" className="purchase">
+                  재구매하기
+                </button>
+              </Link>
             </div>
           </Styled.OrderSection>
         );

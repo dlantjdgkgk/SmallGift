@@ -1,9 +1,8 @@
+import KakaoMap from "components/KakaoAPI/KakaoMap/KakaoMap";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
 import Portal from "components/Modal/Portal/Portal";
 import { useState } from "react";
 import * as Styled from "./style";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot, faClock, faPhone } from "@fortawesome/free-solid-svg-icons";
 
 const RestaurantInfo = () => {
   const buttons = ["전체 메뉴", "매장 정보"];
@@ -90,7 +89,7 @@ const RestaurantInfo = () => {
               <p className="address">주소</p>
             </div>
             <p className="detailAddress">서울 강남구 강남대로98길 12-3 1층</p>
-            <div className="map" />
+            <KakaoMap />
           </div>
           <div className="restaurantOperatingHours">
             <div className="operatingHours">

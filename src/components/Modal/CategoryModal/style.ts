@@ -56,6 +56,7 @@ export const ModalWrapper = styled.div`
     }
   }
   .priceInformation {
+    margin-right: 32px;
     .onePerson {
       font-family: "Noto Sans KR";
       font-style: normal;
@@ -69,7 +70,6 @@ export const ModalWrapper = styled.div`
     .priceAndButton {
       display: flex;
       justify-content: space-between;
-      margin-right: 32px;
     }
     .price {
       font-family: "Noto Sans KR";
@@ -85,18 +85,18 @@ export const ModalWrapper = styled.div`
     .share {
       margin-right: 8px;
     }
-  }
-  .gift {
-    width: 296px;
-    height: 44px;
-    background: #6600cc;
-    border-radius: 4px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    letter-spacing: -0.04em;
-    color: white;
+    .gift {
+      width: 100%;
+      height: 44px;
+      background: #6600cc;
+      border-radius: 4px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: white;
+    }
   }
 `;

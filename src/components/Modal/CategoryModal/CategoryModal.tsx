@@ -58,12 +58,12 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
               </button>
             </div>
           </div>
+          <Link to="/payment" state={{ menu }}>
+            <button type="button" className="gift">
+              선물하기
+            </button>
+          </Link>
         </div>
-        <Link to="/payment" state={{ menu }}>
-          <button type="button" className="gift">
-            선물하기
-          </button>
-        </Link>
       </Styled.ModalWrapper>
     </Styled.Background>
   );

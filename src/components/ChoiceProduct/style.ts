@@ -115,7 +115,7 @@ export const ChoiceProductSection = styled.section`
     position: absolute;
     right: 0;
     top: 0;
-    margin-right: 16px;
+    margin-right: 20px;
     margin-top: 16px;
   }
   .order {
@@ -133,5 +133,8 @@ export const ChoiceProductSection = styled.section`
     text-align: center;
     letter-spacing: -0.04em;
     color: #6600cc;
+  }
+  a {
+    width: 100%;
   }
 `;

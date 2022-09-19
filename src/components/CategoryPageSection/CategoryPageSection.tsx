@@ -1,9 +1,10 @@
 import * as Styled from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import queryString from "query-string";
 import { Link, useLocation } from "react-router-dom";
 import Region from "./Region";
 import useScrollToggle from "hooks/useScrollToggle";
+import axios from "axios";
 
 const CategoryPageSection = () => {
   const { pathname } = useLocation();
@@ -69,11 +70,10 @@ const CategoryPageSection = () => {
       <Styled.SelectedCategoryWrapper>
         <div className="selectedCategory">
           {Categories.map((category, index) => {
-            const isSelected = selectCategory === category;
             return (
               <div className="category" key={index}>
                 <button
-                  style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : null}
+                  style={selectCategory === category ? { border: "1px solid #6600CC", color: "#6600CC" } : null}
                   type="button"
                   aria-label="select"
                   onClick={() => {

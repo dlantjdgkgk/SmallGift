@@ -5,21 +5,25 @@ interface IProps {
 }
 
 const KakaoShare = ({ parameter }: IProps) => {
-  const initKakao = () => {
-    if (window.Kakao) {
-      const kakao = window.Kakao;
-      if (!kakao.isInitialized()) {
-        kakao.init(process.env.REACT_APP_KAKAO_KEY);
-      }
+  const Kakao = window.Kakao;
+
+  if (window.kakao) {
+    if (!Kakao?.isInitialized()) {
+      Kakao.init(process.env.REACT_APP_KAKAO_KEY);
     }
-  };
+  }
 
   useEffect(() => {
-    initKakao();
+    const testKakao = () => {
+      if (Kakao) {
+        console.log("카카오", Kakao);
+      }
+    };
+    testKakao();
   }, []);
 
   const shareKakao = () => {
-    window.Kakao.Link.sendDefault({
+    Kakao?.Link?.sendDefault({
       objectType: "feed",
       content: {
         title: "스몰기프트",

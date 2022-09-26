@@ -4,36 +4,46 @@ import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
 
 const ChoiceProduct = () => {
-  const [like, setLike] = useState(false);
   const [selected, setSelected] = useState("");
   const [selectMenu, setSelectMenu] = useState(Number);
 
-  const menuList = [
+  const updateMenuList = (idx) => {
+    const cp = [...menuList];
+    cp[idx].like = !cp[idx].like;
+    setMenuList(cp);
+  };
+
+  const [menuList, setMenuList] = useState([
     {
       setMenuName: "쭈차돌세트",
       setMenu: "쭈꾸미+차돌+묵사밥+볶음밥",
       price: "15,000",
       id: 1,
+      like: true,
     },
     {
       setMenuName: "삼겹살세트",
       setMenu: "삼겹살+묵사밥+볶음밥",
       price: "16,000",
       id: 2,
+      like: true,
     },
     {
       setMenuName: "목살세트",
       setMenu: "목살+묵사밥+볶음밥",
       price: "17,000",
       id: 3,
+      like: true,
     },
     {
       setMenuName: "항정살세트",
       setMenu: "항정살+묵사밥+볶음밥",
       price: "18,000",
       id: 4,
+      like: true,
     },
-  ];
+  ]);
+
   return (
     <Styled.ChoiceProductWrapper>
       <Styled.ProductFilterSection>
@@ -57,7 +67,7 @@ const ChoiceProduct = () => {
         </div>
       </Styled.ProductFilterSection>
 
-      {menuList.map((menu) => {
+      {menuList.map((menu, idx) => {
         return (
           <Styled.ChoiceProductSection key={menu.id}>
             <div className="gifticonInfo">
@@ -76,12 +86,12 @@ const ChoiceProduct = () => {
               <button
                 type="button"
                 onClick={() => {
-                  setLike(!like);
+                  updateMenuList(idx);
                   setSelectMenu(menu.id);
                 }}
                 className="like"
               >
-                <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
+                <LikeSVG fill={menu.like ? "red" : undefined} stroke={menu.like ? "transparent" : "gray"} />
               </button>
               <Link to="/payment" state={{ menu }}>
                 <button type="button" className="order">

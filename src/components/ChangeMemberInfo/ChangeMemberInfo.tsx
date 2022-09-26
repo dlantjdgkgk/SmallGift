@@ -62,6 +62,10 @@ const ChangeMemberInfo = () => {
     }
   };
 
+  const handleCancelBtn = () => {
+    navigate("/mypage");
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Styled.ChangeMemberInfoSection>
@@ -139,13 +143,7 @@ const ChangeMemberInfo = () => {
           </button>
         </div>
         <div className="onClickBtn">
-          <button
-            type="button"
-            className="cancel"
-            onClick={() => {
-              navigate("/mypage");
-            }}
-          >
+          <button type="button" className="cancel" onClick={handleCancelBtn}>
             취소
           </button>
           <button type="submit" className="modify">

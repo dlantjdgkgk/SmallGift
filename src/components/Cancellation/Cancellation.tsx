@@ -3,16 +3,15 @@ import * as Styled from "./style";
 
 const Cancellation = () => {
   const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/mypage/refund/${15231231231232}`);
+  };
+
   return (
     <Styled.CancellationWrapper>
       <Styled.CancellationSection>
-        <button
-          type="button"
-          className="orderNumberInfo"
-          onClick={() => {
-            navigate(`/mypage/refund/${15231231231232}`);
-          }}
-        >
+        <button type="button" className="orderNumberInfo" onClick={handleClick}>
           <p>
             <span className="orderNumber">주문번호</span>
             <span className="number">15930012001</span>
@@ -37,13 +36,7 @@ const Cancellation = () => {
       </Styled.CancellationSection>
       <Styled.BoundaryLine />
       <Styled.CancellationSection>
-        <button
-          type="button"
-          className="orderNumberInfo"
-          onClick={() => {
-            navigate(`/mypage/refund/${123123}`);
-          }}
-        >
+        <button type="button" className="orderNumberInfo" onClick={handleClick}>
           <p>
             <span className="orderNumber">주문번호</span>
             <span className="number">15930012001</span>

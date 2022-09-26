@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavWrapper = styled.div`
-  padding-bottom: 80px;
+  padding-bottom: 56px;
   .container {
     position: fixed;
     bottom: 0;

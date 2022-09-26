@@ -13,6 +13,12 @@ interface PropsType {
   menu: MenuType;
 }
 
+interface MemberType {
+  nickName?: string;
+  senderPhone?: string;
+  email?: string;
+}
+
 const Payment = () => {
   const location = useLocation();
   const result = location.state as PropsType;
@@ -23,11 +29,38 @@ const Payment = () => {
   const [foldReceiverSection, setFoldReceiverSection] = useState(false);
   const [selectedTransmission, setSelectedTransmission] = useState("kakao");
 
+  const [serverMemberInfo, setServerMemberInfo] = useState<MemberType>({
+    nickName: "이무성",
+    senderPhone: "010-8240-9930",
+    email: "dlantjdgkgk@naver.com",
+  });
+
+  const [prevMemberInfo, setPrevMemeberInfo] = useState<MemberType>({});
+
+  const memberInfoHandler = (e) => {
+    const target = e.target.checked ? serverMemberInfo : prevMemberInfo;
+    const { receiverPhone, ...payload } = getValues();
+
+    if (e.target.checked) {
+      setPrevMemeberInfo({ ...payload });
+    }
+
+    let key: keyof MemberType;
+
+    for (key in target) {
+      if (Object.prototype.hasOwnProperty.call(target, key)) {
+        setValue(key, target[key]);
+      }
+    }
+  };
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
+    getValues,
   } = useForm<IUserFormInput>();
 
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
@@ -59,7 +92,7 @@ const Payment = () => {
           {foldSenderSection ? null : (
             <Styled.FormSender>
               <div className="checkInfo">
-                <input type="checkbox" />
+                <input type="checkbox" onChange={memberInfoHandler} />
                 <p>회원 정보와 동일해요</p>
               </div>
               <div className="nickName">

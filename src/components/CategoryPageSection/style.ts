@@ -85,8 +85,9 @@ export const CategoryRestaurantWrapper = styled.section`
         display: flex;
       }
     }
-    a:last-child {
-      border: 3px solid red;
+
+    & > a:last-of-type {
+      border: none;
     }
   }
 

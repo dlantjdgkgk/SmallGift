@@ -1,26 +1,21 @@
-import * as Styled from "./style";
-import { useEffect, useState } from "react";
-import queryString from "query-string";
-import { Link, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import Region from "./Region";
+import * as Styled from "./style";
+import Spinner from "elements/Spinner";
 import useScrollToggle from "hooks/useScrollToggle";
-import axios from "axios";
+import styled from "@emotion/styled";
+import SelectedCategory from "./SelectedCategory";
+import CategoryRestaurant from "./CategoryRestaurant";
 
 const CategoryPageSection = () => {
-  const { pathname } = useLocation();
-  const scrollFlag = useScrollToggle(false);
-
-  const moveToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const Categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
-  const defaultSelect = queryString.parse(window.location.search).value;
+  const [searchParams] = useSearchParams();
+  const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
+  const defaultSelect = searchParams.get("value") || categories[0];
   const [selectCategory, setSelectCategory] = useState(defaultSelect);
-  const shopList = [
+  const intersectionTarget = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const tempShopList = [
     {
       category: "한식",
       restaurantName: "쭈꾸미랩소디 강남점",
@@ -29,7 +24,7 @@ const CategoryPageSection = () => {
     {
       category: "한식",
       restaurantName: "쭈꾸미랩소디 강남점",
-      restaurantMenu: ["쭈차돌세트,직화쭈꾸미,직화차돌"],
+      restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌",
     },
     {
       category: "일식",
@@ -63,62 +58,60 @@ const CategoryPageSection = () => {
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
   ];
+  const [shopList, setShopList] = useState(tempShopList);
+  const scrollFlag = useScrollToggle(false);
+
+  const moveToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const getMoreItem = async () => {
+    setIsLoading(true);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        setShopList((prev) => [...prev, ...tempShopList]);
+        setIsLoading(false);
+        resolve(0);
+      }, 500);
+    });
+  };
+
+  const onIntersect = async ([entry], observer) => {
+    if (entry.isIntersecting && !isLoading) {
+      observer.unobserve(entry.target);
+      // await getMoreItem();
+      observer.observe(entry.target);
+    }
+  };
+
+  useEffect(() => {
+    if (!intersectionTarget.current) return undefined;
+    const observer = new IntersectionObserver(onIntersect, {
+      threshold: 0.4,
+    });
+
+    observer.observe(intersectionTarget.current);
+
+    return () => observer && observer.disconnect();
+  }, [intersectionTarget.current]);
 
   return (
     <>
       <Region />
-      <Styled.SelectedCategoryWrapper>
-        <div className="selectedCategory">
-          {Categories.map((category, index) => {
-            return (
-              <div className="category" key={index}>
-                <button
-                  style={selectCategory === category ? { border: "1px solid #6600CC", color: "#6600CC" } : null}
-                  type="button"
-                  aria-label="select"
-                  onClick={() => {
-                    setSelectCategory(category);
-                    window.history.replaceState("", "", `/category?value=${category}`);
-                  }}
-                >
-                  {category}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </Styled.SelectedCategoryWrapper>
-
+      <SelectedCategory categories={categories} selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
       <Styled.BoundaryLine />
-
-      <Styled.CategoryRestaurantWrapper>
-        <div className="restaurants">
-          {(pathname === "/" || selectCategory === "전체"
-            ? shopList
-            : shopList.filter((shop) => shop.category === selectCategory)
-          ).map((shop, index) => {
-            return (
-              <Link to={`/category/${shop.restaurantName}`} key={index}>
-                <article className="restaurant">
-                  <img src="img/CafeImage.png" />
-                  <div className="restaurantInformation">
-                    <button className="category" type="button">
-                      {shop.category}
-                    </button>
-                    <p className="restaurantName">{shop.restaurantName}</p>
-                    <p className="restaurantMenu">{shop.restaurantMenu}</p>
-                  </div>
-                </article>
-              </Link>
-            );
-          })}
-          <button type="button" className="top" onClick={moveToTop}>
-            {scrollFlag && <img src="/img/Top.png" />}
-          </button>
-        </div>
-      </Styled.CategoryRestaurantWrapper>
+      <CategoryRestaurant shopList={shopList} selectCategory={selectCategory} />
+      <IntersectionBox ref={intersectionTarget} className="Target-Element">
+        {isLoading && <Spinner />}
+      </IntersectionBox>
+      <button type="button" className="top" onClick={moveToTop}>
+        {scrollFlag && <img src="/img/Top.png" />}
+      </button>
     </>
   );
 };
+
+const IntersectionBox = styled.div`
+  width: 100%;
+  height: 100px;
+`;
 
 export default CategoryPageSection;

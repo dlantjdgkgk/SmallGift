@@ -23,7 +23,7 @@ const Region = () => {
       >
         {selectList.map((item) => (
           <option value={item.region} key={item.id}>
-            <p>{item.region}</p>
+            {item.region}
           </option>
         ))}
       </select>

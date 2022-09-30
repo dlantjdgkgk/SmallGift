@@ -143,7 +143,7 @@ const Payment = () => {
           )}
         </Styled.SenderInfoSection>
         <Styled.BoundaryLine />
-        <Styled.ReceiverInfoSection>
+        {/* <Styled.ReceiverInfoSection>
           <div className="receiveInfo">
             <p className="receive">받는 사람</p>
             <button
@@ -193,7 +193,7 @@ const Payment = () => {
               {errors?.receiverPhone?.type === "pattern" && <p className="errorMessage">형식에 맞게 입력해주세요</p>}
             </Styled.FormReceiver>
           )}
-        </Styled.ReceiverInfoSection>
+        </Styled.ReceiverInfoSection> */}
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
           <div className="payment">

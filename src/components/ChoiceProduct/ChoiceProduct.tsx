@@ -54,12 +54,8 @@ const ChoiceProduct = () => {
             }}
             value={selected}
           >
-            <option value="가격 비싼순">
-              <p>가격 비싼순</p>
-            </option>
-            <option value="가격 저렴한순">
-              <p>가격 저렴한순</p>
-            </option>
+            <option value="가격 비싼순">가격 비싼순</option>
+            <option value="가격 저렴한순">가격 저렴한순</option>
           </select>
           <button type="button" className="delete">
             전체 삭제

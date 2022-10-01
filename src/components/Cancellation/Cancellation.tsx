@@ -13,7 +13,7 @@ const Cancellation = () => {
       <Styled.CancellationSection>
         <button type="button" className="orderNumberInfo" onClick={handleClick}>
           <p>
-            <span className="orderNumber">주문번호</span>
+            <span className="orderNumber">주문번호s</span>
             <span className="number">15930012001</span>
             <img src="/img/Arrow.png" />
           </p>

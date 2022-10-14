@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 import Cancellation from "components/Cancellation/Cancellation";
 import CancellationDetail from "components/CancellationDetail/CancellationDetail";
 import ChangeMemberInfo from "components/ChangeMemberInfo/ChangeMemberInfo";
-import Test from "pages/Test";
 
 const Main = lazy(() => import("pages/Main"));
 const Category = lazy(() => import("pages/Category"));
@@ -41,7 +40,6 @@ const Routers = () => {
                 <Route path="/mypage/refund" element={<Cancellation />} />
                 <Route path="/mypage/refund/:id" element={<CancellationDetail />} />
                 <Route path="/mypage/modify" element={<ChangeMemberInfo />} />
-                <Route path="/test" element={<Test />} />
               </Route>
             </Route>
             <Route element={<Header />}>

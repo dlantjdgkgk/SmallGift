@@ -4,6 +4,10 @@ import PopularSearch from "./PopularSearch";
 import { apiInstance } from "../../api/setting";
 import { useNavigate } from "react-router";
 
+// react-query : 캐싱 데이터가 용이하기에 쓰면 괜찮다. 1페이지에서 데이터 api 를 호출하고 그 데이터가 이제 다른 페이지를 이동해도
+// 기록이 남아있다. // 좀 더 고민해보기!!
+// button, input 태그 재 사용성 키우기 위해서 컴포넌트로 뻬줘도 좋습니당
+
 const SearchPage = () => {
   const navigate = useNavigate();
   const [is, setIs] = useState(false);
@@ -27,6 +31,7 @@ const SearchPage = () => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
       setTopTenData(topTen.data.data.keywordTopTen);
+      console.log(topTenData);
     } catch (error) {
       console.log(error);
     }
@@ -36,8 +41,9 @@ const SearchPage = () => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
       setKeyWord(keyWordData.data.data.userKeywords);
+      console.log(keyWord);
     } catch (error) {
-      throw new Error("에러");
+      console.log(error);
     }
   };
 
@@ -45,6 +51,7 @@ const SearchPage = () => {
     try {
       const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
       setRecommendationData(result.data.data.recommendationTopTen);
+      console.log(recommendationData);
     } catch (error) {
       console.log(error);
     }
@@ -81,7 +88,8 @@ const SearchPage = () => {
         keyword: dropDownItem,
         memberId: 15,
       };
-      await apiInstance.post("/api/user/keyword", payload);
+      const result = await apiInstance.post("/api/user/keyword", payload);
+      console.log(result);
       navigate("/");
     } catch (error) {
       console.log(error);

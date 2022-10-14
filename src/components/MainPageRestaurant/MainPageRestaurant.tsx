@@ -7,7 +7,6 @@ import { apiInstance } from "../../api/setting";
 const MainPageRestaurant = () => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState(null);
-  const [flag, setFlag] = useState(false);
   const handleModalClose = () => setModalIsOpen(false);
 
   const memberId = 15;
@@ -15,14 +14,11 @@ const MainPageRestaurant = () => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       setLocate(res.data);
+      console.log(locate);
     } catch (error) {
       console.log(error.message);
     }
   };
-
-  useEffect(() => {
-    userLocateAPI();
-  }, [flag]);
 
   return (
     <Styled.SectionRestaurantWrapper>
@@ -42,10 +38,9 @@ const MainPageRestaurant = () => {
             {modalIsOpen ? (
               <Portal>
                 <AreaModal
+                  onApply={userLocateAPI}
                   setModalIsOpen={setModalIsOpen}
                   handleModalClose={handleModalClose}
-                  setFlag={setFlag}
-                  flag={flag}
                 />
               </Portal>
             ) : null}

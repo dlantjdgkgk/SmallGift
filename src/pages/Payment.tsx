@@ -5,18 +5,13 @@ import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IUserFormInput } from "./types";
+import { IUserFormInput, MemberType } from "./types";
 import { useLocation } from "react-router-dom";
 import MenuType from "components/BuyInfo/MenuType";
+import { FormErrorMessages } from "utils/hookFormUtil";
 
 interface PropsType {
   menu: MenuType;
-}
-
-interface MemberType {
-  nickName?: string;
-  senderPhone?: string;
-  email?: string;
 }
 
 const Payment = () => {
@@ -26,8 +21,6 @@ const Payment = () => {
 
   const navigate = useNavigate();
   const [foldSenderSection, setFoldSenderSection] = useState(false);
-  const [foldReceiverSection, setFoldReceiverSection] = useState(false);
-  const [selectedTransmission, setSelectedTransmission] = useState("kakao");
 
   const [serverMemberInfo, setServerMemberInfo] = useState<MemberType>({
     nickName: "이무성",
@@ -44,9 +37,7 @@ const Payment = () => {
     if (e.target.checked) {
       setPrevMemeberInfo({ ...payload });
     }
-
     let key: keyof MemberType;
-
     for (key in target) {
       if (Object.prototype.hasOwnProperty.call(target, key)) {
         setValue(key, target[key]);
@@ -108,10 +99,12 @@ const Payment = () => {
                   style={{ border: watch("nickName") && "1px solid #6600CC" }}
                 />
               </div>
-              {errors?.nickName?.type === "pattern" && <p className="errorMessage">형식에 맞게 입력해주세요</p>}
-              {errors?.nickName?.type === "required" && <p className="errorMessage">발송인명을 입력해주세요</p>}
-              {errors?.nickName?.type === "maxLength" && <p className="errorMessage">이름이 너무 깁니다.</p>}
-              {errors?.nickName?.type === "minLength" && <p className="errorMessage">이름이 너무 짧습니다.</p>}
+              {errors?.nickName?.type === "pattern" && <p className="errorMessage">{FormErrorMessages.NAME}</p>}
+              {errors?.nickName?.type === "required" && (
+                <p className="errorMessage">{FormErrorMessages.NAME_REQUIRED}</p>
+              )}
+              {errors?.nickName?.type === "maxLength" && <p className="errorMessage">{FormErrorMessages.MAX_LENGTH}</p>}
+              {errors?.nickName?.type === "minLength" && <p className="errorMessage">{FormErrorMessages.MIN_LENGTH}</p>}
               <div className="phone">
                 <label htmlFor="발송인명">휴대폰</label>
                 <input
@@ -123,8 +116,12 @@ const Payment = () => {
                   style={{ border: watch("senderPhone") && "1px solid #6600CC" }}
                 />
               </div>
-              {errors?.senderPhone?.type === "required" && <p className="errorMessage">휴대폰 번호를 입력해주세요</p>}
-              {errors?.senderPhone?.type === "pattern" && <p className="errorMessage">형식에 맞게 입력해주세요</p>}
+              {errors?.senderPhone?.type === "required" && (
+                <p className="errorMessage">{FormErrorMessages.PHONE_REQUIRED}</p>
+              )}
+              {errors?.senderPhone?.type === "pattern" && (
+                <p className="errorMessage">{FormErrorMessages.MOBILE_NUMBER}</p>
+              )}
               <div className="emailInfo">
                 <label htmlFor="발송인명">이메일</label>
                 <input
@@ -137,63 +134,11 @@ const Payment = () => {
                   style={{ border: watch("email") && "1px solid #6600CC" }}
                 />
               </div>
-              {errors?.email?.type === "required" && <p className="errorMessage">이메일을 입력해주세요</p>}
-              {errors?.email?.type === "pattern" && <p className="errorMessage">형식에 맞게 입력해주세요</p>}
+              {errors?.email?.type === "required" && <p className="errorMessage">{FormErrorMessages.EMAIL_REQUIRED}</p>}
+              {errors?.email?.type === "pattern" && <p className="errorMessage">{FormErrorMessages.EMAIL}</p>}
             </Styled.FormSender>
           )}
         </Styled.SenderInfoSection>
-        <Styled.BoundaryLine />
-        {/* <Styled.ReceiverInfoSection>
-          <div className="receiveInfo">
-            <p className="receive">받는 사람</p>
-            <button
-              type="button"
-              onClick={() => {
-                setFoldReceiverSection(!foldReceiverSection);
-              }}
-            >
-              {foldReceiverSection ? (
-                <FontAwesomeIcon icon={faChevronDown} size="2x" />
-              ) : (
-                <FontAwesomeIcon icon={faChevronUp} size="2x" />
-              )}
-            </button>
-          </div>
-          {foldReceiverSection ? null : (
-            <Styled.FormReceiver>
-              <div className="checkInfo">
-                <input type="checkbox" />
-                <p>나한테 주는 선물이에요😊</p>
-              </div>
-              <div className="transmissionWay">
-                <button
-                  type="button"
-                  className="transmission"
-                  onClick={() => {
-                    setSelectedTransmission("kakao");
-                  }}
-                  style={{ border: selectedTransmission === "kakao" && "1px solid #6600CC" }}
-                >
-                  <img src="/img/Kakao.png" />
-                  <p>카카오톡</p>
-                </button>
-              </div>
-              <div className="phone">
-                <label htmlFor="발송인명">휴대폰</label>
-                <input
-                  {...register("receiverPhone", {
-                    required: true,
-                    pattern: /^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$/,
-                  })}
-                  placeholder="010-1234-5678"
-                  style={{ border: watch("receiverPhone") && "1px solid #6600CC" }}
-                />
-              </div>
-              {errors?.receiverPhone?.type === "required" && <p className="errorMessage">휴대폰 번호를 입력해주세요</p>}
-              {errors?.receiverPhone?.type === "pattern" && <p className="errorMessage">형식에 맞게 입력해주세요</p>}
-            </Styled.FormReceiver>
-          )}
-        </Styled.ReceiverInfoSection> */}
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
           <div className="payment">

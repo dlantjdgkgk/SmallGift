@@ -7,11 +7,10 @@ import { apiInstance } from "../../../api/setting";
 interface Props {
   setModalIsOpen: React.Dispatch<SetStateAction<boolean>>;
   handleModalClose: () => void;
-  flag: boolean;
-  setFlag(active: boolean): void;
+  onApply: () => void;
 }
 
-const AreaModal = ({ setModalIsOpen, handleModalClose, setFlag, flag }: Props) => {
+const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
@@ -28,18 +27,24 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, setFlag, flag }: Props) =
     if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
   };
 
-  const handleClick = async () => {
+  const APIcall = async () => {
     try {
       const payload = {
         locate: addressState.jibunAddress,
         memberId: 15,
       };
       const res = await apiInstance.post("/api/user/locate", payload);
-      setFlag(!flag);
       console.log(res);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleClick = (e) => {
+    e.stopPropagation();
+    APIcall();
+    setModalIsOpen(false);
+    onApply();
   };
 
   useEffect(() => {
@@ -76,9 +81,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, setFlag, flag }: Props) =
                 type="button"
                 className="afterSelection"
                 onClick={(e) => {
-                  e.stopPropagation();
-                  setModalIsOpen(false);
-                  handleClick();
+                  handleClick(e);
                 }}
               >
                 선택완료

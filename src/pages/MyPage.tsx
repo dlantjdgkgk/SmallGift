@@ -33,6 +33,9 @@ const MyPage = () => {
     }
   };
 
+  // 페이지에서 디테일 한 것만 컴포넌트 안에서 관리해주고 나머지는 전역으로 오류 처리 하기!
+  // 에러 처리할 때 전역으로 처리 해주는 axiosError등 알아보기 intercepter 에 대해서 알아보기!
+
   useEffect(() => {
     userInfoAPI();
   }, []);

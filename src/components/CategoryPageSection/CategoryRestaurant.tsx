@@ -7,6 +7,7 @@ interface MyProps {
 }
 
 const CategoryRestaurant = ({ shopList, selectCategory }: MyProps) => {
+  console.log(test);
   return (
     <Styled.CategoryRestaurantWrapper>
       <div className="restaurants">

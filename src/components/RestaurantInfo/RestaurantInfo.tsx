@@ -4,12 +4,12 @@ import Portal from "components/Modal/Portal/Portal";
 import { useState } from "react";
 import * as Styled from "./style";
 
-const RestaurantInfo = () => {
+const RestaurantInfo = (): JSX.Element => {
   const buttons = ["전체 메뉴", "매장 정보"];
   const [selectButton, setSelectButton] = useState("전체 메뉴");
   const [selectMenu, setSelectMenu] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleModalClose = () => setModalIsOpen(false);
+  const handleModalClose = (): void => setModalIsOpen(false);
   const menuList = [
     {
       setMenuName: "쭈차돌세트",
@@ -43,7 +43,7 @@ const RestaurantInfo = () => {
               style={isSelected ? { borderBottom: " 2px solid #6600CC", fontWeight: "700" } : undefined}
               type="button"
               aria-label="Click"
-              onClick={() => setSelectButton(button)}
+              onClick={(): void => setSelectButton(button)}
               key={index}
             >
               <p style={isSelected ? { color: "#6600CC", fontWeight: "700" } : undefined}>{button}</p>
@@ -61,7 +61,7 @@ const RestaurantInfo = () => {
                 className="manyMenuInformation"
                 key={index}
                 aria-hidden="true"
-                onClick={() => {
+                onClick={(): void => {
                   setSelectMenu(index);
                   setModalIsOpen(true);
                 }}

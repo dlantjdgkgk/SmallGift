@@ -19,7 +19,7 @@ const Header = (): JSX.Element => {
     setScrollFlag(isScrolled);
   };
 
-  const handleScroll = throttle(updateScroll, 100);
+  const handleScroll = (): void => throttle(updateScroll, 100);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

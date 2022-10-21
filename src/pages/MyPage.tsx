@@ -17,7 +17,7 @@ interface userInfo {
   accountNumber: number;
 }
 
-const MyPage = () => {
+const MyPage = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
@@ -26,11 +26,11 @@ const MyPage = () => {
   const [socialLogin, setSocialLogin] = useState(true);
   const memberId = 15;
 
-  const Logout = async () => {
+  const Logout = async (): Promise<void> => {
     console.log("로그아웃 되었습니다.");
   };
 
-  const userInfoAPI = async () => {
+  const userInfoAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/userInfo?memberId=${memberId}`);
       setUserInfo(result.data.data);
@@ -72,7 +72,7 @@ const MyPage = () => {
             <button
               type="button"
               className="modify"
-              onClick={() => {
+              onClick={(): void => {
                 navigate("/mypage/modify");
               }}
             >
@@ -104,7 +104,7 @@ const MyPage = () => {
             <button
               type="button"
               className="more"
-              onClick={() => {
+              onClick={(): void => {
                 navigate("/mypage/orderlist");
               }}
             >
@@ -131,7 +131,7 @@ const MyPage = () => {
             <button
               type="button"
               className="more"
-              onClick={() => {
+              onClick={(): void => {
                 navigate("/mypage/like");
               }}
             >
@@ -152,7 +152,7 @@ const MyPage = () => {
                 <p className="price">15,000원</p>
               </div>
             </div>
-            <button type="button" onClick={() => setLike(!like)} className="like">
+            <button type="button" onClick={(): void => setLike(!like)} className="like">
               <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
             </button>
           </div>
@@ -184,7 +184,7 @@ const MyPage = () => {
               <p>취소/환불내역</p>
               <button
                 type="button"
-                onClick={() => {
+                onClick={(): void => {
                   navigate("/mypage/refund");
                 }}
               >

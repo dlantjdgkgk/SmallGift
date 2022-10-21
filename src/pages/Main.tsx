@@ -4,7 +4,7 @@ import MainPageRestaurant from "components/MainPageRestaurant/MainPageRestaurant
 import MainPageGifticon from "components/MainPageGifticon/MainPageGifticon";
 import * as Styled from "./style";
 
-const Main = () => {
+const Main = (): JSX.Element => {
   return (
     <>
       <Styled.Main>

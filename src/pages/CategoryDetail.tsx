@@ -3,7 +3,7 @@ import RestaurantNav from "components/RestaurantSection/RestaurantSection";
 import RestaurantBestMenu from "components/RestaurantBestMenu/RestaurantBestMenu";
 import RestaurantInfo from "components/RestaurantInfo/RestaurantInfo";
 
-const CategoryDetail = () => {
+const CategoryDetail = (): JSX.Element => {
   return (
     <Styled.CategoryRestaurantWrapper>
       <RestaurantNav />

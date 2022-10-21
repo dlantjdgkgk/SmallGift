@@ -12,7 +12,7 @@ interface IPopularSearchProps {
   topTenData: TopTenData[];
 }
 
-const PopularSearch = ({ topTenData }: IPopularSearchProps) => {
+const PopularSearch = ({ topTenData }: IPopularSearchProps): JSX.Element => {
   return (
     <Styled.PopularSearchWrapper>
       <div className="popularSearch">

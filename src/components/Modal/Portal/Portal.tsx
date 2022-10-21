@@ -5,7 +5,7 @@ interface ModalType {
   children: ReactNode;
 }
 
-const Portal = ({ children }: ModalType) => {
+const Portal = ({ children }: ModalType): JSX.Element => {
   const element = document.getElementById("modal") as HTMLElement;
   return reactDom.createPortal(children, element);
 };

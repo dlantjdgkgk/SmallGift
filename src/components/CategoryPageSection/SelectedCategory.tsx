@@ -1,22 +1,13 @@
 import * as Styled from "./style";
-import styled from "styled-components";
+import styled, { ThemedStyledProps } from "styled-components";
 
-interface MyProps {
+interface ICategoryProps {
   categories: string[];
   selectCategory: string;
   setSelectCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-type MyButtonProps = {
-  isSelected: boolean;
-};
-
-const MyButton = styled.button<MyButtonProps>`
-  border: ${(props) => (props.isSelected ? "1px solid #6600CC" : "none")};
-  color: ${(props) => (props.isSelected ? "#6600CC" : "#000")};
-`;
-
-const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: MyProps): JSX.Element => {
+const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: ICategoryProps): JSX.Element => {
   const buttonClickHandler = (category: string): void => {
     setSelectCategory(category);
     window.history.replaceState("", "", `/category?value=${category}`);
@@ -26,15 +17,20 @@ const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: MyP
     <Styled.SelectedCategoryWrapper>
       <div>
         {categories.map((category, index) => {
+          const isSelected = selectCategory === category;
           return (
-            <div key={index}>
-              <MyButton
+            <div className="category" key={index}>
+              <button
+                style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : undefined}
                 type="button"
-                isSelected={selectCategory === category}
-                onClick={(): void => buttonClickHandler(category)}
+                aria-label="select"
+                onClick={(): void => {
+                  setSelectCategory(category);
+                  window.history.replaceState("", "", `/category?value=${category}`);
+                }}
               >
                 {category}
-              </MyButton>
+              </button>
             </div>
           );
         })}

@@ -14,7 +14,7 @@ interface PropsType {
   menu: MenuType;
 }
 
-const Payment = () => {
+const Payment = (): JSX.Element => {
   const location = useLocation();
   const result = location.state as PropsType;
   const menu: MenuType = result?.menu;
@@ -30,7 +30,7 @@ const Payment = () => {
 
   const [prevMemberInfo, setPrevMemeberInfo] = useState<MemberType>({});
 
-  const memberInfoHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const memberInfoHandler = (e: ChangeEvent<HTMLInputElement>): void => {
     const target = e.target.checked ? serverMemberInfo : prevMemberInfo;
     const { receiverPhone, ...payload } = getValues();
 
@@ -69,7 +69,7 @@ const Payment = () => {
             <p className="sender">보내는 사람</p>
             <button
               type="button"
-              onClick={() => {
+              onClick={(): void => {
                 setFoldSenderSection(!foldSenderSection);
               }}
             >

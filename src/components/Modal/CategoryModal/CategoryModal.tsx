@@ -6,7 +6,7 @@ import LikeSVG from "components/LikeSVG/LikeSVG";
 import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
 import { Link } from "react-router-dom";
 
-const CategoryModal = ({ menu, handleModalClose }: Props) => {
+const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   const [like, setLike] = useState(false);
   const params = useParams();
   const parameter = params.id;
@@ -18,7 +18,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
     };
   });
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = (e: MouseEvent): void => {
     if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
   };
 
@@ -53,7 +53,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props) => {
               <button type="button" className="share">
                 <KakaoShare parameter={parameter} />
               </button>
-              <button type="button" onClick={() => setLike(!like)}>
+              <button type="button" onClick={(): void => setLike(!like)}>
                 <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
               </button>
             </div>

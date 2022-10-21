@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import LikeSVG from "../LikeSVG/LikeSVG";
 import { useState } from "react";
 
-const RestaurantSection = () => {
+const RestaurantSection = (): JSX.Element => {
   const { id } = useParams();
   const [like, setLike] = useState(false);
 
@@ -17,7 +17,7 @@ const RestaurantSection = () => {
         </button>
         <div className="restaurantLike">
           <div className="restaurantName">{id}</div>
-          <button type="button" onClick={() => setLike(!like)}>
+          <button type="button" onClick={(): void => setLike(!like)}>
             <LikeSVG fill={like ? "white" : undefined} stroke={like ? "transparent" : "gray"} />
           </button>
         </div>

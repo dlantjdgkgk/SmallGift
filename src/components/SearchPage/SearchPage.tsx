@@ -4,26 +4,35 @@ import PopularSearch from "./PopularSearch";
 import { apiInstance } from "../../api/setting";
 import { useNavigate } from "react-router";
 
-const SearchPage = () => {
+interface IRecommendDataProps {
+  data:;
+  id: number;
+}
+
+interface IKeyWordProps {
+  keyWord: 
+}
+
+const SearchPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [is, setIs] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const [topTenData, setTopTenData] = useState([]);
   const [keyWord, setKeyWord] = useState([]);
-  const [recommendationData, setRecommendationData] = useState([]);
+  const [recommendationData, setRecommendationData] = useState<IRecommendDataProps[]>([]);
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     keyWordPostAPI(inputValue);
     navigate("/");
   };
 
-  const topTenAPI = async () => {
+  const topTenAPI = async (): Promise<void> => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
       setTopTenData(topTen.data.data.keywordTopTen);
@@ -33,7 +42,7 @@ const SearchPage = () => {
     }
   };
 
-  const keyWordAPI = async () => {
+  const keyWordAPI = async (): Promise<void> => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
       setKeyWord(keyWordData.data.data.userKeywords);
@@ -43,7 +52,7 @@ const SearchPage = () => {
     }
   };
 
-  const recommendationAPI = async () => {
+  const recommendationAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
       setRecommendationData(result.data.data.recommendationTopTen);
@@ -62,7 +71,7 @@ const SearchPage = () => {
     };
   }, [inputValue]);
 
-  const handleDelete = async () => {
+  const handleDelete = async (): Promise<void> => {
     try {
       const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=15");
       if (deleteKeyWordData.status === 200) {
@@ -78,7 +87,7 @@ const SearchPage = () => {
     topTenAPI();
   }, []);
 
-  const keyWordPostAPI = async (dropDownItem: string) => {
+  const keyWordPostAPI = async (dropDownItem: string): Promise<void> => {
     try {
       const payload = {
         keyword: dropDownItem,
@@ -98,7 +107,7 @@ const SearchPage = () => {
         <div className="searchBar">
           <button
             type="button"
-            onClick={() => {
+            onClick={(): void => {
               navigate(-1);
             }}
             className="back"
@@ -109,7 +118,7 @@ const SearchPage = () => {
           {inputValue ? (
             <button
               type="button"
-              onClick={() => {
+              onClick={(): void => {
                 setInputValue("");
               }}
               className="cancel"
@@ -127,7 +136,7 @@ const SearchPage = () => {
             return dropDownItem.data.indexOf(inputValue) === -1 ? null : (
               <Styled.DropDownItem
                 key={dropDownItem.id}
-                onClick={() => {
+                onClick={(): void => {
                   keyWordPostAPI(dropDownItem.data);
                 }}
               >

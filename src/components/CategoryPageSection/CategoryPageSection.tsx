@@ -68,7 +68,7 @@ const CategoryPageSection = (): JSX.Element => {
     const { scrollY } = window;
     scrollY > 100 ? setScrollFlag(true) : setScrollFlag(false);
   };
-  const handleScroll = throttle(updateScroll, 100);
+  const handleScroll = (): void => throttle(updateScroll, 100);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);

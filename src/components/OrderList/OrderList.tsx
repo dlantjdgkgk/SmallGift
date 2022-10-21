@@ -2,7 +2,7 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
 
-const OrderList = () => {
+const OrderList = (): JSX.Element => {
   const gifticonList = [
     {
       nickName: "이무성",
@@ -21,7 +21,7 @@ const OrderList = () => {
   ];
   const navigate = useNavigate();
 
-  const showConfirm = () => {
+  const showConfirm = (): void => {
     if (window.confirm("환불 하시겠습니까?")) {
       navigate("/mypage/refund");
     }

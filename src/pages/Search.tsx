@@ -1,6 +1,6 @@
 import SearchPage from "components/SearchPage/SearchPage";
 
-const Search = () => {
+const Search = (): JSX.Element => {
   return <SearchPage />;
 };
 

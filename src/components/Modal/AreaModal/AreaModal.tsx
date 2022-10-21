@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import * as Styled from "./style";
 import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
@@ -11,7 +10,7 @@ interface Props {
   onApply: () => void;
 }
 
-const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
+const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.Element => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
@@ -25,11 +24,11 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
     };
   });
 
-  const handleClickOutside = (e: MouseEvent) => {
+  const handleClickOutside = (e: MouseEvent): void => {
     if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
   };
 
-  const APIcall = async () => {
+  const APIcall = async (): Promise<void> => {
     try {
       const payload = {
         locate: addressState.jibunAddress,
@@ -41,7 +40,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
     }
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.stopPropagation();
     APIcall();
     setModalIsOpen(false);

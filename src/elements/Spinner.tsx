@@ -8,7 +8,7 @@ export const SpinnerWrapper = styled.div`
   height: 100%;
 `;
 
-const Spinner = () => {
+const Spinner = (): JSX.Element => {
   return (
     <SpinnerWrapper>
       <Oval

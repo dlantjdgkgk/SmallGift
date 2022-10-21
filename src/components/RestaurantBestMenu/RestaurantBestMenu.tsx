@@ -6,10 +6,10 @@ import { useState } from "react";
 import Portal from "components/Modal/Portal/Portal";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
 
-const RestaurantBestMenu = () => {
+const RestaurantBestMenu = (): JSX.Element => {
   const [selectMenu, setSelectMenu] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleModalClose = () => setModalIsOpen(false);
+  const handleModalClose = (): void => setModalIsOpen(false);
 
   const settings = {
     dots: true,
@@ -55,7 +55,7 @@ const RestaurantBestMenu = () => {
               className="bestMenuInformation"
               key={index}
               aria-hidden="true"
-              onClick={() => {
+              onClick={(): void => {
                 setSelectMenu(index);
                 setModalIsOpen(true);
               }}

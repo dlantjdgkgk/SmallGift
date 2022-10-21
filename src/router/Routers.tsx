@@ -21,7 +21,7 @@ const NotFound = lazy(() => import("components/NotFound/NotFound"));
 const ChoiceProduct = lazy(() => import("components/ChoiceProduct/ChoiceProduct"));
 const Spinner = lazy(() => import("elements/Spinner"));
 
-const Routers = () => {
+const Routers = (): JSX.Element => {
   return (
     <Suspense fallback={<Spinner />}>
       <Router>

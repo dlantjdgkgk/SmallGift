@@ -1,7 +1,7 @@
 import React from "react";
 import Routers from "router/Routers";
 
-const App = () => {
+const App = (): JSX.Element => {
   return <Routers />;
 };
 

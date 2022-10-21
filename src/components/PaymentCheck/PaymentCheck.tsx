@@ -1,7 +1,7 @@
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
 
-const PaymentCheck = () => {
+const PaymentCheck = (): JSX.Element => {
   const navigate = useNavigate();
   return (
     <Styled.PaymentCheckWrapper>
@@ -19,7 +19,7 @@ const PaymentCheck = () => {
           <button
             type="button"
             className="orderList"
-            onClick={() => {
+            onClick={(): void => {
               navigate("/mypage/orderlist");
             }}
           >
@@ -28,7 +28,7 @@ const PaymentCheck = () => {
           <button
             type="button"
             className="confirm"
-            onClick={() => {
+            onClick={(): void => {
               navigate("/");
             }}
           >

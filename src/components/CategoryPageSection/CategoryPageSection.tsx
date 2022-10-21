@@ -3,18 +3,19 @@ import { useState, useEffect, useRef } from "react";
 import Region from "./Region";
 import * as Styled from "./style";
 import Spinner from "elements/Spinner";
-import useScrollToggle from "hooks/useScrollToggle";
 import styled from "@emotion/styled";
 import SelectedCategory from "./SelectedCategory";
 import CategoryRestaurant from "./CategoryRestaurant";
+import throttle from "utils/throttle";
 
-const CategoryPageSection = () => {
-  const [searchParams] = useSearchParams();
+const CategoryPageSection = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
+  const [searchParams] = useSearchParams();
   const defaultSelect = searchParams.get("value") || categories[0];
   const [selectCategory, setSelectCategory] = useState(defaultSelect);
-  const intersectionTarget = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+  const intersectionTarget = useRef(null);
+
   const tempShopList = [
     {
       category: "한식",
@@ -58,12 +59,27 @@ const CategoryPageSection = () => {
       restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
     },
   ];
+
   const [shopList, setShopList] = useState(tempShopList);
-  const scrollFlag = useScrollToggle(false);
 
-  const moveToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const [scrollFlag, setScrollFlag] = useState<boolean>(false);
 
-  const getMoreItem = async () => {
+  const updateScroll = (): void => {
+    const { scrollY } = window;
+    scrollY > 100 ? setScrollFlag(true) : setScrollFlag(false);
+  };
+  const handleScroll = throttle(updateScroll, 100);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const moveToTop = (): void => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const getMoreItem = async (): Promise<number> => {
     setIsLoading(true);
     return new Promise((resolve) => {
       setTimeout(() => {
@@ -74,24 +90,24 @@ const CategoryPageSection = () => {
     });
   };
 
-  const onIntersect = async ([entry], observer) => {
-    if (entry.isIntersecting && !isLoading) {
-      observer.unobserve(entry.target);
-      // await getMoreItem();
-      observer.observe(entry.target);
-    }
-  };
+  // const onIntersect = async ([entry], observer): Promise<void> => {
+  //   if (entry.isIntersecting && !isLoading) {
+  //     observer.unobserve(entry.target);
+  //     // await getMoreItem();
+  //     observer.observe(entry.target);
+  //   }
+  // };
 
-  useEffect(() => {
-    if (!intersectionTarget.current) return undefined;
-    const observer = new IntersectionObserver(onIntersect, {
-      threshold: 0.4,
-    });
+  // useEffect(() => {
+  //   if (!intersectionTarget.current) return undefined;
+  //   const observer = new IntersectionObserver(onIntersect, {
+  //     threshold: 0.4,
+  //   });
 
-    observer.observe(intersectionTarget.current);
+  //   observer.observe(intersectionTarget.current);
 
-    return () => observer && observer.disconnect();
-  }, [intersectionTarget.current]);
+  //   return () => observer && observer.disconnect();
+  // }, [intersectionTarget.current]);
 
   return (
     <>

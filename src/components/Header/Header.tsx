@@ -6,14 +6,14 @@ import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
 import AlarmSVG from "./AlarmSVG";
 
-const Header = () => {
+const Header = (): JSX.Element => {
   const [scrollFlag, setScrollFlag] = useState(true);
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [isCategory, setCategory] = useState(false);
   const regex = /^(\/category\/)/;
 
-  const updateScroll = () => {
+  const updateScroll = (): void => {
     const { scrollY } = window;
     const isScrolled = scrollY !== 0;
     setScrollFlag(isScrolled);
@@ -38,7 +38,7 @@ const Header = () => {
             <button
               className="logo"
               type="button"
-              onClick={() => {
+              onClick={(): void => {
                 navigate("/");
               }}
             >
@@ -48,7 +48,7 @@ const Header = () => {
             <button
               className="back"
               type="button"
-              onClick={() => {
+              onClick={(): void => {
                 navigate(-1);
               }}
             >
@@ -64,7 +64,7 @@ const Header = () => {
             <div>
               <button
                 type="button"
-                onClick={() => {
+                onClick={(): void => {
                   navigate("/alert");
                 }}
                 className="alert"

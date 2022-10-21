@@ -6,8 +6,7 @@ interface MyProps {
   selectCategory: string;
 }
 
-const CategoryRestaurant = ({ shopList, selectCategory }: MyProps) => {
-  console.log(test);
+const CategoryRestaurant = ({ shopList, selectCategory }: MyProps): JSX.Element => {
   return (
     <Styled.CategoryRestaurantWrapper>
       <div className="restaurants">

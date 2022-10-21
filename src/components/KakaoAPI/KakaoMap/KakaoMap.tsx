@@ -2,12 +2,12 @@ import { useEffect } from "react";
 
 const { kakao } = window;
 
-const KakaoMap = () => {
+const KakaoMap = (): JSX.Element => {
   useEffect(() => {
     mapscript();
   }, []);
 
-  const mapscript = () => {
+  const mapscript = (): void => {
     const container = document.getElementById("map");
     const options = {
       center: new kakao.maps.LatLng(37.624915253753194, 127.15122688059974),

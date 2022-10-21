@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { data } from "./data";
 
-const BottomNav = () => {
+const BottomNav = (): JSX.Element => {
   const { pathname } = useLocation();
   return (
     <>

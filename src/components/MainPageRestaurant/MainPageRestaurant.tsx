@@ -4,19 +4,18 @@ import AreaModal from "components/Modal/AreaModal/AreaModal";
 import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
 
-const MainPageRestaurant = () => {
+const MainPageRestaurant = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState(null);
-  const handleModalClose = () => setModalIsOpen(false);
+  const handleModalClose = (): void => setModalIsOpen(false);
 
   const memberId = 15;
-  const userLocateAPI = async () => {
+  const userLocateAPI = async (): Promise<void> => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       setLocate(res.data);
-      console.log(locate);
     } catch (error) {
-      console.log(error.message);
+      throw new Error("check the network response");
     }
   };
 
@@ -28,7 +27,7 @@ const MainPageRestaurant = () => {
           <button
             type="button"
             aria-label="Click"
-            onClick={() => {
+            onClick={(): void => {
               setModalIsOpen(true);
             }}
           >

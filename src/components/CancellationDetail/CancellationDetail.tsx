@@ -1,6 +1,6 @@
 import * as Styled from "./style";
 
-const CancellationDetail = () => {
+const CancellationDetail = (): JSX.Element => {
   return (
     <Styled.CancellationDetailWrapper>
       <Styled.ProductInfoSection>

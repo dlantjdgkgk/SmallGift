@@ -7,9 +7,9 @@ interface DaumPostModalProps {
   handleComplete: (data: Address) => void;
 }
 
-const KakaoAdress = ({ handleDaumPostOpne, handleComplete }: DaumPostModalProps) => {
+const KakaoAdress = ({ handleDaumPostOpne, handleComplete }: DaumPostModalProps): JSX.Element => {
   const handle = {
-    selectAddress: (data: Address) => {
+    selectAddress: (data: Address): void => {
       handleDaumPostOpne();
       handleComplete(data);
     },

@@ -1,6 +1,6 @@
 import * as Styled from "./style";
 
-const Footer = () => {
+const Footer = (): JSX.Element => {
   return (
     <Styled.FooterWrapper>
       <div>

@@ -5,7 +5,7 @@ import * as Styled from "./style";
 import { useState } from "react";
 import { apiInstance } from "api/setting";
 
-const ChangeMemberInfo = () => {
+const ChangeMemberInfo = (): JSX.Element => {
   const [accountBank, setAccountBank] = useState("신한");
   const selectList = [
     {
@@ -18,7 +18,7 @@ const ChangeMemberInfo = () => {
     },
   ];
 
-  const deleteAPI = async () => {
+  const deleteAPI = async (): Promise<void> => {
     try {
       console.log(await apiInstance.delete("/api/user/delete/35"));
     } catch (error) {
@@ -37,7 +37,7 @@ const ChangeMemberInfo = () => {
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
     const { userName, userPhone, accountNumber } = data;
     const memberId = 15;
-    const postAPI = async () => {
+    const postAPI = async (): Promise<void> => {
       try {
         const result = await apiInstance.post("/api/user/userInfo", {
           userName,
@@ -55,14 +55,14 @@ const ChangeMemberInfo = () => {
     navigate("/");
   };
 
-  const showConfirm = () => {
+  const showConfirm = (): void => {
     if (window.confirm("탈퇴하시겠습니까?")) {
       deleteAPI();
       navigate("/");
     }
   };
 
-  const handleCancelBtn = () => {
+  const handleCancelBtn = (): void => {
     navigate("/mypage");
   };
 
@@ -105,7 +105,7 @@ const ChangeMemberInfo = () => {
           <label htmlFor="계좌">환불 계좌</label>
           <div className="refundForm">
             <select
-              onChange={(e) => {
+              onChange={(e): void => {
                 setAccountBank(e.target.value);
               }}
               value={accountBank}

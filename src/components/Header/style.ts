@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+type HeaderProps = {
+  isCategory: boolean;
+};
+
+export const HeaderWrapper = styled.header<HeaderProps>`
   padding-top: ${(props) => (props.isCategory ? "0px" : "48px")};
   .header {
     width: 100%;

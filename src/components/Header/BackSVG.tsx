@@ -2,7 +2,7 @@ interface IProps {
   fill?: string;
 }
 
-const BackSVG = ({ fill = "#60C" }: IProps) => (
+const BackSVG = ({ fill = "#60C" }: IProps): JSX.Element => (
   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
     <g clipPath="url(#a)">
       <path

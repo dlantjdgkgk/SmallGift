@@ -3,11 +3,11 @@ import * as Styled from "./style";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
 
-const ChoiceProduct = () => {
+const ChoiceProduct = (): JSX.Element => {
   const [selected, setSelected] = useState("");
   const [selectMenu, setSelectMenu] = useState(Number);
 
-  const updateMenuList = (idx) => {
+  const updateMenuList = (idx: number): void => {
     const cp = [...menuList];
     cp[idx].like = !cp[idx].like;
     setMenuList(cp);
@@ -49,7 +49,7 @@ const ChoiceProduct = () => {
       <Styled.ProductFilterSection>
         <div className="filter">
           <select
-            onChange={(e) => {
+            onChange={(e): void => {
               setSelected(e.target.value);
             }}
             value={selected}
@@ -81,7 +81,7 @@ const ChoiceProduct = () => {
               </div>
               <button
                 type="button"
-                onClick={() => {
+                onClick={(): void => {
                   updateMenuList(idx);
                   setSelectMenu(menu.id);
                 }}

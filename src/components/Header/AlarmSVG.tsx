@@ -2,7 +2,7 @@ interface IProps {
   fill?: string;
 }
 
-const AlarmSVG = ({ fill = "#60C" }: IProps) => (
+const AlarmSVG = ({ fill = "#60C" }: IProps): JSX.Element => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_684_855)">
       <path

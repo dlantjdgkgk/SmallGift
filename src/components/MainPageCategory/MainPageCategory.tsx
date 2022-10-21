@@ -1,23 +1,8 @@
 import * as Styled from "./style";
 import { Link } from "react-router-dom";
 import { categories } from "./datas";
-import { useEffect, useState } from "react";
-import { apiInstance } from "api/setting";
-// /category 일때는 오류화면을 띄어줘야한다.
 
-const MainPageCategory = () => {
-  const [res, setRes] = useState(null);
-
-  const shopAPI = async () => {
-    const result = await apiInstance.get("/api/user/shop/info/all");
-    console.log(result);
-    setRes(result);
-  };
-
-  useEffect(() => {
-    shopAPI();
-  }, []);
-
+const MainPageCategory = (): JSX.Element => {
   return (
     <>
       <Styled.MainPageCategoryWrapper>

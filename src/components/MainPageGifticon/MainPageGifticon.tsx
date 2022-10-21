@@ -1,8 +1,9 @@
 import * as Styled from "./style";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-const MainPageGifticon = () => {
+const MainPageGifticon = (): JSX.Element => {
   const koreaAreas = ["서울/경기도", "강원도", "충청도", "전라도", "경기도", "제주도"];
   const [selectButton, setSelectButton] = useState("서울/경기도");
 
@@ -68,6 +69,15 @@ const MainPageGifticon = () => {
     { local: "제주도", category: "양식", restaurantName: "남미플랜트랩", address: "제주도 강남대로9길 22 2층" },
   ];
 
+  interface MyButtonProps {
+    isSelected: boolean;
+  }
+
+  const MyButton = styled.button<MyButtonProps>`
+    background-color: ${(props) => (props.isSelected ? "#6600CC" : "null")};
+    color: ${(props) => (props.isSelected ? "white" : "null")};
+  `;
+
   return (
     <Styled.SectionGifticonWrapper>
       <p className="gifticon">지역별 인기있는 기프티콘이에요</p>
@@ -75,17 +85,17 @@ const MainPageGifticon = () => {
         {koreaAreas.map((area, index) => {
           const isSelected = selectButton === area;
           return (
-            <button
+            <MyButton
               type="button"
               aria-label="Click"
               key={index}
-              onClick={() => {
+              onClick={(): void => {
                 setSelectButton(area);
               }}
-              style={isSelected ? { backgroundColor: "#6600CC", color: "white" } : null}
+              isSelected={isSelected}
             >
               {area}
-            </button>
+            </MyButton>
           );
         })}
       </section>

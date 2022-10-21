@@ -1,5 +1,5 @@
 import * as Styled from "./style";
-import styled from "@emotion/styled";
+import styled from "styled-components";
 
 interface MyProps {
   categories: string[];
@@ -7,22 +7,31 @@ interface MyProps {
   setSelectCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: MyProps) => {
-  const buttonClickHandler = (category) => {
+type MyButtonProps = {
+  isSelected: boolean;
+};
+
+const MyButton = styled.button<MyButtonProps>`
+  border: ${(props) => (props.isSelected ? "1px solid #6600CC" : "none")};
+  color: ${(props) => (props.isSelected ? "#6600CC" : "#000")};
+`;
+
+const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: MyProps): JSX.Element => {
+  const buttonClickHandler = (category: string): void => {
     setSelectCategory(category);
     window.history.replaceState("", "", `/category?value=${category}`);
   };
 
   return (
     <Styled.SelectedCategoryWrapper>
-      <div className="selectedCategory">
+      <div>
         {categories.map((category, index) => {
           return (
-            <div className="category" key={index}>
+            <div key={index}>
               <MyButton
                 type="button"
                 isSelected={selectCategory === category}
-                onClick={() => buttonClickHandler(category)}
+                onClick={(): void => buttonClickHandler(category)}
               >
                 {category}
               </MyButton>
@@ -33,14 +42,5 @@ const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: MyP
     </Styled.SelectedCategoryWrapper>
   );
 };
-
-interface MyButtonProps {
-  isSelected: boolean;
-}
-
-const MyButton = styled.button<MyButtonProps>`
-  border: ${(props) => (props.isSelected ? "1px solid #6600CC" : "none")};
-  color: ${(props) => (props.isSelected ? "#6600CC" : "#000")};
-`;
 
 export default SelectedCategory;

@@ -2,7 +2,7 @@ import ProductInfo from "components/BuyInfo/ProductInfo";
 import * as Styled from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IUserFormInput, MemberType } from "./types";
@@ -30,7 +30,7 @@ const Payment = () => {
 
   const [prevMemberInfo, setPrevMemeberInfo] = useState<MemberType>({});
 
-  const memberInfoHandler = (e) => {
+  const memberInfoHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const target = e.target.checked ? serverMemberInfo : prevMemberInfo;
     const { receiverPhone, ...payload } = getValues();
 

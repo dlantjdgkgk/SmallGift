@@ -1,3 +1,4 @@
+import { MouseEventHandler } from "react";
 import * as Styled from "./style";
 import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
@@ -18,6 +19,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
+
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
@@ -33,14 +35,13 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
         locate: addressState.jibunAddress,
         memberId: 15,
       };
-      const res = await apiInstance.post("/api/user/locate", payload);
-      console.log(res);
+      await apiInstance.post("/api/user/locate", payload);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     APIcall();
     setModalIsOpen(false);
@@ -77,13 +78,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props) => {
                   {addressState.jibunAddress}
                 </button>
               </div>
-              <button
-                type="button"
-                className="afterSelection"
-                onClick={(e) => {
-                  handleClick(e);
-                }}
-              >
+              <button type="button" className="afterSelection" onClick={handleClick}>
                 선택완료
               </button>
             </>

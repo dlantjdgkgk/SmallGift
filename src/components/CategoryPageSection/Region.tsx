@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as Styled from "./style";
 
-const Region = () => {
+const Region = (): JSX.Element => {
   const [selected, setSelected] = useState("");
   const selectList = [
     {
@@ -16,7 +16,7 @@ const Region = () => {
   return (
     <Styled.CategoryPageSectionWrapper>
       <select
-        onChange={(e) => {
+        onChange={(e): void => {
           setSelected(e.target.value);
         }}
         value={selected}

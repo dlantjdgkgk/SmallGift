@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router";
 import * as Styled from "./style";
 
-const Cancellation = () => {
+const Cancellation = (): JSX.Element => {
   const navigate = useNavigate();
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     navigate(`/mypage/refund/${15231231231232}`);
   };
 

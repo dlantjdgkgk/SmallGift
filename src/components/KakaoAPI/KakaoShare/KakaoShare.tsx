@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 interface IProps {
-  parameter: string;
+  parameter?: string;
 }
 
-const KakaoShare = ({ parameter }: IProps) => {
+const KakaoShare = ({ parameter }: IProps): JSX.Element => {
   const Kakao = window.Kakao;
 
   if (window.kakao) {
@@ -14,7 +14,7 @@ const KakaoShare = ({ parameter }: IProps) => {
   }
 
   useEffect(() => {
-    const testKakao = () => {
+    const testKakao = (): void => {
       if (Kakao) {
         console.log("카카오", Kakao);
       }
@@ -22,7 +22,7 @@ const KakaoShare = ({ parameter }: IProps) => {
     testKakao();
   }, []);
 
-  const shareKakao = () => {
+  const shareKakao = (): void => {
     Kakao?.Link?.sendDefault({
       objectType: "feed",
       content: {

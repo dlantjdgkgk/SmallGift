@@ -9,9 +9,9 @@ interface IProps {
   menu: MenuType;
 }
 
-const ProductInfo = ({ menu }: IProps) => {
+const ProductInfo = ({ menu }: IProps): JSX.Element => {
   const [foldSection, setFoldSection] = useState(false);
-  const handleSet = () => setFoldSection(!foldSection);
+  const handleSet = (): void => setFoldSection(!foldSection);
 
   return (
     <Styled.ProductInfoSection>

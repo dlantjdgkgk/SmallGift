@@ -1,7 +1,7 @@
 import React from "react";
 
 const FindPassword = () => {
-  return <div></div>;
+  return <div />;
 };
 
 export default FindPassword;

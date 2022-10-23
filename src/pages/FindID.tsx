@@ -1,7 +1,7 @@
 import React from "react";
 
-const Find = () => {
+const FindID = () => {
   return <div />;
 };
 
-export default Find;
+export default FindID;

@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import { logInUser } from "../../redux/_action/user_action";
 import axios from "axios";
+import { axiosLogInUser } from "../../api/user/logIn";
 
 const LogInForm = () => {
   // 이메일, 비밀번호 제출
@@ -54,12 +55,12 @@ const LogInForm = () => {
       return;
     }
 
-    dispatch(logInUser(payload)).then((response) => {
-      if (response.payload.success) {
+    axiosLogInUser.then((response) => {
+      if (response.success) {
         navigate("/");
-        setCookies("token", `Bearer ${response?.payload?.data?.token}`);
+        setCookies("token", `Bearer ${response?.headers?.data?.token}`);
       } else {
-        console.log(response.payload.msg);
+        console.log(response.msg);
       }
     });
   };

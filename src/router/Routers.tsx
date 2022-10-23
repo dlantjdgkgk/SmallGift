@@ -3,7 +3,8 @@ import SignUp from "pages/SignUp";
 import LogIn from "pages/Login";
 import Kakao from "pages/Kakao";
 import Naver from "pages/Naver";
-import Find from "pages/Find";
+import FindID from "pages/FindID";
+import FindPassword from "pages/FindPassword";
 import Main from "pages/Main";
 import Shop from "pages/Shop";
 import Category from "pages/Category";
@@ -35,7 +36,8 @@ const Routers = () => {
           <Route path="/auth/kakao/callback" element={<Kakao />} />
           <Route path="/auth/naver/callback" element={<Naver />} />
           <Route path="/login" element={<LogIn />} />
-          <Route path="/find" element={<Find />} />
+          <Route path="/find/id" element={<FindID />} />
+          <Route path="/find/password" element={<FindPassword />} />
         </Routes>
       </ScrollTop>
     </Router>

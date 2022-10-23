@@ -16,6 +16,7 @@ import {
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../redux/_action/user_action";
 import axios from "axios";
+import { axiosSignUpUser } from "../../api/user/signUp";
 
 const SignUpForm = () => {
   const dispatch = useDispatch();
@@ -64,12 +65,12 @@ const SignUpForm = () => {
 
     // useDispatch를 이용해서 LoginUser라는 action을 전달함
     //
-    dispatch(signUpUser(payload)).then((response) => {
-      if (response.payload.success) {
+    axiosSignUpUser.then((response) => {
+      if (response.success) {
         navigate("/");
         console.log("success");
       } else {
-        console.log(response.payload.msg);
+        console.log(response.msg);
       }
     });
   };

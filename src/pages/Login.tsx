@@ -41,8 +41,12 @@ const LogIn = () => {
 
         <Grid container>
           <Grid item xs>
-            <Link href="/find" variant="body2">
-              비밀번호 찾기
+            <Link href="/find/ID" variant="body2">
+              <span>아이디</span>
+            </Link>
+            <span>/</span>
+            <Link href="/find/password" variant="body2">
+              <span>비밀번호 찾기</span>
             </Link>
           </Grid>
           <Grid item>

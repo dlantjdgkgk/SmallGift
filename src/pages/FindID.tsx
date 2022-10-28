@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Box, Container, CssBaseline, Grid, Link, Typography } from "@mui/material";
-import FindIDForm from "../../../components/find/findID/FindIDForm";
+import FindIDForm from "../components/FindId/FindIdForm";
 
 const FindID = () => {
   return (

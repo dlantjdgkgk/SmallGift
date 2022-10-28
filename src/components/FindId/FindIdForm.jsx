@@ -14,10 +14,10 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { axios } from "axios";
-import { validateEmail } from "../../../utils/validationUtil";
-import { axiosFindId } from "../../../api/user/find";
+import { validateEmail } from "../../utils/validationUtil";
+import { axiosFindId } from "../../api/user/find";
 
-const FindIDForm = () => {
+const FindIdForm = () => {
   // 이메일, 비밀번호 제출
   const navigate = useNavigate();
 
@@ -110,4 +110,4 @@ const FindIDForm = () => {
   );
 };
 
-export default FindIDForm;
+export default FindIdForm;

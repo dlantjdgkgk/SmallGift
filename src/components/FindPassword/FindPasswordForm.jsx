@@ -14,8 +14,8 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { validateEmail } from "../../../utils/validationUtil";
-import { axiosFindId, axiosFindPwd } from "../../../api/user/find";
+import { validateEmail } from "../../utils/validationUtil";
+import { axiosFindId, axiosFindPwd } from "../../api/user/find";
 
 const FindPasswordForm = () => {
   // 이메일, 비밀번호 제출
@@ -136,3 +136,7 @@ const FindPasswordForm = () => {
         로그인 페이지로 이동
       </Button>
     </Box>
+  );
+};
+
+export default FindPasswordForm;

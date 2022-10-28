@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar, Box, Container, CssBaseline, Grid, Link, Typography } from "@mui/material";
-import FindPasswordForm from "../../../components/find/findPassword/FindPasswordForm";
+import FindPasswordForm from "../components/FindPassword/FindPasswordForm";
 
 const FindPassword = () => {
   return (

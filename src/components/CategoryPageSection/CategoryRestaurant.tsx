@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
+import CafeImage from "../../assets/img/CafeImage.png";
 
 interface MyProps {
   shopList: Record<string, string>[];
@@ -15,7 +16,7 @@ const CategoryRestaurant = ({ shopList, selectCategory }: MyProps): JSX.Element 
             return (
               <Link to={`/category/${shop.restaurantName}`} key={index}>
                 <article className="restaurant">
-                  <img src="img/CafeImage.png" />
+                  <img src={CafeImage} />
                   <div className="restaurantInformation">
                     <button className="category" type="button">
                       {shop.category}

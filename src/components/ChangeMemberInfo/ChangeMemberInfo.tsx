@@ -4,6 +4,7 @@ import { IUserFormInput } from "./types";
 import * as Styled from "./style";
 import { useState } from "react";
 import { apiInstance } from "api/setting";
+import ArrowBlack from "../../assets/img/ArrowBlack.png";
 
 const ChangeMemberInfo = (): JSX.Element => {
   const [accountBank, setAccountBank] = useState("신한");
@@ -36,7 +37,7 @@ const ChangeMemberInfo = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
     const { userName, userPhone, accountNumber } = data;
-    const memberId = 15;
+    const memberId = 1;
     const postAPI = async (): Promise<void> => {
       try {
         const result = await apiInstance.post("/api/user/userInfo", {
@@ -139,7 +140,7 @@ const ChangeMemberInfo = (): JSX.Element => {
         <div className="withdrwal">
           <p>회원 탈퇴하기</p>
           <button type="button" className="withdrwalBtn" onClick={showConfirm}>
-            <img src="/img/ArrowBlack.png" />
+            <img src={ArrowBlack} alt="" />
           </button>
         </div>
         <div className="onClickBtn">

@@ -3,6 +3,7 @@ import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
 import useDaumPost from "hooks/useDaumPost";
 import { apiInstance } from "../../../api/setting";
+import Locate from "../../../assets/img/Locate.png";
 
 interface Props {
   setModalIsOpen: React.Dispatch<SetStateAction<boolean>>;
@@ -32,7 +33,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
     try {
       const payload = {
         locate: addressState.jibunAddress,
-        memberId: 15,
+        memberId: 1,
       };
       await apiInstance.post("/api/user/locate", payload);
     } catch (error) {
@@ -46,6 +47,19 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
     setModalIsOpen(false);
     onApply();
   };
+
+  const ShopInfoLocateAPI = async (): Promise<void> => {
+    try {
+      const res = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${addressState.jibunAddress}`);
+      console.log(res);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  useEffect(() => {
+    ShopInfoLocateAPI();
+  }, []);
 
   useEffect(() => {
     document.body.style.cssText = `
@@ -71,7 +85,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
           {addressState.jibunAddress ? (
             <>
               <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
-                <img src="/img/Locate.png" />
+                <img src={Locate} alt="" />
                 <p className="address">주소</p>
                 <button type="button" className="newAddress">
                   {addressState.jibunAddress}
@@ -84,7 +98,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
           ) : (
             <>
               <div className="postalCode" aria-hidden="true" onClick={handleDaumPostOpne}>
-                <img src="/img/Locate.png" />
+                <img src={Locate} alt="" />
                 <button type="button" className="findAddress">
                   우편번호로 찾기
                 </button>

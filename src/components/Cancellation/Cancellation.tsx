@@ -1,5 +1,9 @@
 import { useNavigate } from "react-router";
 import * as Styled from "./style";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
+import Loading from "../../assets/img/Loading.png";
+import Arrow from "../../assets/img/Arrow.png";
+import Success from "../../assets/img/Success.png";
 
 const Cancellation = (): JSX.Element => {
   const navigate = useNavigate();
@@ -15,11 +19,11 @@ const Cancellation = (): JSX.Element => {
           <p>
             <span className="orderNumber">주문번호s</span>
             <span className="number">15930012001</span>
-            <img src="/img/Arrow.png" />
+            <img src={Arrow} alt="" />
           </p>
         </button>
         <div className="gifticonInfo">
-          <img src="/img/foodThumbnail.png" className="thumbnail" />
+          <img src={foodThumbnail} alt="" className="thumbnail" />
           <div className="setInfo">
             <p className="restaurantName">쭈꾸미랩소디 강남점</p>
             <p className="setName">쭈차돌세트</p>
@@ -27,7 +31,7 @@ const Cancellation = (): JSX.Element => {
           </div>
         </div>
         <div className="cancelStatus">
-          <img src="/img/Loading.png" />
+          <img src={Loading} alt="" />
           <p className="statusInfo">
             <span className="status">상태: </span>
             <span className="loading"> 취소 처리 중</span>
@@ -40,11 +44,11 @@ const Cancellation = (): JSX.Element => {
           <p>
             <span className="orderNumber">주문번호</span>
             <span className="number">15930012001</span>
-            <img src="/img/Arrow.png" />
+            <img src={Arrow} alt="" />
           </p>
         </button>
         <div className="gifticonInfo">
-          <img src="/img/foodThumbnail.png" className="thumbnail" />
+          <img src={foodThumbnail} alt="" className="thumbnail" />
           <div className="setInfo">
             <p className="restaurantName">쭈꾸미랩소디 강남점</p>
             <p className="setName">쭈차돌세트</p>
@@ -52,7 +56,7 @@ const Cancellation = (): JSX.Element => {
           </div>
         </div>
         <div className="cancelStatus">
-          <img src="/img/Success.png" />
+          <img src={Success} alt="" />
           <p className="statusInfo">
             <span className="status">상태: </span>
             <span className="loading"> 환불완료(신용카드)</span>

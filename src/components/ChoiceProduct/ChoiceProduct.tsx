@@ -1,17 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Styled from "./style";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
+import LocateWhite from "../../assets/img/LocateWhite.png";
+import { apiInstance } from "api/setting";
 
 const ChoiceProduct = (): JSX.Element => {
   const [selected, setSelected] = useState("");
   const [selectMenu, setSelectMenu] = useState(Number);
+  const memberId = 1;
 
-  const updateMenuList = (idx: number): void => {
+  const UpdateMenuList = (idx: number): void => {
     const cp = [...menuList];
     cp[idx].like = !cp[idx].like;
     setMenuList(cp);
   };
+
+  const DeleteWishListAPI = async (): Promise<void> => {
+    try {
+      const payload = {
+        wishListId: selectMenu,
+      };
+      const result = await apiInstance.delete("/api/user/wishList", { data: payload });
+      console.log(result);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  const GetWishListAPI = async (): Promise<void> => {
+    try {
+      const result = await apiInstance.get(`/api/user/wishList?userId=${memberId}`);
+      console.log(result);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  useEffect(() => {
+    GetWishListAPI();
+  }, []);
 
   const [menuList, setMenuList] = useState([
     {
@@ -68,11 +97,11 @@ const ChoiceProduct = (): JSX.Element => {
           <Styled.ChoiceProductSection key={menu.id}>
             <div className="gifticonInfo">
               <div className="locate">
-                <img src="/img/LocateWhite.png" />
+                <img src={LocateWhite} alt="" />
                 <p>쭈꾸미랩소디 강남점</p>
               </div>
               <div className="menuInfo">
-                <img src="/img/foodThumbnail.png" className="thumbnail" />
+                <img src={foodThumbnail} alt="" className="thumbnail" />
                 <div className="setInfo">
                   <p className="setName">{menu.setMenuName}</p>
                   <p className="setMenu">{menu.setMenu}</p>
@@ -82,8 +111,9 @@ const ChoiceProduct = (): JSX.Element => {
               <button
                 type="button"
                 onClick={(): void => {
-                  updateMenuList(idx);
+                  UpdateMenuList(idx);
                   setSelectMenu(menu.id);
+                  DeleteWishListAPI();
                 }}
                 className="like"
               >

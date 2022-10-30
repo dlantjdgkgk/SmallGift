@@ -7,6 +7,7 @@ import styled from "@emotion/styled";
 import SelectedCategory from "./SelectedCategory";
 import CategoryRestaurant from "./CategoryRestaurant";
 import throttle from "utils/throttle";
+import Top from "../../assets/img/Top.png";
 
 const CategoryPageSection = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
@@ -68,7 +69,7 @@ const CategoryPageSection = (): JSX.Element => {
     const { scrollY } = window;
     scrollY > 100 ? setScrollFlag(true) : setScrollFlag(false);
   };
-  const handleScroll = (): void => throttle(updateScroll, 100);
+  const handleScroll = (): Function => throttle(updateScroll, 100);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -79,16 +80,16 @@ const CategoryPageSection = (): JSX.Element => {
 
   const moveToTop = (): void => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const getMoreItem = async (): Promise<number> => {
-    setIsLoading(true);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        setShopList((prev) => [...prev, ...tempShopList]);
-        setIsLoading(false);
-        resolve(0);
-      }, 500);
-    });
-  };
+  // const getMoreItem = (): Promise<number> => {
+  //   setIsLoading(true);
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       setShopList((prev) => [...prev, ...tempShopList]);
+  //       setIsLoading(false);
+  //       resolve(0);
+  //     }, 500);
+  //   });
+  // };
 
   // const onIntersect = async ([entry], observer): Promise<void> => {
   //   if (entry.isIntersecting && !isLoading) {
@@ -115,11 +116,11 @@ const CategoryPageSection = (): JSX.Element => {
       <SelectedCategory categories={categories} selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
       <Styled.BoundaryLine />
       <CategoryRestaurant shopList={shopList} selectCategory={selectCategory} />
-      <IntersectionBox ref={intersectionTarget} className="Target-Element">
+      {/* <IntersectionBox ref={intersectionTarget} className="Target-Element">
         {isLoading && <Spinner />}
-      </IntersectionBox>
+      </IntersectionBox> */}
       <button type="button" className="top" onClick={moveToTop}>
-        {scrollFlag && <img src="/img/Top.png" />}
+        {scrollFlag && <img src={Top} alt="" />}
       </button>
     </>
   );

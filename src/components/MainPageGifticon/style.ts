@@ -35,7 +35,6 @@ export const SectionGifticonWrapper = styled.section`
       font-size: 14px;
       line-height: 20px;
       letter-spacing: -0.04em;
-      color: #5e5e5e;
     }
   }
 

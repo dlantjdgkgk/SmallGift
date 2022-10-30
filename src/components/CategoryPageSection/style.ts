@@ -27,25 +27,16 @@ export const CategoryPageSectionWrapper = styled.section`
 `;
 
 export const SelectedCategoryWrapper = styled.section`
+  display: flex;
   margin-left: 16px;
-  .selectedCategory {
-    margin-top: 25px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    overflow-x: auto;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-    .category {
-      display: flex;
-      flex-direction: column;
-      text-align: center;
-    }
-    div:last-child {
-      margin-right: 8px;
-    }
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  margin-top: 25px;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  div:last-child {
+    margin-right: 8px;
   }
   button {
     background: #ffffff;

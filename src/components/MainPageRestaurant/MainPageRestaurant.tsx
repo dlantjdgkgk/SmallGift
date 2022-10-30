@@ -1,15 +1,18 @@
 import * as Styled from "./style";
 import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { apiInstance } from "../../api/setting";
+import Arrow from "../../assets/img/Arrow.png";
+import Locate from "../../assets/img/Locate.png";
+import RestaurantMenu from "../../assets/img/RestaurantMenu.png";
 
 const MainPageRestaurant = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState(null);
   const handleModalClose = (): void => setModalIsOpen(false);
 
-  const memberId = 15;
+  const memberId = 1;
   const userLocateAPI = async (): Promise<void> => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
@@ -32,7 +35,7 @@ const MainPageRestaurant = (): JSX.Element => {
             }}
           >
             <div className="locationBtn">
-              위치 변경하기 <img src="/img/Arrow.png" />
+              위치 변경하기 <img src={Arrow} />
             </div>
             {modalIsOpen ? (
               <Portal>
@@ -48,7 +51,7 @@ const MainPageRestaurant = (): JSX.Element => {
 
         <div className="locationContainer">
           <div className="addressInformation">
-            <img src="/img/locate.png" />
+            <img src={Locate} />
             <p className="address">주소</p>
             {locate ? (
               <p className="exactAddress">{locate}</p>
@@ -69,7 +72,7 @@ const MainPageRestaurant = (): JSX.Element => {
             <button className="category" type="button">
               일식
             </button>
-            <img src="img/RestaurantMenu.png" />
+            <img src={RestaurantMenu} />
             <div className="restaurantInformation">
               <p className="restaurantName">카멜로 연남</p>
               <p className="restaurantMenu">버터 봉골레 파스타</p>
@@ -80,7 +83,7 @@ const MainPageRestaurant = (): JSX.Element => {
             <button className="category" type="button">
               일식
             </button>
-            <img src="img/RestaurantMenu.png" />
+            <img src={RestaurantMenu} />
             <div className="restaurantInformation">
               <p className="restaurantName">모센즈 스위트</p>
               <p className="restaurantMenu">모센 라떼</p>
@@ -91,7 +94,7 @@ const MainPageRestaurant = (): JSX.Element => {
             <button className="category" type="button">
               일식
             </button>
-            <img src="img/RestaurantMenu.png" />
+            <img src={RestaurantMenu} />
             <div className="restaurantInformation">
               <p className="restaurantName">아뜨뜨</p>
               <p className="restaurantMenu">소고기 솥밥</p>

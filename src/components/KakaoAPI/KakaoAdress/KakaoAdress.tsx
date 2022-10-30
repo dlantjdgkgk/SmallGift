@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 
 interface DaumPostModalProps {
   handleDaumPostOpne: () => void;
-  handleComplete: (data: Address) => void;
+  handleComplete: (arg: Address) => void;
 }
 
 const KakaoAdress = ({ handleDaumPostOpne, handleComplete }: DaumPostModalProps): JSX.Element => {

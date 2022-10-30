@@ -1,8 +1,18 @@
 import * as Styled from "./style";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import food from "../../assets/img/food.png";
+import { apiInstance } from "api/setting";
 
+interface MyButtonProps {
+  isSelected: boolean;
+}
+
+const MyButton = styled.button<MyButtonProps>`
+  background-color: ${(props): string => (props.isSelected ? "#6600CC" : "")};
+  color: ${(props): string => (props.isSelected ? "#F4F4F4;" : "#5e5e5e")};
+`;
 const MainPageGifticon = (): JSX.Element => {
   const koreaAreas = ["서울/경기도", "강원도", "충청도", "전라도", "경기도", "제주도"];
   const [selectButton, setSelectButton] = useState("서울/경기도");
@@ -69,14 +79,14 @@ const MainPageGifticon = (): JSX.Element => {
     { local: "제주도", category: "양식", restaurantName: "남미플랜트랩", address: "제주도 강남대로9길 22 2층" },
   ];
 
-  interface MyButtonProps {
-    isSelected: boolean;
-  }
+  const ShopInfoBestAPI = async (): Promise<void> => {
+    const result = await apiInstance.get(`/api/user/shop/info/best?locate=${selectButton}`);
+    console.log(result.data.data.topShopByLocate);
+  };
 
-  const MyButton = styled.button<MyButtonProps>`
-    background-color: ${(props) => (props.isSelected ? "#6600CC" : "null")};
-    color: ${(props) => (props.isSelected ? "white" : "null")};
-  `;
+  useEffect(() => {
+    ShopInfoBestAPI();
+  }, [selectButton]);
 
   return (
     <Styled.SectionGifticonWrapper>
@@ -107,7 +117,7 @@ const MainPageGifticon = (): JSX.Element => {
             return (
               <Link to={`/category?value=${shop.category} `} key={index}>
                 <article className="addressInformation" aria-label="Click">
-                  <img src="img/food.png" />
+                  <img src={food} />
                   <button className="category" type="button">
                     {shop.category}
                   </button>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
 import AlarmSVG from "./AlarmSVG";
+import Logo from "../../assets/img/Logo.png";
 
 const Header = (): JSX.Element => {
   const [scrollFlag, setScrollFlag] = useState(true);
@@ -19,7 +20,7 @@ const Header = (): JSX.Element => {
     setScrollFlag(isScrolled);
   };
 
-  const handleScroll = (): void => throttle(updateScroll, 100);
+  const handleScroll = (): Function => throttle(updateScroll, 100);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -42,7 +43,7 @@ const Header = (): JSX.Element => {
                 navigate("/");
               }}
             >
-              <img src="/img/Logo.png" />
+              <img src={Logo} />
             </button>
           ) : (
             <button

@@ -1,14 +1,20 @@
 import KakaoMap from "components/KakaoAPI/KakaoMap/KakaoMap";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
 import Portal from "components/Modal/Portal/Portal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Styled from "./style";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
+import LocateWhite from "../../assets/img/LocateWhite.png";
+import BusinessHours from "../../assets/img/BusinessHours.png";
+import PhoneNumber from "../../assets/img/PhoneNumber.png";
+import { apiInstance } from "api/setting";
 
 const RestaurantInfo = (): JSX.Element => {
   const buttons = ["전체 메뉴", "매장 정보"];
   const [selectButton, setSelectButton] = useState("전체 메뉴");
   const [selectMenu, setSelectMenu] = useState(4);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [detailsData, setDetailsData] = useState<object>();
   const handleModalClose = (): void => setModalIsOpen(false);
   const menuList = [
     {
@@ -32,6 +38,15 @@ const RestaurantInfo = (): JSX.Element => {
       price: "18,000",
     },
   ];
+
+  const ShopDetailsGetAPI = async (): Promise<void> => {
+    const result = await apiInstance.get(`/api/user/shop/details?shopId=4`);
+    console.log(result);
+  };
+
+  useEffect(() => {
+    ShopDetailsGetAPI();
+  }, []);
 
   return (
     <Styled.RestaurantInfoWrapper>
@@ -71,7 +86,7 @@ const RestaurantInfo = (): JSX.Element => {
                     <CategoryModal menu={menu} handleModalClose={handleModalClose} />
                   </Portal>
                 ) : null}
-                <img src="/img/foodThumbnail.png" />
+                <img src={foodThumbnail} />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>
                   <p className="setMenu">{menu.setMenu}</p>
@@ -85,7 +100,7 @@ const RestaurantInfo = (): JSX.Element => {
         <div className="restaurantInformation">
           <div className="addressInformation">
             <div className="restaurantAddress">
-              <img src="/img/LocateWhite.png" />
+              <img src={LocateWhite} alt="" />
               <p className="address">주소</p>
             </div>
             <p className="detailAddress">서울 강남구 강남대로98길 12-3 1층</p>
@@ -93,7 +108,7 @@ const RestaurantInfo = (): JSX.Element => {
           </div>
           <div className="restaurantOperatingHours">
             <div className="operatingHours">
-              <img src="/img/BusinessHours.png" />
+              <img src={BusinessHours} alt="" />
               <p className="hours">영업시간</p>
             </div>
             <div className="hourInformation">
@@ -104,7 +119,7 @@ const RestaurantInfo = (): JSX.Element => {
           </div>
           <div className="phoneNumberInformation">
             <div className="phone">
-              <img src="/img/PhoneNumber.png" />
+              <img src={PhoneNumber} alt="" />
               <p className="phoneNumberKorean">전화번호</p>
             </div>
             <p className="phoneNumber">0507 - 1448 - 5243</p>

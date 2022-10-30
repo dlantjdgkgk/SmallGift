@@ -30,7 +30,7 @@ const Routers = (): JSX.Element => {
             <Route element={<Header />}>
               <Route element={<BottomNav />}>
                 <Route path="/" element={<Main />} />
-                <Route path="/category" element={<Category />} />{" "}
+                <Route path="/category" element={<Category />} />
                 <Route path="/category/:id" element={<CategoryDetail />} />
                 <Route path="/alert" element={<Alert />} />
                 <Route path="/mypage" element={<MyPage />} />

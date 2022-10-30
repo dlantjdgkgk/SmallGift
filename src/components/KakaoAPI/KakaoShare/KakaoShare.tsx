@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import Share from "../../../assets/img/Share.png";
 
 interface IProps {
   parameter?: string;
 }
 
 const KakaoShare = ({ parameter }: IProps): JSX.Element => {
-  const Kakao = window.Kakao;
+  const { Kakao } = window;
 
   if (window.kakao) {
     if (!Kakao?.isInitialized()) {
@@ -53,7 +54,7 @@ const KakaoShare = ({ parameter }: IProps): JSX.Element => {
 
   return (
     <div className="share-node" onClick={shareKakao} aria-hidden="true">
-      <img src="/img/Share.png" />
+      <img src={Share} alt="" />
     </div>
   );
 };

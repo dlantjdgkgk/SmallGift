@@ -1,5 +1,6 @@
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
+import Kakao from "../../assets/img/Kakao.png";
 
 const PaymentCheck = (): JSX.Element => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const PaymentCheck = (): JSX.Element => {
           <p className="confirmPay">결제가 완료됐어요!</p>
         </div>
         <div className="sendMessage">
-          <img src="/img/Kakao.png" />
+          <img src={Kakao} alt="" />
           <button type="button">메세지 보내기</button>
         </div>
         <div className="orderListAndConfirm">

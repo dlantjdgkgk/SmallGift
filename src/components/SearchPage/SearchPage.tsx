@@ -3,14 +3,17 @@ import { useEffect, useState, ChangeEvent } from "react";
 import PopularSearch from "./PopularSearch";
 import { apiInstance } from "../../api/setting";
 import { useNavigate } from "react-router";
+import Back from "../../assets/img/Back.png";
+import Cancel from "../../assets/img/Cancel.png";
 
 interface IRecommendDataProps {
-  data:;
+  data: string;
   id: number;
 }
 
 interface IKeyWordProps {
-  keyWord: 
+  data: string;
+  id: number;
 }
 
 const SearchPage = (): JSX.Element => {
@@ -44,7 +47,7 @@ const SearchPage = (): JSX.Element => {
 
   const keyWordAPI = async (): Promise<void> => {
     try {
-      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=15");
+      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
       setKeyWord(keyWordData.data.data.userKeywords);
       console.log(keyWord);
     } catch (error) {
@@ -73,7 +76,7 @@ const SearchPage = (): JSX.Element => {
 
   const handleDelete = async (): Promise<void> => {
     try {
-      const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=15");
+      const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=1");
       if (deleteKeyWordData.status === 200) {
         keyWordAPI();
       }
@@ -91,7 +94,7 @@ const SearchPage = (): JSX.Element => {
     try {
       const payload = {
         keyword: dropDownItem,
-        memberId: 15,
+        memberId: 1,
       };
       const result = await apiInstance.post("/api/user/keyword", payload);
       console.log(result);
@@ -112,7 +115,7 @@ const SearchPage = (): JSX.Element => {
             }}
             className="back"
           >
-            <img src="/img/Back.png" />
+            <img src={Back} alt="" />
           </button>
           <input value={inputValue} type="text" onChange={onChange} placeholder="가게명 또는 상품명 검색하기" />
           {inputValue ? (
@@ -123,7 +126,7 @@ const SearchPage = (): JSX.Element => {
               }}
               className="cancel"
             >
-              <img src="/img/Cancel.png" />
+              <img src={Cancel} alt="" />
             </button>
           ) : null}
         </div>
@@ -166,7 +169,7 @@ const SearchPage = (): JSX.Element => {
                 </button>
               </div>
               <div className="records">
-                {keyWord?.map((data) => {
+                {keyWord?.map((data: IKeyWordProps) => {
                   return (
                     <div className="record" key={data.id}>
                       <p>{data.data}</p>

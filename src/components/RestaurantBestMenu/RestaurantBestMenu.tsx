@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { useState } from "react";
 import Portal from "components/Modal/Portal/Portal";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
 
 const RestaurantBestMenu = (): JSX.Element => {
   const [selectMenu, setSelectMenu] = useState(4);
@@ -67,7 +68,7 @@ const RestaurantBestMenu = (): JSX.Element => {
               ) : null}
 
               <article className="menuInformation">
-                <img src="/img/foodThumbnail.png" />
+                <img src={foodThumbnail} alt="" />
                 <div className="setMenuInfo">
                   <div className="setMenuName">{menu.setMenuName}</div>
                   <p className="setMenu">{menu.setMenu}</p>

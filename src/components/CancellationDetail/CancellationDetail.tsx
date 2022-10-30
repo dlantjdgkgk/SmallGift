@@ -1,4 +1,5 @@
 import * as Styled from "./style";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
 
 const CancellationDetail = (): JSX.Element => {
   return (
@@ -12,7 +13,7 @@ const CancellationDetail = (): JSX.Element => {
           </p>
         </button>
         <div className="gifticonInfo">
-          <img src="/img/foodThumbnail.png" className="thumbnail" />
+          <img src={foodThumbnail} alt="" className="thumbnail" />
           <div className="setInfo">
             <p className="restaurantName">쭈꾸미랩소디 강남점</p>
             <p className="setName">쭈차돌세트</p>

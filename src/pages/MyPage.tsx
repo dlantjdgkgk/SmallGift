@@ -4,35 +4,36 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { apiInstance } from "api/setting";
+import Arrow from "../assets/img/Arrow.png";
+import foodThumbnail from "../assets/img/foodThumbnail.png";
+import Kakao from "../assets/img/Kakao.png";
+import LocateWhite from "../assets/img/LocateWhite.png";
+import ArrowBlack from "../assets/img/ArrowBlack.png";
 
-// 페이지에서 디테일 한 것만 컴포넌트 안에서 관리해주고 나머지는 전역으로 오류 처리 하기!
-// 에러 처리할 때 전역으로 처리 해주는 axiosError등 알아보기 intercepter 에 대해서 알아보기!
-
-interface userInfo {
+interface UserInfoProps {
   userName: string;
-  userPhone: number;
-  accountBank: string;
+  userPhone: string;
   accountNumber: number;
+  accountBank: string;
 }
 
 const MyPage = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const navigate = useNavigate();
   const [like, setLike] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies([]);
-  const [userInfo, setUserInfo] = useState<userInfo[]>([]);
+  const [userInfo, setUserInfo] = useState<UserInfoProps>();
   const [socialLogin, setSocialLogin] = useState(true);
-  const memberId = 15;
+  const memberId = 1;
 
-  const Logout = async (): Promise<void> => {
+  const Logout = (): void => {
     console.log("로그아웃 되었습니다.");
   };
 
   const userInfoAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/userInfo?memberId=${memberId}`);
+      console.log(result);
       setUserInfo(result.data.data);
       const { code, msg } = result.data;
       if (code >= 400) console.log("FAIL", code, msg);
@@ -50,7 +51,7 @@ const MyPage = (): JSX.Element => {
       <Styled.MypageWrapper>
         <Styled.Welcome>
           <h1>
-            안녕하세요 <span>s</span>님!
+            안녕하세요 <span>{userInfo?.userName}</span>님!
           </h1>
           <h1>선물하기 딱 좋은 날이네요😊</h1>
         </Styled.Welcome>
@@ -58,7 +59,7 @@ const MyPage = (): JSX.Element => {
           <p className="login">로그인 정보</p>
           <div className="loginInfo">
             <div className="imgAndEmail">
-              {socialLogin && <img src="/img/Kakao.png" />}
+              {socialLogin && <img src={Kakao} alt="" />}
               <p className="email">abc123@naver.com</p>
             </div>
             <button type="button" className="logout" onClick={Logout}>
@@ -77,12 +78,12 @@ const MyPage = (): JSX.Element => {
               }}
             >
               <span>수정하기</span>
-              <img src="/img/Arrow.png" />
+              <img src={Arrow} alt="" />
             </button>
           </div>
           <div className="name">
             <label htmlFor="name">이름</label>
-            <span>s</span>
+            <span>{userInfo?.userName}</span>
           </div>
           <div className="email">
             <label htmlFor="email">이메일</label>
@@ -90,11 +91,13 @@ const MyPage = (): JSX.Element => {
           </div>
           <div className="phone">
             <label htmlFor="phone">연락처</label>
-            <span>s</span>
+            <span>{userInfo?.userPhone}</span>
           </div>
           <div className="account">
             <label htmlFor="account">환불계좌</label>
-            <span>s</span>
+            <span>
+              {userInfo?.accountNumber}({userInfo?.accountBank})
+            </span>
           </div>
         </Styled.MemberInfoSection>
         <Styled.BoundaryLine />
@@ -109,13 +112,13 @@ const MyPage = (): JSX.Element => {
               }}
             >
               <span>더보기</span>
-              <img src="/img/Arrow.png" />
+              <img src={Arrow} alt="" />
             </button>
           </div>
           <p className="purchaseDate">2022년 08월 07일 구매</p>
           <div className="gifticonInfo">
             <div className="thumbnail">
-              <img src="/img/foodThumbnail.png" />
+              <img src={foodThumbnail} alt="" />
               <div className="customerInfo">🎁홍길순</div>
             </div>
             <div className="restaurantInfo">
@@ -136,16 +139,16 @@ const MyPage = (): JSX.Element => {
               }}
             >
               <span>더보기</span>
-              <img src="/img/Arrow.png" />
+              <img src={Arrow} alt="" />
             </button>
           </div>
           <div className="gifticonInfo">
             <div className="locate">
-              <img src="/img/LocateWhite.png" />
+              <img src={LocateWhite} alt="" />
               <p>쭈꾸미랩소디 강남점</p>
             </div>
             <div className="menuInfo">
-              <img src="/img/foodThumbnail.png" className="thumbnail" />
+              <img src={foodThumbnail} alt="" className="thumbnail" />
               <div className="setInfo">
                 <p className="setName">쭈차돌세트</p>
                 <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
@@ -188,13 +191,13 @@ const MyPage = (): JSX.Element => {
                   navigate("/mypage/refund");
                 }}
               >
-                <img src="/img/ArrowBlack.png" />
+                <img src={ArrowBlack} alt="" />
               </button>
             </div>
             <div className="option">
               <p>고객센터</p>
               <button type="button">
-                <img src="/img/ArrowBlack.png" />
+                <img src={ArrowBlack} alt="" />
               </button>
             </div>
           </div>

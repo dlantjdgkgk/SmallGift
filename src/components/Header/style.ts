@@ -5,12 +5,12 @@ type HeaderProps = {
 };
 
 export const HeaderWrapper = styled.header<HeaderProps>`
-  padding-top: ${(props) => (props.isCategory ? "0px" : "48px")};
+  padding-top: ${(props): string => (props.isCategory ? "0px" : "48px")};
   .header {
     width: 100%;
     min-width: 360px;
     max-width: 768px;
-    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
+    background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@ export const HeaderWrapper = styled.header<HeaderProps>`
   .logo {
     width: 22px;
     height: 30px;
-    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
+    background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
     margin: 8px 0px 8px 16px;
   }
   .back,
@@ -31,7 +31,7 @@ export const HeaderWrapper = styled.header<HeaderProps>`
     width: 32px;
     height: 32px;
     border: none;
-    background-color: ${(props) => (props.isCategory ? "transparent" : "white")};
+    background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
     margin: 8px 16px 0px 16px;
   }
   .back {

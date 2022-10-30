@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
+import foodThumbnail from "../../assets/img/foodThumbnail.png";
 
 const OrderList = (): JSX.Element => {
   const gifticonList = [
@@ -35,7 +36,7 @@ const OrderList = (): JSX.Element => {
             <p className="date">2022년 08월 07일 구매</p>
             <div className="gifticonInfo">
               <div className="thumbnail">
-                <img src="/img/foodThumbnail.png" />
+                <img src={foodThumbnail} alt="" />
                 <div className="customerInfo">🎁{gifticon.nickName}</div>
               </div>
               <div className="restaurantInfo">

@@ -5,11 +5,27 @@ import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
 import { Link } from "react-router-dom";
+import { apiInstance } from "api/setting";
 
 const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   const [like, setLike] = useState(false);
   const params = useParams();
   const parameter = params.id;
+  const productId = 5;
+  const memberId = 1;
+
+  const PostWishListAPI = async (): Promise<void> => {
+    try {
+      const payload = {
+        productId,
+        userId: memberId,
+      };
+      const result = await apiInstance.post("/api/user/wishList", { data: payload });
+      console.log(result);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
@@ -53,7 +69,13 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
               <button type="button" className="share">
                 <KakaoShare parameter={parameter} />
               </button>
-              <button type="button" onClick={(): void => setLike(!like)}>
+              <button
+                type="button"
+                onClick={(): void => {
+                  setLike(!like);
+                  PostWishListAPI();
+                }}
+              >
                 <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
               </button>
             </div>

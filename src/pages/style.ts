@@ -839,3 +839,64 @@ export const PaymentMethodSection = styled.section`
     color: #ffffff;
   }
 `;
+
+export const Oauths = styled.div`
+  display: flex;
+  padding: 1rem 0;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    box-sizing: border-box;
+    height: 50px;
+    transition: opacity 0.5s ease-in;
+    img {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+    :hover {
+      opacity: 0.6;
+    }
+  }
+  a + a {
+    margin-left: 10px;
+  }
+`;
+
+export const OauthContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+
+  .isError {
+    width: 500px;
+    height: 300px;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    font-size: 20px;
+    align-items: center;
+    strong {
+      color: #fee500;
+      font-size: 25px;
+      font-weight: 600;
+    }
+    .naver {
+      color: rgb(12, 166, 120);
+    }
+  }
+`;
+
+export const LoaderWrap = styled.div`
+  padding-top: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+`;

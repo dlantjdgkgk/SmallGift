@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+
 import { lazy, Suspense } from "react";
 import Cancellation from "components/Cancellation/Cancellation";
 import CancellationDetail from "components/CancellationDetail/CancellationDetail";
 import ChangeMemberInfo from "components/ChangeMemberInfo/ChangeMemberInfo";
+
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 
 const Main = lazy(() => import("pages/Main"));
 const Category = lazy(() => import("pages/Category"));
@@ -11,6 +15,12 @@ const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
 const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
+
+const LogIn = lazy(() => import("pages/Login"));
+const Kakao = lazy(() => import("pages/Kakao"));
+const Naver = lazy(() => import("pages/Naver"));
+const FindID = lazy(() => import("pages/FindID"));
+const FindPassword = lazy(() => import("pages/FindPassword"));
 
 const BottomNav = lazy(() => import("components/BottomNav/BottomNav"));
 const Header = lazy(() => import("components/Header/Header"));
@@ -32,18 +42,23 @@ const Routers = (): JSX.Element => {
                 <Route path="/" element={<Main />} />
                 <Route path="/category" element={<Category />} />
                 <Route path="/category/:id" element={<CategoryDetail />} />
-                <Route path="/alert" element={<Alert />} />
-                <Route path="/mypage" element={<MyPage />} />
-                <Route path="/mypage/orderlist" element={<OrderList />} />
-                <Route path="/mypage/like" element={<ChoiceProduct />} />
-                <Route path="/payment/check" element={<PaymentCheck />} />
-                <Route path="/mypage/refund" element={<Cancellation />} />
-                <Route path="/mypage/refund/:id" element={<CancellationDetail />} />
-                <Route path="/mypage/modify" element={<ChangeMemberInfo />} />
+                <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
+                <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
+                <Route path="/mypage/like" element={<PrivateRoute element={<ChoiceProduct />} />} />
+                <Route path="/payment/check" element={<PrivateRoute element={<PaymentCheck />} />} />
+                <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
+                <Route path="/mypage/refund/:id" element={<PrivateRoute element={<CancellationDetail />} />} />
+                <Route path="/mypage/modify" element={<PrivateRoute element={<ChangeMemberInfo />} />} />
               </Route>
             </Route>
+
             <Route element={<Header />}>
-              <Route path="/payment" element={<Payment />} />
+              <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
+              <Route path="/auth/kakao/callback" element={<PublicRoute element={<Kakao />} />} />
+              <Route path="/auth/naver/callback" element={<PublicRoute element={<Naver />} />} />
+              <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
+              <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
+              <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
             </Route>
             <Route element={<BottomNav />}>
               <Route path="/search" element={<Search />} />

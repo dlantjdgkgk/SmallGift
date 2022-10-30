@@ -27,8 +27,8 @@
     "rules": {
         "eqeqeq": ["error", "always"],
         "global-require": 0,
-        "@typescript-eslint/no-explicit-any": "error",
-        "@typescript-eslint/explicit-function-return-type":"error",
+        // "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/explicit-function-return-type":"off",
         "@typescript-eslint/adjacent-overload-signatures": "warn",
         "@typescript-eslint/no-dupe-class-members": "warn",
         "@typescript-eslint/no-empty-function": "warn",

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utils/validationUtil";
-import { axiosFindId } from "../../api/user/find";
+import { axiosFindId } from "../../api/user/find.";
 
 const FindPasswordForm = () => {
   // 이메일, 비밀번호 제출

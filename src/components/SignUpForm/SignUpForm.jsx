@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Checkbox, FormControlLabel, FormControl, Grid, TextField } from "@mui/material";
-import { axiosEmailCheck, axiosSignUpUser, axiosUsernameCheck } from "../../api/user/signUp";
+import { axiosEmailCheck, axiosSignUpUser, axiosUsernameCheck } from "../../api/user/signUp.";
 import {
   validateEmail,
   validateUsername,

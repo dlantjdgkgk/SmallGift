@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Box, Button, Grid, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { validateEmail } from "../../utils/validationUtil";
-import { axiosFindId } from "../../api/user/find";
+import { axiosFindId } from "../../api/user/find.";
 
-const FindIdForm = () => {
+const FindIdForm = (): JSX.Element => {
   // 이메일, 비밀번호 제출
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const FindIdForm = () => {
   });
 
   // 입력폼에서 데이터가 바뀔때마다 payload의 데이터 최신화
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent): void => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
 
     if (e.target.value === "") {

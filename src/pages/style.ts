@@ -845,6 +845,7 @@ export const Oauths = styled.div`
   padding: 1rem 0;
   justify-content: center;
   align-items: center;
+  margin-left: -20px;
 
   a {
     box-sizing: border-box;

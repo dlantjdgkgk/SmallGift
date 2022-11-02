@@ -150,7 +150,7 @@ const SignUpForm = () => {
   return (
     <Box component="form" noValidate sx={{ mt: 3 }}>
       <FormControl component="fieldset" variant="standard">
-        <MsgColorChanger>
+        <MsgColorChanger sx={{ mt: 3 }}>
           <Grid container spacing={2} alignItems="center">
             <Grid item xs={9}>
               <TextField
@@ -172,7 +172,7 @@ const SignUpForm = () => {
                 type="submit"
                 fullWidth
                 variant="outlined"
-                sx={{ m: 0, height: "56px" }}
+                sx={{ m: 0, height: "56px", fontSize: "12px" }}
                 size="large"
                 color={!validate.emailCheck ? "error" : "primary"}
               >
@@ -242,7 +242,7 @@ const SignUpForm = () => {
                 type="submit"
                 fullWidth
                 variant="outlined"
-                sx={{ m: 0, height: "56px" }}
+                sx={{ m: 0, height: "56px", fontSize: "12px" }}
                 size="large"
                 color={!validate.usernameCheck ? "error" : "primary"}
               >

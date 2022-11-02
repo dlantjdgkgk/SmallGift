@@ -16,6 +16,7 @@ const LogIn = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          marginLeft: 2,
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: "secondary.main" }} />
@@ -24,7 +25,7 @@ const LogIn = () => {
         </Typography>
         <LoginForm />
 
-        <Grid container>
+        <Grid container sx={{ marginLeft: -3 }}>
           <Grid item xs>
             <Link href="/find/ID" variant="body2">
               <span>아이디</span>

@@ -55,7 +55,7 @@ const FindIdForm = () => {
   };
 
   return !finded ? (
-    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3 }}>
       <TextField
         error={!validate.email}
         margin="normal"
@@ -86,7 +86,7 @@ const FindIdForm = () => {
       </Button>
     </Box>
   ) : (
-    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3 }}>
       <h3 style={{ textAlign: "center", fontWeight: "normal" }}>회원가입 시 사용한 아이디는</h3>
       <h2 style={{ textAlign: "center" }}>{findedUsername}</h2>
       <h3 style={{ textAlign: "center", fontWeight: "normal" }}> 입니다.</h3>

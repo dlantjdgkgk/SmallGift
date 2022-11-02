@@ -69,7 +69,7 @@ const FindPasswordForm = () => {
   };
 
   return !reset ? (
-    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3, width: 600 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
       <TextField
         error={!validate.email}
         margin="normal"
@@ -115,7 +115,7 @@ const FindPasswordForm = () => {
       </Button>
     </Box>
   ) : (
-    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3, width: 600 }}>
+    <Box component="form" onSubmit={handleSubmit} noValidate size="sm" sx={{ mt: 3 }}>
       <h3 style={{ textAlign: "center", fontWeight: "normal" }}>
         회원가입 시 등록한 이메일로 초기화된 비밀번호를 보냈습니다.
       </h3>

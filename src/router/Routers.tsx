@@ -15,12 +15,14 @@ const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
 const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
+const ChangePwd = lazy(() => import("pages/ChangePwd"));
 
 const LogIn = lazy(() => import("pages/Login"));
 const Kakao = lazy(() => import("pages/Kakao"));
 const Naver = lazy(() => import("pages/Naver"));
 const FindID = lazy(() => import("pages/FindID"));
 const FindPassword = lazy(() => import("pages/FindPassword"));
+const FindPasswordAfter = lazy(() => import("pages/FindPasswordAfter"));
 
 const BottomNav = lazy(() => import("components/BottomNav/BottomNav"));
 const Header = lazy(() => import("components/Header/Header"));
@@ -49,6 +51,7 @@ const Routers = (): JSX.Element => {
                 <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
                 <Route path="/mypage/refund/:id" element={<PrivateRoute element={<CancellationDetail />} />} />
                 <Route path="/mypage/modify" element={<PrivateRoute element={<ChangeMemberInfo />} />} />
+                <Route path="/change/password" element={<PrivateRoute element={<ChangePwd />} />} />
               </Route>
             </Route>
 
@@ -59,6 +62,7 @@ const Routers = (): JSX.Element => {
               <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
               <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
               <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
+              <Route path="/find/password/after" element={<PublicRoute element={<FindPasswordAfter />} />} />
             </Route>
             <Route element={<BottomNav />}>
               <Route path="/search" element={<Search />} />

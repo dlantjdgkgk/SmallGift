@@ -15,6 +15,7 @@ const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
 const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
+const ChangePwd = lazy(() => import("pages/ChangePwd"));
 
 const LogIn = lazy(() => import("pages/Login"));
 const SignUp = lazy(() => import("pages/SignUp"));
@@ -51,6 +52,7 @@ const Routers = (): JSX.Element => {
                 <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
                 <Route path="/mypage/refund/:id" element={<PrivateRoute element={<CancellationDetail />} />} />
                 <Route path="/mypage/modify" element={<PrivateRoute element={<ChangeMemberInfo />} />} />
+                <Route path="/change/password" element={<PrivateRoute element={<ChangePwd />} />} />
               </Route>
             </Route>
 

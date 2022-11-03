@@ -3,7 +3,7 @@ import { api } from "../server/Api";
 
 export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
   try {
-    const response = await api.post("../api/user/login", dataTosubmit);
+    const response = await api.post("api/user/login", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;
@@ -22,7 +22,8 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
 
     return true;
   } catch (error) {
-    alert("로그인에 실패하였습니다.");
+    alert("Error");
+    console.log("로그인에 실패하였습니다.");
+    return false;
   }
-  return 0;
 };

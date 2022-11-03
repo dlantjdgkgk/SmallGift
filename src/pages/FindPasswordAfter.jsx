@@ -1,4 +1,5 @@
-import React, { useNavigate } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Avatar, Box, Button, Container, CssBaseline, Grid, Link, Typography } from "@mui/material";
 
 const FindPasswordAfter = () => {

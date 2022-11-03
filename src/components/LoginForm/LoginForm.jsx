@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Button, Checkbox, FormControlLabel, Grid, TextField } from "@mui/material";
 import { useCookies } from "react-cookie";
+import { axiosLogInUser } from "../../api/user/logIn";
 
 const LogInForm = () => {
   // 이메일, 비밀번호 제출
@@ -73,18 +74,17 @@ const LogInForm = () => {
     event.preventDefault();
 
     // api 연결 잘 되면 이걸로 사용
-    // if (axiosLogInUser(payload, setCookies)) {
-    //   window.location.href = "/";
-    // }
+    if (axiosLogInUser(payload, setCookies)) {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/login";
+    }
 
     let expire = new Date().getTime() + 600 * 1000;
 
     window.localStorage.setItem("accessToken", 1);
     window.localStorage.setItem("expireAccessToken", expire);
     // 원래는 api에서 처리되는 것들
-
-    window.location.href = "/";
-    // 위에 코드는 삭제할것
   };
 
   return (

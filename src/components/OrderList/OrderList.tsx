@@ -2,6 +2,8 @@ import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
 import foodThumbnail from "../../assets/img/foodThumbnail.png";
+import { apiInstance } from "api/setting";
+import { useEffect } from "react";
 
 const OrderList = (): JSX.Element => {
   const gifticonList = [
@@ -27,6 +29,15 @@ const OrderList = (): JSX.Element => {
       navigate("/mypage/refund");
     }
   };
+
+  const OrderAllAPI = async (): Promise<void> => {
+    const result = await apiInstance.get("/api/user/order/all?memberId=1");
+    console.log(result);
+  };
+
+  useEffect(() => {
+    OrderAllAPI();
+  });
 
   return (
     <Styled.OrderListWrapper>

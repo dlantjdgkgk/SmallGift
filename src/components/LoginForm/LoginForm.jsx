@@ -75,7 +75,7 @@ const LogInForm = () => {
 
     // api 연결 잘 되면 이걸로 사용
     if (axiosLogInUser(payload, setCookies)) {
-      window.location.href = "/";
+      // window.location.href = "/";
     } else {
       window.location.href = "/login";
     }

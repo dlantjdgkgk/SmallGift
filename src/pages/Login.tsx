@@ -42,7 +42,8 @@ const LogIn = () => {
           </Grid>
         </Grid>
         <Styled.Oauths>
-          <a href={naverOauthUrl}>
+          {/* <a href={naverOauthUrl}> */}
+          <a>
             <img src={naverImg} alt="naver" />
           </a>
           <a href={kakaOauthUrl}>

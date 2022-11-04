@@ -72,7 +72,7 @@ const ChangePwdForm = () => {
 
   const [changed, setChanged] = useState(true);
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (axiosChangePwd(payload)) {
       alert("비밀번호 변경을 성공했습니다.");

@@ -1,7 +1,7 @@
 import * as Styled from "./style";
 import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
 import Arrow from "../../assets/img/Arrow.png";
 import Locate from "../../assets/img/Locate.png";
@@ -21,6 +21,19 @@ const MainPageRestaurant = (): JSX.Element => {
       throw new Error("check the network response");
     }
   };
+
+  const ShopInfoLocateAPI = async (): Promise<void> => {
+    try {
+      const res = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
+      console.log(res);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  useEffect(() => {
+    ShopInfoLocateAPI();
+  }, []);
 
   return (
     <Styled.SectionRestaurantWrapper>

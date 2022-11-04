@@ -13,7 +13,6 @@ const Category = lazy(() => import("pages/Category"));
 const Search = lazy(() => import("pages/Search"));
 const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
-const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
 
 const LogIn = lazy(() => import("pages/Login"));
@@ -42,8 +41,8 @@ const Routers = (): JSX.Element => {
                 <Route path="/" element={<Main />} />
                 <Route path="/category" element={<Category />} />
                 <Route path="/category/:id" element={<CategoryDetail />} />
-                <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
-                <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
+                <Route path="/mypage" element={<MyPage />} />
+                <Route path="/mypage/orderlist" element={<OrderList />} />
                 <Route path="/mypage/like" element={<PrivateRoute element={<ChoiceProduct />} />} />
                 <Route path="/payment/check" element={<PrivateRoute element={<PaymentCheck />} />} />
                 <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />

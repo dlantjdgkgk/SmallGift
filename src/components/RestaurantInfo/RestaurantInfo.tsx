@@ -40,7 +40,7 @@ const RestaurantInfo = (): JSX.Element => {
   ];
 
   const ShopDetailsGetAPI = async (): Promise<void> => {
-    const result = await apiInstance.get(`/api/user/shop/details?shopId=4`);
+    const result = await apiInstance.get("/api/user/shop/details?shopId=35");
     console.log(result);
   };
 

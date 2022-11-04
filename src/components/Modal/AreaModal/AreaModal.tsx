@@ -48,19 +48,6 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
     onApply();
   };
 
-  const ShopInfoLocateAPI = async (): Promise<void> => {
-    try {
-      const res = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${addressState.jibunAddress}`);
-      console.log(res);
-    } catch (error) {
-      throw new Error("check the network response");
-    }
-  };
-
-  useEffect(() => {
-    ShopInfoLocateAPI();
-  }, []);
-
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed;

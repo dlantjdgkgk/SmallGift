@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
-import AlarmSVG from "./AlarmSVG";
 import Logo from "../../assets/img/Logo.png";
 
 const Header = (): JSX.Element => {
@@ -13,6 +12,7 @@ const Header = (): JSX.Element => {
   const navigate = useNavigate();
   const [isCategory, setCategory] = useState(false);
   const regex = /^(\/category\/)/;
+  const [isLogin, setIsLogin] = useState(false);
 
   const updateScroll = (): void => {
     const { scrollY } = window;
@@ -63,15 +63,27 @@ const Header = (): JSX.Element => {
 
           {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? null : (
             <div>
-              <button
-                type="button"
-                onClick={(): void => {
-                  navigate("/alert");
-                }}
-                className="alert"
-              >
-                <AlarmSVG fill={isCategory ? "white" : undefined} />
-              </button>
+              {isLogin ? (
+                <button
+                  type="button"
+                  onClick={(): void => {
+                    navigate("/login");
+                  }}
+                  className="login"
+                >
+                  로그인
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={(): void => {
+                    navigate("/");
+                  }}
+                  className="logout"
+                >
+                  로그아웃
+                </button>
+              )}
             </div>
           )}
         </div>

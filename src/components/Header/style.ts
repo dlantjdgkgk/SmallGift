@@ -26,8 +26,7 @@ export const HeaderWrapper = styled.header<HeaderProps>`
     background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
     margin: 8px 0px 8px 16px;
   }
-  .back,
-  .alert {
+  .back {
     width: 32px;
     height: 32px;
     border: none;

@@ -13,10 +13,12 @@ const Category = lazy(() => import("pages/Category"));
 const Search = lazy(() => import("pages/Search"));
 const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
+const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
 const ChangePwd = lazy(() => import("pages/ChangePwd"));
 
 const LogIn = lazy(() => import("pages/Login"));
+const SignUp = lazy(() => import("pages/SignUp"));
 const Kakao = lazy(() => import("pages/Kakao"));
 const Naver = lazy(() => import("pages/Naver"));
 const FindID = lazy(() => import("pages/FindID"));
@@ -43,8 +45,8 @@ const Routers = (): JSX.Element => {
                 <Route path="/" element={<Main />} />
                 <Route path="/category" element={<Category />} />
                 <Route path="/category/:id" element={<CategoryDetail />} />
-                <Route path="/mypage" element={<MyPage />} />
-                <Route path="/mypage/orderlist" element={<OrderList />} />
+                <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
+                <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
                 <Route path="/mypage/like" element={<PrivateRoute element={<ChoiceProduct />} />} />
                 <Route path="/payment/check" element={<PrivateRoute element={<PaymentCheck />} />} />
                 <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
@@ -58,10 +60,15 @@ const Routers = (): JSX.Element => {
               <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
               <Route path="/auth/kakao/callback" element={<PublicRoute element={<Kakao />} />} />
               <Route path="/auth/naver/callback" element={<PublicRoute element={<Naver />} />} />
-              <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
-              <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
-              <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
-              <Route path="/find/password/after" element={<PublicRoute element={<FindPasswordAfter />} />} />
+              {/* <Route path="/login" element={<PublicRoute element={<LogIn />} />} /> */}
+              <Route path="/login" element={<LogIn />} />
+              {/* <Route path="/signup" element={<PublicRoute element={<SignUp />} />} /> */}
+              <Route path="/signup" element={<SignUp />} />
+              {/* <Route path="/find/id" element={<PublicRoute element={<FindID />} />} /> */}
+              <Route path="/find/id" element={<FindID />} />
+              {/* <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} /> */}
+              <Route path="/find/password" element={<FindPassword />} />
+              <Route path="/find/password/after" element={<FindPasswordAfter />} />
             </Route>
             <Route element={<BottomNav />}>
               <Route path="/search" element={<Search />} />

@@ -1,9 +1,9 @@
 import axios from "axios";
-import { api } from "../server/Api";
+import { accessApi, api } from "../server/Api";
 
 export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
   try {
-    const response = await api.post("./api/user/login", dataTosubmit);
+    const response = await accessApi.post("./api/user/login", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;

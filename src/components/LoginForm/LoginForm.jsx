@@ -72,12 +72,10 @@ const LogInForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log(payload);
     // api 연결 잘 되면 이걸로 사용
     if (axiosLogInUser(payload, setCookies)) {
-      // window.location.href = "/";
-    } else {
-      window.location.href = "/login";
+      window.location.href = "/";
     }
 
     let expire = new Date().getTime() + 600 * 1000;

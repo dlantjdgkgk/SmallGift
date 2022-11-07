@@ -1,9 +1,9 @@
 import axios from "axios";
 import { accessApi, api } from "../server/Api";
 
-export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
+export const axiosLogInUser = async (dataTosubmit, setCookies) => {
   try {
-    const response = await accessApi.post("./api/user/login", dataTosubmit);
+    const response = await api.post("./api/v1/login", dataTosubmit);
     if (!response.success) {
       alert(response.message);
       return false;
@@ -23,7 +23,6 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
     return true;
   } catch (error) {
     alert("Error");
-    console.log("로그인에 실패하였습니다.");
     return false;
   }
 };

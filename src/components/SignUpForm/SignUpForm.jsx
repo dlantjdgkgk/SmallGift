@@ -54,18 +54,22 @@ const SignUpForm = () => {
     if (e.target.id === "email") {
       if (validateEmail(e.target.value)) {
         setMsg({ ...msg, email: "" });
-        setValidate({ ...validate, email: true, emailCheck: false });
+        // setValidate({ ...validate, email: true, emailCheck: false });
+        setValidate({ ...validate, email: true, emailCheck: true });
       } else {
         setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다.", emailCheck: "" });
-        setValidate({ ...validate, email: false, emailCheck: false });
+        // setValidate({ ...validate, email: false, emailCheck: false });
+        setValidate({ ...validate, email: false, emailCheck: true });
       }
     } else if (e.target.id === "username") {
       if (validateUsername(e.target.value)) {
         setMsg({ ...msg, username: "" });
-        setValidate({ ...validate, username: true, usernameCheck: false });
+        // setValidate({ ...validate, username: true, usernameCheck: false });
+        setValidate({ ...validate, username: true, usernameCheck: true });
       } else {
         setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요.", usernameCheck: "" });
-        setValidate({ ...validate, username: false, usernameCheck: false });
+        // setValidate({ ...validate, username: false, usernameCheck: false });
+        setValidate({ ...validate, username: false, usernameCheck: true });
       }
     } else if (e.target.id === "password") {
       if (validatePassword(e.target.value)) {

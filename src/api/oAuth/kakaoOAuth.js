@@ -9,5 +9,6 @@ export const axiosKakaoLogin = async (dataTosubmit): any => {
     }
   } catch (error) {
     alert(error);
+    console.log(error);
   }
 };

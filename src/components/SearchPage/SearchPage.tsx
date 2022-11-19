@@ -32,7 +32,7 @@ const SearchPage = (): JSX.Element => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     keyWordPostAPI(inputValue);
-    navigate("/");
+    navigate("/search/shop/5");
   };
 
   const topTenAPI = async (): Promise<void> => {
@@ -50,6 +50,15 @@ const SearchPage = (): JSX.Element => {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
       setKeyWord(keyWordData.data.data.userKeywords);
       console.log(keyWord);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const ShopInfoKeyWordAPI = async (dropDownItem: string): Promise<void> => {
+    try {
+      const result = await apiInstance.get(`/api/user/shop/info/keyword?keyword=${dropDownItem}`);
+      console.log(result);
     } catch (error) {
       console.log(error);
     }
@@ -96,8 +105,7 @@ const SearchPage = (): JSX.Element => {
         keyword: dropDownItem,
         memberId: 1,
       };
-      const result = await apiInstance.post("/api/user/keyword", payload);
-      console.log(result);
+      await apiInstance.post("/api/user/keyword", payload);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -135,12 +143,13 @@ const SearchPage = (): JSX.Element => {
         <>
           <p className="recomendation">추천 검색어</p>
           {!recommendationData && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
-          {recommendationData?.map((dropDownItem) => {
+          {recommendationData.map((dropDownItem) => {
             return dropDownItem.data.indexOf(inputValue) === -1 ? null : (
               <Styled.DropDownItem
                 key={dropDownItem.id}
                 onClick={(): void => {
                   keyWordPostAPI(dropDownItem.data);
+                  ShopInfoKeyWordAPI(dropDownItem.data);
                 }}
               >
                 {dropDownItem.data.split(inputValue)[0]}

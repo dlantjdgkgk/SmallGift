@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import * as Styled from "./style";
 
+interface IRegionProps {
+  location: string;
+}
+
 const Region = (): JSX.Element => {
   const [selected, setSelected] = useState("");
+
   const selectList = [
     {
       id: "1",

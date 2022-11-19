@@ -1,7 +1,5 @@
 import axios from "axios";
 
-import { useReIssueErrorHandle, useReIssueToken } from "../user/reIssueToken";
-
 export const api = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
   timeout: 10000,
@@ -22,5 +20,3 @@ export const accessApi = axios.create({
     Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
   },
 });
-
-// accessApi.interceptors.request.use(useReIssueToken, useReIssueErrorHandle);

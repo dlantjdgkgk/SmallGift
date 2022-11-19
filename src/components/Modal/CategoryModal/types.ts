@@ -1,7 +1,10 @@
 export interface MovieInfo {
-  setMenuName: string;
-  setMenu: string;
-  price: string;
+  data: {
+    productImage: string;
+    productPrice: string;
+    productName: string;
+    id: number;
+  };
 }
 export interface Props {
   menu: MovieInfo;

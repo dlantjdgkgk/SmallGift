@@ -24,7 +24,6 @@ export const ProductInfoSection = styled.section`
   .menuImage {
     width: 82px;
     height: 82px;
-    background: #d9d9d9;
   }
   .setMenuInfo {
     margin-left: 16px;

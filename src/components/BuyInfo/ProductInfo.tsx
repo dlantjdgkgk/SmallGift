@@ -27,11 +27,11 @@ const ProductInfo = ({ menu }: IProps): JSX.Element => {
       </div>
       {foldSection ? null : (
         <div className="gifticonInformation">
-          <div className="menuImage" />
+          <img src={menu.data.productImage} alt="이미지" className="menuImage" />
           <div className="setMenuInfo">
-            <div className="setMenuName">{menu?.setMenuName}</div>
-            <p className="setMenu">{menu?.setMenu}</p>
-            <p className="price">{menu?.price}원</p>
+            <div className="setMenuName">{menu.data.productName}</div>
+            <p className="setMenu">{menu.data.productName}</p>
+            <p className="price">{menu.data.productPrice}원</p>
           </div>
         </div>
       )}

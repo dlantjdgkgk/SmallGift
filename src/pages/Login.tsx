@@ -1,10 +1,9 @@
 import { Avatar, Box, Grid, Link, Typography, Container, CssBaseline } from "@mui/material";
-import naverImg from "assets/image/naver_oauth.png";
-import kakaoImg from "assets/image/kakao_oauth.png";
+import naverImg from "assets/img/naver_oauth.png";
+import kakaoImg from "assets/img/kakao_oauth.png";
 import * as Styled from "./style";
 import LoginForm from "components/LoginForm/LoginForm";
 import { kakaOauthUrl } from "utils/kakaoOAuthUtil";
-import { naverOauthUrl } from "utils/naverOAuthUtil";
 
 const LogIn = () => {
   return (

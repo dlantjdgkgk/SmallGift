@@ -12,7 +12,7 @@ const MainPageRestaurant = (): JSX.Element => {
   const [locate, setLocate] = useState(null);
   const handleModalClose = (): void => setModalIsOpen(false);
 
-  const memberId = 1;
+  const memberId = 16;
   const userLocateAPI = async (): Promise<void> => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
@@ -24,8 +24,7 @@ const MainPageRestaurant = (): JSX.Element => {
 
   const ShopInfoLocateAPI = async (): Promise<void> => {
     try {
-      const res = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
-      console.log(res);
+      await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -33,6 +32,7 @@ const MainPageRestaurant = (): JSX.Element => {
 
   useEffect(() => {
     ShopInfoLocateAPI();
+    userLocateAPI();
   }, []);
 
   return (
@@ -53,7 +53,7 @@ const MainPageRestaurant = (): JSX.Element => {
             {modalIsOpen ? (
               <Portal>
                 <AreaModal
-                  onApply={userLocateAPI}
+                  userLocateAPI={userLocateAPI}
                   setModalIsOpen={setModalIsOpen}
                   handleModalClose={handleModalClose}
                 />

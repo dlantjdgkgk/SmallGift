@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Region from "./Region";
 import * as Styled from "./style";
@@ -8,6 +8,7 @@ import SelectedCategory from "./SelectedCategory";
 import CategoryRestaurant from "./CategoryRestaurant";
 import throttle from "utils/throttle";
 import Top from "../../assets/img/Top.png";
+import { apiInstance } from "api/setting";
 
 const CategoryPageSection = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
@@ -16,6 +17,11 @@ const CategoryPageSection = (): JSX.Element => {
   const [selectCategory, setSelectCategory] = useState(defaultSelect);
   const [isLoading, setIsLoading] = useState(false);
   const intersectionTarget = useRef(null);
+
+  const resulta = useLocation();
+  const location = resulta.state;
+
+  console.log(location);
 
   const tempShopList = [
     {
@@ -78,6 +84,24 @@ const CategoryPageSection = (): JSX.Element => {
     };
   }, []);
 
+  const page = 1;
+  const pageCount = 1;
+
+  const ShopInfoAPI = async (): Promise<void> => {
+    try {
+      const result = await apiInstance.get(
+        `/api/user/shop/info/all/locate/category?category=${selectCategory}&locate=${location}&page=${page}&pageCount=${pageCount}`,
+      );
+      console.log(result);
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  // useEffect(() => {
+  //   ShopInfoAPI();
+  // }, []);
+
   const moveToTop = (): void => window.scrollTo({ top: 0, behavior: "smooth" });
 
   // const getMoreItem = (): Promise<number> => {
@@ -91,24 +115,28 @@ const CategoryPageSection = (): JSX.Element => {
   //   });
   // };
 
-  // const onIntersect = async ([entry], observer): Promise<void> => {
-  //   if (entry.isIntersecting && !isLoading) {
-  //     observer.unobserve(entry.target);
-  //     // await getMoreItem();
-  //     observer.observe(entry.target);
-  //   }
-  // };
+  const onIntersect = async (
+    [entry]: any,
+    observer: { unobserve: (arg0: any) => void; observe: (arg0: any) => void },
+    // eslint-disable-next-line require-await
+  ): Promise<void> => {
+    if (entry.isIntersecting && !isLoading) {
+      observer.unobserve(entry.target);
+      // await getMoreItem();
+      observer.observe(entry.target);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (!intersectionTarget.current) return undefined;
-  //   const observer = new IntersectionObserver(onIntersect, {
-  //     threshold: 0.4,
-  //   });
+  useEffect(() => {
+    if (!intersectionTarget.current) return undefined;
+    const observer = new IntersectionObserver(onIntersect, {
+      threshold: 0.4,
+    });
 
-  //   observer.observe(intersectionTarget.current);
+    observer.observe(intersectionTarget.current);
 
-  //   return () => observer && observer.disconnect();
-  // }, [intersectionTarget.current]);
+    return () => observer && observer.disconnect();
+  }, [intersectionTarget.current]);
 
   return (
     <>
@@ -116,9 +144,9 @@ const CategoryPageSection = (): JSX.Element => {
       <SelectedCategory categories={categories} selectCategory={selectCategory} setSelectCategory={setSelectCategory} />
       <Styled.BoundaryLine />
       <CategoryRestaurant shopList={shopList} selectCategory={selectCategory} />
-      {/* <IntersectionBox ref={intersectionTarget} className="Target-Element">
+      <IntersectionBox ref={intersectionTarget} className="Target-Element">
         {isLoading && <Spinner />}
-      </IntersectionBox> */}
+      </IntersectionBox>
       <button type="button" className="top" onClick={moveToTop}>
         {scrollFlag && <img src={Top} alt="" />}
       </button>

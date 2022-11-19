@@ -1,5 +1,9 @@
 export default interface MenuType {
-  setMenuName: string;
-  setMenu: string;
-  price: string;
+  data: {
+    productImage: string;
+    productPrice: string;
+    productName: string;
+    productId: number;
+    id: number;
+  };
 }

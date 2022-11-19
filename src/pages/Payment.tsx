@@ -2,13 +2,14 @@ import ProductInfo from "components/BuyInfo/ProductInfo";
 import * as Styled from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IUserFormInput, MemberType } from "./types";
+import { IUserFormInput } from "./types";
 import { useLocation } from "react-router-dom";
 import MenuType from "components/BuyInfo/MenuType";
 import { FormErrorMessages } from "utils/hookFormUtil";
+import { apiInstance } from "api/setting";
 
 interface PropsType {
   menu: MenuType;
@@ -19,29 +20,21 @@ const Payment = (): JSX.Element => {
   const result = location.state as PropsType;
   const menu: MenuType = result?.menu;
 
+  console.log(menu);
+
   const navigate = useNavigate();
   const [foldSenderSection, setFoldSenderSection] = useState(false);
 
-  const [serverMemberInfo, setServerMemberInfo] = useState<MemberType>({
-    nickName: "이무성",
-    senderPhone: "010-8240-9930",
-    email: "dlantjdgkgk@naver.com",
-  });
-
-  const [prevMemberInfo, setPrevMemeberInfo] = useState<MemberType>({});
-
-  const memberInfoHandler = (e: ChangeEvent<HTMLInputElement>): void => {
-    const target = e.target.checked ? serverMemberInfo : prevMemberInfo;
-    const { receiverPhone, ...payload } = getValues();
-
-    if (e.target.checked) {
-      setPrevMemeberInfo({ ...payload });
-    }
-    let key: keyof MemberType;
-    for (key in target) {
-      if (Object.prototype.hasOwnProperty.call(target, key)) {
-        setValue(key, target[key]);
-      }
+  const OrderPostAPI = async (): Promise<void> => {
+    try {
+      const payload = {
+        productId: menu.data.productId || menu.data.id,
+        memberId: 16,
+      };
+      const a = await apiInstance.post("/api/user/order", payload);
+      console.log(a);
+    } catch (error) {
+      throw new Error("check the network response");
     }
   };
 
@@ -50,12 +43,10 @@ const Payment = (): JSX.Element => {
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
-    getValues,
   } = useForm<IUserFormInput>();
 
-  const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
-    console.log(JSON.stringify(data));
+  const onSubmit: SubmitHandler<IUserFormInput> = () => {
+    OrderPostAPI();
     navigate("/payment/check");
   };
 
@@ -82,10 +73,6 @@ const Payment = (): JSX.Element => {
           </div>
           {foldSenderSection ? null : (
             <Styled.FormSender>
-              <div className="checkInfo">
-                <input type="checkbox" onChange={memberInfoHandler} />
-                <p>회원 정보와 동일해요</p>
-              </div>
               <div className="nickName">
                 <label htmlFor="발송인명">발송인명</label>
                 <input
@@ -142,7 +129,7 @@ const Payment = (): JSX.Element => {
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
           <div className="payment">
-            <button type="submit">{menu?.price}원 결제하기</button>
+            <button type="submit">{menu.data.productPrice}원 결제하기</button>
           </div>
         </Styled.PaymentMethodSection>
       </form>

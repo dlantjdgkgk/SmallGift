@@ -1,10 +1,18 @@
 import styled from "styled-components";
 
-export const CancellationDetailWrapper = styled.main``;
-
+export const OrderListCouponWrapper = styled.main`
+  margin-top: 24px;
+  padding: 0 15px;
+  img {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 300px;
+    object-fit: contain;
+  }
+`;
 export const ProductInfoSection = styled.section`
   margin-top: 16px;
-  margin-left: 16px;
   .productInfo {
     font-family: "Noto Sans KR";
     font-style: normal;
@@ -45,11 +53,7 @@ export const ProductInfoSection = styled.section`
   .gifticonInfo {
     display: flex;
   }
-  .thumbnail {
-    margin-right: 16px;
-    width: 72px;
-    height: 72px;
-  }
+
   .restaurantName {
     font-family: "Noto Sans KR";
     font-style: normal;
@@ -77,72 +81,5 @@ export const ProductInfoSection = styled.section`
     line-height: 20px;
     letter-spacing: -0.04em;
     color: #000000;
-  }
-`;
-
-export const BoundaryLine = styled.div`
-  width: 360px;
-  height: 8px;
-  background: #f4f4f4;
-  margin-top: 24px;
-`;
-
-export const RefundInfoSection = styled.section`
-  margin-top: 16px;
-  margin-left: 16px;
-  h1 {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: -0.04em;
-    color: #000000;
-    margin-bottom: 16px;
-  }
-  .refundInfo {
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-  .totalPrice,
-  .refundPrice,
-  .refundMethod {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 23px;
-    letter-spacing: -0.04em;
-    color: #000000;
-  }
-  .totalMoney,
-  .refundMoney {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    letter-spacing: -0.04em;
-    color: #636363;
-    margin-left: 32px;
-  }
-  .refundMoney {
-    font-weight: 700;
-    color: #6600cc;
-  }
-  .refundMethodInfo {
-    display: flex;
-    padding-right: 16px;
-    align-items: center;
-    label {
-      width: 120px;
-    }
-    input {
-      width: 100%;
-      height: 40px;
-      background: #f2f2f2;
-      border-radius: 8px;
-      padding-left: 16px;
-    }
   }
 `;

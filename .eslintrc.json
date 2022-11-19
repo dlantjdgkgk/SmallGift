@@ -27,7 +27,7 @@
     "rules": {
         "eqeqeq": ["error", "always"],
         "global-require": 0,
-        // "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/explicit-function-return-type":"off",
         "@typescript-eslint/adjacent-overload-signatures": "warn",
         "@typescript-eslint/no-dupe-class-members": "warn",
@@ -38,8 +38,12 @@
         "react/react-in-jsx-scope": 0,
         "@typescript-eslint/no-var-requires": "off",
         "react/prop-types": "off",
+        "no-lone-blocks": "off",
         "require-await": "error",
+        "no-unused-expressions": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
         "arrow-body-style": "off",
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
         "react/function-component-definition": [
             "warn",
             { "namedComponents": "arrow-function" }
@@ -71,7 +75,6 @@
         "@typescript-eslint/no-use-before-define": ["error"],
 
         "no-shadow": "off",
-        "no-unused-expressions": ["warn"],
         "@typescript-eslint/no-shadow": ["error"],
         "@typescript-eslint/naming-convention": "off",
         "@typescript-eslint/unbound-method": "off",

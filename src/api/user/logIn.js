@@ -1,5 +1,4 @@
-import axios from "axios";
-import { accessApi, api } from "../server/Api";
+import { api } from "../server/Api";
 
 export const axiosLogInUser = async (dataTosubmit, setCookies) => {
   try {
@@ -14,7 +13,7 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     const expireReissueToken = today.setDate(today.getDate() + 7);
     // 만료 시간 설정
 
-    window.localStorage.setItem("acessToken", response.data.jwtAccessToken);
+    window.localStorage.setItem("accessToken", response.data.jwtAccessToken);
     window.localStorage.setItem("expireAccessToken", expireAccessToken);
     setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),

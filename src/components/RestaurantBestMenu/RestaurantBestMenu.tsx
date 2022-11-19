@@ -2,15 +2,36 @@ import * as Styled from "./style";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Portal from "components/Modal/Portal/Portal";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
-import foodThumbnail from "../../assets/img/foodThumbnail.png";
+import { apiInstance } from "api/setting";
+
+interface IShopMenuProps {
+  data: {
+    productImage: string;
+    productPrice: string;
+    productName: string;
+    id: number;
+  };
+}
 
 const RestaurantBestMenu = (): JSX.Element => {
-  const [selectMenu, setSelectMenu] = useState(4);
+  const [selectMenu, setSelectMenu] = useState<number>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleModalClose = (): void => setModalIsOpen(false);
+  const [menus, setMenus] = useState<IShopMenuProps[]>([]);
+
+  const ShopMenuAPI = async (): Promise<void> => {
+    const result = await apiInstance.get("/api/user/shop/menu?shopId=1");
+    setMenus(result.data.data.shopAllMenuList);
+  };
+
+  console.log(menus);
+
+  useEffect(() => {
+    ShopMenuAPI();
+  }, []);
 
   const settings = {
     dots: true,
@@ -22,34 +43,12 @@ const RestaurantBestMenu = (): JSX.Element => {
     centerPadding: "0px",
     bottom: "0px;",
   };
-  const menuList = [
-    {
-      setMenuName: "쭈차돌세트",
-      setMenu: "쭈꾸미+차돌+묵사밥+볶음밥",
-      price: "15,000",
-    },
-    {
-      setMenuName: "삼겹살세트",
-      setMenu: "삼겹살+묵사밥+볶음밥",
-      price: "16,000",
-    },
-    {
-      setMenuName: "목살세트",
-      setMenu: "목살+묵사밥+볶음밥",
-      price: "17,000",
-    },
-    {
-      setMenuName: "항정살세트",
-      setMenu: "항정살+묵사밥+볶음밥",
-      price: "18,000",
-    },
-  ];
 
   return (
     <Styled.BestMenuWrapper>
       <p className="bestMenu">Best 메뉴</p>
       <Slider {...settings}>
-        {menuList.map((menu, index) => {
+        {menus.map((menu, index) => {
           const isSelected = selectMenu === index;
           return (
             <section
@@ -68,11 +67,11 @@ const RestaurantBestMenu = (): JSX.Element => {
               ) : null}
 
               <article className="menuInformation">
-                <img src={foodThumbnail} alt="" />
+                <img src={menu.data.productImage} alt="이미지" />
                 <div className="setMenuInfo">
-                  <div className="setMenuName">{menu.setMenuName}</div>
-                  <p className="setMenu">{menu.setMenu}</p>
-                  <p className="price">{menu.price}원</p>
+                  <div className="setMenuName">{menu.data.productName}세트</div>
+                  <p className="setMenu">{menu.data.productName}</p>
+                  <p className="price">{menu.data.productPrice}원</p>
                 </div>
               </article>
             </section>

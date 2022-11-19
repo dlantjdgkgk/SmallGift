@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
 import Logo from "../../assets/img/Logo.png";
+import { Alert } from "react-st-modal";
 
 const Header = (): JSX.Element => {
   const [scrollFlag, setScrollFlag] = useState(true);
@@ -12,7 +13,6 @@ const Header = (): JSX.Element => {
   const navigate = useNavigate();
   const [isCategory, setCategory] = useState(false);
   const regex = /^(\/category\/)/;
-  const [isLogin, setIsLogin] = useState(false);
 
   const updateScroll = (): void => {
     const { scrollY } = window;
@@ -21,6 +21,12 @@ const Header = (): JSX.Element => {
   };
 
   const handleScroll = (): Function => throttle(updateScroll, 100);
+
+  const handleLogoutBtn = async (): Promise<void> => {
+    await Alert("로그아웃 하시겠습니까?");
+    await localStorage.removeItem("accessToken");
+    navigate("/");
+  };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -61,9 +67,17 @@ const Header = (): JSX.Element => {
           {pathname === "/mypage/refund" && <p className="pageDescription">취소/환불내역</p>}
           {pathname === "/mypage/modify" && <p className="pageDescription">회원 정보 변경</p>}
 
-          {pathname === "/payment" || pathname === "/paymentcheck" || pathname === "/alert" ? null : (
+          {pathname === "/payment" ||
+          pathname === "/paymentcheck" ||
+          pathname === "/alert" ||
+          pathname === "/signup" ||
+          pathname === "/find/password" ||
+          pathname === "/auth/kakao/callback" ||
+          pathname === "/find/ID" ||
+          pathname === "/find/ID" ||
+          pathname === "/find/password/after" ? null : (
             <div>
-              {isLogin ? (
+              {!localStorage.accessToken ? (
                 <button
                   type="button"
                   onClick={(): void => {
@@ -74,13 +88,7 @@ const Header = (): JSX.Element => {
                   로그인
                 </button>
               ) : (
-                <button
-                  type="button"
-                  onClick={(): void => {
-                    navigate("/");
-                  }}
-                  className="logout"
-                >
+                <button type="button" onClick={handleLogoutBtn} className="logout">
                   로그아웃
                 </button>
               )}

@@ -1,42 +1,74 @@
 import * as Styled from "./style";
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
 import { Link } from "react-router-dom";
 import { apiInstance } from "api/setting";
 
+type WishProductType = {
+  productContent: string;
+  productId: number;
+  productImage: string;
+  productName: string;
+  productPrice: number;
+  productStock: number;
+  shopName: string;
+  wishListId: number;
+};
+
 const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
-  const [like, setLike] = useState(false);
+  const [wishtData, setWishData] = useState<WishProductType | undefined>();
   const params = useParams();
   const parameter = params.id;
-  const productId = 5;
   const memberId = 1;
 
-  const PostWishListAPI = async (): Promise<void> => {
-    try {
+  const updateWishData = useCallback(() => {
+    apiInstance.get(`/api/user/wishList?memberId=${memberId}`).then(
+      ({
+        data: {
+          data: { wishList },
+        },
+      }) => {
+        const wishProduct = (wishList as Array<{ data: WishProductType }>).find(
+          (product) => product.data.productId === menu.data.id,
+        );
+        if (wishProduct) setWishData(wishProduct.data);
+      },
+    );
+  }, [menu.data.id]);
+
+  useEffect(() => {
+    // 상품 찜 여부 확인
+    updateWishData();
+  }, [updateWishData]);
+
+  const handleLikeButtonClick = async () => {
+    if (wishtData) {
+      apiInstance.delete(`/api/user/wishList?wishListId=${wishtData.wishListId}`);
+      setWishData(undefined);
+    } else {
       const payload = {
-        productId,
-        userId: memberId,
+        productId: menu.data.id,
+        memberId,
       };
-      const result = await apiInstance.post("/api/user/wishList", { data: payload });
-      console.log(result);
-    } catch (error) {
-      throw new Error("check the network response");
+      await apiInstance.post("/api/user/wishList", payload);
+      updateWishData();
     }
   };
 
+  const handleClickOutside = useCallback(
+    (e: MouseEvent): void => {
+      if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
+    },
+    [handleModalClose],
+  );
+
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  });
-
-  const handleClickOutside = (e: MouseEvent): void => {
-    if ((e.target as HTMLDivElement).id === "modal-container") handleModalClose();
-  };
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [handleClickOutside]);
 
   useEffect(() => {
     document.body.style.cssText = `
@@ -56,27 +88,21 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
       <Styled.ModalWrapper>
         <div className="setMenuInformation">
           <div>
-            <p className="setName">{menu.setMenuName}</p>
+            <p className="setName">{menu.data.productName}</p>
           </div>
-          <p className="setMenu">{menu.setMenu}</p>
+          <p className="setMenu">{menu.data.productName}</p>
         </div>
 
         <div className="priceInformation">
           <p className="onePerson">1인 기준</p>
           <div className="priceAndButton">
-            <p className="price">{menu.price}원</p>
+            <p className="price">{menu.data.productPrice}원</p>
             <div className="button">
               <button type="button" className="share">
                 <KakaoShare parameter={parameter} />
               </button>
-              <button
-                type="button"
-                onClick={(): void => {
-                  setLike(!like);
-                  PostWishListAPI();
-                }}
-              >
-                <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
+              <button type="button" onClick={handleLikeButtonClick}>
+                <LikeSVG fill={wishtData ? "red" : undefined} stroke={wishtData ? "transparent" : "gray"} />
               </button>
             </div>
           </div>

@@ -5,12 +5,12 @@ export const CancellationWrapper = styled.main``;
 export const CancellationSection = styled.section`
   margin-left: 16px;
   .orderNumberInfo {
-    width: 196px;
     height: 33px;
     background: #f8f8f8;
     border-radius: 109px;
     margin-top: 16px;
     margin-bottom: 16px;
+    padding: 0 10px;
   }
   .orderNumber {
     font-family: "Noto Sans KR";
@@ -38,6 +38,8 @@ export const CancellationSection = styled.section`
   }
   .thumbnail {
     margin-right: 16px;
+    width: 72px;
+    height: 72px;
   }
   .restaurantName {
     font-family: "Noto Sans KR";
@@ -93,7 +95,7 @@ export const CancellationSection = styled.section`
 `;
 
 export const BoundaryLine = styled.div`
-  width: 360px;
+  width: 100%;
   height: 8px;
   background: #f4f4f4;
   margin-top: 11px;

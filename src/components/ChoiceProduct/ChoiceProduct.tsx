@@ -2,28 +2,35 @@ import { useEffect, useState } from "react";
 import * as Styled from "./style";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
-import foodThumbnail from "../../assets/img/foodThumbnail.png";
 import LocateWhite from "../../assets/img/LocateWhite.png";
 import { apiInstance } from "api/setting";
 
+interface MenuType {
+  data: {
+    productImage: string;
+    productPrice: string;
+    productName: string;
+    productContent: string;
+    shopName: string;
+    wishListId: number;
+    status: number;
+  };
+  id: number;
+}
+
 const ChoiceProduct = (): JSX.Element => {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("sortByHighPrice");
   const [selectMenu, setSelectMenu] = useState(Number);
+  const [menuList, setMenuList] = useState<MenuType[]>([]);
   const memberId = 1;
 
-  const UpdateMenuList = (idx: number): void => {
-    const cp = [...menuList];
-    cp[idx].like = !cp[idx].like;
-    setMenuList(cp);
-  };
-
-  const DeleteWishListAPI = async (): Promise<void> => {
+  const DeleteWishListAPI = async (selectMenuId: number): Promise<void> => {
     try {
-      const payload = {
-        wishListId: selectMenu,
-      };
-      const result = await apiInstance.delete("/api/user/wishList", { data: payload });
+      const result = await apiInstance.delete(`/api/user/wishList?wishListId=${selectMenuId}`);
       console.log(result);
+      if (result.status === 200) {
+        GetWishListAPI();
+      }
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -31,8 +38,8 @@ const ChoiceProduct = (): JSX.Element => {
 
   const GetWishListAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get(`/api/user/wishList?userId=${memberId}`);
-      console.log(result);
+      const result = await apiInstance.get(`/api/user/wishList?memberId=${memberId}`);
+      setMenuList(result.data.data.wishList);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -42,37 +49,6 @@ const ChoiceProduct = (): JSX.Element => {
     GetWishListAPI();
   }, []);
 
-  const [menuList, setMenuList] = useState([
-    {
-      setMenuName: "쭈차돌세트",
-      setMenu: "쭈꾸미+차돌+묵사밥+볶음밥",
-      price: "15,000",
-      id: 1,
-      like: true,
-    },
-    {
-      setMenuName: "삼겹살세트",
-      setMenu: "삼겹살+묵사밥+볶음밥",
-      price: "16,000",
-      id: 2,
-      like: true,
-    },
-    {
-      setMenuName: "목살세트",
-      setMenu: "목살+묵사밥+볶음밥",
-      price: "17,000",
-      id: 3,
-      like: true,
-    },
-    {
-      setMenuName: "항정살세트",
-      setMenu: "항정살+묵사밥+볶음밥",
-      price: "18,000",
-      id: 4,
-      like: true,
-    },
-  ]);
-
   return (
     <Styled.ChoiceProductWrapper>
       <Styled.ProductFilterSection>
@@ -80,44 +56,54 @@ const ChoiceProduct = (): JSX.Element => {
           <select
             onChange={(e): void => {
               setSelected(e.target.value);
+              if (selected === "sortByLowPrice") {
+                const copy = [...menuList];
+                copy.sort((a, b) => {
+                  return Number(b.data.productPrice) - Number(a.data.productPrice);
+                });
+                setMenuList(copy);
+              }
+              if (selected === "sortByHighPrice") {
+                const copy = [...menuList];
+                copy.sort((a, b) => {
+                  return Number(a.data.productPrice) - Number(b.data.productPrice);
+                });
+                setMenuList(copy);
+              }
             }}
             value={selected}
           >
-            <option value="가격 비싼순">가격 비싼순</option>
-            <option value="가격 저렴한순">가격 저렴한순</option>
+            <option value="sortByHighPrice">높은가격순</option>
+            <option value="sortByLowPrice">낮은가격순</option>
           </select>
-          <button type="button" className="delete">
-            전체 삭제
-          </button>
         </div>
       </Styled.ProductFilterSection>
 
-      {menuList.map((menu, idx) => {
+      {menuList.map((menu) => {
         return (
           <Styled.ChoiceProductSection key={menu.id}>
             <div className="gifticonInfo">
               <div className="locate">
                 <img src={LocateWhite} alt="" />
-                <p>쭈꾸미랩소디 강남점</p>
+                <p>{menu.data.shopName}</p>
               </div>
               <div className="menuInfo">
-                <img src={foodThumbnail} alt="" className="thumbnail" />
+                <img src={menu.data.productImage} alt="" className="thumbnail" />
                 <div className="setInfo">
-                  <p className="setName">{menu.setMenuName}</p>
-                  <p className="setMenu">{menu.setMenu}</p>
-                  <p className="price">{menu.price}원</p>
+                  <p className="setName">{menu.data.productName}</p>
+                  <p className="setMenu">{menu.data.productContent}</p>
+                  <p className="price">{menu.data.productPrice}원</p>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={(): void => {
-                  UpdateMenuList(idx);
-                  setSelectMenu(menu.id);
-                  DeleteWishListAPI();
+                  setSelectMenu(menu.data.wishListId);
+                  DeleteWishListAPI(menu.data.wishListId);
                 }}
                 className="like"
               >
-                <LikeSVG fill={menu.like ? "red" : undefined} stroke={menu.like ? "transparent" : "gray"} />
+                <LikeSVG fill="red" stroke="transparent" />
               </button>
               <Link to="/payment" state={{ menu }}>
                 <button type="button" className="order">

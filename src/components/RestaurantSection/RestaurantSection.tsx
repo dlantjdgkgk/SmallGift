@@ -1,13 +1,24 @@
 import * as Styled from "./style";
-import { useParams } from "react-router-dom";
-import LikeSVG from "../LikeSVG/LikeSVG";
+import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import Shadow from "../../assets/img/shadow.png";
 import RestaurantInfo from "../../assets/img/RestaurantInfo.png";
 
+interface ShopType {
+  category: string;
+  restaurantName: string;
+  restaurantMenu: string;
+}
+
+interface PropsType {
+  shop: ShopType;
+}
+
 const RestaurantSection = (): JSX.Element => {
-  const { id } = useParams();
   const [like, setLike] = useState(false);
+  const location = useLocation();
+  const result = location.state as PropsType;
+  const shop: ShopType = result?.shop;
 
   return (
     <Styled.RestaurantSectionWrapper>
@@ -15,13 +26,10 @@ const RestaurantSection = (): JSX.Element => {
       <img src={RestaurantInfo} alt="" className="picture" />
       <div className="resturantThumbnail">
         <button className="category" type="button">
-          한식
+          {shop.category}
         </button>
         <div className="restaurantLike">
-          <div className="restaurantName">{id}</div>
-          <button type="button" onClick={(): void => setLike(!like)}>
-            <LikeSVG fill={like ? "white" : undefined} stroke={like ? "transparent" : "gray"} />
-          </button>
+          <div className="restaurantName">{shop.restaurantName}</div>
         </div>
       </div>
     </Styled.RestaurantSectionWrapper>

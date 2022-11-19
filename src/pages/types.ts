@@ -4,9 +4,3 @@ export interface IUserFormInput {
   email?: string;
   receiverPhone?: string;
 }
-
-export interface MemberType {
-  nickName?: string;
-  senderPhone?: string;
-  email?: string;
-}

@@ -1,12 +1,10 @@
 import Footer from "components/Footer/Footer";
 import * as Styled from "./style";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { useEffect, useState } from "react";
 import { apiInstance } from "api/setting";
 import Arrow from "../assets/img/Arrow.png";
-import foodThumbnail from "../assets/img/foodThumbnail.png";
 import Kakao from "../assets/img/Kakao.png";
 import LocateWhite from "../assets/img/LocateWhite.png";
 import ArrowBlack from "../assets/img/ArrowBlack.png";
@@ -18,16 +16,34 @@ interface UserInfoProps {
   accountBank: string;
 }
 
+interface MenuType {
+  data: {
+    productImage: string;
+    productPrice: string;
+    productName: string;
+    productContent: string;
+    shopName: string;
+  };
+}
+
+interface IOrderListProps {
+  productImage: string;
+  productName: string;
+  productPrice: string;
+  productContent: string;
+  id: number;
+}
+
 const MyPage = (): JSX.Element => {
-  const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];
   const navigate = useNavigate();
-  const [like, setLike] = useState(false);
   const [userInfo, setUserInfo] = useState<UserInfoProps>();
   const [socialLogin, setSocialLogin] = useState(true);
   const memberId = 1;
+  const [choiceProduct, setChoiceProduct] = useState<MenuType>();
+  const [orderList, setOrderList] = useState<IOrderListProps>();
 
-  const Logout = (): void => {
-    console.log("로그아웃 되었습니다.");
+  const Logout = () => {
+    localStorage.removeItem("accessToken");
   };
 
   const userInfoAPI = async (): Promise<void> => {
@@ -42,8 +58,31 @@ const MyPage = (): JSX.Element => {
     }
   };
 
+  const OrderAllAPI = async (): Promise<void> => {
+    try {
+      const result = await apiInstance.get("/api/user/order/all?memberId=16");
+      console.log(result);
+      setOrderList(result.data.data.orderDetailsDtoList.pop());
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  const GetWishListAPI = async (): Promise<void> => {
+    try {
+      const result = await apiInstance.get(`/api/user/wishList?memberId=${memberId}`);
+      setChoiceProduct(result.data.data.wishList.pop());
+    } catch (error) {
+      throw new Error("check the network response");
+    }
+  };
+
+  console.log(choiceProduct);
+
   useEffect(() => {
     userInfoAPI();
+    GetWishListAPI();
+    OrderAllAPI();
   }, []);
 
   return (
@@ -58,10 +97,7 @@ const MyPage = (): JSX.Element => {
         <Styled.LoginSection>
           <p className="login">로그인 정보</p>
           <div className="loginInfo">
-            <div className="imgAndEmail">
-              {socialLogin && <img src={Kakao} alt="" />}
-              <p className="email">abc123@naver.com</p>
-            </div>
+            <div className="imgAndEmail">{socialLogin && <img src={Kakao} alt="" />}</div>
             <button type="button" className="logout" onClick={Logout}>
               로그아웃
             </button>
@@ -84,10 +120,6 @@ const MyPage = (): JSX.Element => {
           <div className="name">
             <label htmlFor="name">이름</label>
             <span>{userInfo?.userName}</span>
-          </div>
-          <div className="email">
-            <label htmlFor="email">이메일</label>
-            <span>antjdgk@gmail.com</span>
           </div>
           <div className="phone">
             <label htmlFor="phone">연락처</label>
@@ -118,13 +150,12 @@ const MyPage = (): JSX.Element => {
           <p className="purchaseDate">2022년 08월 07일 구매</p>
           <div className="gifticonInfo">
             <div className="thumbnail">
-              <img src={foodThumbnail} alt="" />
-              <div className="customerInfo">🎁홍길순</div>
+              <img src={orderList?.productImage} alt="" />
             </div>
             <div className="restaurantInfo">
-              <p className="restaurantName">쭈꾸미랩소디 강남점</p>
-              <p className="setName">쭈차돌세트</p>
-              <p className="price">15,000원</p>
+              <p className="restaurantName">{orderList?.productName}</p>
+              <p className="setName">{orderList?.productContent}</p>
+              <p className="price">{orderList?.productPrice}</p>
             </div>
           </div>
         </Styled.RecentOrderSection>
@@ -145,41 +176,21 @@ const MyPage = (): JSX.Element => {
           <div className="gifticonInfo">
             <div className="locate">
               <img src={LocateWhite} alt="" />
-              <p>쭈꾸미랩소디 강남점</p>
+              <p>{choiceProduct?.data.shopName}</p>
             </div>
             <div className="menuInfo">
-              <img src={foodThumbnail} alt="" className="thumbnail" />
+              <img src={choiceProduct?.data.productImage} alt="" className="thumbnail" />
               <div className="setInfo">
-                <p className="setName">쭈차돌세트</p>
-                <p className="setMenu">쭈꾸미+차돌+묵사발+볶음밥</p>
-                <p className="price">15,000원</p>
+                <p className="setName">{choiceProduct?.data.productName}</p>
+                <p className="setMenu">{choiceProduct?.data.productContent}</p>
+                <p className="price">{choiceProduct?.data.productPrice}</p>
               </div>
             </div>
-            <button type="button" onClick={(): void => setLike(!like)} className="like">
-              <LikeSVG fill={like ? "red" : undefined} stroke={like ? "transparent" : "gray"} />
+            <button type="button" className="like">
+              <LikeSVG fill="red" stroke="transparent" />
             </button>
           </div>
         </Styled.ChoiceProductSection>
-        <Styled.BookmarkSection>
-          <p className="bookmarkRestaurant">즐겨찾는 가게</p>
-          <div className="RestaurantInfo">
-            {categories.map((category, index) => {
-              return (
-                <Link to={`/category?value=${category}`} key={index} style={{ color: "black" }}>
-                  <div className="Restaurant">
-                    <div className="thumbnailAndCancel">
-                      <div />
-                      <button type="button" className="cancel">
-                        x
-                      </button>
-                    </div>
-                    <p>{category}</p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </Styled.BookmarkSection>
         <Styled.BoundaryLine />
         <Styled.OptionSection>
           <div className="options">
@@ -191,12 +202,6 @@ const MyPage = (): JSX.Element => {
                   navigate("/mypage/refund");
                 }}
               >
-                <img src={ArrowBlack} alt="" />
-              </button>
-            </div>
-            <div className="option">
-              <p>고객센터</p>
-              <button type="button">
                 <img src={ArrowBlack} alt="" />
               </button>
             </div>

@@ -8,10 +8,10 @@ import Locate from "../../../assets/img/Locate.png";
 interface Props {
   setModalIsOpen: React.Dispatch<SetStateAction<boolean>>;
   handleModalClose: () => void;
-  onApply: () => void;
+  userLocateAPI: () => void;
 }
 
-const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.Element => {
+const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): JSX.Element => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
 
@@ -33,9 +33,10 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
     try {
       const payload = {
         locate: addressState.jibunAddress,
-        memberId: 1,
+        memberId: 16,
       };
       await apiInstance.post("/api/user/locate", payload);
+      userLocateAPI();
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -45,7 +46,6 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, onApply }: Props): JSX.El
     e.stopPropagation();
     APIcall();
     setModalIsOpen(false);
-    onApply();
   };
 
   useEffect(() => {

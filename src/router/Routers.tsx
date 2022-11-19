@@ -1,21 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import { PrivateRoute } from "./PrivateRoute";
+import { PublicRoute } from "./PublicRoute";
 import { lazy, Suspense } from "react";
 import Cancellation from "components/Cancellation/Cancellation";
 import CancellationDetail from "components/CancellationDetail/CancellationDetail";
 import ChangeMemberInfo from "components/ChangeMemberInfo/ChangeMemberInfo";
-
-import { PrivateRoute } from "./PrivateRoute";
-import { PublicRoute } from "./PublicRoute";
 
 const Main = lazy(() => import("pages/Main"));
 const Category = lazy(() => import("pages/Category"));
 const Search = lazy(() => import("pages/Search"));
 const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
-const Alert = lazy(() => import("pages/Alert"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
 const ChangePwd = lazy(() => import("pages/ChangePwd"));
+const SearchShop = lazy(() => import("pages/SearchShop"));
 
 const LogIn = lazy(() => import("pages/Login"));
 const SignUp = lazy(() => import("pages/SignUp"));
@@ -24,6 +22,7 @@ const Naver = lazy(() => import("pages/Naver"));
 const FindID = lazy(() => import("pages/FindID"));
 const FindPassword = lazy(() => import("pages/FindPassword"));
 const FindPasswordAfter = lazy(() => import("pages/FindPasswordAfter"));
+const OrderListCoupon = lazy(() => import("components/OrderListCoupon/OrderListCoupon"));
 
 const BottomNav = lazy(() => import("components/BottomNav/BottomNav"));
 const Header = lazy(() => import("components/Header/Header"));
@@ -47,12 +46,14 @@ const Routers = (): JSX.Element => {
                 <Route path="/category/:id" element={<CategoryDetail />} />
                 <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
                 <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
+                <Route path="/mypage/orderlist/coupon/:id" element={<PrivateRoute element={<OrderListCoupon />} />} />
                 <Route path="/mypage/like" element={<PrivateRoute element={<ChoiceProduct />} />} />
                 <Route path="/payment/check" element={<PrivateRoute element={<PaymentCheck />} />} />
                 <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
                 <Route path="/mypage/refund/:id" element={<PrivateRoute element={<CancellationDetail />} />} />
                 <Route path="/mypage/modify" element={<PrivateRoute element={<ChangeMemberInfo />} />} />
                 <Route path="/change/password" element={<PrivateRoute element={<ChangePwd />} />} />
+                <Route path="*" element={<NotFound />} />
               </Route>
             </Route>
 
@@ -72,8 +73,8 @@ const Routers = (): JSX.Element => {
             </Route>
             <Route element={<BottomNav />}>
               <Route path="/search" element={<Search />} />
+              <Route path="/search/shop/:id" element={<SearchShop />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
           </Routes>
         </ScrollTop>
       </Router>

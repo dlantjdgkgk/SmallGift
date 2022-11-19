@@ -14,24 +14,24 @@ const MyButton = styled.button<MyButtonProps>`
   color: ${(props): string => (props.isSelected ? "#F4F4F4;" : "#5e5e5e")};
 `;
 const MainPageGifticon = (): JSX.Element => {
-  const koreaAreas = ["서울/경기도", "강원도", "충청도", "전라도", "경기도", "제주도"];
-  const [selectButton, setSelectButton] = useState("서울/경기도");
+  const koreaAreas = ["서울/경기", "강원도", "충청도", "전라도", "경기도", "제주도"];
+  const [selectButton, setSelectButton] = useState("서울/경기");
 
   const localPopularGifticon = [
     {
-      local: "서울/경기도",
+      local: "서울/경기",
       category: "일식",
       restaurantName: "을지다락 강남",
       address: "서울 강남구 강남대로9길 22 2층",
     },
     {
-      local: "서울/경기도",
+      local: "서울/경기",
       category: "카페",
       restaurantName: "벙커힐",
       address: "서울 송파구 강남대로9길 23 2층",
     },
     {
-      local: "서울/경기도",
+      local: "서울/경기",
       category: "양식",
       restaurantName: "남미플랜트랩",
       address: "서울 양천구 강남대로9길 24 2층",
@@ -78,6 +78,8 @@ const MainPageGifticon = (): JSX.Element => {
     { local: "제주도", category: "카페", restaurantName: "벙커힐", address: "제주도 강남대로9길 22 2층" },
     { local: "제주도", category: "양식", restaurantName: "남미플랜트랩", address: "제주도 강남대로9길 22 2층" },
   ];
+
+  console.log(selectButton);
 
   const ShopInfoBestAPI = async (): Promise<void> => {
     const result = await apiInstance.get(`/api/user/shop/info/best?locate=${selectButton}`);

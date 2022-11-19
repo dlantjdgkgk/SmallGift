@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ReactLoading from "react-loading";
 import { LoaderWrap } from "./style";
 import { axiosKakaoLogin } from "../api/oAuth/kakaoOAuth";
 
 const Kakao = () => {
   useEffect(() => {
-    let params = new URL(document.location.toString()).searchParams;
-    let code = params.get("code");
+    const params = new URL(document.location.toString()).searchParams;
+    const code = params.get("code");
     axiosKakaoLogin(code);
   }, []);
 

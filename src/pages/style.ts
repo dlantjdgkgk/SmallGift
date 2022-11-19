@@ -56,7 +56,7 @@ export const CategoryRestaurantWrapper = styled.main`
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.04em;
-    color: #000000;
+    color: #8f8f8f;
     margin-top: 4px;
   }
 

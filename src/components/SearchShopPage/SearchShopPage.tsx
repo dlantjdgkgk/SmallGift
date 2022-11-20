@@ -12,11 +12,8 @@ interface IRecommendDataProps {
 
 const SearchShopPage = () => {
   const navigate = useNavigate();
-  const [is, setIs] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const [topTenData, setTopTenData] = useState([]);
-  const [keyWord, setKeyWord] = useState([]);
   const [recommendationData, setRecommendationData] = useState<IRecommendDataProps[]>([]);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -27,26 +24,6 @@ const SearchShopPage = () => {
     e.preventDefault();
     keyWordPostAPI(inputValue);
     navigate("/search/shop/5");
-  };
-
-  const topTenAPI = async (): Promise<void> => {
-    try {
-      const topTen = await apiInstance.get("/api/user/common/keyword/top10");
-      setTopTenData(topTen.data.data.keywordTopTen);
-      console.log(topTenData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const keyWordAPI = async (): Promise<void> => {
-    try {
-      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
-      setKeyWord(keyWordData.data.data.userKeywords);
-      console.log(keyWord);
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   const ShopInfoKeyWordAPI = async (dropDownItem: string): Promise<void> => {
@@ -76,22 +53,6 @@ const SearchShopPage = () => {
       clearTimeout(debounce);
     };
   }, [inputValue]);
-
-  const handleDelete = async (): Promise<void> => {
-    try {
-      const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=1");
-      if (deleteKeyWordData.status === 200) {
-        keyWordAPI();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    keyWordAPI();
-    topTenAPI();
-  }, []);
 
   const keyWordPostAPI = async (dropDownItem: string): Promise<void> => {
     try {
@@ -133,7 +94,6 @@ const SearchShopPage = () => {
         </div>
       </form>
       <>
-        <p className="recomendation">추천 검색어</p>
         {!recommendationData && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
         {recommendationData.map((dropDownItem) => {
           return dropDownItem.data.indexOf(inputValue) === -1 ? null : (

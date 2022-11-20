@@ -102,7 +102,6 @@ const SearchPage = (): JSX.Element => {
         memberId: 1,
       };
       await apiInstance.post("/api/user/keyword", payload);
-      navigate("/");
     } catch (error) {
       throw new Error("check the network response");
     }

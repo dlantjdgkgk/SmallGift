@@ -6,7 +6,7 @@ import * as Styled from "./style";
 import LocateWhite from "../../assets/img/LocateWhite.png";
 import BusinessHours from "../../assets/img/BusinessHours.png";
 import PhoneNumber from "../../assets/img/PhoneNumber.png";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 
 interface IShopDetailProps {
   shopAddress: string;

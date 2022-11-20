@@ -2,7 +2,7 @@ import * as Styled from "./style";
 import Portal from "components/Modal/Portal/Portal";
 import AreaModal from "components/Modal/AreaModal/AreaModal";
 import { useEffect, useState } from "react";
-import { apiInstance } from "../../../setting";
+import { apiInstance } from "../../api/setting";
 import Arrow from "../../assets/img/Arrow.png";
 import Locate from "../../assets/img/Locate.png";
 import RestaurantMenu from "../../assets/img/RestaurantMenu.png";

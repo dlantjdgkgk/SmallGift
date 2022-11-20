@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import food from "../../assets/img/food.png";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 
 interface MyButtonProps {
   isSelected: boolean;

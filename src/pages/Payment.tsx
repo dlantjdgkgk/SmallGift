@@ -9,7 +9,7 @@ import { IUserFormInput } from "./types";
 import { useLocation } from "react-router-dom";
 import MenuType from "components/BuyInfo/MenuType";
 import { FormErrorMessages } from "utils/hookFormUtil";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../api/setting";
 
 interface PropsType {
   menu: MenuType;

@@ -8,7 +8,7 @@ import SelectedCategory from "./SelectedCategory";
 import CategoryRestaurant from "./CategoryRestaurant";
 import throttle from "utils/throttle";
 import Top from "../../assets/img/Top.png";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 
 const CategoryPageSection = (): JSX.Element => {
   const categories = ["전체", "한식", "일식", "중식", "양식", "카페"];

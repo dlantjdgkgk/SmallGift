@@ -3,7 +3,7 @@ import * as Styled from "./style";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
 import LocateWhite from "../../assets/img/LocateWhite.png";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 
 interface MenuType {
   data: {

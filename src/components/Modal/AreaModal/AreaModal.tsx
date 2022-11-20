@@ -2,7 +2,7 @@ import * as Styled from "./style";
 import React, { SetStateAction, useCallback, useEffect, useState } from "react";
 import KakaoAdress from "components/KakaoAPI/KakaoAdress/KakaoAdress";
 import useDaumPost from "hooks/useDaumPost";
-import { apiInstance } from "../../../../setting";
+import { apiInstance } from "../../../api/setting";
 import Locate from "../../../assets/img/Locate.png";
 
 interface Props {

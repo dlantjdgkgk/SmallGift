@@ -3,7 +3,7 @@ import * as Styled from "./style";
 import { useNavigate } from "react-router";
 import LikeSVG from "components/LikeSVG/LikeSVG";
 import { useEffect, useState } from "react";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../api/setting";
 import Arrow from "../assets/img/Arrow.png";
 import Kakao from "../assets/img/Kakao.png";
 import LocateWhite from "../assets/img/LocateWhite.png";

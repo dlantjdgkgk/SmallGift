@@ -1,7 +1,7 @@
 import * as Styled from "./style";
 import { Link } from "react-router-dom";
 import { categories, images } from "./datas";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 import { useEffect, useState } from "react";
 
 const MainPageCategory = (): JSX.Element => {

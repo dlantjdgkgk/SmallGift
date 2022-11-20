@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 import { useEffect, useState } from "react";
 import { Alert } from "react-st-modal";
 

@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { IUserFormInput } from "./types";
 import * as Styled from "./style";
 import { useState } from "react";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 import ArrowBlack from "../../assets/img/ArrowBlack.png";
 
 const ChangeMemberInfo = (): JSX.Element => {

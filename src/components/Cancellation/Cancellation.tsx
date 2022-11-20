@@ -1,9 +1,8 @@
 import * as Styled from "./style";
-import foodThumbnail from "../../assets/img/foodThumbnail.png";
 import Arrow from "../../assets/img/Arrow.png";
 import Success from "../../assets/img/Success.png";
 import { useEffect, useState } from "react";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 import { Link } from "react-router-dom";
 
 interface IRefundListProps {

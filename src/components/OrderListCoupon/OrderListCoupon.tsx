@@ -1,4 +1,4 @@
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import * as Styled from "./style";

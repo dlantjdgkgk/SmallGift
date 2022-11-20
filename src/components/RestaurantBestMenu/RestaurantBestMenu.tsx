@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import Portal from "components/Modal/Portal/Portal";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
-import { apiInstance } from "api/setting";
+import { apiInstance } from "../../api/setting";
 
 interface IShopMenuProps {
   data: {

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { api } from "../server/Api";
 
 export const axiosFindId = async (dataTosubmit, setData) => {

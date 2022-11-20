@@ -1,4 +1,3 @@
-import axios from "axios";
 import { accessApi } from "../server/Api";
 
 export const axiosChangePwd = async (dataTosubmit) => {

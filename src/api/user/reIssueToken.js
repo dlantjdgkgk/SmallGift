@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 import { useCookies } from "react-cookie";
 import moment from "moment";
 

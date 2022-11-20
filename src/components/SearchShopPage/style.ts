@@ -1,9 +1,32 @@
 import styled from "styled-components";
 
+export const RecommendActionWrapper = styled.section<{ show: boolean }>`
+  position: absolute;
+  top: 60px;
+  max-width: 752px;
+  width: 100%;
+  height: 100%;
+  display: ${({ show }) => (show ? "block" : "none")};
+  z-index: 999;
+  > div.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  > div:not(.background) {
+    position: absolute;
+    z-index: 999;
+    width: inherit;
+    max-width: 752px;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+  }
+`;
+
 export const DropDownItem = styled.div`
   padding: 20px 8px 8px 16px;
-  margin-left: 16px;
-  margin-right: 16px;
+  margin: 0 16px;
   border-bottom: 1px solid #e7e7e7;
   font-family: "Noto Sans KR";
   font-style: normal;
@@ -12,6 +35,7 @@ export const DropDownItem = styled.div`
   line-height: 20px;
   letter-spacing: -0.04em;
   color: #000000;
+
   span {
     font-family: "Noto Sans KR";
     font-style: normal;
@@ -124,42 +148,6 @@ export const SearchPageWrapper = styled.div`
     }
   }
 
-  .records {
-    display: flex;
-    padding: 12px 0px 0px 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    width: 100%;
-    -ms-overflow-style: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-    .record {
-      display: flex;
-      height: 31px;
-      background: #ffffff;
-      border: 1px solid #ececec;
-      box-shadow: 0px 2px 8px rgba(197, 197, 197, 0.26);
-      border-radius: 58px;
-      justify-content: center;
-      align-items: center;
-      margin-right: 8px;
-      padding: 8px;
-      white-space: nowrap;
-      p {
-        font-family: "Noto Sans KR";
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 20px;
-        color: #000000;
-      }
-    }
-    div:last-child {
-      margin-right: 0px;
-    }
-  }
-
   .line {
     width: 100%;
     height: 8px;
@@ -258,5 +246,177 @@ export const SearchListWrapper = styled.section`
     .boundaryLine {
       border: 1px solid #e7e7e7;
     }
+  }
+`;
+
+export const SearchTitle = styled.div`
+  margin: 24px 0px 40px 16px;
+  .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  img {
+    margin: 210px 0 20px 0;
+    width: 32px;
+    height: 32px;
+  }
+  .search {
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 120px;
+  }
+  .keyword {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #bebebe;
+    margin-bottom: 16px;
+  }
+
+  .records {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    a {
+      margin-right: 8px;
+    }
+    .record {
+      display: flex;
+      height: 31px;
+      background: #ffffff;
+      border: 1px solid #ececec;
+      box-shadow: 0px 2px 8px rgba(197, 197, 197, 0.26);
+      border-radius: 58px;
+      justify-content: center;
+      align-items: center;
+      margin-right: 8px;
+      padding: 8px;
+      white-space: nowrap;
+      p {
+        font-family: "Noto Sans KR";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        color: #000000;
+      }
+    }
+    div:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  .searchTitle {
+    .shopInfo {
+      font-family: "Noto Sans KR";
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 29px;
+      letter-spacing: -0.04em;
+      color: #000000;
+      margin-right: 6px;
+    }
+    .length {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 29px;
+      letter-spacing: -0.04em;
+      color: #6600cc;
+    }
+    .extra {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 29px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+  }
+`;
+
+export const ShopInfoWrapper = styled.section`
+  margin-left: 16px;
+  .restaurants {
+    width: 100%;
+    padding-right: 16px;
+    margin-top: 24px;
+    display: grid;
+    grid-row-gap: 16px;
+    a {
+      width: 100%;
+      border-bottom: 1px solid #eaeaea;
+      .restaurant {
+        display: flex;
+      }
+    }
+
+    & > a:last-of-type {
+      border: none;
+    }
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+  }
+  .restaurantInformation {
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    .category {
+      width: 36px;
+      height: 23px;
+      background: #6600cc;
+      border-radius: 2px;
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 19px;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .restaurantName {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 23px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    .restaurantMenu {
+      font-family: "Noto Sans KR";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.04em;
+      color: #8f8f8f;
+      margin-top: 8px;
+    }
+  }
+  .top {
+    position: fixed;
+    bottom: 36px;
+    right: 6px;
   }
 `;

@@ -5,6 +5,7 @@ import { apiInstance } from "../../api/setting";
 import { useNavigate } from "react-router";
 import Back from "../../assets/img/Back.png";
 import Cancel from "../../assets/img/Cancel.png";
+import { Link } from "react-router-dom";
 
 interface IRecommendDataProps {
   data: string;
@@ -18,7 +19,6 @@ interface IKeyWordProps {
 
 const SearchPage = (): JSX.Element => {
   const navigate = useNavigate();
-  const [is, setIs] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
   const [topTenData, setTopTenData] = useState([]);
@@ -32,7 +32,6 @@ const SearchPage = (): JSX.Element => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     keyWordPostAPI(inputValue);
-    navigate("/search/shop/5");
   };
 
   const topTenAPI = async (): Promise<void> => {
@@ -48,14 +47,6 @@ const SearchPage = (): JSX.Element => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
       setKeyWord(keyWordData.data.data.userKeywords);
-    } catch (error) {
-      throw new Error("check the network response");
-    }
-  };
-
-  const ShopInfoKeyWordAPI = async (dropDownItem: string): Promise<void> => {
-    try {
-      await apiInstance.get(`/api/user/shop/info/keyword?keyword=${dropDownItem}`);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -95,13 +86,14 @@ const SearchPage = (): JSX.Element => {
     topTenAPI();
   }, []);
 
-  const keyWordPostAPI = async (dropDownItem: string): Promise<void> => {
+  const keyWordPostAPI = async (keyword: string): Promise<void> => {
     try {
       const payload = {
-        keyword: dropDownItem,
+        keyword,
         memberId: 1,
       };
       await apiInstance.post("/api/user/keyword", payload);
+      navigate(`/search/shop/${keyword}`);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -137,14 +129,13 @@ const SearchPage = (): JSX.Element => {
       {inputValue ? (
         <>
           <p className="recomendation">추천 검색어</p>
-          {!recommendationData && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
+          {recommendationData.length === 0 && <Styled.DropDownItem>해당하는 단어가 없습니다</Styled.DropDownItem>}
           {recommendationData.map((dropDownItem) => {
             return dropDownItem.data.indexOf(inputValue) === -1 ? null : (
               <Styled.DropDownItem
                 key={dropDownItem.id}
                 onClick={(): void => {
                   keyWordPostAPI(dropDownItem.data);
-                  ShopInfoKeyWordAPI(dropDownItem.data);
                 }}
               >
                 {dropDownItem.data.split(inputValue)[0]}
@@ -156,34 +147,26 @@ const SearchPage = (): JSX.Element => {
         </>
       ) : (
         <>
-          {is ? (
-            <>
-              <div className="recentSearch">
-                <p className="recent">최근 검색어</p>
-                <p className="available">로그인 후 이용할 수 있어요</p>
-              </div>
-              <div className="line" />
-            </>
-          ) : (
-            <>
-              <div className="recentSearchLogin">
-                <p className="recent">최근 검색어</p>
-                <button className="totalDelete" type="button" onClick={handleDelete}>
-                  전체 삭제
-                </button>
-              </div>
-              <div className="records">
-                {keyWord?.map((data: IKeyWordProps) => {
-                  return (
+          <>
+            <div className="recentSearchLogin">
+              <p className="recent">최근 검색어</p>
+              <button className="totalDelete" type="button" onClick={handleDelete}>
+                전체 삭제
+              </button>
+            </div>
+            <div className="records">
+              {keyWord?.map((data: IKeyWordProps) => {
+                return (
+                  <Link to={`/search/shop/${data.data}`} key={data.id}>
                     <div className="record" key={data.id}>
                       <p>{data.data}</p>
                     </div>
-                  );
-                })}
-              </div>
-              <div className="loginLine" />
-            </>
-          )}
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="loginLine" />
+          </>
           <PopularSearch topTenData={topTenData} />
         </>
       )}

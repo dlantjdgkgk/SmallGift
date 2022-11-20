@@ -134,6 +134,9 @@ export const SearchPageWrapper = styled.div`
     ::-webkit-scrollbar {
       display: none;
     }
+    a {
+      margin-right: 8px;
+    }
     .record {
       display: flex;
       height: 31px;
@@ -143,7 +146,6 @@ export const SearchPageWrapper = styled.div`
       border-radius: 58px;
       justify-content: center;
       align-items: center;
-      margin-right: 8px;
       padding: 8px;
       white-space: nowrap;
       p {

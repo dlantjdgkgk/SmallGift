@@ -18,8 +18,9 @@ interface PropsType {
 const Payment = (): JSX.Element => {
   const location = useLocation();
   const result = location.state as PropsType;
-  const menu: MenuType = result?.menu;
 
+  const menu: MenuType = result?.menu;
+  console.log(location);
   console.log(menu);
 
   const navigate = useNavigate();

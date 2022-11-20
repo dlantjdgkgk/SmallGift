@@ -5,5 +5,6 @@ export default interface MenuType {
     productName: string;
     productId: number;
     id: number;
+    a: number;
   };
 }

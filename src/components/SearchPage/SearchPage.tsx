@@ -1,7 +1,7 @@
 import * as Styled from "./style";
 import { useEffect, useState, ChangeEvent } from "react";
 import PopularSearch from "./PopularSearch";
-import { apiInstance } from "../../api/setting";
+import { apiInstance } from "../../../setting";
 import { useNavigate } from "react-router";
 import Back from "../../assets/img/Back.png";
 import Cancel from "../../assets/img/Cancel.png";

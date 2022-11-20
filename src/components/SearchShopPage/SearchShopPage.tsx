@@ -4,12 +4,6 @@ import { useNavigate } from "react-router";
 import { apiInstance } from "api/setting";
 import Back from "../../assets/img/Back.png";
 import Cancel from "../../assets/img/Cancel.png";
-import PopularSearch from "components/SearchPage/PopularSearch";
-
-interface IKeyWordProps {
-  data: string;
-  id: number;
-}
 
 interface IRecommendDataProps {
   data: string;

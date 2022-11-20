@@ -114,7 +114,7 @@ const SearchPage = (): JSX.Element => {
 
   return (
     <Styled.SearchPageWrapper>
-      <form action="post" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="searchBar">
           <button
             type="button"

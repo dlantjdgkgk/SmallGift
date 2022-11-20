@@ -39,9 +39,8 @@ const SearchPage = (): JSX.Element => {
     try {
       const topTen = await apiInstance.get("/api/user/common/keyword/top10");
       setTopTenData(topTen.data.data.keywordTopTen);
-      console.log(topTenData);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
@@ -49,18 +48,16 @@ const SearchPage = (): JSX.Element => {
     try {
       const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
       setKeyWord(keyWordData.data.data.userKeywords);
-      console.log(keyWord);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
   const ShopInfoKeyWordAPI = async (dropDownItem: string): Promise<void> => {
     try {
-      const result = await apiInstance.get(`/api/user/shop/info/keyword?keyword=${dropDownItem}`);
-      console.log(result);
+      await apiInstance.get(`/api/user/shop/info/keyword?keyword=${dropDownItem}`);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
@@ -68,9 +65,8 @@ const SearchPage = (): JSX.Element => {
     try {
       const result = await apiInstance.get(`/api/user/common/keyword/recommendation?keyword=${inputValue}`);
       setRecommendationData(result.data.data.recommendationTopTen);
-      console.log(recommendationData);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
@@ -90,7 +86,7 @@ const SearchPage = (): JSX.Element => {
         keyWordAPI();
       }
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
@@ -108,7 +104,7 @@ const SearchPage = (): JSX.Element => {
       await apiInstance.post("/api/user/keyword", payload);
       navigate("/");
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 

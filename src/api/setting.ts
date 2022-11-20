@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const apiInstance = axios.create({
-  baseURL: "",
+  baseURL: "https://smallgift.site",
 });

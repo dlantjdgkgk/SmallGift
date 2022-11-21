@@ -1,5 +1,5 @@
 import * as Styled from "./style";
-import { useParams } from "react-router";
+import { useLocation } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
@@ -20,9 +20,12 @@ type WishProductType = {
 
 const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   const [wishtData, setWishData] = useState<WishProductType | undefined>();
-  const params = useParams();
-  const parameter = params.id;
   const memberId = 1;
+
+  const location = useLocation();
+  const catgegory = decodeURIComponent(location.pathname.split("/")[2]);
+  const shopName = decodeURIComponent(location.pathname.split("/")[3]);
+  const shopId = decodeURIComponent(location.pathname.split("/")[4]);
 
   const updateWishData = useCallback(() => {
     apiInstance.get(`/api/user/wishList?memberId=${memberId}`).then(
@@ -99,7 +102,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
             <p className="price">{menu.data.productPrice}원</p>
             <div className="button">
               <button type="button" className="share">
-                <KakaoShare parameter={parameter} />
+                <KakaoShare catgegory={catgegory} shopName={shopName} shopId={shopId} />
               </button>
               <button type="button" onClick={handleLikeButtonClick}>
                 <LikeSVG fill={wishtData ? "red" : undefined} stroke={wishtData ? "transparent" : "gray"} />

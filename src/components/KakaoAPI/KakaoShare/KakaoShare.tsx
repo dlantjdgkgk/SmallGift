@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import Share from "../../../assets/img/Share.png";
 
 interface IProps {
-  parameter?: string;
+  catgegory: string;
+  shopName: string;
+  shopId: string;
 }
 
-const KakaoShare = ({ parameter }: IProps): JSX.Element => {
+const KakaoShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
   const { Kakao } = window;
 
   if (window.kakao) {
@@ -31,8 +33,8 @@ const KakaoShare = ({ parameter }: IProps): JSX.Element => {
         description: "#쿠폰 #소상공인",
         imageUrl: "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
         link: {
-          mobileWebUrl: `https://smallgift.pages.dev/category/${parameter}`,
-          webUrl: `https://smallgift.pages.dev/category/${parameter}`,
+          mobileWebUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
+          webUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
         },
       },
       social: {
@@ -44,8 +46,8 @@ const KakaoShare = ({ parameter }: IProps): JSX.Element => {
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: `https://smallgift.pages.dev/category/${parameter}`,
-            webUrl: `https://smallgift.pages.dev/category/${parameter}`,
+            mobileWebUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
+            webUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
           },
         },
       ],

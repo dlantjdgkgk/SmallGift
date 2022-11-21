@@ -24,7 +24,7 @@ const RestaurantSection = (): JSX.Element => {
       <img src={RestaurantInfo} alt="" className="picture" />
       <div className="resturantThumbnail">
         <button className="category" type="button">
-          {shop.category}
+          {shop?.category}
         </button>
         <div className="restaurantLike">
           <div className="restaurantName">{shop.restaurantName}</div>

@@ -27,8 +27,6 @@ const RestaurantBestMenu = (): JSX.Element => {
     setMenus(result.data.data.shopAllMenuList);
   };
 
-  console.log(menus);
-
   useEffect(() => {
     ShopMenuAPI();
   }, []);

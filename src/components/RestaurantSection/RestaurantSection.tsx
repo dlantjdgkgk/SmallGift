@@ -1,33 +1,23 @@
 import * as Styled from "./style";
-import { useLocation } from "react-router-dom";
 import Shadow from "../../assets/img/shadow.png";
 import RestaurantInfo from "../../assets/img/RestaurantInfo.png";
 
-interface ShopType {
+interface IProps {
   category: string;
-  restaurantName: string;
-  restaurantMenu: string;
+  shopName: string;
 }
 
-interface PropsType {
-  shop: ShopType;
-}
-
-const RestaurantSection = (): JSX.Element => {
-  const location = useLocation();
-  const result = location.state as PropsType;
-  const shop: ShopType = result?.shop;
-
+const RestaurantSection = ({ category, shopName }: IProps): JSX.Element => {
   return (
     <Styled.RestaurantSectionWrapper>
       <img src={Shadow} alt="" className="shadow" />
       <img src={RestaurantInfo} alt="" className="picture" />
       <div className="resturantThumbnail">
         <button className="category" type="button">
-          {shop?.category}
+          {category}
         </button>
         <div className="restaurantLike">
-          <div className="restaurantName">{shop?.restaurantName}</div>
+          <div className="restaurantName">{shopName}</div>
         </div>
       </div>
     </Styled.RestaurantSectionWrapper>

@@ -22,7 +22,11 @@ interface IShopMenuProps {
   };
 }
 
-const RestaurantInfo = (): JSX.Element => {
+interface IProps {
+  shopId: string;
+}
+
+const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
   const buttons = ["전체 메뉴", "매장 정보"];
   const [selectButton, setSelectButton] = useState("전체 메뉴");
   const [selectMenu, setSelectMenu] = useState(4);
@@ -40,8 +44,6 @@ const RestaurantInfo = (): JSX.Element => {
     const result = await apiInstance.get("/api/user/shop/menu?shopId=1");
     setMenus(result.data.data.shopAllMenuList);
   };
-
-  console.log(menus);
 
   useEffect(() => {
     ShopDetailsGetAPI();

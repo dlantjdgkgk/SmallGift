@@ -4,6 +4,7 @@ import LikeSVG from "components/LikeSVG/LikeSVG";
 import { Link } from "react-router-dom";
 import LocateWhite from "../../assets/img/LocateWhite.png";
 import { apiInstance } from "../../api/setting";
+import NotData from "../../assets/img/NotData.png";
 
 interface MenuType {
   data: {
@@ -44,6 +45,7 @@ const ChoiceProduct = (): JSX.Element => {
       throw new Error("check the network response");
     }
   };
+  console.log(menuList);
 
   useEffect(() => {
     GetWishListAPI();
@@ -79,41 +81,50 @@ const ChoiceProduct = (): JSX.Element => {
         </div>
       </Styled.ProductFilterSection>
 
-      {menuList.map((menu) => {
-        return (
-          <Styled.ChoiceProductSection key={menu.id}>
-            <div className="gifticonInfo">
-              <div className="locate">
-                <img src={LocateWhite} alt="" />
-                <p>{menu.data.shopName}</p>
-              </div>
-              <div className="menuInfo">
-                <img src={menu.data.productImage} alt="" className="thumbnail" />
-                <div className="setInfo">
-                  <p className="setName">{menu.data.productName}</p>
-                  <p className="setMenu">{menu.data.productContent}</p>
-                  <p className="price">{menu.data.productPrice}원</p>
+      {menuList.length === 0 ? (
+        <Styled.NoData>
+          <img src={NotData} alt="" />
+          <div className="search">찜한 상품이 없어요</div>
+        </Styled.NoData>
+      ) : (
+        <>
+          {menuList.map((menu) => {
+            return (
+              <Styled.ChoiceProductSection key={menu.id}>
+                <div className="gifticonInfo">
+                  <div className="locate">
+                    <img src={LocateWhite} alt="" />
+                    <p>{menu.data.shopName}</p>
+                  </div>
+                  <div className="menuInfo">
+                    <img src={menu.data.productImage} alt="" className="thumbnail" />
+                    <div className="setInfo">
+                      <p className="setName">{menu.data.productName}</p>
+                      <p className="setMenu">{menu.data.productContent}</p>
+                      <p className="price">{menu.data.productPrice}원</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={(): void => {
+                      setSelectMenu(menu.data.wishListId);
+                      DeleteWishListAPI(menu.data.wishListId);
+                    }}
+                    className="like"
+                  >
+                    <LikeSVG fill="red" stroke="transparent" />
+                  </button>
+                  <Link to="/payment" state={{ menu }}>
+                    <button type="button" className="order">
+                      바로 주문하기
+                    </button>
+                  </Link>
                 </div>
-              </div>
-              <button
-                type="button"
-                onClick={(): void => {
-                  setSelectMenu(menu.data.wishListId);
-                  DeleteWishListAPI(menu.data.wishListId);
-                }}
-                className="like"
-              >
-                <LikeSVG fill="red" stroke="transparent" />
-              </button>
-              <Link to="/payment" state={{ menu }}>
-                <button type="button" className="order">
-                  바로 주문하기
-                </button>
-              </Link>
-            </div>
-          </Styled.ChoiceProductSection>
-        );
-      })}
+              </Styled.ChoiceProductSection>
+            );
+          })}
+        </>
+      )}
     </Styled.ChoiceProductWrapper>
   );
 };

@@ -305,7 +305,7 @@ export const RecentOrderSection = styled.section`
   .recentOrderList {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 10px;
   }
   .recentOrder {
     font-family: "Noto Sans KR";
@@ -900,4 +900,26 @@ export const LoaderWrap = styled.div`
   justify-content: center;
   text-align: center;
   align-items: center;
+`;
+
+export const NoData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+  }
+  .search {
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
 `;

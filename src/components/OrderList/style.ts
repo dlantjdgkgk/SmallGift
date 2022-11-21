@@ -9,6 +9,38 @@ export const OrderListWrapper = styled.main`
   }
 `;
 
+export const ProductFilterSection = styled.section`
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    margin-left: 16px;
+    margin-top: 20px;
+  }
+  select {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #000000;
+  }
+  .delete {
+    background: #ececec;
+    border-radius: 70px;
+    height: 29px;
+    width: 77px;
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    color: #8b8b8b;
+  }
+`;
+
 export const OrderSection = styled.section`
   padding-left: 16px;
   padding-right: 16px;
@@ -106,5 +138,27 @@ export const OrderSection = styled.section`
   .purchase {
     border: 1px solid #6600cc;
     color: #6600cc;
+  }
+`;
+
+export const NoData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  img {
+    margin: 0px 0 20px 0;
+    width: 32px;
+    height: 32px;
+  }
+  .search {
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 120px;
   }
 `;

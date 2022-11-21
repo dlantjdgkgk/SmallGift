@@ -8,6 +8,7 @@ import Arrow from "../assets/img/Arrow.png";
 import Kakao from "../assets/img/Kakao.png";
 import LocateWhite from "../assets/img/LocateWhite.png";
 import ArrowBlack from "../assets/img/ArrowBlack.png";
+import NotData from "../assets/img/NotData.png";
 
 interface UserInfoProps {
   userName: string;
@@ -32,6 +33,7 @@ interface IOrderListProps {
   productPrice: string;
   productContent: string;
   id: number;
+  length: number;
 }
 
 const MyPage = (): JSX.Element => {
@@ -49,19 +51,15 @@ const MyPage = (): JSX.Element => {
   const userInfoAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/userInfo?memberId=${memberId}`);
-      console.log(result);
       setUserInfo(result.data.data);
-      const { code, msg } = result.data;
-      if (code >= 400) console.log("FAIL", code, msg);
     } catch (error) {
-      console.error("API CALL FAILURE", error);
+      throw new Error("check the network response");
     }
   };
 
   const OrderAllAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get("/api/user/order/all?memberId=16");
-      console.log(result);
       setOrderList(result.data.data.orderDetailsDtoList.pop());
     } catch (error) {
       throw new Error("check the network response");
@@ -147,17 +145,25 @@ const MyPage = (): JSX.Element => {
               <img src={Arrow} alt="" />
             </button>
           </div>
-          <p className="purchaseDate">2022년 08월 07일 구매</p>
-          <div className="gifticonInfo">
-            <div className="thumbnail">
-              <img src={orderList?.productImage} alt="" />
+          {orderList?.productPrice === undefined ? (
+            <div className="gifticonInfo">
+              <Styled.NoData>
+                <img src={NotData} alt="" />
+                <div className="search">주문 내역이 없어요</div>
+              </Styled.NoData>
             </div>
-            <div className="restaurantInfo">
-              <p className="restaurantName">{orderList?.productName}</p>
-              <p className="setName">{orderList?.productContent}</p>
-              <p className="price">{orderList?.productPrice}</p>
+          ) : (
+            <div className="gifticonInfo">
+              <div className="thumbnail">
+                <img src={orderList?.productImage} alt="" />
+              </div>
+              <div className="restaurantInfo">
+                <p className="restaurantName">{orderList?.productName}</p>
+                <p className="setName">{orderList?.productContent}</p>
+                <p className="price">{orderList?.productPrice}</p>
+              </div>
             </div>
-          </div>
+          )}
         </Styled.RecentOrderSection>
         <Styled.ChoiceProductSection>
           <div className="choiceProduct">
@@ -173,23 +179,33 @@ const MyPage = (): JSX.Element => {
               <img src={Arrow} alt="" />
             </button>
           </div>
-          <div className="gifticonInfo">
-            <div className="locate">
-              <img src={LocateWhite} alt="" />
-              <p>{choiceProduct?.data.shopName}</p>
+
+          {choiceProduct?.data.productPrice === undefined ? (
+            <div className="gifticonInfo">
+              <Styled.NoData>
+                <img src={NotData} alt="" />
+                <div className="search">찜한 상품이 없어요</div>
+              </Styled.NoData>
             </div>
-            <div className="menuInfo">
-              <img src={choiceProduct?.data.productImage} alt="" className="thumbnail" />
-              <div className="setInfo">
-                <p className="setName">{choiceProduct?.data.productName}</p>
-                <p className="setMenu">{choiceProduct?.data.productContent}</p>
-                <p className="price">{choiceProduct?.data.productPrice}</p>
+          ) : (
+            <div className="gifticonInfo">
+              <div className="locate">
+                <img src={LocateWhite} alt="" />
+                <p>{choiceProduct?.data.shopName}</p>
               </div>
+              <div className="menuInfo">
+                <img src={choiceProduct?.data.productImage} alt="" className="thumbnail" />
+                <div className="setInfo">
+                  <p className="setName">{choiceProduct?.data.productName}</p>
+                  <p className="setMenu">{choiceProduct?.data.productContent}</p>
+                  <p className="price">{choiceProduct?.data.productPrice}</p>
+                </div>
+              </div>
+              <button type="button" className="like">
+                <LikeSVG fill="red" stroke="transparent" />
+              </button>
             </div>
-            <button type="button" className="like">
-              <LikeSVG fill="red" stroke="transparent" />
-            </button>
-          </div>
+          )}
         </Styled.ChoiceProductSection>
         <Styled.BoundaryLine />
         <Styled.OptionSection>

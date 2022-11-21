@@ -77,22 +77,32 @@ export const LocationWrapper = styled.div`
       color: #3d3d3d;
     }
   }
-  .locationButton {
-    display: flex;
-    width: 100%;
-    margin: 12px 0 60px 0;
-    justify-content: space-between;
-    p {
-      font-size: 12px;
-      color: #838383;
-    }
-    button {
-      font-weight: bold;
-    }
-  }
 `;
 
 export const RestaurantWrapper = styled.div`
+  .noData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    img {
+      margin-bottom: 10px;
+    }
+    p {
+      margin-right: 8px;
+      font-family: "Noto Sans KR";
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 29px;
+      letter-spacing: -0.04em;
+      color: #000000;
+    }
+    .noDataTitle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
   .restaurants {
     display: flex;
     margin-bottom: 40px;

@@ -6,10 +6,12 @@ import { apiInstance } from "../../api/setting";
 import Arrow from "../../assets/img/Arrow.png";
 import Locate from "../../assets/img/Locate.png";
 import RestaurantMenu from "../../assets/img/RestaurantMenu.png";
+import NotData from "../../assets/img/NotData.png";
 
 const MainPageRestaurant = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState(null);
+  const [shopInfo, setShopInfo] = useState([]);
   const handleModalClose = (): void => setModalIsOpen(false);
 
   const memberId = 16;
@@ -24,11 +26,14 @@ const MainPageRestaurant = (): JSX.Element => {
 
   const ShopInfoLocateAPI = async (): Promise<void> => {
     try {
-      await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
+      const result = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
+      setShopInfo(result.data.data.menuRandomByLocateResDto);
     } catch (error) {
       throw new Error("check the network response");
     }
   };
+
+  console.log(shopInfo);
 
   useEffect(() => {
     ShopInfoLocateAPI();
@@ -76,45 +81,51 @@ const MainPageRestaurant = (): JSX.Element => {
       </Styled.LocationWrapper>
 
       <Styled.RestaurantWrapper>
-        {/* <p className="localFoodRecommendations">
-          <span>마포구</span> 근처 가게들의 <br />
-          인기 메뉴를 추천해드릴게요
-        </p> */}
-        <section className="restaurants">
-          <article className="restaurant">
-            <button className="category" type="button">
-              일식
-            </button>
-            <img src={RestaurantMenu} />
-            <div className="restaurantInformation">
-              <p className="restaurantName">카멜로 연남</p>
-              <p className="restaurantMenu">버터 봉골레 파스타</p>
-              <p className="menuPrice">17,000원</p>
+        {shopInfo.length === 0 ? (
+          <div className="noData">
+            <img src={NotData} alt="" />
+            <div className="noDataTitle">
+              <p>검색결과가 없어요</p>
+              <p>다른 지역을 입력해보세요</p>
             </div>
-          </article>
-          <article className="restaurant">
-            <button className="category" type="button">
-              일식
-            </button>
-            <img src={RestaurantMenu} />
-            <div className="restaurantInformation">
-              <p className="restaurantName">모센즈 스위트</p>
-              <p className="restaurantMenu">모센 라떼</p>
-              <p className="menuPrice">6,000원</p>
-            </div>
-          </article>
-          <article className="restaurant">
-            <button className="category" type="button">
-              일식
-            </button>
-            <img src={RestaurantMenu} />
-            <div className="restaurantInformation">
-              <p className="restaurantName">아뜨뜨</p>
-              <p className="restaurantMenu">소고기 솥밥</p>
-              <p className="menuPrice">15,000원</p>
-            </div>
-          </article>
-        </section>
+          </div>
+        ) : (
+          <section className="restaurants">
+            <article className="restaurant">
+              <button className="category" type="button">
+                일식
+              </button>
+              <img src={RestaurantMenu} />
+              <div className="restaurantInformation">
+                <p className="restaurantName">카멜로 연남</p>
+                <p className="restaurantMenu">버터 봉골레 파스타</p>
+                <p className="menuPrice">17,000원</p>
+              </div>
+            </article>
+            <article className="restaurant">
+              <button className="category" type="button">
+                일식
+              </button>
+              <img src={RestaurantMenu} />
+              <div className="restaurantInformation">
+                <p className="restaurantName">모센즈 스위트</p>
+                <p className="restaurantMenu">모센 라떼</p>
+                <p className="menuPrice">6,000원</p>
+              </div>
+            </article>
+            <article className="restaurant">
+              <button className="category" type="button">
+                일식
+              </button>
+              <img src={RestaurantMenu} />
+              <div className="restaurantInformation">
+                <p className="restaurantName">아뜨뜨</p>
+                <p className="restaurantMenu">소고기 솥밥</p>
+                <p className="menuPrice">15,000원</p>
+              </div>
+            </article>
+          </section>
+        )}
       </Styled.RestaurantWrapper>
     </Styled.SectionRestaurantWrapper>
   );

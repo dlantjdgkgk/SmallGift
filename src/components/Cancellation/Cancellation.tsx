@@ -1,7 +1,7 @@
 import * as Styled from "./style";
 import Arrow from "../../assets/img/Arrow.png";
 import Success from "../../assets/img/Success.png";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
 import { Link } from "react-router-dom";
 
@@ -25,6 +25,8 @@ const Cancellation = (): JSX.Element => {
     }
   };
 
+  console.log(refundList);
+
   useEffect(() => {
     OrderRefundAPI();
   }, []);
@@ -34,7 +36,7 @@ const Cancellation = (): JSX.Element => {
       <Styled.CancellationSection>
         {refundList.map((refund) => {
           return (
-            <>
+            <React.Fragment key={refund.orderNumber}>
               <Link to={`/mypage/refund/${refund.orderNumber}`} state={{ refund }}>
                 <button type="button" className="orderNumberInfo">
                   <span className="orderNumber">주문번호</span>
@@ -58,7 +60,7 @@ const Cancellation = (): JSX.Element => {
                 </p>
               </div>
               <Styled.BoundaryLine />
-            </>
+            </React.Fragment>
           );
         })}
       </Styled.CancellationSection>

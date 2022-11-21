@@ -42,18 +42,26 @@ export const ChoiceProductSection = styled.section`
     flex-direction: column;
     margin-bottom: 16px;
     width: 100%;
-    height: 195px;
     border: 1px solid #e4e4e4;
     border-radius: 8px;
     align-items: center;
     position: relative;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding: 16px;
+  }
+
+  .keyword {
+    font-family: "Noto Sans KR";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 23px;
+    letter-spacing: -0.04em;
+    color: #bebebe;
+    margin-bottom: 16px;
   }
   .locate {
     display: flex;
     width: 100%;
-    margin-top: 16px;
     img {
       width: 20px;
       height: 20px;
@@ -136,5 +144,27 @@ export const ChoiceProductSection = styled.section`
   }
   a {
     width: 100%;
+  }
+`;
+
+export const NoData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  img {
+    margin: 0px 0 20px 0;
+    width: 32px;
+    height: 32px;
+  }
+  .search {
+    font-family: "Noto Sans KR";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 29px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin-bottom: 120px;
   }
 `;

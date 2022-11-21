@@ -27,7 +27,7 @@ const RestaurantSection = (): JSX.Element => {
           {shop?.category}
         </button>
         <div className="restaurantLike">
-          <div className="restaurantName">{shop.restaurantName}</div>
+          <div className="restaurantName">{shop?.restaurantName}</div>
         </div>
       </div>
     </Styled.RestaurantSectionWrapper>

@@ -43,7 +43,7 @@ const Routers = (): JSX.Element => {
               <Route element={<BottomNav />}>
                 <Route path="/" element={<Main />} />
                 <Route path="/category" element={<Category />} />
-                <Route path="/category/:id" element={<CategoryDetail />} />
+                <Route path="/category/:id/:id/:id" element={<CategoryDetail />} />
                 <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
                 <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
                 <Route path="/mypage/orderlist/coupon/:id" element={<PrivateRoute element={<OrderListCoupon />} />} />

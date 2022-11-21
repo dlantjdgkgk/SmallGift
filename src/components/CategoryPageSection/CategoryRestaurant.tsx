@@ -14,7 +14,7 @@ const CategoryRestaurant = ({ shopList, selectCategory }: MyProps): JSX.Element 
         {(selectCategory === "전체" ? shopList : shopList.filter((shop) => shop.category === selectCategory)).map(
           (shop, index) => {
             return (
-              <Link to={`/category/${shop.restaurantName}`} key={index} state={{ shop }}>
+              <Link to={`/category/${shop.category}/${shop.restaurantName}/${index}`} key={index}>
                 <article className="restaurant">
                   <img src={CafeImage} />
                   <div className="restaurantInformation">

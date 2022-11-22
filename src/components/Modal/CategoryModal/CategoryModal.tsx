@@ -3,7 +3,7 @@ import { useLocation } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
-import KakaoShare from "components/KakaoAPI/KakaoShare/KakaoShare";
+import ProductShare from "components/KakaoAPI/KakaoShare/ProductShare";
 import { Link } from "react-router-dom";
 import { apiInstance } from "api/setting";
 
@@ -102,7 +102,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
             <p className="price">{menu.data.productPrice}원</p>
             <div className="button">
               <button type="button" className="share">
-                <KakaoShare catgegory={catgegory} shopName={shopName} shopId={shopId} />
+                <ProductShare catgegory={catgegory} shopName={shopName} shopId={shopId} />
               </button>
               <button type="button" onClick={handleLikeButtonClick}>
                 <LikeSVG fill={wishtData ? "red" : undefined} stroke={wishtData ? "transparent" : "gray"} />

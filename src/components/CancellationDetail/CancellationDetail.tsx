@@ -14,11 +14,9 @@ interface PropsType {
 }
 
 const CancellationDetail = (): JSX.Element => {
-  const location = useLocation();
-  const result = location.state as PropsType;
+  const { state } = useLocation();
+  const result = state as PropsType;
   const refundDetail: RefundType = result.refund;
-
-  console.log(refundDetail);
 
   return (
     <Styled.CancellationDetailWrapper>

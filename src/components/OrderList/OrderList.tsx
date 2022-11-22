@@ -45,6 +45,8 @@ const OrderList = (): JSX.Element => {
     }
   };
 
+  console.log(orderList);
+
   useEffect(() => {
     OrderAllAPI();
   }, []);

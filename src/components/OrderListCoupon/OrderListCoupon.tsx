@@ -7,6 +7,7 @@ interface ICouponInfoProps {
   productImage: string;
   couponNumber: string;
   expirationTime: number[];
+  productName: string;
 }
 
 const OrderListCoupon = () => {
@@ -47,6 +48,10 @@ const OrderListCoupon = () => {
           <span className="number">
             {couponInfo?.expirationTime[0]}년 {couponInfo?.expirationTime[1]}월 {couponInfo?.expirationTime[2]}일
           </span>
+        </div>
+        <div className="setInfo">
+          <span className="orderNumber">상품 이름</span>
+          <span className="number">{couponInfo?.productName}</span>
         </div>
       </Styled.ProductInfoSection>
     </Styled.OrderListCouponWrapper>

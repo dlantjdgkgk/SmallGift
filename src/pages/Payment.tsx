@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IUserFormInput } from "./types";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import MenuType from "components/BuyInfo/MenuType";
 import { FormErrorMessages } from "utils/hookFormUtil";
 import { apiInstance } from "../api/setting";
@@ -20,7 +20,6 @@ const Payment = (): JSX.Element => {
   const result = location.state as PropsType;
 
   const menu: MenuType = result?.menu;
-  console.log(location);
   console.log(menu);
 
   const navigate = useNavigate();
@@ -32,8 +31,7 @@ const Payment = (): JSX.Element => {
         productId: menu.data.productId || menu.data.id,
         memberId: 16,
       };
-      const a = await apiInstance.post("/api/user/order", payload);
-      console.log(a);
+      await apiInstance.post("/api/user/order", payload);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -48,7 +46,7 @@ const Payment = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<IUserFormInput> = () => {
     OrderPostAPI();
-    navigate("/payment/check");
+    navigate("/payment/check", { state: menu });
   };
 
   return (

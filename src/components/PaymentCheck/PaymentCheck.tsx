@@ -1,9 +1,23 @@
 import * as Styled from "./style";
-import { useNavigate } from "react-router";
-import Kakao from "../../assets/img/Kakao.png";
+import { useNavigate, useLocation } from "react-router";
+import GifticonShare from "components/KakaoAPI/KakaoShare/GifticonShare";
+
+interface DataType {
+  productImage: string;
+}
+
+interface PropsType {
+  data: DataType;
+}
 
 const PaymentCheck = (): JSX.Element => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const result = state as PropsType;
+  const image: DataType = result.data;
+
+  console.log(image.productImage);
+
   return (
     <Styled.PaymentCheckWrapper>
       <Styled.PaymentCheckSection>
@@ -12,10 +26,8 @@ const PaymentCheck = (): JSX.Element => {
           <p className="sendGift">홍길순님께 보내는 선물 </p>
           <p className="confirmPay">결제가 완료됐어요!</p>
         </div>
-        <div className="sendMessage">
-          <img src={Kakao} alt="" />
-          <button type="button">메세지 보내기</button>
-        </div>
+        <GifticonShare image={image.productImage} />
+
         <div className="orderListAndConfirm">
           <button
             type="button"

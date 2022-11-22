@@ -1,13 +1,11 @@
 import { useEffect } from "react";
-import Share from "../../../assets/img/Share.png";
+import KakaoImg from "../../../assets/img/Kakao.png";
 
 interface IProps {
-  catgegory: string;
-  shopName: string;
-  shopId: string;
+  image: string;
 }
 
-const KakaoShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
+const GifticonShare = ({ image }: IProps): JSX.Element => {
   const { Kakao } = window;
 
   if (window.kakao) {
@@ -31,10 +29,10 @@ const KakaoShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
       content: {
         title: "스몰기프트",
         description: "#쿠폰 #소상공인",
-        imageUrl: "http://mud-kage.kakao.co.kr/dn/Q2iNx/btqgeRgV54P/VLdBs9cvyn8BJXB3o7N8UK/kakaolink40_original.png",
+        imageUrl: `${image}`,
         link: {
-          mobileWebUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
-          webUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
+          mobileWebUrl: `https://smallgift.pages.dev`,
+          webUrl: `https://smallgift.pages.dev`,
         },
       },
       social: {
@@ -46,8 +44,8 @@ const KakaoShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
         {
           title: "웹으로 보기",
           link: {
-            mobileWebUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
-            webUrl: `https://smallgift.pages.dev/category/${catgegory}/${shopName}/${shopId}`,
+            mobileWebUrl: `https://smallgift.pages.dev`,
+            webUrl: `https://smallgift.pages.dev`,
           },
         },
       ],
@@ -55,10 +53,11 @@ const KakaoShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
   };
 
   return (
-    <div className="share-node" onClick={shareKakao} aria-hidden="true">
-      <img src={Share} alt="" />
+    <div className="sendMessage" onClick={shareKakao} aria-hidden="true">
+      <img src={KakaoImg} alt="" />
+      <button type="button">메세지 보내기</button>
     </div>
   );
 };
 
-export default KakaoShare;
+export default GifticonShare;

@@ -2,9 +2,10 @@ import { api } from "../server/Api";
 
 export const axiosLogInUser = async (dataTosubmit, setCookies) => {
   try {
-    const response = await api.post("./api/v1/login", dataTosubmit);
-    if (!response.success) {
-      alert(response.message);
+    const response = await api.post("./api/v1/login", JSON.stringify(dataTosubmit));
+
+    if (!response.status === 200) {
+      alert(response.msg);
       return false;
     }
     const today = new Date();
@@ -12,16 +13,16 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
     const expireReissueToken = today.setDate(today.getDate() + 7);
     // 만료 시간 설정
-    window.localStorage.setItem("memberId", response.data.memberId);
     window.localStorage.setItem("accessToken", response.data.jwtAccessToken);
     window.localStorage.setItem("expireAccessToken", expireAccessToken);
+    window.localStorage.setItem("memberId", response.data.memberId);
     setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),
     });
-
     return true;
   } catch (error) {
-    alert("Error");
+    console.log("로그인에 실패하였습니다.");
     return false;
   }
+  return false;
 };

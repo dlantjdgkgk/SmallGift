@@ -1,13 +1,10 @@
 import { api } from "../server/Api";
+import { Alert } from "react-st-modal";
 
 export const axiosLogInUser = async (dataTosubmit, setCookies) => {
   try {
-    const response = await api.post("./api/v1/login", JSON.stringify(dataTosubmit));
+    const response = await api.post("/api/v1/login", JSON.stringify(dataTosubmit));
 
-    if (!response.status === 200) {
-      alert(response.msg);
-      return false;
-    }
     const today = new Date();
     const TOKEN_TIME_OUT = 600 * 1000;
     const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
@@ -21,8 +18,7 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     });
     return true;
   } catch (error) {
-    console.log("로그인에 실패하였습니다.");
+    Alert("로그인에 실패하였습니다.");
     return false;
   }
-  return false;
 };

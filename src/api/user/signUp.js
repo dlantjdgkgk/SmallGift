@@ -2,37 +2,28 @@ import { api } from "../server/Api";
 
 export const axiosEmailCheck = async (email) => {
   try {
-    const response = await api.post(`../api/user/${email}/exists`, {});
-    if (!response.success) {
-      alert(response.message);
-      return false;
+    const response = await api.get(`/api/user/email/exists?email=${email}`);
+    if (response.status === 200) {
+      alert("이메일 중복 확인 성공");
     }
-    console.log(response);
-    return true;
   } catch (error) {
-    console.log("중복 확인에 실패하였습니다.");
-    console.log(error);
-    return false;
+    alert("중복 확인에 실패하였습니다.");
   }
 };
 export const axiosUsernameCheck = async (username) => {
   try {
-    const response = await api.post(`../api/user/username/exists`, username);
-    if (!response.status === 200) {
-      alert(response.msg);
-      return false;
+    const response = await api.get(`/api/user/username/exists?username=${username}`);
+    if (response.status === 200) {
+      alert("아이디 중복 확인 성공");
     }
-    return true;
   } catch (error) {
-    console.log("중복 확인에 실패하였습니다.");
-    console.log(error);
-    return false;
+    alert("중복 확인에 실패하였습니다.");
   }
 };
 
 export const axiosSignUpUser = async (dataTosubmit) => {
   try {
-    const response = await api.post("../api/user/signup", dataTosubmit);
+    const response = await api.post("/api/user/signup", dataTosubmit);
     if (!response.status === 200) {
       alert(response.msg);
       return false;

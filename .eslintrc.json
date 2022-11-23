@@ -28,6 +28,7 @@
         "eqeqeq": ["error", "always"],
         "prefer-template": "off",
         "global-require": 0,
+        "no-nested-ternary": "off",
         "@typescript-eslint/no-explicit-any": "warn",
         "@typescript-eslint/explicit-function-return-type":"off",
         "@typescript-eslint/adjacent-overload-signatures": "warn",

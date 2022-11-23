@@ -11,6 +11,8 @@ import {
 } from "../../utils/validationUtil";
 import { MsgColorChanger } from "./style";
 
+const EmailInput = () => {};
+
 const SignUpForm = () => {
   const navigate = useNavigate();
 
@@ -50,24 +52,29 @@ const SignUpForm = () => {
   const handleChange = (e) => {
     setPayload({ ...payload, [e.target.id]: e.target.value });
 
+    if (true /* 아무튼 validate하는 함수 validate(e.target.value) */) {
+      setMsg(({ [e.target.value]: _ignore, ...prev }) => ({ ...prev, [e.target.value]: "" }));
+    } else {
+    }
+
     if (e.target.id === "email") {
       if (validateEmail(e.target.value)) {
         setMsg({ ...msg, email: "" });
-        // setValidate({ ...validate, email: true, emailCheck: false });
+        setValidate({ ...validate, email: true, emailCheck: false });
         setValidate({ ...validate, email: true, emailCheck: true });
       } else {
         setMsg({ ...msg, email: "올바른 이메일 형식이 아닙니다.", emailCheck: "" });
-        // setValidate({ ...validate, email: false, emailCheck: false });
+        setValidate({ ...validate, email: false, emailCheck: false });
         setValidate({ ...validate, email: false, emailCheck: true });
       }
     } else if (e.target.id === "username") {
       if (validateUsername(e.target.value)) {
         setMsg({ ...msg, username: "" });
-        // setValidate({ ...validate, username: true, usernameCheck: false });
+        setValidate({ ...validate, username: true, usernameCheck: false });
         setValidate({ ...validate, username: true, usernameCheck: true });
       } else {
         setMsg({ ...msg, username: "2자리 이상, 10자리 미만으로 입력해주세요.", usernameCheck: "" });
-        // setValidate({ ...validate, username: false, usernameCheck: false });
+        setValidate({ ...validate, username: false, usernameCheck: false });
         setValidate({ ...validate, username: false, usernameCheck: true });
       }
     } else if (e.target.id === "password") {
@@ -98,11 +105,7 @@ const SignUpForm = () => {
   };
 
   // 중복 확인
-  const [check, setCheck] = useState({
-    email: "",
-    username: "",
-  });
-  // 이메일 중복 확인
+
   const checkEmail = async (e) => {
     e.preventDefault();
 
@@ -115,6 +118,7 @@ const SignUpForm = () => {
     }
     console.log(validate.emailCheck);
   };
+
   // 아이디 중복 확인
   const checkUsername = async (e) => {
     e.preventDefault();
@@ -168,7 +172,7 @@ const SignUpForm = () => {
                 label="이메일 주소"
               />
             </Grid>
-            {/*            <Grid item xs={3}>
+            <Grid item xs={3}>
               <Button
                 disabled={!validate.email}
                 onClick={checkEmail}
@@ -186,7 +190,7 @@ const SignUpForm = () => {
               <Grid className={validate.emailCheck ? "success" : "error"} item xs={12}>
                 <span>{msg.emailCheck}</span>
               </Grid>
-            ) : null} */}
+            ) : null}
             {!validate.email ? (
               <Grid item xs={12}>
                 <span style={{ color: "red" }}>{msg.email}</span>
@@ -204,11 +208,11 @@ const SignUpForm = () => {
                 label="비밀번호 (숫자+영문자+특수문자 8자리 이상)"
               />
             </Grid>{" "}
-            {!validate.password ? (
+            {!validate.password && (
               <Grid item xs={12}>
                 <span style={{ color: "red" }}>{msg.password}</span>
               </Grid>
-            ) : null}
+            )}
             <Grid item xs={12}>
               <TextField
                 onChange={handleChange}
@@ -247,7 +251,7 @@ const SignUpForm = () => {
                 variant="outlined"
                 sx={{ m: 0, height: "56px", fontSize: "12px" }}
                 size="large"
-                color={!validate.usernameCheck ? "error" : "primary"}
+                color={validate.usernameCheck ? "primary" : "error"}
               >
                 중복 확인
               </Button>
@@ -304,8 +308,8 @@ const SignUpForm = () => {
                 validate.username &&
                 validate.password &&
                 validate.rePassword &&
-                // validate.emailCheck &&
-                // validate.usernameCheck &&
+                validate.emailCheck &&
+                validate.usernameCheck &&
                 agree.use &&
                 agree.privacy &&
                 agree.location

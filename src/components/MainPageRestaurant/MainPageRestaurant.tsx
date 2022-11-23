@@ -25,21 +25,20 @@ const MainPageRestaurant = (): JSX.Element => {
   const [locate, setLocate] = useState("");
   const handleModalClose = (): void => setModalIsOpen(false);
   const [locateList, setLocateList] = useState<ILocateListProps[]>([]);
-  const locateInfo = locate.split(" ")[0];
 
   const memberId = 16;
-  const userLocateAPI = async (): Promise<void> => {
+
+  const userLocateAPI = async (): Promise<string> => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       setLocate(res.data);
+      return res.data;
     } catch (error) {
       throw new Error("check the network response");
     }
   };
-  console.log(locate);
-  console.log(locateInfo);
 
-  const ShopInfoLocateAPI = async (): Promise<void> => {
+  const ShopInfoLocateAPI = async (locateInfo: string): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locateInfo}`);
       setLocateList(result.data.data.menuRandomByLocateResDto);
@@ -49,9 +48,11 @@ const MainPageRestaurant = (): JSX.Element => {
   };
 
   useEffect(() => {
-    ShopInfoLocateAPI();
-    userLocateAPI();
-  }, [locateInfo, locate]);
+    (async () => {
+      const locateResult = await userLocateAPI();
+      ShopInfoLocateAPI(locateResult.split(" ")[0]);
+    })();
+  }, [locate]);
 
   return (
     <Styled.SectionRestaurantWrapper>

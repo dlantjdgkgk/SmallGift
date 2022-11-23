@@ -9,28 +9,21 @@ import { Link } from "react-router-dom";
 import CafeImage from "../../assets/img/CafeImage.png";
 import RecommendActions from "./RecommendActions";
 
-const tempShopList = [
-  {
-    category: "한식",
-    restaurantName: "쭈꾸미랩소디 강남점",
-    restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌",
-  },
-  {
-    category: "한식",
-    restaurantName: "쭈꾸미랩소디 강남점",
-    restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌",
-  },
-  {
-    category: "일식",
-    restaurantName: "치킨 송파점",
-    restaurantMenu: "쭈차돌세트,직화쭈꾸미,직화차돌 외",
-  },
-];
-
 interface IKeyWordProps {
   data: string;
   id: number;
 }
+
+interface IShopProps {
+  data: {
+    category: string;
+    shopName: string;
+    shopId: number;
+    productContent: string;
+    shopThumbnailImage: string;
+  };
+}
+
 const SearchShopPage = () => {
   const navigate = useNavigate();
   const params = useParams();
@@ -38,6 +31,7 @@ const SearchShopPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [shopInfo, setShopInfo] = useState([]);
   const [keyWord, setKeyWord] = useState([]);
+  const [shopList, setShopList] = useState<IShopProps[]>([]);
   const ref = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -85,6 +79,8 @@ const SearchShopPage = () => {
       console.log(error);
     }
   };
+
+  console.log(shopInfo);
 
   useEffect(() => {
     keyWordAPI();
@@ -148,17 +144,20 @@ const SearchShopPage = () => {
       <Styled.ShopInfoWrapper>
         {shopInfo.length > 0 && (
           <div className="restaurants">
-            {tempShopList.map((shop, index) => {
+            {shopList.map((shop) => {
               return (
-                <Link to={`/category/${shop.restaurantName}`} key={index} state={{ shop }}>
+                <Link
+                  to={`/category/${shop.data.category}/${shop.data.shopName}/${shop.data.shopId}`}
+                  key={shop.data.shopId}
+                >
                   <article className="restaurant">
-                    <img src={CafeImage} />
+                    <img src={shop.data.shopThumbnailImage} alt="가게 이미지" />
                     <div className="restaurantInformation">
                       <button className="category" type="button">
-                        {shop.category}
+                        {shop.data.category}
                       </button>
-                      <p className="restaurantName">{shop.restaurantName}</p>
-                      <p className="restaurantMenu">{shop.restaurantMenu}</p>
+                      <p className="restaurantName">{shop.data.shopName}</p>
+                      <p className="restaurantMenu">{shop.data.productContent}</p>
                     </div>
                   </article>
                 </Link>

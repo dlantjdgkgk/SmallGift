@@ -76,7 +76,7 @@ const LogInForm = () => {
     event.preventDefault();
     console.log(payload);
     // api 연결 잘 되면 이걸로 사용
-    if (axiosLogInUser(payload, setCookies) || window.localStorage.getItem("accessToken")) {
+    if (axiosLogInUser(payload, setCookies) && window.localStorage.getItem("accessToken")) {
       window.localStorage.setItem("username", payload.username);
       setTimeout(() => navigate("/"), 1000);
       // console.log(window.localStorage.getItem("accessToken"));

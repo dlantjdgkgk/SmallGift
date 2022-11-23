@@ -6,7 +6,6 @@ import * as Styled from "./style";
 interface ILocalPopularGifticonProps {
   data: {
     category: string;
-    image: string;
     shopName: string;
     shopId: number;
     productContent: string;

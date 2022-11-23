@@ -6,6 +6,9 @@ import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
 import Logo from "../../assets/img/Logo.png";
 import { Alert } from "react-st-modal";
+import LogoutIcon from "@mui/icons-material/Logout";
+import login from "../../assets/img/login.png";
+import LoginSVG from "./LoginSVG";
 
 const Header = (): JSX.Element => {
   const [scrollFlag, setScrollFlag] = useState(true);
@@ -51,6 +54,16 @@ const Header = (): JSX.Element => {
             >
               <img src={Logo} />
             </button>
+          ) : pathname === "/login" ? (
+            <button
+              className="back"
+              type="button"
+              onClick={(): void => {
+                navigate("/");
+              }}
+            >
+              <BackSVG fill={isCategory ? "white" : undefined} />
+            </button>
           ) : (
             <button
               className="back"
@@ -72,11 +85,12 @@ const Header = (): JSX.Element => {
           pathname === "/alert" ||
           pathname === "/signup" ||
           pathname === "/find/password" ||
+          pathname === "/login" ||
           pathname === "/auth/kakao/callback" ||
           pathname === "/find/ID" ||
           pathname === "/find/ID" ||
           pathname === "/find/password/after" ? null : (
-            <div>
+            <div className="div">
               {!localStorage.accessToken ? (
                 <button
                   type="button"
@@ -85,11 +99,13 @@ const Header = (): JSX.Element => {
                   }}
                   className="login"
                 >
-                  로그인
+                  <LoginSVG fill={isCategory ? "white" : undefined} />
                 </button>
               ) : (
                 <button type="button" onClick={handleLogoutBtn} className="logout">
-                  로그아웃
+                  <Styled.LogoutBtn isCategory={isCategory}>
+                    <LogoutIcon />
+                  </Styled.LogoutBtn>
                 </button>
               )}
             </div>

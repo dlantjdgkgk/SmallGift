@@ -18,20 +18,19 @@ export const HeaderWrapper = styled.header<HeaderProps>`
     top: 0px;
     z-index: 1;
     transition: top 0.4s ease-in-out;
+    padding: 8px 16px 4px 16px;
   }
 
   .logo {
     width: 22px;
     height: 30px;
     background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
-    margin: 8px 0px 8px 16px;
   }
   .back {
     width: 32px;
     height: 32px;
     border: none;
     background-color: ${(props): string => (props.isCategory ? "transparent" : "white")};
-    margin: 8px 16px 0px 16px;
   }
   .back {
     width: 32px;
@@ -46,4 +45,18 @@ export const HeaderWrapper = styled.header<HeaderProps>`
     letter-spacing: -0.04em;
     color: #000000;
   }
+  .div {
+    height: 30px;
+  }
+  .logout {
+    margin-top: 4px;
+  }
+`;
+
+interface MyButtonProps {
+  isCategory: boolean;
+}
+
+export const LogoutBtn = styled.div<MyButtonProps>`
+  color: ${(props): string => (props.isCategory ? "white" : "black")};
 `;

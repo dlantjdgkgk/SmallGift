@@ -1,5 +1,4 @@
 import { Avatar, Box, Grid, Link, Typography, Container, CssBaseline } from "@mui/material";
-import naverImg from "assets/img/naver_oauth.png";
 import kakaoImg from "assets/img/kakao_oauth.png";
 import * as Styled from "./style";
 import LoginForm from "components/LoginForm/LoginForm";
@@ -41,10 +40,6 @@ const LogIn = () => {
           </Grid>
         </Grid>
         <Styled.Oauths>
-          {/* <a href={naverOauthUrl}> */}
-          <a>
-            <img src={naverImg} alt="naver" />
-          </a>
           <a href={kakaOauthUrl}>
             <img src={kakaoImg} alt="kakao" />
           </a>

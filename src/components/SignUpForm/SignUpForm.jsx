@@ -116,7 +116,7 @@ const SignUpForm = () => {
     e.preventDefault();
 
     if (payload.username !== "" && validate.username) {
-      if (await axiosUsernameCheck(payload.username)) {
+      if ((await axiosUsernameCheck(payload.username)) === true) {
         setValidate({ ...validate, usernameCheck: true });
       } else {
         setValidate({ ...validate, usernameCheck: false });
@@ -140,8 +140,8 @@ const SignUpForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (axiosSignUpUser(payload)) {
-      navigate("/");
+    if (axiosSignUpUser(payload) === true) {
+      navigate("/login");
       console.log("success");
     }
   };
@@ -164,7 +164,7 @@ const SignUpForm = () => {
                 label="이메일 주소"
               />
             </Grid>
-            <Grid item xs={3}>
+            {/*            <Grid item xs={3}>
               <Button
                 disabled={!validate.email}
                 onClick={checkEmail}
@@ -182,7 +182,7 @@ const SignUpForm = () => {
               <Grid className={validate.emailCheck ? "success" : "error"} item xs={12}>
                 <span>{msg.emailCheck}</span>
               </Grid>
-            ) : null}
+            ) : null} */}
             {!validate.email ? (
               <Grid item xs={12}>
                 <span style={{ color: "red" }}>{msg.email}</span>

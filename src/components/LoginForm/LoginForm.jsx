@@ -76,13 +76,11 @@ const LogInForm = () => {
     event.preventDefault();
 
     // api 연결 잘 되면 이걸로 사용
-    if (axiosLogInUser(payload, setCookies) === true) {
+    if (axiosLogInUser(payload, setCookies) || window.localStorage.getItem("accessToken")) {
       window.localStorage.setItem("username", payload.username);
-      setTimeout(() => navigate("/"), 2000);
+      setTimeout(() => navigate("/"), 1000);
       // console.log(window.localStorage.getItem("accessToken"));
-      console.log(window.localStorage.getItem("accessToken"));
     } else {
-      window.location.href = "/login";
       console.log("fail");
     }
 

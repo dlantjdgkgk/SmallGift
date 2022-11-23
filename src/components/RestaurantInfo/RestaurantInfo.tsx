@@ -1,19 +1,13 @@
 import KakaoMap from "components/KakaoAPI/KakaoMap/KakaoMap";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
 import Portal from "components/Modal/Portal/Portal";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Styled from "./style";
 import LocateWhite from "../../assets/img/LocateWhite.png";
 import BusinessHours from "../../assets/img/BusinessHours.png";
 import PhoneNumber from "../../assets/img/PhoneNumber.png";
-import { apiInstance } from "../../api/setting";
 
-interface IShopDetailProps {
-  shopAddress: string;
-  shopTelephone: string;
-}
-
-interface IShopMenuProps {
+export interface IShopMenuProps {
   data: {
     productImage: string;
     productPrice: string;
@@ -21,39 +15,23 @@ interface IShopMenuProps {
     id: number;
   };
 }
-
 interface IProps {
-  shopId: string;
+  shopAddress: string | undefined;
+  shopTelephone: string | undefined;
+  menus: IShopMenuProps[];
 }
 
-const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
+const RestaurantInfo = ({ shopAddress, shopTelephone, menus }: IProps): JSX.Element => {
   const buttons = ["전체 메뉴", "매장 정보"];
   const [selectButton, setSelectButton] = useState("전체 메뉴");
-  const [selectMenu, setSelectMenu] = useState(4);
+  const [selectMenu, setSelectMenu] = useState<number>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [shopDetail, setShopDetail] = useState<IShopDetailProps>();
-  const [menus, setMenus] = useState<IShopMenuProps[]>([]);
   const handleModalClose = (): void => setModalIsOpen(false);
-
-  const ShopDetailsGetAPI = async (): Promise<void> => {
-    const result = await apiInstance.get("/api/user/shop/details?shopId=1");
-    setShopDetail(result.data.data);
-  };
-
-  const ShopMenuAPI = async (): Promise<void> => {
-    const result = await apiInstance.get("/api/user/shop/menu?shopId=1");
-    setMenus(result.data.data.shopAllMenuList);
-  };
-
-  useEffect(() => {
-    ShopDetailsGetAPI();
-    ShopMenuAPI();
-  }, []);
 
   return (
     <Styled.RestaurantInfoWrapper>
       <div className="menuAndRestaurantInformation">
-        {buttons.map((button, index) => {
+        {buttons.map((button) => {
           const isSelected = selectButton === button;
           return (
             <button
@@ -61,7 +39,7 @@ const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
               type="button"
               aria-label="Click"
               onClick={(): void => setSelectButton(button)}
-              key={index}
+              key={button}
             >
               <p style={isSelected ? { color: "#6600CC", fontWeight: "700" } : undefined}>{button}</p>
             </button>
@@ -71,15 +49,15 @@ const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
 
       {selectButton === "전체 메뉴" ? (
         <section className="manyMenu">
-          {menus.map((menu, index) => {
-            const isSelected = selectMenu === index;
+          {menus.map((menu) => {
+            const isSelected = selectMenu === menu.data.id;
             return (
               <article
                 className="manyMenuInformation"
-                key={index}
+                key={menu.data.id}
                 aria-hidden="true"
                 onClick={(): void => {
-                  setSelectMenu(index);
+                  setSelectMenu(menu.data.id);
                   setModalIsOpen(true);
                 }}
               >
@@ -90,9 +68,9 @@ const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
                 ) : null}
                 <img src={menu.data.productImage} alt="이미지" />
                 <div className="setMenuInfo">
-                  <div className="setMenuName">{menu.data.productName}세트</div>
-                  <p className="setMenu">{menu.data.productName}</p>
-                  <p className="price">{menu.data.productPrice}원</p>
+                  <div className="setMenuName">{menu.data.productName}</div>
+                  <p className="setMenu">단품</p>
+                  <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
                 </div>
               </article>
             );
@@ -105,7 +83,7 @@ const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
               <img src={LocateWhite} alt="" />
               <p className="address">주소</p>
             </div>
-            <p className="detailAddress">{shopDetail?.shopAddress}</p>
+            <p className="detailAddress">{shopAddress}</p>
             <KakaoMap />
           </div>
           <div className="restaurantOperatingHours">
@@ -124,7 +102,7 @@ const RestaurantInfo = ({ shopId }: IProps): JSX.Element => {
               <img src={PhoneNumber} alt="" />
               <p className="phoneNumberKorean">전화번호</p>
             </div>
-            <p className="phoneNumber">{shopDetail?.shopTelephone}</p>
+            <p className="phoneNumber">{shopTelephone}</p>
           </div>
         </div>
       )}

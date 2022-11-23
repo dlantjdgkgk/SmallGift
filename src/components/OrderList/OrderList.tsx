@@ -14,6 +14,7 @@ interface IOrderListProps {
   id: number;
   orderDetailsId: number;
   orderDate: string;
+  shopId: string;
 }
 
 const OrderList = (): JSX.Element => {
@@ -39,7 +40,7 @@ const OrderList = (): JSX.Element => {
   const OrderAllAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get("/api/user/order/all?memberId=16");
-      setOrderList(result.data.data.orderDetailsDtoList);
+      setOrderList(result.data.data.orderDetailsDtoList.reverse());
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -101,9 +102,9 @@ const OrderList = (): JSX.Element => {
                       <img src={order.productImage} alt="" />
                     </div>
                     <div className="restaurantInfo">
-                      <p className="restaurantName">{order.productName}</p>
-                      <p className="setName">{order.productContent}</p>
-                      <p className="price">{order.productPrice}원</p>
+                      <p className="restaurantName">{order.shopId}</p>
+                      <p className="setName">{order.productName}</p>
+                      <p className="price">{order.productPrice.toLocaleString()}원</p>
                     </div>
                   </div>
                 </Link>

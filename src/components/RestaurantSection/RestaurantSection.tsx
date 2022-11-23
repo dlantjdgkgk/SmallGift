@@ -1,17 +1,17 @@
 import * as Styled from "./style";
 import Shadow from "../../assets/img/shadow.png";
-import RestaurantInfo from "../../assets/img/RestaurantInfo.png";
 
 interface IProps {
   category: string;
   shopName: string;
+  image: string | undefined;
 }
 
-const RestaurantSection = ({ category, shopName }: IProps): JSX.Element => {
+const RestaurantSection = ({ category, shopName, image }: IProps): JSX.Element => {
   return (
     <Styled.RestaurantSectionWrapper>
       <img src={Shadow} alt="" className="shadow" />
-      <img src={RestaurantInfo} alt="" className="picture" />
+      <img src={image} alt="" className="picture" />
       <div className="resturantThumbnail">
         <button className="category" type="button">
           {category}

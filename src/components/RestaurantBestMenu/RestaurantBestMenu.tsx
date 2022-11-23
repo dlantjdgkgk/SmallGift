@@ -2,34 +2,19 @@ import * as Styled from "./style";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Portal from "components/Modal/Portal/Portal";
 import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
-import { apiInstance } from "../../api/setting";
+import { IShopMenuProps } from "components/RestaurantInfo/RestaurantInfo";
 
-interface IShopMenuProps {
-  data: {
-    productImage: string;
-    productPrice: string;
-    productName: string;
-    id: number;
-  };
+interface IProps {
+  bestMenus: IShopMenuProps[];
 }
 
-const RestaurantBestMenu = (): JSX.Element => {
+const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
   const [selectMenu, setSelectMenu] = useState<number>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleModalClose = (): void => setModalIsOpen(false);
-  const [menus, setMenus] = useState<IShopMenuProps[]>([]);
-
-  const ShopMenuAPI = async (): Promise<void> => {
-    const result = await apiInstance.get("/api/user/shop/menu?shopId=1");
-    setMenus(result.data.data.shopAllMenuList);
-  };
-
-  useEffect(() => {
-    ShopMenuAPI();
-  }, []);
 
   const settings = {
     dots: true,
@@ -46,15 +31,15 @@ const RestaurantBestMenu = (): JSX.Element => {
     <Styled.BestMenuWrapper>
       <p className="bestMenu">Best 메뉴</p>
       <Slider {...settings}>
-        {menus.map((menu, index) => {
-          const isSelected = selectMenu === index;
+        {bestMenus.map((menu) => {
+          const isSelected = selectMenu === menu.data.id;
           return (
             <section
               className="bestMenuInformation"
-              key={index}
+              key={menu.data.id}
               aria-hidden="true"
               onClick={(): void => {
-                setSelectMenu(index);
+                setSelectMenu(menu.data.id);
                 setModalIsOpen(true);
               }}
             >
@@ -67,9 +52,9 @@ const RestaurantBestMenu = (): JSX.Element => {
               <article className="menuInformation">
                 <img src={menu.data.productImage} alt="이미지" />
                 <div className="setMenuInfo">
-                  <div className="setMenuName">{menu.data.productName}세트</div>
-                  <p className="setMenu">{menu.data.productName}</p>
-                  <p className="price">{menu.data.productPrice}원</p>
+                  <div className="setMenuName">{menu.data.productName}</div>
+                  <p className="setMenu">단품</p>
+                  <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
                 </div>
               </article>
             </section>

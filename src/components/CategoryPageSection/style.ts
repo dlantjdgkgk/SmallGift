@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CategoryPageSectionWrapper = styled.section`
   margin-left: 16px;
   select {
-    width: 196px;
+    width: 120px;
     border: none;
     border-bottom: 2px solid black;
     font-family: "Noto Sans KR";

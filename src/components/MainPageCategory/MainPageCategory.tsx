@@ -21,8 +21,6 @@ const MainPageCategory = (): JSX.Element => {
     userLocateAPI();
   }, []);
 
-  console.log(locate);
-
   return (
     <>
       <Styled.MainPageCategoryWrapper>

@@ -126,6 +126,10 @@ export const RestaurantWrapper = styled.div`
         margin: 8px 0 0 8px;
         border-radius: 8px;
       }
+      .image {
+        width: 124px;
+        height: 124px;
+      }
     }
 
     .restaurantInformation {

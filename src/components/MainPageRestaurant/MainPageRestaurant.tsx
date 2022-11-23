@@ -5,14 +5,27 @@ import { useEffect, useState } from "react";
 import { apiInstance } from "../../api/setting";
 import Arrow from "../../assets/img/Arrow.png";
 import Locate from "../../assets/img/Locate.png";
-import RestaurantMenu from "../../assets/img/RestaurantMenu.png";
 import NotData from "../../assets/img/NotData.png";
+import { Link } from "react-router-dom";
+
+interface ILocateListProps {
+  data: {
+    category: string;
+    image: string;
+    productName: string;
+    shopName: string;
+    price: string;
+    shopId: number;
+  };
+  id: number;
+}
 
 const MainPageRestaurant = (): JSX.Element => {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [locate, setLocate] = useState(null);
-  const [shopInfo, setShopInfo] = useState([]);
+  const [locate, setLocate] = useState("");
   const handleModalClose = (): void => setModalIsOpen(false);
+  const [locateList, setLocateList] = useState<ILocateListProps[]>([]);
+  const locateInfo = locate.split(" ")[0];
 
   const memberId = 16;
   const userLocateAPI = async (): Promise<void> => {
@@ -23,22 +36,22 @@ const MainPageRestaurant = (): JSX.Element => {
       throw new Error("check the network response");
     }
   };
+  console.log(locate);
+  console.log(locateInfo);
 
   const ShopInfoLocateAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locate}`);
-      setShopInfo(result.data.data.menuRandomByLocateResDto);
+      const result = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locateInfo}`);
+      setLocateList(result.data.data.menuRandomByLocateResDto);
     } catch (error) {
       throw new Error("check the network response");
     }
   };
 
-  console.log(shopInfo);
-
   useEffect(() => {
     ShopInfoLocateAPI();
     userLocateAPI();
-  }, []);
+  }, [locateInfo, locate]);
 
   return (
     <Styled.SectionRestaurantWrapper>
@@ -53,7 +66,7 @@ const MainPageRestaurant = (): JSX.Element => {
             }}
           >
             <div className="locationBtn">
-              위치 변경하기 <img src={Arrow} />
+              위치 변경하기 <img src={Arrow} alt="화살표" />
             </div>
             {modalIsOpen ? (
               <Portal>
@@ -69,19 +82,15 @@ const MainPageRestaurant = (): JSX.Element => {
 
         <div className="locationContainer">
           <div className="addressInformation">
-            <img src={Locate} />
+            <img src={Locate} alt="화살표" />
             <p className="address">주소</p>
-            {locate ? (
-              <p className="exactAddress">{locate}</p>
-            ) : (
-              <p className="exactAddress">서울특별시 마포구 양화로7안길 2-1</p>
-            )}
+            <p className="exactAddress">{locate}</p>
           </div>
         </div>
       </Styled.LocationWrapper>
 
       <Styled.RestaurantWrapper>
-        {shopInfo.length === 0 ? (
+        {locateList.length === 0 ? (
           <div className="noData">
             <img src={NotData} alt="" />
             <div className="noDataTitle">
@@ -91,39 +100,23 @@ const MainPageRestaurant = (): JSX.Element => {
           </div>
         ) : (
           <section className="restaurants">
-            <article className="restaurant">
-              <button className="category" type="button">
-                일식
-              </button>
-              <img src={RestaurantMenu} />
-              <div className="restaurantInformation">
-                <p className="restaurantName">카멜로 연남</p>
-                <p className="restaurantMenu">버터 봉골레 파스타</p>
-                <p className="menuPrice">17,000원</p>
-              </div>
-            </article>
-            <article className="restaurant">
-              <button className="category" type="button">
-                일식
-              </button>
-              <img src={RestaurantMenu} />
-              <div className="restaurantInformation">
-                <p className="restaurantName">모센즈 스위트</p>
-                <p className="restaurantMenu">모센 라떼</p>
-                <p className="menuPrice">6,000원</p>
-              </div>
-            </article>
-            <article className="restaurant">
-              <button className="category" type="button">
-                일식
-              </button>
-              <img src={RestaurantMenu} />
-              <div className="restaurantInformation">
-                <p className="restaurantName">아뜨뜨</p>
-                <p className="restaurantMenu">소고기 솥밥</p>
-                <p className="menuPrice">15,000원</p>
-              </div>
-            </article>
+            {locateList.map((list) => {
+              return (
+                <Link to={`/category/${list.data.category}/${list.data.shopName}/${list.data.shopId}`} key={list.id}>
+                  <article className="restaurant">
+                    <button className="category" type="button">
+                      {list.data.category}
+                    </button>
+                    <img src={list.data.image} alt="음식 이미지" className="image" />
+                    <div className="restaurantInformation">
+                      <p className="restaurantName">{list.data.shopName}</p>
+                      <p className="restaurantMenu">{list.data.productName}</p>
+                      <p className="menuPrice">{list.data.price.toLocaleString()}원</p>
+                    </div>
+                  </article>
+                </Link>
+              );
+            })}
           </section>
         )}
       </Styled.RestaurantWrapper>

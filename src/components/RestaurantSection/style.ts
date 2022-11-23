@@ -6,10 +6,12 @@ export const RestaurantSectionWrapper = styled.section`
     position: absolute;
     width: 100%;
     display: block;
+    max-height: 216px;
   }
   .picture {
     width: 100%;
     display: block;
+    max-height: 216px;
   }
   .resturantThumbnail {
     margin-left: 24px;

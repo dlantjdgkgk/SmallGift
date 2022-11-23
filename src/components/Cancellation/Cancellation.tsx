@@ -19,7 +19,7 @@ const Cancellation = (): JSX.Element => {
   const OrderRefundAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get("/api/user/order/refund/all?memberId=16");
-      setRefundList(result.data.data.refundDetailsDtoList);
+      setRefundList(result.data.data.refundDetailsDtoList.reverse());
     } catch (error) {
       throw new Error("check the network response");
     }

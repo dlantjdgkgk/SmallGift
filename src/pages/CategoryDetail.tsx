@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 interface IShopDetailProps {
   shopAddress: string;
   shopTelephone: string;
+  shopInfoImage: string;
 }
 
 const CategoryDetail = (): JSX.Element => {
@@ -17,24 +18,31 @@ const CategoryDetail = (): JSX.Element => {
   const shopName = decodeURIComponent(location.pathname.split("/")[3]);
   const shopId = decodeURIComponent(location.pathname.split("/")[4]);
   const [shopDetail, setShopDetail] = useState<IShopDetailProps>();
+  const [menus, setMenus] = useState([]);
+  const copy = [...menus];
+  const bestMenus = copy.splice(2);
 
-  const ShopDetailsGetAPI = async (): Promise<void> => {
+  const ShopMenuAPI = async (): Promise<void> => {
+    const result = await apiInstance.get(`/api/user/shop/menu?shopId=${shopId}`);
+    setMenus(result.data.data.shopAllMenuList);
+  };
+
+  const ShopDetailGetAPI = async (): Promise<void> => {
     const result = await apiInstance.get(`/api/user/shop/details?shopId=${shopId}`);
     setShopDetail(result.data.data);
   };
 
   useEffect(() => {
-    ShopDetailsGetAPI();
+    ShopDetailGetAPI();
+    ShopMenuAPI();
   }, []);
-
-  console.log(shopDetail);
 
   return (
     <Styled.CategoryRestaurantWrapper>
-      <RestaurantSection category={catgegory} shopName={shopName} />
-      <RestaurantBestMenu />
+      <RestaurantSection category={catgegory} shopName={shopName} image={shopDetail?.shopInfoImage} />
+      <RestaurantBestMenu bestMenus={bestMenus} />
       <div className="line" />
-      <RestaurantInfo shopId={shopId} />
+      <RestaurantInfo shopAddress={shopDetail?.shopAddress} shopTelephone={shopDetail?.shopTelephone} menus={menus} />
     </Styled.CategoryRestaurantWrapper>
   );
 };

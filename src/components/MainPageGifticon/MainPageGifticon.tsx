@@ -2,107 +2,55 @@ import * as Styled from "./style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import food from "../../assets/img/food.png";
 import { apiInstance } from "../../api/setting";
 
 interface MyButtonProps {
   isSelected: boolean;
 }
 
+interface ILocalPopularGifticonProps {
+  data: {
+    category: string;
+    image: string;
+    shopName: string;
+    shopId: number;
+    address: string;
+    shopInfoImage: string;
+  };
+}
+
 const MyButton = styled.button<MyButtonProps>`
   background-color: ${(props): string => (props.isSelected ? "#6600CC" : "")};
   color: ${(props): string => (props.isSelected ? "#F4F4F4;" : "#5e5e5e")};
 `;
+
 const MainPageGifticon = (): JSX.Element => {
-  const koreaAreas = ["서울/경기", "강원도", "충청도", "전라도", "경기도", "제주도"];
-  const [selectButton, setSelectButton] = useState("서울/경기");
-
-  const localPopularGifticon = [
-    {
-      local: "서울/경기",
-      category: "일식",
-      restaurantName: "을지다락 강남",
-      address: "서울 강남구 강남대로9길 22 2층",
-    },
-    {
-      local: "서울/경기",
-      category: "카페",
-      restaurantName: "벙커힐",
-      address: "서울 송파구 강남대로9길 23 2층",
-    },
-    {
-      local: "서울/경기",
-      category: "양식",
-      restaurantName: "남미플랜트랩",
-      address: "서울 양천구 강남대로9길 24 2층",
-    },
-
-    {
-      local: "강원도",
-      category: "일식",
-      restaurantName: "벙커힐",
-      address: "강원도 강남대로9길 22 2층",
-    },
-    { local: "강원도", category: "카페", restaurantName: "벙커힐", address: "강원도 강남대로9길 22 2층" },
-    { local: "강원도", category: "양식", restaurantName: "남미플랜트랩", address: "강원도 강남대로9길 22 2층" },
-    {
-      local: "충청도",
-      category: "일식",
-      restaurantName: "충청도",
-      address: "충청도 강남대로9길 22 2층",
-    },
-    { local: "충청도", category: "카페", restaurantName: "벙커힐", address: "충청도 강남대로9길 22 2층" },
-    { local: "충청도", category: "양식", restaurantName: "남미플랜트랩", address: "충청도 강남대로9길 22 2층" },
-    {
-      local: "전라도",
-      category: "일식",
-      restaurantName: "전라도",
-      address: "전라도 강남대로9길 22 2층",
-    },
-    { local: "전라도", category: "카페", restaurantName: "벙커힐", address: "전라도 강남대로9길 22 2층" },
-    { local: "전라도", category: "양식", restaurantName: "남미플랜트랩", address: "전라도 강남대로9길 22 2층" },
-    {
-      local: "경기도",
-      category: "일식",
-      restaurantName: "경기도",
-      address: "경기도 강남대로9길 22 2층",
-    },
-    { local: "경기도", category: "카페", restaurantName: "벙커힐", address: "경기도 강남대로9길 22 2층" },
-    { local: "경기도", category: "양식", restaurantName: "남미플랜트랩", address: "경기도 강남대로9길 22 2층" },
-    {
-      local: "제주도",
-      category: "일식",
-      restaurantName: "제주도",
-      address: "제주도 강남대로9길 22 2층",
-    },
-    { local: "제주도", category: "카페", restaurantName: "벙커힐", address: "제주도 강남대로9길 22 2층" },
-    { local: "제주도", category: "양식", restaurantName: "남미플랜트랩", address: "제주도 강남대로9길 22 2층" },
-  ];
-
-  console.log(selectButton);
+  const koreaAreas = ["서울", "경기", "강원", "충북", "전북", "제주"];
+  const [selectArea, setSelectArea] = useState("서울");
+  const [localPopularGifticons, setLocalPopularGifticons] = useState<ILocalPopularGifticonProps[]>([]);
 
   const ShopInfoBestAPI = async (): Promise<void> => {
-    const result = await apiInstance.get(`/api/user/shop/info/best?locate=${selectButton}`);
-    console.log(result.data.data.topShopByLocate);
+    const result = await apiInstance.get(`/api/user/shop/info/best?locate=${selectArea}`);
+    setLocalPopularGifticons(result.data.data.topShopByLocate);
   };
 
   useEffect(() => {
     ShopInfoBestAPI();
-  }, [selectButton]);
+  }, [selectArea]);
 
   return (
     <Styled.SectionGifticonWrapper>
       <p className="gifticon">지역별 인기있는 기프티콘이에요</p>
       <section className="areas">
-        {koreaAreas.map((area, index) => {
-          const isSelected = selectButton === area;
+        {koreaAreas.map((area) => {
+          const isSelected = selectArea === area;
           return (
             <MyButton
               type="button"
               aria-label="Click"
-              key={index}
+              key={area}
               onClick={(): void => {
-                setSelectButton(area);
+                setSelectArea(area);
               }}
               isSelected={isSelected}
             >
@@ -113,22 +61,23 @@ const MainPageGifticon = (): JSX.Element => {
       </section>
 
       <section className="gifticonInformation">
-        {localPopularGifticon
-          .filter((item) => item.local === selectButton)
-          .map((shop, index) => {
-            return (
-              <Link to={`/category?value=${shop.category} `} key={index}>
-                <article className="addressInformation" aria-label="Click">
-                  <img src={food} />
-                  <button className="category" type="button">
-                    {shop.category}
-                  </button>
-                  <p className="restaurantName">{shop.restaurantName}</p>
-                  <p className="restaurantAddress">{shop.address}</p>
-                </article>
-              </Link>
-            );
-          })}
+        {localPopularGifticons.map((popularGifticon) => {
+          return (
+            <Link
+              to={`/category/${popularGifticon.data.category}/${popularGifticon.data.shopName}/${popularGifticon.data.shopId}`}
+              key={popularGifticon.data.shopId}
+            >
+              <article className="addressInformation" aria-label="Click">
+                <img src={popularGifticon.data.shopInfoImage} alt="가게 이미지" />
+                <button className="category" type="button">
+                  {popularGifticon.data.category}
+                </button>
+                <p className="restaurantName">{popularGifticon.data.shopName}</p>
+                <p className="restaurantAddress">{popularGifticon.data.address}</p>
+              </article>
+            </Link>
+          );
+        })}
       </section>
     </Styled.SectionGifticonWrapper>
   );

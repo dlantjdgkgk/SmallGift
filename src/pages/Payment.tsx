@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IUserFormInput } from "./types";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import MenuType from "components/BuyInfo/MenuType";
 import { FormErrorMessages } from "utils/hookFormUtil";
 import { apiInstance } from "../api/setting";
@@ -77,7 +77,7 @@ const Payment = (): JSX.Element => {
                 <input
                   {...register("nickName", {
                     required: true,
-                    minLength: 3,
+                    minLength: 2,
                     maxLength: 10,
                     pattern: /[가-힣ㄱ-ㅎㅏ-ㅣ]/gi,
                   })}
@@ -128,7 +128,7 @@ const Payment = (): JSX.Element => {
         <Styled.BoundaryLine />
         <Styled.PaymentMethodSection>
           <div className="payment">
-            <button type="submit">{menu.data.productPrice}원 결제하기</button>
+            <button type="submit">{menu.data.productPrice.toLocaleString()}원 결제하기</button>
           </div>
         </Styled.PaymentMethodSection>
       </form>

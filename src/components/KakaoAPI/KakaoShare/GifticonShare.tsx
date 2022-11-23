@@ -3,9 +3,11 @@ import KakaoImg from "../../../assets/img/Kakao.png";
 
 interface IProps {
   image: string;
+  productName: string;
+  category: string;
 }
 
-const GifticonShare = ({ image }: IProps): JSX.Element => {
+const GifticonShare = ({ image, productName, category }: IProps): JSX.Element => {
   const { Kakao } = window;
 
   if (window.kakao) {
@@ -27,8 +29,8 @@ const GifticonShare = ({ image }: IProps): JSX.Element => {
     Kakao?.Link?.sendDefault({
       objectType: "feed",
       content: {
-        title: "스몰기프트",
-        description: "#쿠폰 #소상공인",
+        title: `스몰기프트 ${productName} 기프티콘`,
+        description: `#쿠폰 #소상공인 #${category} `,
         imageUrl: `${image}`,
         link: {
           mobileWebUrl: `https://smallgift.pages.dev`,

@@ -8,6 +8,7 @@ interface ICouponInfoProps {
   couponNumber: string;
   expirationTime: number[];
   productName: string;
+  shopId: string;
 }
 
 const OrderListCoupon = () => {

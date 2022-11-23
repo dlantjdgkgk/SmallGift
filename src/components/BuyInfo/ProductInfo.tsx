@@ -30,8 +30,8 @@ const ProductInfo = ({ menu }: IProps): JSX.Element => {
           <img src={menu.data.productImage} alt="이미지" className="menuImage" />
           <div className="setMenuInfo">
             <div className="setMenuName">{menu.data.productName}</div>
-            <p className="setMenu">{menu.data.productName}</p>
-            <p className="price">{menu.data.productPrice}원</p>
+            <p className="setMenu">단품</p>
+            <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
           </div>
         </div>
       )}

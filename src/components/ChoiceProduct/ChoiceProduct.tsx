@@ -100,8 +100,8 @@ const ChoiceProduct = (): JSX.Element => {
                     <img src={menu.data.productImage} alt="" className="thumbnail" />
                     <div className="setInfo">
                       <p className="setName">{menu.data.productName}</p>
-                      <p className="setMenu">{menu.data.productContent}</p>
-                      <p className="price">{menu.data.productPrice}원</p>
+                      <p className="setMenu">단품</p>
+                      <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
                     </div>
                   </div>
                   <button

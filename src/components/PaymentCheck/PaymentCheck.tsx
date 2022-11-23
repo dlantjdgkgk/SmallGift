@@ -4,6 +4,8 @@ import GifticonShare from "components/KakaoAPI/KakaoShare/GifticonShare";
 
 interface DataType {
   productImage: string;
+  productName: string;
+  category: string;
 }
 
 interface PropsType {
@@ -16,8 +18,6 @@ const PaymentCheck = (): JSX.Element => {
   const result = state as PropsType;
   const image: DataType = result.data;
 
-  console.log(image.productImage);
-
   return (
     <Styled.PaymentCheckWrapper>
       <Styled.PaymentCheckSection>
@@ -26,7 +26,7 @@ const PaymentCheck = (): JSX.Element => {
           <p className="sendGift">홍길순님께 보내는 선물 </p>
           <p className="confirmPay">결제가 완료됐어요!</p>
         </div>
-        <GifticonShare image={image.productImage} />
+        <GifticonShare image={image.productImage} productName={image.productName} category={image.category} />
 
         <div className="orderListAndConfirm">
           <button

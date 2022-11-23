@@ -9,10 +9,10 @@ interface ICategoryProps {
 const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: ICategoryProps): JSX.Element => {
   return (
     <Styled.SelectedCategoryWrapper>
-      {categories.map((category, index) => {
+      {categories.map((category) => {
         const isSelected = selectCategory === category;
         return (
-          <div className="category" key={index}>
+          <div className="category" key={category}>
             <button
               style={isSelected ? { border: "1px solid #6600CC", color: "#6600CC" } : undefined}
               type="button"

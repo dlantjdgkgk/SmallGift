@@ -34,6 +34,7 @@ interface IOrderListProps {
   productContent: string;
   id: number;
   length: number;
+  shopId: string;
 }
 
 const MyPage = (): JSX.Element => {
@@ -74,8 +75,6 @@ const MyPage = (): JSX.Element => {
       throw new Error("check the network response");
     }
   };
-
-  console.log(choiceProduct);
 
   useEffect(() => {
     userInfoAPI();
@@ -158,9 +157,9 @@ const MyPage = (): JSX.Element => {
                 <img src={orderList?.productImage} alt="" />
               </div>
               <div className="restaurantInfo">
-                <p className="restaurantName">{orderList?.productName}</p>
-                <p className="setName">{orderList?.productContent}</p>
-                <p className="price">{orderList?.productPrice}</p>
+                <p className="restaurantName">{orderList?.shopId}</p>
+                <p className="setName">{orderList?.productName}</p>
+                <p className="price">{orderList?.productPrice.toLocaleString()}원</p>
               </div>
             </div>
           )}
@@ -197,8 +196,8 @@ const MyPage = (): JSX.Element => {
                 <img src={choiceProduct?.data.productImage} alt="" className="thumbnail" />
                 <div className="setInfo">
                   <p className="setName">{choiceProduct?.data.productName}</p>
-                  <p className="setMenu">{choiceProduct?.data.productContent}</p>
-                  <p className="price">{choiceProduct?.data.productPrice}</p>
+                  <p className="setMenu">단품</p>
+                  <p className="price">{choiceProduct?.data.productPrice.toLocaleString()}원</p>
                 </div>
               </div>
               <button type="button" className="like">

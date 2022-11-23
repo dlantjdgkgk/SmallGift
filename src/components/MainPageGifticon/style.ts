@@ -42,17 +42,16 @@ export const SectionGifticonWrapper = styled.section`
     padding-right: 16px;
     img {
       width: 100%;
-      max-height: 114px;
     }
     .addressInformation {
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: 230px;
       border: 1px solid #e8e8e8;
       border-radius: 0px 0px 8px 8px;
       margin-bottom: 16px;
       border-radius: 8px;
+
       .category {
         margin: 16px 0 4px 16px;
         width: 46px;
@@ -91,6 +90,7 @@ export const SectionGifticonWrapper = styled.section`
         color: #000000;
         margin-top: 5px;
         margin-left: 16px;
+        margin-bottom: 16px;
       }
     }
   }

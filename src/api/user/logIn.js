@@ -3,8 +3,8 @@ import { accessApi, api } from "../server/Api";
 
 export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
   try {
-    const response = await accessApi.post("./api/user/login", dataTosubmit);
-    if (!response.success) {
+    const response = await api.post("./api/v1/login", JSON.stringify(dataTosubmit));
+    if (!response.status === 200) {
       alert(response.message);
       return false;
     }
@@ -19,11 +19,11 @@ export const axiosLogInUser = async ({ dataTosubmit, setCookies }) => {
     setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),
     });
-
     return true;
   } catch (error) {
     alert("Error");
     console.log("로그인에 실패하였습니다.");
     return false;
   }
+  return false;
 };

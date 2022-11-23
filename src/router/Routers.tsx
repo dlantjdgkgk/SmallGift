@@ -60,14 +60,10 @@ const Routers = (): JSX.Element => {
               <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
               <Route path="/auth/kakao/callback" element={<PublicRoute element={<Kakao />} />} />
               <Route path="/auth/naver/callback" element={<PublicRoute element={<Naver />} />} />
-              {/* <Route path="/login" element={<PublicRoute element={<LogIn />} />} /> */}
-              <Route path="/login" element={<LogIn />} />
-              {/* <Route path="/signup" element={<PublicRoute element={<SignUp />} />} /> */}
-              <Route path="/signup" element={<SignUp />} />
-              {/* <Route path="/find/id" element={<PublicRoute element={<FindID />} />} /> */}
-              <Route path="/find/id" element={<FindID />} />
-              {/* <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} /> */}
-              <Route path="/find/password" element={<FindPassword />} />
+              <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
+              <Route path="/signup" element={<PublicRoute element={<SignUp />} />} />
+              <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
+              <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
               <Route path="/find/password/after" element={<FindPasswordAfter />} />
             </Route>
             <Route element={<BottomNav />}>

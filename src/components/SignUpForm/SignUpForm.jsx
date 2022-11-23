@@ -21,8 +21,7 @@ const SignUpForm = () => {
     password: "",
     rePassword: "",
     phoneNumber: "",
-    provider: "NORMAL",
-    role: "ROLE_MANAGER",
+    role: "ROLE_USER",
   });
 
   // 오류체크
@@ -301,8 +300,8 @@ const SignUpForm = () => {
                 validate.username &&
                 validate.password &&
                 validate.rePassword &&
-                validate.emailCheck &&
-                validate.usernameCheck &&
+                // validate.emailCheck &&
+                // validate.usernameCheck &&
                 agree.use &&
                 agree.privacy &&
                 agree.location

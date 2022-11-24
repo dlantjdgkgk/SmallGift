@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import * as Styled from "./style";
 import { apiInstance } from "../../api/setting";
 import { useEffect, useState } from "react";
-import { Alert } from "react-st-modal";
+import Swal from "sweetalert2";
 import NotData from "../../assets/img/NotData.png";
 
 interface IOrderListProps {
@@ -24,9 +24,20 @@ const OrderList = (): JSX.Element => {
   const [control, setControl] = useState<IOrderListProps[]>([]);
 
   const handleCancelBtn = async (value: number): Promise<void> => {
-    await Alert("주문을 취소하시겠습니까?");
-    await OrderDeleteAPI(value);
-    navigate("/mypage/refund");
+    await Swal.fire({
+      text: "주문을 취소하시겠습니까?",
+      icon: "question",
+      confirmButtonText: "네",
+      cancelButtonText: "아니요",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        OrderDeleteAPI(value);
+        navigate("/mypage/refund");
+      }
+    });
   };
 
   const OrderDeleteAPI = async (value: number): Promise<void> => {

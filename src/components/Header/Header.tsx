@@ -5,10 +5,9 @@ import { useNavigate } from "react-router";
 import BackSVG from "./BackSVG";
 import throttle from "utils/throttle";
 import Logo from "../../assets/img/Logo.png";
-import { Alert } from "react-st-modal";
 import LogoutIcon from "@mui/icons-material/Logout";
-import login from "../../assets/img/login.png";
 import LoginSVG from "./LoginSVG";
+import Swal from "sweetalert2";
 
 const Header = (): JSX.Element => {
   const [scrollFlag, setScrollFlag] = useState(true);
@@ -26,7 +25,11 @@ const Header = (): JSX.Element => {
   const handleScroll = (): Function => throttle(updateScroll, 100);
 
   const handleLogoutBtn = async (): Promise<void> => {
-    await Alert("로그아웃 하시겠습니까?");
+    await Swal.fire({
+      text: "로그아웃 성공!",
+      icon: "success",
+      confirmButtonText: "확인",
+    });
     await localStorage.removeItem("accessToken");
     navigate("/");
   };

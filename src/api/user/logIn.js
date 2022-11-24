@@ -1,9 +1,16 @@
 import { api } from "../server/Api";
-import { Alert } from "react-st-modal";
+import Swal from "sweetalert2";
 
 export const axiosLogInUser = async (dataTosubmit, setCookies) => {
   try {
     const response = await api.post("/api/v1/login", JSON.stringify(dataTosubmit));
+    if (response.status === 200) {
+      Swal.fire({
+        text: "로그인에 성공하였습니다..",
+        icon: "success",
+        confirmButtonText: "확인",
+      });
+    }
 
     const today = new Date();
     const TOKEN_TIME_OUT = 600 * 1000;
@@ -18,7 +25,11 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     });
     return true;
   } catch (error) {
-    Alert("로그인에 실패하였습니다.");
+    Swal.fire({
+      text: "로그인에 실패하였습니다.",
+      icon: "error",
+      confirmButtonText: "확인",
+    });
     return false;
   }
 };

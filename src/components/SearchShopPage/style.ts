@@ -256,7 +256,7 @@ export const SearchTitle = styled.div`
     flex-direction: column;
     align-items: center;
   }
-  img {
+  .no {
     margin: 210px 0 20px 0;
     width: 32px;
     height: 32px;
@@ -351,7 +351,6 @@ export const SearchTitle = styled.div`
 `;
 
 export const ShopInfoWrapper = styled.section`
-  margin-left: 16px;
   .restaurants {
     width: 100%;
     padding-right: 16px;

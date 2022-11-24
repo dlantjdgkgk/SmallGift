@@ -6,7 +6,6 @@ import Back from "../../assets/img/Back.png";
 import Cancel from "../../assets/img/Cancel.png";
 import NotData from "../../assets/img/NotData.png";
 import { Link } from "react-router-dom";
-import CafeImage from "../../assets/img/CafeImage.png";
 import RecommendActions from "./RecommendActions";
 
 interface IKeyWordProps {
@@ -29,7 +28,6 @@ const SearchShopPage = () => {
   const params = useParams();
   const searchInfo = params.id;
   const [inputValue, setInputValue] = useState("");
-  const [shopInfo, setShopInfo] = useState([]);
   const [keyWord, setKeyWord] = useState([]);
   const [shopList, setShopList] = useState<IShopProps[]>([]);
   const ref = useRef<HTMLInputElement>(null);
@@ -74,13 +72,11 @@ const SearchShopPage = () => {
   const ShopInfoKeyWordAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/shop/info/keyword?keyword=${searchInfo}`);
-      setShopInfo(result.data.data.topShopByLocate);
+      setShopList(result.data.data.topShopByLocate);
     } catch (error) {
       console.log(error);
     }
   };
-
-  console.log(shopInfo);
 
   useEffect(() => {
     keyWordAPI();
@@ -115,9 +111,9 @@ const SearchShopPage = () => {
         </div>
       </form>
       <Styled.SearchTitle>
-        {shopInfo.length === 0 ? (
+        {shopList.length === 0 ? (
           <div className="center">
-            <img src={NotData} alt="" />
+            <img src={NotData} alt="" className="no" />
             <div className="search">검색결과가 없어요</div>
             <span className="keyword">이런 키워드는 어때요?</span>
             <div className="records">
@@ -133,39 +129,38 @@ const SearchShopPage = () => {
             </div>
           </div>
         ) : (
-          <div className="searchTitle">
-            <span className="shopInfo">{searchInfo}</span>
-            <span className="length">{shopInfo.length}건</span>
-            <span className="extra">이 검색되었어요.</span>
-          </div>
+          <>
+            <div className="searchTitle">
+              <span className="shopInfo">{searchInfo}</span>
+              <span className="length">{shopList.length}건</span>
+              <span className="extra">이 검색되었어요.</span>
+            </div>
+            <Styled.ShopInfoWrapper>
+              <div className="restaurants">
+                {shopList.map((shop) => {
+                  return (
+                    <Link
+                      to={`/category/${shop.data.category}/${shop.data.shopName}/${shop.data.shopId}`}
+                      key={shop.data.shopId}
+                    >
+                      <article className="restaurant">
+                        <img src={shop.data.shopThumbnailImage} alt="가게 이미지" />
+                        <div className="restaurantInformation">
+                          <button className="category" type="button">
+                            {shop.data.category}
+                          </button>
+                          <p className="restaurantName">{shop.data.shopName}</p>
+                          <p className="restaurantMenu">{shop.data.productContent}</p>
+                        </div>
+                      </article>
+                    </Link>
+                  );
+                })}
+              </div>
+            </Styled.ShopInfoWrapper>
+          </>
         )}
       </Styled.SearchTitle>
-
-      <Styled.ShopInfoWrapper>
-        {shopInfo.length > 0 && (
-          <div className="restaurants">
-            {shopList.map((shop) => {
-              return (
-                <Link
-                  to={`/category/${shop.data.category}/${shop.data.shopName}/${shop.data.shopId}`}
-                  key={shop.data.shopId}
-                >
-                  <article className="restaurant">
-                    <img src={shop.data.shopThumbnailImage} alt="가게 이미지" />
-                    <div className="restaurantInformation">
-                      <button className="category" type="button">
-                        {shop.data.category}
-                      </button>
-                      <p className="restaurantName">{shop.data.shopName}</p>
-                      <p className="restaurantMenu">{shop.data.productContent}</p>
-                    </div>
-                  </article>
-                </Link>
-              );
-            })}
-          </div>
-        )}
-      </Styled.ShopInfoWrapper>
 
       {ref.current && <RecommendActions input={ref.current} keyWordPostAPI={keyWordPostAPI} />}
     </Styled.SearchPageWrapper>

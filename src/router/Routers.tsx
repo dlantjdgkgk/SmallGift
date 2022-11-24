@@ -18,7 +18,6 @@ const SearchShop = lazy(() => import("pages/SearchShop"));
 const LogIn = lazy(() => import("pages/Login"));
 const SignUp = lazy(() => import("pages/SignUp"));
 const Kakao = lazy(() => import("pages/Kakao"));
-const Naver = lazy(() => import("pages/Naver"));
 const FindID = lazy(() => import("pages/FindID"));
 const FindPassword = lazy(() => import("pages/FindPassword"));
 const FindPasswordAfter = lazy(() => import("pages/FindPasswordAfter"));
@@ -35,46 +34,221 @@ const Spinner = lazy(() => import("elements/Spinner"));
 
 const Routers = (): JSX.Element => {
   return (
-    <Suspense fallback={<Spinner />}>
-      <Router>
-        <ScrollTop>
-          <Routes>
-            <Route element={<Header />}>
-              <Route element={<BottomNav />}>
-                <Route path="/" element={<Main />} />
-                <Route path="/category" element={<Category />} />
-                <Route path="/category/:id/:id/:id" element={<CategoryDetail />} />
-                <Route path="/mypage" element={<PrivateRoute element={<MyPage />} />} />
-                <Route path="/mypage/orderlist" element={<PrivateRoute element={<OrderList />} />} />
-                <Route path="/mypage/orderlist/coupon/:id" element={<PrivateRoute element={<OrderListCoupon />} />} />
-                <Route path="/mypage/like" element={<PrivateRoute element={<ChoiceProduct />} />} />
-                <Route path="/payment/check" element={<PrivateRoute element={<PaymentCheck />} />} />
-                <Route path="/mypage/refund" element={<PrivateRoute element={<Cancellation />} />} />
-                <Route path="/mypage/refund/:id" element={<PrivateRoute element={<CancellationDetail />} />} />
-                <Route path="/mypage/modify" element={<PrivateRoute element={<ChangeMemberInfo />} />} />
-                <Route path="/change/password" element={<PrivateRoute element={<ChangePwd />} />} />
-                <Route path="*" element={<NotFound />} />
-              </Route>
+    <Router>
+      <ScrollTop>
+        <Routes>
+          <Route
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Header />
+              </Suspense>
+            }
+          >
+            <Route
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <BottomNav />
+                </Suspense>
+              }
+            >
+              <Route
+                path="/"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <Main />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/category"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <Category />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/category/:id/:id/:id"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <CategoryDetail />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <MyPage />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/orderlist"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <OrderList />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/orderlist/coupon/:id"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <OrderListCoupon />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/like"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <ChoiceProduct />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/payment/check"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <PaymentCheck />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/refund"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <Cancellation />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/refund/:id"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <CancellationDetail />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/mypage/modify"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <ChangeMemberInfo />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="/change/password"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <ChangePwd />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <Suspense fallback={<Spinner />}>
+                    <NotFound />
+                  </Suspense>
+                }
+              />
             </Route>
+          </Route>
 
-            <Route element={<Header />}>
-              <Route path="/payment" element={<PrivateRoute element={<Payment />} />} />
-              <Route path="/auth/kakao/callback" element={<PublicRoute element={<Kakao />} />} />
-              <Route path="/auth/naver/callback" element={<PublicRoute element={<Naver />} />} />
-              <Route path="/login" element={<PublicRoute element={<LogIn />} />} />
-              <Route path="/signup" element={<PublicRoute element={<SignUp />} />} />
-              <Route path="/find/id" element={<PublicRoute element={<FindID />} />} />
-              <Route path="/find/password" element={<PublicRoute element={<FindPassword />} />} />
-              <Route path="/find/password/after" element={<FindPasswordAfter />} />
-            </Route>
-            <Route element={<BottomNav />}>
-              <Route path="/search" element={<Search />} />
-              <Route path="/search/shop/:id" element={<SearchShop />} />
-            </Route>
-          </Routes>
-        </ScrollTop>
-      </Router>
-    </Suspense>
+          <Route
+            element={
+              <Suspense fallback={<Spinner />}>
+                <Header />
+              </Suspense>
+            }
+          >
+            <Route
+              path="/payment"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Payment />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/auth/kakao/callback"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PublicRoute element={<Kakao />} />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PublicRoute element={<LogIn />} />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PublicRoute element={<SignUp />} />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/find/id"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PublicRoute element={<FindID />} />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/find/password"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PublicRoute element={<FindPassword />} />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/find/password/after"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <FindPasswordAfter />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route
+            element={
+              <Suspense fallback={<Spinner />}>
+                <BottomNav />
+              </Suspense>
+            }
+          >
+            <Route
+              path="/search"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <Search />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/search/shop/:id"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <SearchShop />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Routes>
+      </ScrollTop>
+    </Router>
   );
 };
 

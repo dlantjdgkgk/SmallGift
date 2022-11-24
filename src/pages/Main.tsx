@@ -3,7 +3,7 @@ import MainPageCategory from "components/MainPageCategory/MainPageCategory";
 import MainPageRestaurant from "components/MainPageRestaurant/MainPageRestaurant";
 import MainPageGifticon from "components/MainPageGifticon/MainPageGifticon";
 import * as Styled from "./style";
-import bannerImg from "../assets/img/banner_1x.jpg";
+import bannerImg from "../assets/img/banner_1x.png";
 
 const Main = (): JSX.Element => {
   return (

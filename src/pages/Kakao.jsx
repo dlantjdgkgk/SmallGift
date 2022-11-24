@@ -1,24 +1,21 @@
-import { useEffect } from "react";
-import ReactLoading from "react-loading";
-import { LoaderWrap } from "./style";
+import Spinner from "../elements/Spinner";
 import { axiosKakaoLogin } from "../api/oAuth/kakaoOAuth";
 import { useCookies } from "react-cookie";
+import { useEffect } from "react";
 
 const Kakao = () => {
   const [setCookies] = useCookies([]);
+
+  const params = new URL(document.location.toString()).searchParams;
+  const code = params.get("code");
+
   useEffect(() => {
-    let params = new URL(document.location.toString()).searchParams;
-    let code = params.get("code");
-    if (axiosKakaoLogin(code, setCookies)) {
-      window.location.href = "/";
-    }
+    (async () => {
+      await axiosKakaoLogin(code, setCookies);
+    })();
   }, []);
 
-  return (
-    <LoaderWrap>
-      <ReactLoading type="spin" color="#A593E0" />
-    </LoaderWrap>
-  );
+  return <Spinner />;
 };
 
 export default Kakao;

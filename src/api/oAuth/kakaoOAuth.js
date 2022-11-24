@@ -10,7 +10,7 @@ export const axiosKakaoLogin = async (dataTosubmit, setCookies) => {
       const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
       const expireReissueToken = today.setDate(today.getDate() + 7);
       // 만료 시간 설정
-      window.localStorage.setItem("memberId", response.data.memberId);
+
       window.localStorage.setItem("acessToken", response.data.jwtAccessToken);
       window.localStorage.setItem("expireAccessToken", expireAccessToken);
       window.localStorage.setItem("memberId", response.data.memberId);

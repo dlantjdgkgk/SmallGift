@@ -21,6 +21,7 @@ export const axiosLogInUser = async (dataTosubmit, setCookies) => {
     setCookies("refresh_token", response.data.jwtRefreshToken, {
       expires: new Date(expireReissueToken),
     });
+    window.location.href = "/";
     return true;
   } catch (error) {
     console.log("로그인에 실패하였습니다.");

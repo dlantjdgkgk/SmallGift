@@ -76,18 +76,7 @@ const LogInForm = () => {
     event.preventDefault();
 
     // api 연결 잘 되면 이걸로 사용
-    if (axiosLogInUser(payload, setCookies) || window.localStorage.getItem("accessToken")) {
-      window.localStorage.setItem("username", payload.username);
-      setTimeout(() => navigate("/"), 1000);
-      // console.log(window.localStorage.getItem("accessToken"));
-    } else {
-      console.log("fail");
-    }
-
-    let expire = new Date().getTime() + 600 * 1000;
-
-    window.localStorage.setItem("expireAccessToken", expire);
-    // 원래는 api에서 처리되는 것들
+    axiosLogInUser(payload, setCookies);
   };
 
   return (

@@ -84,7 +84,7 @@ const RestaurantInfo = ({ shopAddress, shopTelephone, menus }: IProps): JSX.Elem
               <p className="address">주소</p>
             </div>
             <p className="detailAddress">{shopAddress}</p>
-            <KakaoMap />
+            <KakaoMap shopAddress={shopAddress} />
           </div>
           <div className="restaurantOperatingHours">
             <div className="operatingHours">

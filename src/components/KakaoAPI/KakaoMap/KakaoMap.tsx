@@ -2,7 +2,11 @@ import { useEffect } from "react";
 
 const { kakao } = window;
 
-const KakaoMap = (): JSX.Element => {
+interface IKakaoProps {
+  shopAddress: string | undefined;
+}
+
+const KakaoMap = ({ shopAddress }: IKakaoProps): JSX.Element => {
   useEffect(() => {
     mapscript();
   }, []);
@@ -26,8 +30,7 @@ const KakaoMap = (): JSX.Element => {
     // 마커에 클릭이벤트를 등록합니다
     kakao.maps.event.addListener(marker, "click", function () {
       // 마커 위에 인포윈도우를 표시합니다
-      const url = "https://map.kakao.com/link/search/";
-      const link = `${url}서울 강남구 강남대로98길 12-3 1층`;
+      const link = `https://map.kakao.com/link/search/${shopAddress}`;
       window.open(link);
     });
   };

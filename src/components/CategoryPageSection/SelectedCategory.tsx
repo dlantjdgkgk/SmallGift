@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import * as Styled from "./style";
 
 interface ICategoryProps {
@@ -7,6 +8,8 @@ interface ICategoryProps {
 }
 
 const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: ICategoryProps): JSX.Element => {
+  const navigate = useNavigate();
+
   return (
     <Styled.SelectedCategoryWrapper>
       {categories.map((category) => {
@@ -19,7 +22,7 @@ const SelectedCategory = ({ categories, selectCategory, setSelectCategory }: ICa
               aria-label="select"
               onClick={(): void => {
                 setSelectCategory(category);
-                window.history.replaceState("", "", `/category?value=${category}`);
+                navigate(`/category?value=${category}`, { replace: true });
               }}
             >
               {category}

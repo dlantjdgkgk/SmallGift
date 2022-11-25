@@ -63,9 +63,9 @@ const SearchShopPage = () => {
         memberId: 1,
       };
       await apiInstance.post("/api/user/keyword", payload);
-      navigate(`/search/shop/${keyword}`);
+      navigate(`/search/shop/${keyword}`, { replace: true });
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
   };
 
@@ -74,14 +74,24 @@ const SearchShopPage = () => {
       const result = await apiInstance.get(`/api/user/shop/info/keyword?keyword=${searchInfo}`);
       setShopList(result.data.data.topShopByLocate);
     } catch (error) {
-      console.log(error);
+      throw new Error("check the network response");
     }
+  };
+
+  interface IProps {
+    data: {
+      data: string;
+    };
+  }
+
+  const handleKeywordClick = ({ data }: IProps) => {
+    navigate(`/search/shop/${data.data}`, { replace: true });
   };
 
   useEffect(() => {
     keyWordAPI();
     ShopInfoKeyWordAPI();
-  }, []);
+  }, [searchInfo]);
 
   return (
     <Styled.SearchPageWrapper>
@@ -119,11 +129,9 @@ const SearchShopPage = () => {
             <div className="records">
               {keyWord?.map((data: IKeyWordProps) => {
                 return (
-                  <Link to={`/search/shop/${data.data}`} key={data.id}>
-                    <div className="record" key={data.id}>
-                      <p>{data.data}</p>
-                    </div>
-                  </Link>
+                  <div className="record" key={data.id} onClick={() => handleKeywordClick({ data })} aria-hidden="true">
+                    <p>{data.data}</p>
+                  </div>
                 );
               })}
             </div>

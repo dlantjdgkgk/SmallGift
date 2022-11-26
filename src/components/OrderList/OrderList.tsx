@@ -32,9 +32,9 @@ const OrderList = (): JSX.Element => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        OrderDeleteAPI(value);
+        await OrderDeleteAPI(value);
         navigate("/mypage/refund");
       }
     });

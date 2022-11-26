@@ -20,8 +20,6 @@ interface MenuType {
 }
 
 const ChoiceProduct = (): JSX.Element => {
-  const [selected, setSelected] = useState("sortByHighPrice");
-  const [selectMenu, setSelectMenu] = useState(Number);
   const [menuList, setMenuList] = useState<MenuType[]>([]);
   const memberId = 1;
 
@@ -40,7 +38,7 @@ const ChoiceProduct = (): JSX.Element => {
   const GetWishListAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/wishList?memberId=${memberId}`);
-      setMenuList(result.data.data.wishList);
+      setMenuList(result.data.data.wishList.reverse());
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -53,34 +51,6 @@ const ChoiceProduct = (): JSX.Element => {
 
   return (
     <Styled.ChoiceProductWrapper>
-      <Styled.ProductFilterSection>
-        <div className="filter">
-          <select
-            onChange={(e): void => {
-              setSelected(e.target.value);
-              if (selected === "sortByLowPrice") {
-                const copy = [...menuList];
-                copy.sort((a, b) => {
-                  return Number(b.data.productPrice) - Number(a.data.productPrice);
-                });
-                setMenuList(copy);
-              }
-              if (selected === "sortByHighPrice") {
-                const copy = [...menuList];
-                copy.sort((a, b) => {
-                  return Number(a.data.productPrice) - Number(b.data.productPrice);
-                });
-                setMenuList(copy);
-              }
-            }}
-            value={selected}
-          >
-            <option value="sortByHighPrice">높은가격순</option>
-            <option value="sortByLowPrice">낮은가격순</option>
-          </select>
-        </div>
-      </Styled.ProductFilterSection>
-
       {menuList.length === 0 ? (
         <Styled.NoData>
           <img src={NotData} alt="" />
@@ -107,7 +77,6 @@ const ChoiceProduct = (): JSX.Element => {
                   <button
                     type="button"
                     onClick={(): void => {
-                      setSelectMenu(menu.data.wishListId);
                       DeleteWishListAPI(menu.data.wishListId);
                     }}
                     className="like"

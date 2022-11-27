@@ -93,7 +93,7 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
           <div>
             <p className="setName">{menu.data.productName}</p>
           </div>
-          <p className="setMenu">{menu.data.productName}</p>
+          <p className="setMenu">단품</p>
         </div>
 
         <div className="priceInformation">

@@ -17,7 +17,6 @@ const PopularSearch = ({ topTenData }: IPopularSearchProps): JSX.Element => {
     <Styled.PopularSearchWrapper>
       <div className="popularSearch">
         <p className="popular">인기 검색어</p>
-        <p className="time">2022년 08월 02일 14:00 기준</p>
       </div>
 
       <Styled.SearchListWrapper>

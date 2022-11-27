@@ -8,7 +8,7 @@ interface ILocalPopularGifticonProps {
     category: string;
     shopName: string;
     shopId: number;
-    productContent: string;
+    mainMenu: string;
     shopThumbnailImage: string;
   };
 }
@@ -54,7 +54,7 @@ const CategoryRestaurant = ({ selectCategory, selectLocate }: IProps): JSX.Eleme
                     {shop.data.category}
                   </button>
                   <p className="restaurantName">{shop.data.shopName}</p>
-                  <p className="restaurantMenu">{shop.data.productContent}</p>
+                  <p className="restaurantMenu">{shop.data.mainMenu}</p>
                 </div>
               </article>
             </Link>

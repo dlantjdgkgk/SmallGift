@@ -181,10 +181,7 @@ export const SearchPageWrapper = styled.div`
 export const PopularSearchWrapper = styled.section`
   .popularSearch {
     margin-left: 16px;
-
     margin-bottom: 24px;
-    display: flex;
-    justify-content: space-between;
     .popular {
       font-family: "Noto Sans KR";
       font-style: normal;

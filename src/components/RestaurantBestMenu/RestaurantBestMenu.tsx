@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
-  const [selectMenu, setSelectMenu] = useState<number>();
+  const [selectMenu, setSelectMenu] = useState<any>();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const handleModalClose = (): void => setModalIsOpen(false);
 
@@ -32,23 +32,16 @@ const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
       <p className="bestMenu">Best 메뉴</p>
       <Slider {...settings}>
         {bestMenus.map((menu) => {
-          const isSelected = selectMenu === menu.data.id;
           return (
             <section
               className="bestMenuInformation"
               key={menu.data.id}
               aria-hidden="true"
               onClick={(): void => {
-                setSelectMenu(menu.data.id);
+                setSelectMenu(menu);
                 setModalIsOpen(true);
               }}
             >
-              {isSelected && modalIsOpen ? (
-                <Portal>
-                  <CategoryModal menu={menu} handleModalClose={handleModalClose} />
-                </Portal>
-              ) : null}
-
               <article className="menuInformation">
                 <img src={menu.data.productImage} alt="이미지" />
                 <div className="setMenuInfo">
@@ -61,6 +54,11 @@ const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
           );
         })}
       </Slider>
+      {modalIsOpen && (
+        <Portal>
+          <CategoryModal menu={selectMenu} handleModalClose={handleModalClose} />
+        </Portal>
+      )}
     </Styled.BestMenuWrapper>
   );
 };

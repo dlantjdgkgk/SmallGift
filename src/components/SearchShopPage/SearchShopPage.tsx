@@ -18,7 +18,7 @@ interface IShopProps {
     category: string;
     shopName: string;
     shopId: number;
-    productContent: string;
+    mainMenu: string;
     shopThumbnailImage: string;
   };
 }
@@ -158,7 +158,7 @@ const SearchShopPage = () => {
                             {shop.data.category}
                           </button>
                           <p className="restaurantName">{shop.data.shopName}</p>
-                          <p className="restaurantMenu">{shop.data.productContent}</p>
+                          <p className="restaurantMenu">{shop.data.mainMenu}</p>
                         </div>
                       </article>
                     </Link>

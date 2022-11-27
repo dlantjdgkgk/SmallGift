@@ -26,12 +26,24 @@ const Header = (): JSX.Element => {
 
   const handleLogoutBtn = async (): Promise<void> => {
     await Swal.fire({
-      text: "로그아웃 성공!",
-      icon: "success",
-      confirmButtonText: "확인",
+      text: "로그아웃 하시겠습니까?",
+      icon: "question",
+      confirmButtonText: "네",
+      cancelButtonText: "아니요",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await window.localStorage.clear();
+        navigate("/");
+        Swal.fire({
+          text: "로그아웃 성공.",
+          icon: "success",
+          confirmButtonText: "확인",
+        });
+      }
     });
-    await localStorage.removeItem("accessToken");
-    navigate("/");
   };
 
   useEffect(() => {

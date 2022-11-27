@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
-import { PublicRoute } from "./PublicRoute";
 import { lazy, Suspense } from "react";
 import Cancellation from "components/Cancellation/Cancellation";
 import CancellationDetail from "components/CancellationDetail/CancellationDetail";
@@ -12,15 +11,10 @@ const Search = lazy(() => import("pages/Search"));
 const MyPage = lazy(() => import("pages/MyPage"));
 const Payment = lazy(() => import("pages/Payment"));
 const CategoryDetail = lazy(() => import("pages/CategoryDetail"));
-const ChangePwd = lazy(() => import("pages/ChangePwd"));
 const SearchShop = lazy(() => import("pages/SearchShop"));
 
 const LogIn = lazy(() => import("pages/Login"));
-const SignUp = lazy(() => import("pages/SignUp"));
 const Kakao = lazy(() => import("pages/Kakao"));
-const FindID = lazy(() => import("pages/FindID"));
-const FindPassword = lazy(() => import("pages/FindPassword"));
-const FindPasswordAfter = lazy(() => import("pages/FindPasswordAfter"));
 const OrderListCoupon = lazy(() => import("components/OrderListCoupon/OrderListCoupon"));
 
 const BottomNav = lazy(() => import("components/BottomNav/BottomNav"));
@@ -139,14 +133,7 @@ const Routers = (): JSX.Element => {
                   </Suspense>
                 }
               />
-              <Route
-                path="/change/password"
-                element={
-                  <Suspense fallback={<Spinner />}>
-                    <ChangePwd />
-                  </Suspense>
-                }
-              />
+
               <Route
                 path="*"
                 element={
@@ -177,7 +164,7 @@ const Routers = (): JSX.Element => {
               path="/auth/kakao/callback"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <PublicRoute element={<Kakao />} />
+                  <Kakao />
                 </Suspense>
               }
             />
@@ -185,39 +172,7 @@ const Routers = (): JSX.Element => {
               path="/login"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <PublicRoute element={<LogIn />} />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/signup"
-              element={
-                <Suspense fallback={<Spinner />}>
-                  <PublicRoute element={<SignUp />} />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/find/id"
-              element={
-                <Suspense fallback={<Spinner />}>
-                  <PublicRoute element={<FindID />} />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/find/password"
-              element={
-                <Suspense fallback={<Spinner />}>
-                  <PublicRoute element={<FindPassword />} />
-                </Suspense>
-              }
-            />
-            <Route
-              path="/find/password/after"
-              element={
-                <Suspense fallback={<Spinner />}>
-                  <FindPasswordAfter />
+                  <LogIn />
                 </Suspense>
               }
             />

@@ -842,11 +842,9 @@ export const PaymentMethodSection = styled.section`
 
 export const Oauths = styled.div`
   display: flex;
-  padding: 1rem 0;
   justify-content: center;
   align-items: center;
-  margin-left: -20px;
-
+  height: 100vh;
   a {
     box-sizing: border-box;
     height: 50px;
@@ -862,33 +860,6 @@ export const Oauths = styled.div`
   }
   a + a {
     margin-left: 10px;
-  }
-`;
-
-export const OauthContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
-
-  .isError {
-    width: 500px;
-    height: 300px;
-    background-color: red;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    justify-content: center;
-    font-size: 20px;
-    align-items: center;
-    strong {
-      color: #fee500;
-      font-size: 25px;
-      font-weight: 600;
-    }
-    .naver {
-      color: rgb(12, 166, 120);
-    }
   }
 `;
 

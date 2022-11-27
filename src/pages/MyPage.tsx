@@ -46,7 +46,7 @@ const MyPage = (): JSX.Element => {
   const [orderList, setOrderList] = useState<IOrderListProps>();
 
   const Logout = () => {
-    localStorage.removeItem("accessToken");
+    window.localStorage.removeItem("accessToken");
   };
 
   const userInfoAPI = async (): Promise<void> => {

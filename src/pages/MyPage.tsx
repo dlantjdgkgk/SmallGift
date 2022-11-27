@@ -9,6 +9,7 @@ import Kakao from "../assets/img/Kakao.png";
 import LocateWhite from "../assets/img/LocateWhite.png";
 import ArrowBlack from "../assets/img/ArrowBlack.png";
 import NotData from "../assets/img/NotData.png";
+import Swal from "sweetalert2";
 
 interface UserInfoProps {
   userName: string;
@@ -45,8 +46,26 @@ const MyPage = (): JSX.Element => {
   const [choiceProduct, setChoiceProduct] = useState<MenuType>();
   const [orderList, setOrderList] = useState<IOrderListProps>();
 
-  const Logout = () => {
-    window.localStorage.removeItem("accessToken");
+  const Logout = async (): Promise<void> => {
+    await Swal.fire({
+      text: "로그아웃 하시겠습니까?",
+      icon: "question",
+      confirmButtonText: "네",
+      cancelButtonText: "아니요",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await window.localStorage.clear();
+        navigate("/");
+        Swal.fire({
+          text: "로그아웃 성공.",
+          icon: "success",
+          confirmButtonText: "확인",
+        });
+      }
+    });
   };
 
   const userInfoAPI = async (): Promise<void> => {

@@ -10,7 +10,7 @@ export const axiosKakaoLogin = async (code) => {
       const TOKEN_TIME_OUT = 600 * 1000;
       const expireAccessToken = today.getTime() + TOKEN_TIME_OUT;
 
-      window.localStorage.setItem("acessToken", response.data.data.jwtAccessToken);
+      window.localStorage.setItem("accessToken", response.data.data.jwtAccessToken);
       window.localStorage.setItem("expireAccessToken", expireAccessToken);
       window.localStorage.setItem("memberId", response.data.data.memberId);
 

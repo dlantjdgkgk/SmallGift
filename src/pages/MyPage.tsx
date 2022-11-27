@@ -108,15 +108,9 @@ const MyPage = (): JSX.Element => {
     <>
       <Styled.MypageWrapper>
         <Styled.Welcome>
-          {localStorage.accessToken ? (
-            <h1>
-              안녕하세요 <span>{userInfo?.userName}</span>님!
-            </h1>
-          ) : (
-            <h1>
-              안녕하세요 <span>닉네임</span>님!
-            </h1>
-          )}
+          <h1>
+            안녕하세요 <span>{userInfo?.userName}</span>님!
+          </h1>
           <h1>선물하기 딱 좋은 날이네요😊</h1>
         </Styled.Welcome>
         <Styled.LoginSection>

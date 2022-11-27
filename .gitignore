@@ -8,6 +8,7 @@
 .env.local
 .env.development
 .env
+.env.production
 # testing
 /coverage
 

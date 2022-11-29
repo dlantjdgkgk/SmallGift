@@ -3,7 +3,9 @@ import Swal from "sweetalert2";
 
 export const axiosKakaoLogin = async (code) => {
   try {
-    const response = await accessApi.get(`/api/user/oauth/kakao/token?code=${code}`);
+    const response = await accessApi.get(
+      `/api/user/oauth/kakao/token?code=${code}&redirectUrl=${process.env.REACT_APP_REDIRECT_KEY}`,
+    );
     console.log(response);
     if (response.status === 200) {
       const today = new Date();

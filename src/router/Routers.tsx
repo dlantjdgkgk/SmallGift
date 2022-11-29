@@ -73,7 +73,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <MyPage />
+                    <PrivateRoute element={<MyPage />} />
                   </Suspense>
                 }
               />
@@ -81,7 +81,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/orderlist"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <OrderList />
+                    <PrivateRoute element={<OrderList />} />
                   </Suspense>
                 }
               />
@@ -89,7 +89,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/orderlist/coupon/:id"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <OrderListCoupon />
+                    <PrivateRoute element={<OrderListCoupon />} />
                   </Suspense>
                 }
               />
@@ -97,7 +97,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/like"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <ChoiceProduct />
+                    <PrivateRoute element={<ChoiceProduct />} />
                   </Suspense>
                 }
               />
@@ -105,7 +105,7 @@ const Routers = (): JSX.Element => {
                 path="/payment/check"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <PaymentCheck />
+                    <PrivateRoute element={<PaymentCheck />} />
                   </Suspense>
                 }
               />
@@ -113,7 +113,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/refund"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <Cancellation />
+                    <PrivateRoute element={<Cancellation />} />
                   </Suspense>
                 }
               />
@@ -121,7 +121,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/refund/:id"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <CancellationDetail />
+                    <PrivateRoute element={<CancellationDetail />} />
                   </Suspense>
                 }
               />
@@ -129,7 +129,7 @@ const Routers = (): JSX.Element => {
                 path="/mypage/modify"
                 element={
                   <Suspense fallback={<Spinner />}>
-                    <ChangeMemberInfo />
+                    <PrivateRoute element={<ChangeMemberInfo />} />
                   </Suspense>
                 }
               />
@@ -156,7 +156,7 @@ const Routers = (): JSX.Element => {
               path="/payment"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <Payment />
+                  <PrivateRoute element={<Payment />} />
                 </Suspense>
               }
             />
@@ -188,7 +188,7 @@ const Routers = (): JSX.Element => {
               path="/search"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <Search />
+                  <PrivateRoute element={<Search />} />
                 </Suspense>
               }
             />
@@ -196,7 +196,7 @@ const Routers = (): JSX.Element => {
               path="/search/shop/:id"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <SearchShop />
+                  <PrivateRoute element={<SearchShop />} />
                 </Suspense>
               }
             />

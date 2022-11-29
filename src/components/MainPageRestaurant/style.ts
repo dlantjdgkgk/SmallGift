@@ -133,7 +133,6 @@ export const RestaurantWrapper = styled.div`
     }
 
     .restaurantInformation {
-      font-family: "Noto Sans KR";
       .restaurantName {
         font-family: "Noto Sans KR", sans-serif;
         font-style: normal;
@@ -152,6 +151,7 @@ export const RestaurantWrapper = styled.div`
         line-height: 20px;
         letter-spacing: -0.04em;
         color: #000000;
+        height: 24px;
       }
       .menuPrice {
         font-family: "Noto Sans KR";

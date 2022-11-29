@@ -1,9 +1,14 @@
 import styled from "styled-components";
 
-export const CancellationWrapper = styled.main``;
+export const CancellationWrapper = styled.main`
+  section:last-child {
+    border: none;
+  }
+`;
 
 export const CancellationSection = styled.section`
-  margin-left: 16px;
+  padding-left: 16px;
+  border-bottom: 8px solid #f4f4f4;
   .orderNumberInfo {
     height: 33px;
     background: #f8f8f8;
@@ -72,6 +77,7 @@ export const CancellationSection = styled.section`
   .cancelStatus {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
     img {
       width: 14px;
       height: 14px;
@@ -92,11 +98,4 @@ export const CancellationSection = styled.section`
       color: gray;
     }
   }
-`;
-
-export const BoundaryLine = styled.div`
-  width: 100%;
-  height: 8px;
-  background: #f4f4f4;
-  margin-top: 11px;
 `;

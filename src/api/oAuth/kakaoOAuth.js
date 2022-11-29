@@ -18,9 +18,12 @@ export const axiosKakaoLogin = async (code) => {
         text: "로그인에 성공하였습니다..",
         icon: "success",
         confirmButtonText: "확인",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "/";
+        }
       });
     }
-    window.location.href = "/";
   } catch (error) {
     alert(error);
   }

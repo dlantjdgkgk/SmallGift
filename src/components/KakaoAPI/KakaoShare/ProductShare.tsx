@@ -55,9 +55,9 @@ const ProductShare = ({ catgegory, shopName, shopId }: IProps): JSX.Element => {
   };
 
   return (
-    <div className="share-node" onClick={shareKakao} aria-hidden="true">
+    <button className="share-node" onClick={shareKakao} type="button">
       <img src={Share} alt="" />
-    </div>
+    </button>
   );
 };
 

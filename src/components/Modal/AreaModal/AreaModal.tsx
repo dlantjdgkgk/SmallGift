@@ -14,7 +14,7 @@ interface Props {
 const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): JSX.Element => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
-  const memberId = localStorage.getItem("memberId");
+  const memberID = localStorage.getItem("memberId");
 
   const handleDaumPostOpne = useCallback(() => setIsDaumPostOpen((prve) => !prve), []);
 
@@ -34,7 +34,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): 
     try {
       const payload = {
         locate: addressState.jibunAddress,
-        memberId: 16,
+        memberId: memberID,
       };
       await apiInstance.post("/api/user/locate", payload);
       userLocateAPI();

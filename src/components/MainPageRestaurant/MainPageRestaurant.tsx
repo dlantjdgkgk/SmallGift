@@ -21,6 +21,7 @@ interface ILocateListProps {
 }
 
 const MainPageRestaurant = (): JSX.Element => {
+  const locateInformation = localStorage.getItem("localLocate") || "서울 강남구 신사동 537-5";
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [locate, setLocate] = useState("");
   const handleModalClose = (): void => setModalIsOpen(false);
@@ -38,6 +39,8 @@ const MainPageRestaurant = (): JSX.Element => {
     }
   };
 
+  console.log(locate);
+
   const ShopInfoLocateAPI = async (locateInfo: string): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/shop/info/all/locate?locate=${locateInfo}`);
@@ -48,11 +51,17 @@ const MainPageRestaurant = (): JSX.Element => {
   };
 
   useEffect(() => {
-    (async () => {
-      const locateResult = await userLocateAPI();
-      ShopInfoLocateAPI(locateResult.split(" ")[0]);
-    })();
-  }, [locate]);
+    if (memberId) {
+      (async () => {
+        const locateResult = await userLocateAPI();
+        ShopInfoLocateAPI(locateResult.split(" ")[0]);
+      })();
+    } else {
+      (async () => {
+        await ShopInfoLocateAPI(locateInformation.split(" ")[0]);
+      })();
+    }
+  }, [locate, locateInformation]);
 
   return (
     <Styled.SectionRestaurantWrapper>
@@ -85,7 +94,7 @@ const MainPageRestaurant = (): JSX.Element => {
           <div className="addressInformation">
             <img src={Locate} alt="화살표" />
             <p className="address">주소</p>
-            <p className="exactAddress">{locate}</p>
+            {locate ? <p className="exactAddress">{locate}</p> : <p className="exactAddress">{locateInformation}</p>}
           </div>
         </div>
       </Styled.LocationWrapper>

@@ -16,6 +16,9 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): 
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
   const memberID = localStorage.getItem("memberId");
 
+  const localLocate = addressState.jibunAddress;
+  localStorage.setItem("localLocate", localLocate);
+
   const handleDaumPostOpne = useCallback(() => setIsDaumPostOpen((prve) => !prve), []);
 
   useEffect(() => {

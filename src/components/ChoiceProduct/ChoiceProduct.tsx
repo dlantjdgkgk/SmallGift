@@ -21,7 +21,7 @@ interface MenuType {
 
 const ChoiceProduct = (): JSX.Element => {
   const [menuList, setMenuList] = useState<MenuType[]>([]);
-  const memberId = 1;
+  const memberId = localStorage.getItem("memberId");
 
   const DeleteWishListAPI = async (selectMenuId: number): Promise<void> => {
     try {

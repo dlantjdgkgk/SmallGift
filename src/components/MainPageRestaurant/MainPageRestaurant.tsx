@@ -26,13 +26,13 @@ const MainPageRestaurant = (): JSX.Element => {
   const handleModalClose = (): void => setModalIsOpen(false);
   const [locateList, setLocateList] = useState<ILocateListProps[]>([]);
 
-  const memberId = 16;
+  const memberId = localStorage.getItem("memberId");
 
   const userLocateAPI = async (): Promise<string> => {
     try {
       const res = await apiInstance.get(`/api/user/locate?memberId=${memberId}`);
       setLocate(res.data);
-      return res.data;
+      return locate;
     } catch (error) {
       throw new Error("check the network response");
     }

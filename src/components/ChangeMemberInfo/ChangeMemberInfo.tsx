@@ -4,7 +4,6 @@ import { IUserFormInput } from "./types";
 import * as Styled from "./style";
 import { useState } from "react";
 import { apiInstance } from "../../api/setting";
-import ArrowBlack from "../../assets/img/ArrowBlack.png";
 
 const ChangeMemberInfo = (): JSX.Element => {
   const [accountBank, setAccountBank] = useState("신한");
@@ -19,14 +18,6 @@ const ChangeMemberInfo = (): JSX.Element => {
     },
   ];
 
-  const deleteAPI = async (): Promise<void> => {
-    try {
-      console.log(await apiInstance.delete("/api/user/delete/35"));
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const navigate = useNavigate();
   const {
     register,
@@ -37,7 +28,7 @@ const ChangeMemberInfo = (): JSX.Element => {
 
   const onSubmit: SubmitHandler<IUserFormInput> = (data: IUserFormInput) => {
     const { userName, userPhone, accountNumber } = data;
-    const memberId = 1;
+    const memberId = localStorage.getItem("memberId");
     const postAPI = async (): Promise<void> => {
       try {
         const result = await apiInstance.post("/api/user/userInfo", {
@@ -54,13 +45,6 @@ const ChangeMemberInfo = (): JSX.Element => {
     };
     postAPI();
     navigate("/");
-  };
-
-  const showConfirm = (): void => {
-    if (window.confirm("탈퇴하시겠습니까?")) {
-      deleteAPI();
-      navigate("/");
-    }
   };
 
   const handleCancelBtn = (): void => {
@@ -137,12 +121,6 @@ const ChangeMemberInfo = (): JSX.Element => {
       <Styled.BoundaryLine />
 
       <Styled.Section>
-        <div className="withdrwal">
-          <p>회원 탈퇴하기</p>
-          <button type="button" className="withdrwalBtn" onClick={showConfirm}>
-            <img src={ArrowBlack} alt="" />
-          </button>
-        </div>
         <div className="onClickBtn">
           <button type="button" className="cancel" onClick={handleCancelBtn}>
             취소

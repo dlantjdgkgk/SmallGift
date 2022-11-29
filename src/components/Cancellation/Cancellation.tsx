@@ -16,9 +16,11 @@ interface IRefundListProps {
 const Cancellation = (): JSX.Element => {
   const [refundList, setRefundList] = useState<IRefundListProps[]>([]);
 
+  const memberId = localStorage.getItem("memberId");
+
   const OrderRefundAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get("/api/user/order/refund/all?memberId=16");
+      const result = await apiInstance.get(`/api/user/order/refund/all?memberId=${memberId}`);
       setRefundList(result.data.data.refundDetailsDtoList.reverse());
     } catch (error) {
       throw new Error("check the network response");
@@ -33,37 +35,34 @@ const Cancellation = (): JSX.Element => {
 
   return (
     <Styled.CancellationWrapper>
-      <Styled.CancellationSection>
-        {refundList.map((refund) => {
-          return (
-            <React.Fragment key={refund.orderNumber}>
-              <Link to={`/mypage/refund/${refund.orderNumber}`} state={{ refund }}>
-                <button type="button" className="orderNumberInfo">
-                  <span className="orderNumber">주문번호</span>
-                  <span className="number">{refund.orderNumber}</span>
-                  <img src={Arrow} alt="" />
-                </button>
-              </Link>
-              <div className="gifticonInfo">
-                <img src={refund.productImage} alt="" className="thumbnail" />
-                <div className="setInfo">
-                  <p className="restaurantName">{refund.shopName}</p>
-                  <p className="setName">{refund.shopContent}</p>
-                  <p className="price">{refund.paidAmount}</p>
-                </div>
+      {refundList.map((refund) => {
+        return (
+          <Styled.CancellationSection key={refund.orderNumber}>
+            <Link to={`/mypage/refund/${refund.orderNumber}`} state={{ refund }}>
+              <button type="button" className="orderNumberInfo">
+                <span className="orderNumber">주문번호</span>
+                <span className="number">{refund.orderNumber}</span>
+                <img src={Arrow} alt="" />
+              </button>
+            </Link>
+            <div className="gifticonInfo">
+              <img src={refund.productImage} alt="" className="thumbnail" />
+              <div className="setInfo">
+                <p className="restaurantName">{refund.shopName}</p>
+                <p className="setName">{refund.shopContent}</p>
+                <p className="price">{refund.paidAmount}</p>
               </div>
-              <div className="cancelStatus">
-                <img src={Success} alt="" />
-                <p className="statusInfo">
-                  <span className="status">상태: </span>
-                  <span className="loading"> 환불완료(신용카드)</span>
-                </p>
-              </div>
-              <Styled.BoundaryLine />
-            </React.Fragment>
-          );
-        })}
-      </Styled.CancellationSection>
+            </div>
+            <div className="cancelStatus">
+              <img src={Success} alt="" />
+              <p className="statusInfo">
+                <span className="status">상태: </span>
+                <span className="loading"> 환불완료(신용카드)</span>
+              </p>
+            </div>
+          </Styled.CancellationSection>
+        );
+      })}
     </Styled.CancellationWrapper>
   );
 };

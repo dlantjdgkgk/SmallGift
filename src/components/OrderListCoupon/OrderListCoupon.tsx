@@ -15,10 +15,13 @@ const OrderListCoupon = () => {
   const [couponInfo, setCouponInfo] = useState<ICouponInfoProps>();
   const params = useParams();
   const orderDetailsId = params.id;
+  const memberId = localStorage.getItem("memberId");
 
   const OrderCouponAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get(`/api/user/order/coupon?memberId=16&orderDetailsId=${orderDetailsId}`);
+      const result = await apiInstance.get(
+        `/api/user/order/coupon?memberId=${memberId}&orderDetailsId=${orderDetailsId}`,
+      );
       setCouponInfo(result.data.data);
     } catch (error) {
       throw new Error("check the network response");

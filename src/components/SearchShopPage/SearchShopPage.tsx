@@ -31,6 +31,7 @@ const SearchShopPage = () => {
   const [keyWord, setKeyWord] = useState([]);
   const [shopList, setShopList] = useState<IShopProps[]>([]);
   const ref = useRef<HTMLInputElement>(null);
+  const memberId = localStorage.getItem("memberId");
 
   useEffect(() => {
     if (ref.current !== null && searchInfo !== undefined) {
@@ -49,7 +50,7 @@ const SearchShopPage = () => {
 
   const keyWordAPI = async (): Promise<void> => {
     try {
-      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
+      const keyWordData = await apiInstance.get(`/api/user/keyword?memberId=${memberId}`);
       setKeyWord(keyWordData.data.data.userKeywords);
     } catch (error) {
       throw new Error("check the network response");
@@ -60,7 +61,7 @@ const SearchShopPage = () => {
     try {
       const payload = {
         keyword,
-        memberId: 1,
+        memberId,
       };
       await apiInstance.post("/api/user/keyword", payload);
       navigate(`/search/shop/${keyword}`, { replace: true });

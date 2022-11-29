@@ -20,7 +20,7 @@ const Payment = (): JSX.Element => {
   const result = location.state as PropsType;
 
   const menu: MenuType = result?.menu;
-  console.log(menu);
+  const memberId = localStorage.getItem("memberId");
 
   const navigate = useNavigate();
   const [foldSenderSection, setFoldSenderSection] = useState(false);
@@ -29,7 +29,7 @@ const Payment = (): JSX.Element => {
     try {
       const payload = {
         productId: menu.data.productId || menu.data.id,
-        memberId: 16,
+        memberId,
       };
       await apiInstance.post("/api/user/order", payload);
     } catch (error) {

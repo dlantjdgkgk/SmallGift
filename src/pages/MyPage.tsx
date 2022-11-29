@@ -41,10 +41,9 @@ interface IOrderListProps {
 const MyPage = (): JSX.Element => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState<UserInfoProps>();
-  const [socialLogin, setSocialLogin] = useState(true);
-  const memberId = 1;
   const [choiceProduct, setChoiceProduct] = useState<MenuType>();
   const [orderList, setOrderList] = useState<IOrderListProps>();
+  const memberId = localStorage.getItem("memberId");
 
   const Logout = async (): Promise<void> => {
     await Swal.fire({
@@ -68,9 +67,6 @@ const MyPage = (): JSX.Element => {
     });
   };
 
-  const resultmemberId = localStorage.getItem("member");
-  console.log(resultmemberId);
-
   const userInfoAPI = async (): Promise<void> => {
     try {
       const result = await apiInstance.get(`/api/user/userInfo?memberId=${memberId}`);
@@ -82,7 +78,7 @@ const MyPage = (): JSX.Element => {
 
   const OrderAllAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get("/api/user/order/all?memberId=16");
+      const result = await apiInstance.get(`/api/user/order/all?memberId=${memberId}`);
       setOrderList(result.data.data.orderDetailsDtoList.pop());
     } catch (error) {
       throw new Error("check the network response");
@@ -116,7 +112,9 @@ const MyPage = (): JSX.Element => {
         <Styled.LoginSection>
           <p className="login">로그인 정보</p>
           <div className="loginInfo">
-            <div className="imgAndEmail">{socialLogin && <img src={Kakao} alt="" />}</div>
+            <div className="imgAndEmail">
+              <img src={Kakao} alt="" />
+            </div>
             <button type="button" className="logout" onClick={Logout}>
               로그아웃
             </button>
@@ -147,7 +145,7 @@ const MyPage = (): JSX.Element => {
           <div className="account">
             <label htmlFor="account">환불계좌</label>
             <span>
-              {userInfo?.accountNumber}({userInfo?.accountBank})
+              {userInfo?.accountNumber} {userInfo?.accountBank}
             </span>
           </div>
         </Styled.MemberInfoSection>

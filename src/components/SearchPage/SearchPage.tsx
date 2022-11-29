@@ -24,6 +24,7 @@ const SearchPage = (): JSX.Element => {
   const [topTenData, setTopTenData] = useState([]);
   const [keyWord, setKeyWord] = useState([]);
   const [recommendationData, setRecommendationData] = useState<IRecommendDataProps[]>([]);
+  const memberId = localStorage.getItem("memberId");
 
   const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue(e.target.value);
@@ -45,7 +46,7 @@ const SearchPage = (): JSX.Element => {
 
   const keyWordAPI = async (): Promise<void> => {
     try {
-      const keyWordData = await apiInstance.get("/api/user/keyword?memberId=1");
+      const keyWordData = await apiInstance.get(`/api/user/keyword?memberId=${memberId}`);
       setKeyWord(keyWordData.data.data.userKeywords);
     } catch (error) {
       throw new Error("check the network response");
@@ -72,7 +73,7 @@ const SearchPage = (): JSX.Element => {
 
   const handleDelete = async (): Promise<void> => {
     try {
-      const deleteKeyWordData = await apiInstance.delete("/api/user/keyword/all?memberId=1");
+      const deleteKeyWordData = await apiInstance.delete(`/api/user/keyword/all?memberId=${memberId}`);
       if (deleteKeyWordData.status === 200) {
         keyWordAPI();
       }
@@ -90,7 +91,7 @@ const SearchPage = (): JSX.Element => {
     try {
       const payload = {
         keyword,
-        memberId: 1,
+        memberId,
       };
       await apiInstance.post("/api/user/keyword", payload);
       navigate(`/search/shop/${keyword}`);

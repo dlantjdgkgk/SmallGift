@@ -1,5 +1,5 @@
 import * as Styled from "./style";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Props } from "./types";
 import LikeSVG from "components/LikeSVG/LikeSVG";
@@ -20,7 +20,8 @@ type WishProductType = {
 
 const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   const [wishtData, setWishData] = useState<WishProductType | undefined>();
-  const memberId = 1;
+  const memberId = localStorage.getItem("memberId");
+  const navigate = useNavigate();
 
   const location = useLocation();
   const catgegory = decodeURIComponent(location.pathname.split("/")[2]);
@@ -48,6 +49,9 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   }, [updateWishData]);
 
   const handleLikeButtonClick = async () => {
+    if (!localStorage.accessToken) {
+      navigate("/login");
+    }
     if (wishtData) {
       apiInstance.delete(`/api/user/wishList?wishListId=${wishtData.wishListId}`);
       setWishData(undefined);

@@ -22,6 +22,7 @@ const OrderList = (): JSX.Element => {
   const navigate = useNavigate();
   const [selected, setSelected] = useState("latestOrder");
   const [control, setControl] = useState<IOrderListProps[]>([]);
+  const memberId = localStorage.getItem("memberId");
 
   const handleCancelBtn = async (value: number): Promise<void> => {
     await Swal.fire({
@@ -35,6 +36,11 @@ const OrderList = (): JSX.Element => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         await OrderDeleteAPI(value);
+        Swal.fire({
+          text: "환불이 완료되었습니다.",
+          icon: "success",
+          confirmButtonText: "확인",
+        });
         navigate("/mypage/refund");
       }
     });
@@ -42,7 +48,7 @@ const OrderList = (): JSX.Element => {
 
   const OrderDeleteAPI = async (value: number): Promise<void> => {
     try {
-      await apiInstance.delete(`/api/user/order?memberId=16&orderDetailsId=${value}`);
+      await apiInstance.delete(`/api/user/order?memberId=${memberId}&orderDetailsId=${value}`);
     } catch (error) {
       throw new Error("check the network response");
     }
@@ -50,14 +56,12 @@ const OrderList = (): JSX.Element => {
 
   const OrderAllAPI = async (): Promise<void> => {
     try {
-      const result = await apiInstance.get("/api/user/order/all?memberId=16");
+      const result = await apiInstance.get(`/api/user/order/all?memberId=${memberId}`);
       setOrderList(result.data.data.orderDetailsDtoList.reverse());
     } catch (error) {
       throw new Error("check the network response");
     }
   };
-
-  console.log(orderList);
 
   useEffect(() => {
     OrderAllAPI();

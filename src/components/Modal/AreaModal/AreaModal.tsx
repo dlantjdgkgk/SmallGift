@@ -14,6 +14,7 @@ interface Props {
 const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): JSX.Element => {
   const { addressState, handleComplete } = useDaumPost();
   const [isDaumPostOpen, setIsDaumPostOpen] = useState(false);
+  const memberId = localStorage.getItem("memberId");
 
   const handleDaumPostOpne = useCallback(() => setIsDaumPostOpen((prve) => !prve), []);
 

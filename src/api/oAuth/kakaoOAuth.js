@@ -1,12 +1,11 @@
-import { accessApi } from "../server/Api";
 import Swal from "sweetalert2";
+import { apiInstance } from "api/setting";
 
 export const axiosKakaoLogin = async (code) => {
   try {
-    const response = await accessApi.get(
+    const response = await apiInstance.get(
       `/api/user/oauth/kakao/token?code=${code}&redirectUrl=${process.env.REACT_APP_REDIRECT_KEY}`,
     );
-    console.log(response);
     if (response.status === 200) {
       const today = new Date();
       const TOKEN_TIME_OUT = 600 * 1000;
@@ -26,7 +25,7 @@ export const axiosKakaoLogin = async (code) => {
         }
       });
     }
-  } catch (error) {
-    alert(error);
+  } catch {
+    throw new Error("check the network response");
   }
 };

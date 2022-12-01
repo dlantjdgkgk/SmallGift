@@ -2,7 +2,7 @@ import * as Styled from "./style";
 import { useLocation, useNavigate } from "react-router";
 import { useCallback, useEffect, useState } from "react";
 import { Props } from "./types";
-import LikeSVG from "components/LikeSVG/LikeSVG";
+import LikeSVG from "components/SVG/LikeSVG";
 import ProductShare from "components/KakaoAPI/KakaoShare/ProductShare";
 import { Link } from "react-router-dom";
 import { apiInstance } from "api/setting";

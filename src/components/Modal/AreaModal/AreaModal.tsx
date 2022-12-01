@@ -48,7 +48,7 @@ const AreaModal = ({ setModalIsOpen, handleModalClose, userLocateAPI }: Props): 
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.stopPropagation();
-    APIcall();
+    if (memberID) APIcall();
     setModalIsOpen(false);
   };
 

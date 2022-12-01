@@ -9,7 +9,6 @@ interface useDaumPostProps {
   handleComplete: (arg: Address) => void;
 }
 
-// 유저정보 수정에서도 사용 될꺼 같아서 훅으로 만들어봤습니다.
 const useDaumPost = (): useDaumPostProps => {
   const init = {
     jibunAddress: "",

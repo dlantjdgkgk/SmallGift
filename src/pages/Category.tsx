@@ -1,11 +1,15 @@
-import CategoryPageSection from "components/CategoryPageSection/CategoryPageSection";
-import * as Styled from "./style";
+import CategoryPageSection from "components/Category/CategoryPageSection";
+import styled from "styled-components";
+
+const CategoryWrapper = styled.main`
+  margin: 32px 0 0 0px;
+`;
 
 const Category = (): JSX.Element => {
   return (
-    <Styled.CategoryWrapper>
+    <CategoryWrapper>
       <CategoryPageSection />
-    </Styled.CategoryWrapper>
+    </CategoryWrapper>
   );
 };
 

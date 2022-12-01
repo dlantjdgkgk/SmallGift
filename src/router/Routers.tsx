@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { lazy, Suspense } from "react";
-import Cancellation from "components/Cancellation/CancellationList/CancellationList";
-import CancellationDetail from "components/Cancellation/CancellationDetail/CancellationDetail";
+import Cancellation from "components/MyPage/CancellationList/CancellationList";
+import CancellationDetail from "components/MyPage/CancellationDetail/CancellationDetail";
 import ChangeMemberInfo from "components/MyPage/ChangeMemberInfo/ChangeMemberInfo";
 
 const Main = lazy(() => import("pages/Main"));

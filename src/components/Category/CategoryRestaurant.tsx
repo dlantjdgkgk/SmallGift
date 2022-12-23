@@ -2,21 +2,7 @@ import { apiInstance } from "api/setting";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import * as Styled from "./style";
-
-interface ILocalPopularGifticonProps {
-  data: {
-    category: string;
-    shopName: string;
-    shopId: number;
-    mainMenu: string;
-    shopThumbnailImage: string;
-  };
-}
-
-interface IProps {
-  selectCategory: string;
-  selectLocate: string;
-}
+import { ILocalPopularGifticonProps, IProps } from "./types";
 
 const CategoryRestaurant = ({ selectCategory, selectLocate }: IProps): JSX.Element => {
   const [shopList, setShopList] = useState<ILocalPopularGifticonProps[]>([]);
@@ -32,35 +18,26 @@ const CategoryRestaurant = ({ selectCategory, selectLocate }: IProps): JSX.Eleme
     }
   };
 
-  console.log(shopList);
-
   useEffect(() => {
     ShopInfoAPI();
   }, [selectCategory, selectLocate]);
 
   return (
     <Styled.CategoryRestaurantWrapper>
-      <div className="restaurants">
-        {shopList.map((shop) => {
-          return (
-            <Link
-              to={`/category/${shop.data.category}/${shop.data.shopName}/${shop.data.shopId}`}
-              key={shop.data.shopId}
-            >
-              <article className="restaurant">
-                <img src={shop.data.shopThumbnailImage} alt="가게 이미지" />
-                <div className="restaurantInformation">
-                  <button className="category" type="button">
-                    {shop.data.category}
-                  </button>
-                  <p className="restaurantName">{shop.data.shopName}</p>
-                  <p className="restaurantMenu">{shop.data.mainMenu}</p>
-                </div>
-              </article>
-            </Link>
-          );
-        })}
-      </div>
+      {shopList.map((shop) => {
+        return (
+          <Link to={`/category/${shop.data.category}/${shop.data.shopName}/${shop.data.shopId}`} key={shop.data.shopId}>
+            <Styled.RestaurantArticle>
+              <img src={shop.data.shopThumbnailImage} alt="가게 이미지" />
+              <Styled.RestaurantInfo>
+                <Styled.Category>{shop.data.category}</Styled.Category>
+                <Styled.RestaurantName>{shop.data.shopName}</Styled.RestaurantName>
+                <Styled.RestaurantMenu>{shop.data.mainMenu}</Styled.RestaurantMenu>
+              </Styled.RestaurantInfo>
+            </Styled.RestaurantArticle>
+          </Link>
+        );
+      })}
     </Styled.CategoryRestaurantWrapper>
   );
 };

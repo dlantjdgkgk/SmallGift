@@ -35,7 +35,7 @@ const KakaoMap = ({ shopAddress }: IKakaoProps): JSX.Element => {
     });
   };
 
-  return <div id="map" style={{ width: "100%", height: "144px" }} />;
+  return <div id="map" style={{ width: "100%", height: "144px", marginTop: "24px" }} />;
 };
 
 export default KakaoMap;

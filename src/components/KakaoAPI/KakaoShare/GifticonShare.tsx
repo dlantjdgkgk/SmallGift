@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import KakaoImg from "../../../assets/img/Kakao.png";
+import * as Styled from "./style";
 
 interface IProps {
   image: string;
@@ -55,10 +56,10 @@ const GifticonShare = ({ image, productName, category }: IProps): JSX.Element =>
   };
 
   return (
-    <div className="sendMessage" onClick={shareKakao} aria-hidden="true">
+    <Styled.SendMsg onClick={shareKakao} aria-hidden="true">
       <img src={KakaoImg} alt="" />
       <button type="button">메세지 보내기</button>
-    </div>
+    </Styled.SendMsg>
   );
 };
 

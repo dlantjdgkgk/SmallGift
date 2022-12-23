@@ -6,19 +6,19 @@ const MainPageCategory = (): JSX.Element => {
   return (
     <>
       <Styled.MainPageCategoryWrapper>
-        <p className="categorySearch">카테고리별로 탐색해보세요</p>
-        <section className="categories">
+        <Styled.Title>카테고리별로 탐색해보세요</Styled.Title>
+        <Styled.CategorySection>
           {categories.map((category) => {
             return (
               <Link to={`/category?value=${category.category}`} key={category.id} style={{ color: "black" }}>
-                <article className="foodCategory">
+                <Styled.CategoryArticle>
                   <img src={images[category.id]} alt="" />
                   <p>{category.category}</p>
-                </article>
+                </Styled.CategoryArticle>
               </Link>
             );
           })}
-        </section>
+        </Styled.CategorySection>
       </Styled.MainPageCategoryWrapper>
       <Styled.Line />
     </>

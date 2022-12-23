@@ -8,8 +8,6 @@ export const SenderInfoSection = styled.section`
     display: flex;
     justify-content: space-between;
     margin-bottom: 16px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
     font-weight: 700;
     font-size: 18px;
     line-height: 26px;
@@ -33,8 +31,6 @@ export const FormSender = styled.section`
       margin-right: 8px;
     }
     p {
-      font-family: "Noto Sans KR";
-      font-style: normal;
       font-weight: 400;
       font-size: 16px;
       line-height: 23px;
@@ -49,8 +45,6 @@ export const FormSender = styled.section`
     margin-bottom: 16px;
     align-items: center;
     label {
-      font-family: "Noto Sans KR";
-      font-style: normal;
       font-weight: 500;
       font-size: 16px;
       line-height: 23px;
@@ -68,8 +62,6 @@ export const FormSender = styled.section`
       border: 1px solid #b6b6b6;
     }
     input::placeholder {
-      font-family: "Noto Sans KR";
-      font-style: normal;
       font-weight: 400;
       font-size: 14px;
       line-height: 20px;
@@ -97,8 +89,6 @@ export const PaymentMethodSection = styled.section`
     height: 44px;
     background: #6600cc;
     border-radius: 4px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 23px;

@@ -4,7 +4,7 @@ type HeaderProps = {
   isCategory: boolean;
 };
 
-export const HeaderWrapper = styled.header<HeaderProps>`
+export const HeaderWrapper = styled.div<HeaderProps>`
   padding-top: ${(props): string => (props.isCategory ? "0px" : "48px")};
   .header {
     width: 100%;

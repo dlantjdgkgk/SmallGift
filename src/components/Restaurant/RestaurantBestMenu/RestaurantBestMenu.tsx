@@ -2,20 +2,14 @@ import * as Styled from "./style";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { useState } from "react";
-import Portal from "components/Modal/Portal/Portal";
-import CategoryModal from "components/Modal/CategoryModal/CategoryModal";
-import { IShopMenuProps } from "components/Restaurant/RestaurantInfo/RestaurantInfo";
+import RestaurantMenuInfo from "../RestaurantMenuInfo.tsx/RestaurantMenuInfo";
+import { IShopMenuProps } from "../types";
 
 interface IProps {
   bestMenus: IShopMenuProps[];
 }
 
 const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
-  const [selectMenu, setSelectMenu] = useState<any>();
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const handleModalClose = (): void => setModalIsOpen(false);
-
   const settings = {
     dots: true,
     infinite: true,
@@ -29,36 +23,12 @@ const RestaurantBestMenu = ({ bestMenus }: IProps): JSX.Element => {
 
   return (
     <Styled.BestMenuWrapper>
-      <p className="bestMenu">Best 메뉴</p>
+      <Styled.BestMenu>Best 메뉴</Styled.BestMenu>
       <Slider {...settings}>
         {bestMenus.map((menu) => {
-          return (
-            <section
-              className="bestMenuInformation"
-              key={menu.data.id}
-              aria-hidden="true"
-              onClick={(): void => {
-                setSelectMenu(menu);
-                setModalIsOpen(true);
-              }}
-            >
-              <article className="menuInformation">
-                <img src={menu.data.productImage} alt="이미지" />
-                <div className="setMenuInfo">
-                  <div className="setMenuName">{menu.data.productName}</div>
-                  <p className="setMenu">단품</p>
-                  <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
-                </div>
-              </article>
-            </section>
-          );
+          return <RestaurantMenuInfo menu={menu} key={menu.data.id} />;
         })}
       </Slider>
-      {modalIsOpen && (
-        <Portal>
-          <CategoryModal menu={selectMenu} handleModalClose={handleModalClose} />
-        </Portal>
-      )}
     </Styled.BestMenuWrapper>
   );
 };

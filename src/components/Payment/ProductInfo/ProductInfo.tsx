@@ -15,8 +15,8 @@ const ProductInfo = ({ menu }: IProps): JSX.Element => {
 
   return (
     <Styled.ProductInfoSection>
-      <div className="productInfo">
-        <p className="bestMenu">주문상품정보</p>
+      <Styled.ProductTitle>
+        <p>주문상품정보</p>
         <button type="button" onClick={handleSet}>
           {foldSection ? (
             <FontAwesomeIcon icon={faChevronDown} size="2x" />
@@ -24,16 +24,17 @@ const ProductInfo = ({ menu }: IProps): JSX.Element => {
             <FontAwesomeIcon icon={faChevronUp} size="2x" />
           )}
         </button>
-      </div>
+      </Styled.ProductTitle>
+
       {foldSection ? null : (
-        <div className="gifticonInformation">
-          <img src={menu.data.productImage} alt="이미지" className="menuImage" />
-          <div className="setMenuInfo">
-            <div className="setMenuName">{menu.data.productName}</div>
-            <p className="setMenu">단품</p>
-            <p className="price">{menu.data.productPrice.toLocaleString()}원</p>
+        <Styled.ProductInfo>
+          <img src={menu.data.productImage} alt="이미지" />
+          <div>
+            <Styled.SetMenuName>{menu.data.productName}</Styled.SetMenuName>
+            <Styled.SetMenu>단품</Styled.SetMenu>
+            <Styled.Price>{menu.data.productPrice.toLocaleString()}원</Styled.Price>
           </div>
-        </div>
+        </Styled.ProductInfo>
       )}
     </Styled.ProductInfoSection>
   );

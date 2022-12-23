@@ -19,37 +19,30 @@ const PaymentCheck = (): JSX.Element => {
   const image: DataType = result.data;
 
   return (
-    <Styled.PaymentCheckWrapper>
-      <Styled.PaymentCheckSection>
-        <div>
-          <p className="gift">🎁</p>
-          <p className="sendGift">홍길순님께 보내는 선물 </p>
-          <p className="confirmPay">결제가 완료됐어요!</p>
-        </div>
-        <GifticonShare image={image.productImage} productName={image.productName} category={image.category} />
+    <Styled.PaymentCheckSection>
+      <Styled.Gift>🎁</Styled.Gift>
+      <Styled.SendGift>마음이 담긴 선물</Styled.SendGift>
+      <Styled.confirmPay>결제가 완료됐어요!</Styled.confirmPay>
+      <GifticonShare image={image.productImage} productName={image.productName} category={image.category} />
 
-        <div className="orderListAndConfirm">
-          <button
-            type="button"
-            className="orderList"
-            onClick={(): void => {
-              navigate("/mypage/orderlist");
-            }}
-          >
-            주문내역 보러가기
-          </button>
-          <button
-            type="button"
-            className="confirm"
-            onClick={(): void => {
-              navigate("/");
-            }}
-          >
-            확인
-          </button>
-        </div>
-      </Styled.PaymentCheckSection>
-    </Styled.PaymentCheckWrapper>
+      <Styled.orderListAndConfirm>
+        <Styled.OrderListBtn
+          onClick={(): void => {
+            navigate("/mypage/orderlist");
+          }}
+        >
+          주문내역 보러가기
+        </Styled.OrderListBtn>
+
+        <Styled.ConfirmBtn
+          onClick={(): void => {
+            navigate("/");
+          }}
+        >
+          확인
+        </Styled.ConfirmBtn>
+      </Styled.orderListAndConfirm>
+    </Styled.PaymentCheckSection>
   );
 };
 

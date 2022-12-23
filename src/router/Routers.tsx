@@ -1,29 +1,30 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { lazy, Suspense } from "react";
-import Cancellation from "components/MyPage/CancellationList/CancellationList";
-import CancellationDetail from "components/MyPage/CancellationDetail/CancellationDetail";
-import ChangeMemberInfo from "components/MyPage/ChangeMemberInfo/ChangeMemberInfo";
 
 const Main = lazy(() => import("pages/Main"));
 const Category = lazy(() => import("pages/Category"));
 const Search = lazy(() => import("pages/Search"));
-const MyPage = lazy(() => import("pages/MyPage/MyPage"));
-const Payment = lazy(() => import("pages/Payment/Payment"));
-const Restaurant = lazy(() => import("pages/Restaurant"));
 const SearchShop = lazy(() => import("components/Search/SearchShopPage/SearchShopPage"));
+const Restaurant = lazy(() => import("pages/Restaurant"));
+const Payment = lazy(() => import("pages/Payment/Payment"));
+const PaymentCheck = lazy(() => import("components/Payment/PaymentCheck/PaymentCheck"));
 
 const LogIn = lazy(() => import("pages/Login/Login"));
 const Kakao = lazy(() => import("pages/Login/Kakao"));
-const OrderListCoupon = lazy(() => import("components/MyPage/OrderListCoupon/OrderListCoupon"));
 
+const MyPage = lazy(() => import("pages/MyPage/MyPage"));
+const Cancellation = lazy(() => import("components/MyPage/CancellationList/CancellationList"));
+const CancellationDetail = lazy(() => import("components/MyPage/CancellationDetail/CancellationDetail"));
+const ChangeMemberInfo = lazy(() => import("components/MyPage/ChangeMemberInfo/ChangeMemberInfo"));
+const OrderListCoupon = lazy(() => import("components/MyPage/OrderListCoupon/OrderListCoupon"));
+const OrderList = lazy(() => import("components/MyPage/OrderList/OrderList"));
+const ChoiceProduct = lazy(() => import("components/MyPage/ChoiceProductList/ChoiceProductList"));
+
+const NotFound = lazy(() => import("components/NotFound/NotFound"));
 const BottomNav = lazy(() => import("components/Common/BottomNav/BottomNav"));
 const Header = lazy(() => import("components/Common/Header/Header"));
 const ScrollTop = lazy(() => import("components/Common/ScrollTop/ScrollTop"));
-const PaymentCheck = lazy(() => import("components/Payment/PaymentCheck/PaymentCheck"));
-const OrderList = lazy(() => import("components/MyPage/OrderList/OrderList"));
-const NotFound = lazy(() => import("components/NotFound/NotFound"));
-const ChoiceProduct = lazy(() => import("components/MyPage/ChoiceProductList/ChoiceProduct"));
 const Spinner = lazy(() => import("elements/Spinner"));
 
 const Routers = (): JSX.Element => {

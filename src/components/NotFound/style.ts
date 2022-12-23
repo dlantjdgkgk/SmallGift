@@ -20,14 +20,13 @@ export const NotFoundWrapper = styled.div`
   button {
     width: 100%;
     height: 44px;
-    background: #6600cc;
+    background: ${({ theme }) => theme.colors.$purple};
     border-radius: 4px;
-    font-family: "Noto Sans KR";
     font-weight: 500;
-    font-size: 16px;
+    font-size: ${({ theme }) => theme.fonts.$sm};
     line-height: 23px;
     letter-spacing: -0.04em;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.$white};
     margin-top: 107px;
   }
 `;

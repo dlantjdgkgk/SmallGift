@@ -18,7 +18,7 @@ const Section = styled.div`
 const Line = styled.div`
   width: 100%;
   height: 12px;
-  background-color: #f4f4f4;
+  background-color: ${({ theme }) => theme.colors.$whiteGray};
   margin-bottom: 32px;
 `;
 

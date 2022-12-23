@@ -3,26 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { apiInstance } from "../../../api/setting";
-
-interface MyButtonProps {
-  isSelected: boolean;
-}
-
-interface ILocalPopularGifticonProps {
-  data: {
-    category: string;
-    image: string;
-    shopName: string;
-    shopId: number;
-    address: string;
-    shopInfoImage: string;
-  };
-}
-
-const MyButton = styled.button<MyButtonProps>`
-  background-color: ${(props): string => (props.isSelected ? "#6600CC" : "")};
-  color: ${(props): string => (props.isSelected ? "#F4F4F4;" : "#5e5e5e")};
-`;
+import { ILocalPopularGifticonProps } from "./types";
 
 const MainPageGifticon = (): JSX.Element => {
   const koreaAreas = ["서울", "경기", "강원", "충북", "전북", "제주"];
@@ -39,13 +20,13 @@ const MainPageGifticon = (): JSX.Element => {
   }, [selectArea]);
 
   return (
-    <Styled.SectionGifticonWrapper>
-      <p className="gifticon">지역별 인기있는 기프티콘이에요</p>
-      <section className="areas">
+    <Styled.GifticonSectionWrapper>
+      <Styled.GifticonTitle>지역별 인기있는 기프티콘이에요</Styled.GifticonTitle>
+      <Styled.LocateSelectBtn>
         {koreaAreas.map((area) => {
           const isSelected = selectArea === area;
           return (
-            <MyButton
+            <Styled.MyButton
               type="button"
               aria-label="Click"
               key={area}
@@ -55,31 +36,29 @@ const MainPageGifticon = (): JSX.Element => {
               isSelected={isSelected}
             >
               {area}
-            </MyButton>
+            </Styled.MyButton>
           );
         })}
-      </section>
+      </Styled.LocateSelectBtn>
 
-      <section className="gifticonInformation">
+      <Styled.GifticonSection>
         {localPopularGifticons.map((popularGifticon) => {
           return (
             <Link
               to={`/category/${popularGifticon.data.category}/${popularGifticon.data.shopName}/${popularGifticon.data.shopId}`}
               key={popularGifticon.data.shopId}
             >
-              <article className="addressInformation" aria-label="Click">
+              <Styled.GifticonArticle>
                 <img src={popularGifticon.data.shopInfoImage} alt="가게 이미지" />
-                <button className="category" type="button">
-                  {popularGifticon.data.category}
-                </button>
-                <p className="restaurantName">{popularGifticon.data.shopName}</p>
-                <p className="restaurantAddress">{popularGifticon.data.address}</p>
-              </article>
+                <Styled.Category>{popularGifticon.data.category}</Styled.Category>
+                <Styled.ShopName>{popularGifticon.data.shopName}</Styled.ShopName>
+                <Styled.ShopAddress>{popularGifticon.data.address}</Styled.ShopAddress>
+              </Styled.GifticonArticle>
             </Link>
           );
         })}
-      </section>
-    </Styled.SectionGifticonWrapper>
+      </Styled.GifticonSection>
+    </Styled.GifticonSectionWrapper>
   );
 };
 

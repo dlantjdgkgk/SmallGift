@@ -19,84 +19,62 @@ export const Background = styled.div`
 export const ModalWrapper = styled.div`
   width: 100%;
   height: 323px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.$white};
   border-radius: 16px 16px 0px 0px;
-  padding-top: 32px;
-  padding-left: 32px;
+  padding: 32px 32px 0 32px;
   position: absolute;
   bottom: 0;
+`;
 
-  .setMenuInformation {
-    div {
-      display: flex;
-      justify-content: space-between;
-      padding-right: 32px;
-      button {
-        font-size: 24px;
-      }
-    }
-    .setName {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 35px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
-    .setMenu {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: #8f8f8f;
-      margin-top: 8px;
-    }
+export const ProductName = styled.p`
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fonts.$xxl};
+  line-height: 35px;
+  letter-spacing: -0.04em;
+  color: #000000;
+`;
+
+export const ProductContent = styled.p`
+  font-size: ${({ theme }) => theme.fonts.$sm};
+  line-height: 23px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$gray};
+  margin-top: 8px;
+`;
+
+export const OnePerson = styled.p`
+  font-size: ${({ theme }) => theme.fonts.$xs};
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$gray};
+  margin-top: 72px;
+`;
+
+export const PriceAndBtn = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2px 0 24px 0;
+  p {
+    font-weight: 700;
+    font-size: ${({ theme }) => theme.fonts.$xxl};
+    line-height: 35px;
+    letter-spacing: -0.04em;
+    color: ${({ theme }) => theme.colors.$purple};
   }
-  .priceInformation {
-    margin-right: 32px;
-    .onePerson {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.04em;
-      color: #a5a5a5;
-      margin-top: 72px;
-    }
-    .priceAndButton {
-      display: flex;
-      justify-content: space-between;
-    }
-    .price {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 35px;
-      letter-spacing: -0.04em;
-      color: #6600cc;
-      margin-top: 2px;
-      margin-bottom: 24px;
-    }
-    .share {
-      margin-right: 8px;
-    }
-    .gift {
-      width: 100%;
-      height: 44px;
-      background: #6600cc;
-      border-radius: 4px;
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: white;
-    }
-  }
+`;
+
+export const ShareBtn = styled.button`
+  margin-right: 8px;
+`;
+
+export const GiftBtn = styled.button`
+  width: 100%;
+  height: 44px;
+  background: ${({ theme }) => theme.colors.$purple};
+  border-radius: 4px;
+  font-size: ${({ theme }) => theme.fonts.$sm};
+  line-height: 23px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$white};
 `;

@@ -9,11 +9,11 @@ const BottomNav = (): JSX.Element => {
     <>
       <Outlet />
       <Styled.NavWrapper>
-        <div className="container">
+        <Styled.Container>
           {data.map(({ icons, Links, name, id }) => {
             return (
-              <Link to={Links} className="nav-link" key={id}>
-                <div className="iconAndDescription">
+              <Link to={Links} key={id}>
+                <Styled.IconAndDescription>
                   <div>
                     <FontAwesomeIcon
                       icon={icons}
@@ -21,11 +21,11 @@ const BottomNav = (): JSX.Element => {
                     />
                     <p className={pathname.split("/")[1] === Links ? "nav-item active" : "nav-item"}>{name}</p>
                   </div>
-                </div>
+                </Styled.IconAndDescription>
               </Link>
             );
           })}
-        </div>
+        </Styled.Container>
       </Styled.NavWrapper>
     </>
   );

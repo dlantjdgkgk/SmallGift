@@ -93,32 +93,24 @@ const CategoryModal = ({ menu, handleModalClose }: Props): JSX.Element => {
   return (
     <Styled.Background id="modal-container">
       <Styled.ModalWrapper>
-        <div className="setMenuInformation">
-          <div>
-            <p className="setName">{menu.data.productName}</p>
-          </div>
-          <p className="setMenu">단품</p>
-        </div>
+        <Styled.ProductName>{menu.data.productName}</Styled.ProductName>
+        <Styled.ProductContent>단품</Styled.ProductContent>
 
-        <div className="priceInformation">
-          <p className="onePerson">1인 기준</p>
-          <div className="priceAndButton">
-            <p className="price">{menu.data.productPrice}원</p>
-            <div className="button">
-              <button type="button" className="share">
-                <ProductShare catgegory={catgegory} shopName={shopName} shopId={shopId} />
-              </button>
-              <button type="button" onClick={handleLikeButtonClick}>
-                <LikeSVG fill={wishtData ? "red" : undefined} stroke={wishtData ? "transparent" : "gray"} />
-              </button>
-            </div>
-          </div>
-          <Link to="/payment" state={{ menu }}>
-            <button type="button" className="gift">
-              선물하기
+        <Styled.OnePerson>1인 기준</Styled.OnePerson>
+        <Styled.PriceAndBtn>
+          <p>{menu.data.productPrice}원</p>
+          <div>
+            <Styled.ShareBtn type="button">
+              <ProductShare catgegory={catgegory} shopName={shopName} shopId={shopId} />
+            </Styled.ShareBtn>
+            <button type="button" onClick={handleLikeButtonClick}>
+              <LikeSVG fill={wishtData ? "red" : undefined} stroke={wishtData ? "transparent" : "gray"} />
             </button>
-          </Link>
-        </div>
+          </div>
+        </Styled.PriceAndBtn>
+        <Link to="/payment" state={{ menu }}>
+          <Styled.GiftBtn type="button">선물하기</Styled.GiftBtn>
+        </Link>
       </Styled.ModalWrapper>
     </Styled.Background>
   );

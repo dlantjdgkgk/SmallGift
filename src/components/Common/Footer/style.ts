@@ -6,20 +6,20 @@ export const FooterWrapper = styled.footer`
   display: flex;
   flex-direction: column;
   margin-top: 60px;
-  div {
-    margin: 12px 0 0 8px;
-  }
-  .information,
-  .smallgiftInformation {
-    display: flex;
-    flex-direction: column;
-    font-weight: 300;
-    font-size: 11px;
-    color: #575757;
-    margin-bottom: 12px;
-  }
-  .smallgift {
-    font-size: 16px;
-    font-weight: 700;
-  }
+  padding: 12px 0 0 8px;
+`;
+
+export const Info = styled.div`
+  display: flex;
+  font-weight: 300;
+  gap: 6px;
+  font-size: ${({ theme }) => theme.fonts.$xxs};
+  color: #575757;
+  margin-bottom: 20px;
+`;
+
+export const Title = styled.div`
+  font-size: ${({ theme }) => theme.fonts.$xxs};
+  font-weight: 700;
+  margin-bottom: 12px;
 `;

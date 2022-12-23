@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const CategoryPageSectionWrapper = styled.section`
   margin-left: 16px;
   select {
-    width: 120px;
+    width: 130px;
     border: none;
     border-bottom: 2px solid black;
-    font-family: "Noto Sans KR";
-    font-style: normal;
     font-weight: 700;
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fonts.$lg};
     line-height: 29px;
     letter-spacing: -0.04em;
     padding-bottom: 4px;
@@ -17,10 +15,7 @@ export const CategoryPageSectionWrapper = styled.section`
   }
   p {
     margin-top: 7px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fonts.$lg};
     line-height: 29px;
     letter-spacing: -0.04em;
   }
@@ -28,10 +23,9 @@ export const CategoryPageSectionWrapper = styled.section`
 
 export const SelectedCategoryWrapper = styled.section`
   display: flex;
-  margin-left: 16px;
+  margin: 25px 0 0 16px;
   overflow-x: auto;
   -ms-overflow-style: none;
-  margin-top: 25px;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -39,15 +33,12 @@ export const SelectedCategoryWrapper = styled.section`
     margin-right: 8px;
   }
   button {
-    background: #ffffff;
+    background: ${({ theme }) => theme.colors.$white};
     box-shadow: 0px 2px 8px rgba(197, 197, 197, 0.26);
     border-radius: 58px;
     width: 58px;
     height: 31px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
+    font-size: ${({ theme }) => theme.fonts.$xs};
     line-height: 20px;
     margin-right: 8px;
   }
@@ -56,78 +47,66 @@ export const SelectedCategoryWrapper = styled.section`
 export const BoundaryLine = styled.div`
   width: 100%;
   height: 12px;
-  background: #f4f4f4;
-  margin-top: 16px;
-  margin-left: 0px;
+  background: ${({ theme }) => theme.colors.$whiteGray};
+  margin: 16px 0 0 0;
 `;
 
 export const CategoryRestaurantWrapper = styled.section`
-  margin-left: 16px;
-  .restaurants {
+  padding-left: 16px;
+  width: 100%;
+  padding-right: 16px;
+  margin-top: 24px;
+  display: grid;
+  grid-row-gap: 16px;
+  a {
     width: 100%;
-    padding-right: 16px;
-    margin-top: 24px;
-    display: grid;
-    grid-row-gap: 16px;
-    a {
-      width: 100%;
-      border-bottom: 1px solid #eaeaea;
-      .restaurant {
-        display: flex;
-      }
-    }
-
-    & > a:last-of-type {
-      border: none;
-    }
+    border-bottom: 1px solid #eaeaea;
   }
-
+  & > a:last-of-type {
+    border: none;
+  }
   img {
     width: 80px;
     height: 80px;
     margin-bottom: 16px;
   }
-  .restaurantInformation {
-    margin-left: 16px;
-    display: flex;
-    flex-direction: column;
-    .category {
-      width: 36px;
-      height: 23px;
-      background: #6600cc;
-      border-radius: 2px;
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 13px;
-      line-height: 19px;
-      letter-spacing: -0.04em;
-      color: #ffffff;
-      margin-bottom: 4px;
-    }
-    .restaurantName {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 700;
-      font-size: 16px;
-      line-height: 23px;
-      letter-spacing: -0.04em;
-      color: #000000;
-    }
-    .restaurantMenu {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.04em;
-      color: #8f8f8f;
-      margin-top: 8px;
-    }
-  }
-  .top {
-    position: fixed;
-    bottom: 36px;
-    right: 6px;
-  }
+`;
+
+export const RestaurantArticle = styled.article`
+  display: flex;
+`;
+
+export const RestaurantInfo = styled.div`
+  display: flex;
+  padding-left: 16px;
+  flex-direction: column;
+`;
+
+export const Category = styled.button`
+  width: 36px;
+  height: 23px;
+  background: ${({ theme }) => theme.colors.$purple};
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fonts.$xs};
+  line-height: 19px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$white};
+  margin-bottom: 4px;
+`;
+
+export const RestaurantName = styled.p`
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fonts.$sm};
+  line-height: 23px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$black};
+`;
+
+export const RestaurantMenu = styled.p`
+  font-size: ${({ theme }) => theme.fonts.$xs};
+  line-height: 20px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$gray};
+  margin-top: 8px;
 `;

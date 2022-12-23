@@ -1,90 +1,51 @@
 import styled from "styled-components";
 
-export const PaymentCheckWrapper = styled.main``;
+export const PaymentCheckSection = styled.section``;
 
-export const PaymentCheckSection = styled.section`
-  .gift {
-    font-size: 32px;
-    text-align: center;
-    margin-top: 167px;
-    margin-bottom: 24px;
-  }
-  .sendGift {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: #7b7b7b;
-    margin-bottom: 16px;
-  }
-  .confirmPay {
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 20px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: black;
-  }
+export const Gift = styled.p`
+  font-size: 32px;
+  text-align: center;
+  margin: 167px 0 24px 0;
+`;
 
-  .sendMessage {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 46px;
-    margin-top: 110px;
-    .kakao {
-      width: 18px;
-      height: 18px;
-    }
-    button {
-      font-family: "Noto Sans KR";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      text-align: center;
-      letter-spacing: -0.04em;
-      text-decoration-line: underline;
-      color: #7b7b7b;
-      margin-left: 8px;
-    }
-  }
-  .orderListAndConfirm {
-    display: flex;
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-  .orderList {
-    width: 72%;
-    height: 44px;
-    background: #6600cc;
-    border-radius: 4px;
-    margin-right: 16px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: #ffffff;
-  }
-  .confirm {
-    width: 28%;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    height: 44px;
-    font-family: "Noto Sans KR";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    text-align: center;
-    letter-spacing: -0.04em;
-    color: #494949;
-  }
+export const SendGift = styled.p`
+  font-size: ${({ theme }) => theme.fonts.$xs};
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$gray};
+  margin-bottom: 16px;
+`;
+
+export const confirmPay = styled.p`
+  font-weight: 700;
+  font-size: ${({ theme }) => theme.fonts.$xxl};
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$black};
+`;
+
+export const orderListAndConfirm = styled.div`
+  display: flex;
+  padding: 0 32px;
+  gap: 16px;
+`;
+
+export const OrderListBtn = styled.button`
+  width: 72%;
+  height: 44px;
+  background: ${({ theme }) => theme.colors.$purple};
+  border-radius: 4px;
+  font-size: ${({ theme }) => theme.fonts.$sm};
+  line-height: 23px;
+  letter-spacing: -0.04em;
+  color: ${({ theme }) => theme.colors.$white};
+`;
+
+export const ConfirmBtn = styled(OrderListBtn)`
+  width: 28%;
+  border: 1px solid #cccccc;
+  color: ${({ theme }) => theme.colors.$black};
+  background: ${({ theme }) => theme.colors.$white};
 `;

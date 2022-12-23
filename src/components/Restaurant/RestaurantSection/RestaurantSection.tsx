@@ -10,16 +10,12 @@ interface IProps {
 const RestaurantSection = ({ category, shopName, image }: IProps): JSX.Element => {
   return (
     <Styled.RestaurantSectionWrapper>
-      <img src={Shadow} alt="" className="shadow" />
-      <img src={image} alt="" className="picture" />
-      <div className="resturantThumbnail">
-        <button className="category" type="button">
-          {category}
-        </button>
-        <div className="restaurantLike">
-          <div className="restaurantName">{shopName}</div>
-        </div>
-      </div>
+      <Styled.ShadowImg src={Shadow} alt="" />
+      <Styled.RestaurantImg src={image} alt="" />
+      <Styled.RestaurantInfo>
+        <span>{category}</span>
+        <Styled.RestaurantName>{shopName}</Styled.RestaurantName>
+      </Styled.RestaurantInfo>
     </Styled.RestaurantSectionWrapper>
   );
 };

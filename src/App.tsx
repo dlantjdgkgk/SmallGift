@@ -1,15 +1,7 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SigninSample from "./pages/samples/SigninSample";
+import Routers from "router/Routers";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/samples/signin" element={<SigninSample />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+const App = (): JSX.Element => {
+  return <Routers />;
+};
 
 export default App;

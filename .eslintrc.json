@@ -30,7 +30,7 @@
         "global-require": 0,
         "no-nested-ternary": "off",
         "@typescript-eslint/no-explicit-any": "warn",
-        "@typescript-eslint/explicit-function-return-type":"on",
+        "@typescript-eslint/explicit-function-return-type":"off",
         "@typescript-eslint/adjacent-overload-signatures": "warn",
         "@typescript-eslint/no-dupe-class-members": "warn",
         "@typescript-eslint/no-empty-function": "warn",

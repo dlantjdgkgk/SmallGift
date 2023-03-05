@@ -1,4 +1,5 @@
-# SmallGift
 스몰기프트
 
-smallgift.pages.dev/
+폴더구조
+
+스택

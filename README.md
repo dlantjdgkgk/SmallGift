@@ -18,56 +18,13 @@
 <br>
 
 
-### 1. 질문 랜덤 분배
 
-
-
-<img src="https://user-images.githubusercontent.com/81623931/215723339-c5df4423-7865-4439-a9f5-dfbfb24ed1df.png" width="800" height="400"/>
-<img src="https://user-images.githubusercontent.com/81623931/215723636-c77ee672-1b01-4bc6-9a87-bd5a3ec2193c.png" width="800" height="400"/>
-
-<br>
-
-### 2. 질문 생성, 수정, 삭제 기능
-
-
-
-<img src="https://user-images.githubusercontent.com/81623931/215789486-34a0d541-d882-42c9-b7f1-918e1ceb5b44.png" width="800" height="400"/>
-
-<br>
-
-### 3. 참여자 생성, 수정, 삭제 기능
-
-
-
-<img src="https://user-images.githubusercontent.com/81623931/215791138-e9c0a19b-797c-445d-929c-8c174f9a9f6e.png" width="800" height="400"/>
-
-<br>
-
-### 4. 로그인, 로그아웃 기능
-
-
-
-<br>
-
-### 5. Q&A 페이지 기능
-
-<br>
 
 #### 공지사항
 
 <br>
 
-<img src="https://user-images.githubusercontent.com/81623931/217126904-63f59cc3-1a21-4185-baa8-9a3930524eae.png" width="800" height="350"/>
 
-<br>
-
-- 해당 페이지에서 본 서비스의 공지사항 글을 확인할 수 있다.
-- 공지사항 글은 관리자로 지정된 유저만 글을 올리고 수정하고 삭제할 수 있다.
-  <br>
-
-#### Q&A
-
-  <br>
 
 #### 남길 말
 

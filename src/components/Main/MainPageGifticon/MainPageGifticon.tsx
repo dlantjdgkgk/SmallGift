@@ -1,7 +1,6 @@
 import * as Styled from "./style";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import { apiInstance } from "../../../api/setting";
 import { ILocalPopularGifticonProps } from "./types";
 

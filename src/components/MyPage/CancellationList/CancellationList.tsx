@@ -43,6 +43,7 @@ const Cancellation = (): JSX.Element => {
                 <img src={Arrow} alt="" />
               </button>
             </Link>
+
             <div className="gifticonInfo">
               <img src={refund.productImage} alt="" className="thumbnail" />
               <div className="setInfo">
@@ -51,6 +52,7 @@ const Cancellation = (): JSX.Element => {
                 <p className="price">{refund.paidAmount}</p>
               </div>
             </div>
+
             <div className="cancelStatus">
               <img src={Success} alt="" />
               <p className="statusInfo">

@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Welcome = styled.section`
   margin: 38px 0px 45px 16px;
   h1 {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -20,7 +19,6 @@ export const LoginSection = styled.section`
   padding-left: 16px;
   padding-right: 16px;
   .login {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -48,7 +46,6 @@ export const LoginSection = styled.section`
     margin-left: 16px;
   }
   .email {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -57,7 +54,6 @@ export const LoginSection = styled.section`
     margin-left: 16px;
   }
   .logout {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -76,7 +72,6 @@ export const MemberInfoSection = styled.section`
     justify-content: space-between;
     margin-bottom: 16px;
     h1 {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 18px;
@@ -85,7 +80,6 @@ export const MemberInfoSection = styled.section`
       color: #000000;
     }
     span {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -103,7 +97,6 @@ export const MemberInfoSection = styled.section`
     display: flex;
     margin-bottom: 6px;
     label {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -113,7 +106,6 @@ export const MemberInfoSection = styled.section`
       width: 64px;
     }
     span {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;

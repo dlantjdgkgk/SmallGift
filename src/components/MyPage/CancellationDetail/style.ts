@@ -6,7 +6,6 @@ export const ProductInfoSection = styled.section`
   margin-top: 16px;
   margin-left: 16px;
   .productInfo {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -23,7 +22,6 @@ export const ProductInfoSection = styled.section`
     padding: 0 10px;
   }
   .orderNumber {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -32,7 +30,6 @@ export const ProductInfoSection = styled.section`
     color: #575757;
   }
   .number {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -51,7 +48,6 @@ export const ProductInfoSection = styled.section`
     height: 72px;
   }
   .restaurantName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -60,7 +56,6 @@ export const ProductInfoSection = styled.section`
     color: #9f9f9f;
   }
   .setName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -70,7 +65,6 @@ export const ProductInfoSection = styled.section`
     margin-bottom: 12px;
   }
   .price {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -91,7 +85,6 @@ export const RefundInfoSection = styled.section`
   margin-top: 16px;
   margin-left: 16px;
   h1 {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -107,7 +100,6 @@ export const RefundInfoSection = styled.section`
   .totalPrice,
   .refundPrice,
   .refundMethod {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -117,7 +109,6 @@ export const RefundInfoSection = styled.section`
   }
   .totalMoney,
   .refundMoney {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;

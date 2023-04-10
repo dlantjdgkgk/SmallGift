@@ -28,7 +28,6 @@ export const DropDownItem = styled.div`
   padding: 20px 8px 8px 16px;
   margin: 0 16px;
   border-bottom: 1px solid #e7e7e7;
-  font-family: "Noto Sans KR";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -37,7 +36,6 @@ export const DropDownItem = styled.div`
   color: #000000;
 
   span {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -75,7 +73,6 @@ export const SearchPageWrapper = styled.div`
       padding-left: 16px;
     }
     input::placeholder {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -86,7 +83,6 @@ export const SearchPageWrapper = styled.div`
   }
 
   .recomendation {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
@@ -102,7 +98,6 @@ export const SearchPageWrapper = styled.div`
     margin-top: 24px;
     margin-left: 16px;
     .recent {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
@@ -112,7 +107,6 @@ export const SearchPageWrapper = styled.div`
       margin-bottom: 10px;
     }
     .available {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -128,7 +122,6 @@ export const SearchPageWrapper = styled.div`
     margin-top: 24px;
     margin-left: 16px;
     .recent {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
@@ -137,7 +130,6 @@ export const SearchPageWrapper = styled.div`
       color: #000000;
     }
     .totalDelete {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -172,7 +164,6 @@ export const PopularSearchWrapper = styled.section`
     display: flex;
     justify-content: space-between;
     .popular {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
@@ -181,7 +172,6 @@ export const PopularSearchWrapper = styled.section`
       color: #000000;
     }
     .time {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -206,7 +196,6 @@ export const SearchListWrapper = styled.section`
         column-gap: 14px;
         width: 100%;
         .rank {
-          font-family: "Noto Sans KR";
           font-style: normal;
           font-weight: 700;
           font-size: 14px;
@@ -217,7 +206,6 @@ export const SearchListWrapper = styled.section`
           margin-left: 6px;
         }
         .menuName {
-          font-family: "Noto Sans KR";
           font-style: normal;
           font-weight: 400;
           font-size: 14px;
@@ -232,7 +220,6 @@ export const SearchListWrapper = styled.section`
         align-items: center;
         column-gap: 4px;
         .risingRanking {
-          font-family: "Noto Sans KR";
           font-style: normal;
           font-weight: 400;
           font-size: 12px;
@@ -262,7 +249,6 @@ export const SearchTitle = styled.div`
     height: 32px;
   }
   .search {
-    font-family: "Noto Sans KR";
     font-weight: 700;
     font-size: 20px;
     line-height: 29px;
@@ -271,7 +257,6 @@ export const SearchTitle = styled.div`
     margin-bottom: 120px;
   }
   .keyword {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -306,7 +291,6 @@ export const SearchTitle = styled.div`
       padding: 8px;
       white-space: nowrap;
       p {
-        font-family: "Noto Sans KR";
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
@@ -321,7 +305,6 @@ export const SearchTitle = styled.div`
 
   .searchTitle {
     .shopInfo {
-      font-family: "Noto Sans KR";
       font-weight: 700;
       font-size: 20px;
       line-height: 29px;
@@ -330,7 +313,6 @@ export const SearchTitle = styled.div`
       margin-right: 6px;
     }
     .length {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 20px;
@@ -339,7 +321,6 @@ export const SearchTitle = styled.div`
       color: #6600cc;
     }
     .extra {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 20px;
@@ -384,7 +365,6 @@ export const ShopInfoWrapper = styled.section`
       height: 23px;
       background: #6600cc;
       border-radius: 2px;
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 500;
       font-size: 13px;
@@ -394,7 +374,6 @@ export const ShopInfoWrapper = styled.section`
       margin-bottom: 4px;
     }
     .restaurantName {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
@@ -403,7 +382,6 @@ export const ShopInfoWrapper = styled.section`
       color: #000000;
     }
     .restaurantMenu {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;

@@ -18,7 +18,6 @@ export const CancellationSection = styled.section`
     padding: 0 10px;
   }
   .orderNumber {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -27,7 +26,6 @@ export const CancellationSection = styled.section`
     color: #575757;
   }
   .number {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -47,7 +45,6 @@ export const CancellationSection = styled.section`
     height: 72px;
   }
   .restaurantName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -56,7 +53,6 @@ export const CancellationSection = styled.section`
     color: #9f9f9f;
   }
   .setName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -66,7 +62,6 @@ export const CancellationSection = styled.section`
     margin-bottom: 12px;
   }
   .price {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -86,7 +81,6 @@ export const CancellationSection = styled.section`
   .statusInfo {
     margin-left: 6px;
     span {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 700;
       font-size: 14px;

@@ -18,7 +18,6 @@ export const ProductFilterSection = styled.section`
     margin-top: 20px;
   }
   select {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -31,7 +30,6 @@ export const ProductFilterSection = styled.section`
     border-radius: 70px;
     height: 29px;
     width: 77px;
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -46,7 +44,6 @@ export const OrderSection = styled.section`
   padding-right: 16px;
   border-bottom: 8px solid #f4f4f4;
   .date {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -73,7 +70,6 @@ export const OrderSection = styled.section`
       width: 72px;
       height: 24px;
       background: rgba(0, 0, 0, 0.7);
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -86,7 +82,6 @@ export const OrderSection = styled.section`
     }
   }
   .restaurantName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -95,7 +90,6 @@ export const OrderSection = styled.section`
     color: #9f9f9f;
   }
   .setName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -104,7 +98,6 @@ export const OrderSection = styled.section`
     color: #000000;
   }
   .price {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -121,7 +114,6 @@ export const OrderSection = styled.section`
   a {
     width: 100%;
     height: 44px;
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -153,7 +145,6 @@ export const NoData = styled.div`
     height: 32px;
   }
   .search {
-    font-family: "Noto Sans KR";
     font-weight: 700;
     font-size: 20px;
     line-height: 29px;

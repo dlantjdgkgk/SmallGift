@@ -13,7 +13,6 @@ export const NoData = styled.div`
     margin-bottom: 10px;
   }
   .search {
-    font-family: "Noto Sans KR";
     font-weight: 700;
     font-size: 20px;
     line-height: 29px;
@@ -31,7 +30,6 @@ export const ChoiceProductSection = styled.section`
     margin-bottom: 10px;
   }
   .choice {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 18px;
@@ -40,7 +38,6 @@ export const ChoiceProductSection = styled.section`
     color: #000000;
   }
   .more {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -50,7 +47,6 @@ export const ChoiceProductSection = styled.section`
     letter-spacing: -0.04em;
     color: #9d9d9d;
     span {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -85,7 +81,6 @@ export const ChoiceProductSection = styled.section`
       margin-bottom: 13px;
     }
     p {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -106,7 +101,6 @@ export const ChoiceProductSection = styled.section`
     margin-right: 16px;
   }
   .setName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -116,7 +110,6 @@ export const ChoiceProductSection = styled.section`
     margin-bottom: 2px;
   }
   .setMenu {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -125,7 +118,6 @@ export const ChoiceProductSection = styled.section`
     color: #9f9f9f;
   }
   .price {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;

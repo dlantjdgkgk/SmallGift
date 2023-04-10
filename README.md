@@ -8,26 +8,18 @@
 
 ## 🏠 배포주소
 
-주소 : [smallGift](https://smallgift.pages.dev/)
+주소 : https://smallgift.pages.dev
 
 <br>
-  <br>
   
   ## 🗳️ 목차
 
-1. [🗳️프로젝트 소개](#%EF%B8%8F-프로젝트-소개)
-2. [🖥️ 프로젝트 화면](#%EF%B8%8F-프로젝트-화면)
-3. [🛠️ 사용 기술](#%EF%B8%8F-사용-기술)
-4. [🏃‍♂️ 프로젝트 진행과정](#%EF%B8%8F-프로젝트-진행과정)
-5. [🗂️ 프로젝트 구조](#%EF%B8%8F-프로젝트-구조)
-6. [📜 개발 기록](#-개발-기록)
+1. [🖥️ 프로젝트 화면](#%EF%B8%8F-프로젝트-화면)
+2. [🛠️ 사용 기술](#%EF%B8%8F-사용-기술)
+3. [🗂️ 프로젝트 구조](#%EF%B8%8F-프로젝트-구조)
+4. [📜 트러블 슈팅](#-트러블-슈팅)
 
-    <br><br><br>
-
-# 🗳️ 프로젝트 소개
-
-
-### 1️⃣ 
+    <br>
 
 # 🖥️ 프로젝트 화면
 
@@ -37,32 +29,12 @@
 
 ## 💻 Web Languages / Libraries
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-004088.svg?style=for-the-badge&logo=typescript&logoColor=white) ![ReduxToolkit](https://img.shields.io/badge/Redux%20Toolkit-764ABC.svg?style=for-the-badge&logo=redux&logoColor=white) ![ReactQuery](https://img.shields.io/badge/React%20Query-FF4154.svg?style=for-the-badge&logo=reactquery&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-004088.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-![ReactAwesomeReveal](https://img.shields.io/badge/React%20Awesome%20Reveal-3668FF.svg?style=for-the-badge&logo=react&logoColor=white) ![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white) ![ErrorBoundary](https://img.shields.io/badge/Error%20Boundary-237F5AB6.svg?style=for-the-badge&logo=react&logoColor=white) ![Suspense](https://img.shields.io/badge/Suspense-1A2C34.svg?style=for-the-badge&logo=react&logoColor=white)
+![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white) ![Suspense](https://img.shields.io/badge/Suspense-1A2C34.svg?style=for-the-badge&logo=react&logoColor=white)
 
-![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white) ![Mantine](https://img.shields.io/badge/Mantine-3A33D1.svg?style=for-the-badge&logo=react&logoColor=white)
-
+![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
 <br>
-
-
-## 🎰 기능 소개
-
-<br>
-
-
-
-
-#### 공지사항
-
-<br>
-
-
-
-#### 남길 말
-
-- 
-  <br>
 
 ## 🛠️ 사용 기술
 
@@ -289,7 +261,7 @@
 
 <br>
 
-## 📜 개발 기록
+## 📜 트러블 슈팅
 
 [📜이슈 목록](https://www.notion.so/4d7ac5b9af814d369a3dc95edd4e88c5)
 

@@ -7,6 +7,9 @@ const Oauths = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  img {
+    width: 300px;
+  }
 `;
 
 const LogIn = () => {

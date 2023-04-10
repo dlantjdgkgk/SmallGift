@@ -13,7 +13,6 @@ export const ProductFilterSection = styled.section`
     margin-bottom: 24px;
   }
   select {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -26,7 +25,6 @@ export const ProductFilterSection = styled.section`
     border-radius: 70px;
     height: 29px;
     width: 77px;
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -50,7 +48,6 @@ export const ChoiceProductListSection = styled.section`
   }
 
   .keyword {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -69,7 +66,6 @@ export const ChoiceProductListSection = styled.section`
       margin-bottom: 13px;
     }
     p {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 400;
       font-size: 12px;
@@ -89,7 +85,6 @@ export const ChoiceProductListSection = styled.section`
     margin-right: 16px;
   }
   .setName {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -99,7 +94,6 @@ export const ChoiceProductListSection = styled.section`
     margin-bottom: 2px;
   }
   .setMenu {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
@@ -108,7 +102,6 @@ export const ChoiceProductListSection = styled.section`
     color: #9f9f9f;
   }
   .price {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 700;
     font-size: 14px;
@@ -133,7 +126,6 @@ export const ChoiceProductListSection = styled.section`
     border: 1px solid #6600cc;
     border-radius: 8px;
     margin-top: 16px;
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -159,7 +151,6 @@ export const NoData = styled.div`
     height: 32px;
   }
   .search {
-    font-family: "Noto Sans KR";
     font-weight: 700;
     font-size: 20px;
     line-height: 29px;

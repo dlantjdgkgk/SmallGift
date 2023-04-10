@@ -37,7 +37,6 @@ export const HeaderWrapper = styled.div<HeaderProps>`
     height: 36px;
   }
   .pageDescription {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;

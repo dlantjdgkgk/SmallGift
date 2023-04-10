@@ -20,7 +20,6 @@ export const OptionSection = styled.section`
     display: flex;
     justify-content: space-between;
     p {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 500;
       font-size: 16px;

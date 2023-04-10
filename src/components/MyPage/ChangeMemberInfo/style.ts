@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ChangeMemberInfoSection = styled.section`
   margin: 16px 16px 0px 16px;
   label {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -67,7 +66,6 @@ export const ChangeMemberInfoSection = styled.section`
     }
   }
   input::placeholder {
-    font-family: "Noto Sans KR";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -101,7 +99,6 @@ export const Section = styled.section`
     display: flex;
     justify-content: space-between;
     p {
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -122,7 +119,6 @@ export const Section = styled.section`
       margin-top: 32px;
       height: 44px;
       border-radius: 4px;
-      font-family: "Noto Sans KR";
       font-style: normal;
       font-size: 16px;
       line-height: 23px;

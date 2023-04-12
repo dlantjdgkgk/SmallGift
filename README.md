@@ -1,8 +1,45 @@
 # smallGift
 
+<div align='center'>
+
+```
+ 소상공인들을 위한 e쿠폰 서비스 플랫폼 😋
+```
+
+  <br>
+  
+[🗳️ smallGift 홈페이지](https://smallGift.pages.dev/)
+  
+</div>
+
 ## 🧑‍💻 프로젝트 소개
 
-소상공인들을 위한 e쿠폰 서비스 플랫폼 😋
+### 1️⃣ 가게 관리 서비스
+
+![image](https://user-images.githubusercontent.com/79708688/231369440-e305c771-15aa-405c-b35d-405213746ac7.png)
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/79708688/231369578-3ddbafb2-0750-429b-b732-8e5f2c0494b7.png)
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/79708688/231370090-23146ce3-b770-4cbe-8c9b-39ff3ad757ad.png)
+
+
+
+- 사장님은 사업자 등록을 통해 자신의 가게를 등록할 수 있다.
+- 상품을 등록할 수 있다
+- 자신의 가게 매출을 확인할 수 있다
+- 자신의 가게 상품을 관리할 수 있다.
+
+
+<br>
+
+### 2️⃣ 카테고리별 질문 등록 서비스
+
+어떠한 유형의 질문인지 카테고리를 설정하고 같이 등록해보세요!
+
+<br>
+
 
 <br>
 
@@ -25,6 +62,8 @@
 
 ## 1️⃣ 메인
 
+![Animation](https://user-images.githubusercontent.com/79708688/231338965-72246fd1-63e5-4396-9e19-ecfecead4dcd.gif)
+
 # 🛠️ 사용 기술
 
 ## 💻 Web Languages / Libraries
@@ -34,14 +73,6 @@
 ![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white) ![Suspense](https://img.shields.io/badge/Suspense-1A2C34.svg?style=for-the-badge&logo=react&logoColor=white)
 
 ![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
-<br>
-
-## 🛠️ 사용 기술
-
-- React
-- TypeScript
-- CSS in JS (Styled-Components)
-- CloudFlare                                                   |
 <br>
 
 ## 🗂️ 프로젝트 구조

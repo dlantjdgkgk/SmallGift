@@ -29,30 +29,45 @@
 <br>
 <br>
 
-
-
 - 사장님은 사업자 등록을 통해 자신의 가게를 등록할 수 있다.
 - 상품을 등록할 수 있다
 - 자신의 가게 매출을 확인할 수 있다
 - 자신의 가게 상품을 관리할 수 있다.
 
-
 <br>
 
 ### 2️⃣ 소상공인들을 위한 e쿠폰 서비스
 
-<p align="center">
 ![image](https://user-images.githubusercontent.com/79708688/232287122-ad402817-9e09-4ef9-b8ee-717b333269b1.png)
+<br>
 <br>
 ![image](https://user-images.githubusercontent.com/79708688/232287145-8aadb8b1-7576-43a5-ad83-3a9fd0ba0b03.png)
 <br>
+<br>
 ![image](https://user-images.githubusercontent.com/79708688/232287163-e5b5ec8f-d7e3-4041-978b-08b6ea542060.png)
-</p>
-
+<br>
 <br>
 
-
+![image](https://user-images.githubusercontent.com/79708688/232287890-7c61cada-9fb2-4697-8ba6-d84c0bc870f3.png)
 <br>
+<br>
+![image](https://user-images.githubusercontent.com/79708688/232287921-3d4f9d2e-b0c9-4edb-bbea-94feba91e479.png)
+<br>
+<br>
+![image](https://user-images.githubusercontent.com/79708688/232287940-cf964053-7de2-41ec-b6d5-2562a31478c6.png)
+<br>
+<br>
+
+- 사용자는 카테고리별, 지역구별, 지역별로 가게 검색이 가능하다
+- 사용자는 지역별 인기있는 기프티콘을 볼 수 있다
+- 사용자는 지역 설정을 통한 가게 검색이 가능하다
+- 사용자는 원하는 가게의 메뉴를 다른 사용자들에게 공유가 가능하다
+- 사용자는 가게의 원하는 메뉴를 다른 사람에게 선물 및 찜이 가능하다.
+- 사용자는 메뉴를 구입한 후 쿠폰 번호를 통해 기프티콘을 사용할 수 있다.
+- 사용자는 음식 키워드를 통해 가게 검색이 가능하다
+- 사용자는 마이페이지에서 정보 수정이 가능하다
+- 사용자는 최근 주문 내역, 찜한 상품, 취소/환불내역을 볼 수 있다.
+
 
 ## 🏠 배포주소
 

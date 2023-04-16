@@ -87,6 +87,17 @@
 
 ![Animation](https://user-images.githubusercontent.com/79708688/231338965-72246fd1-63e5-4396-9e19-ecfecead4dcd.gif)
 
+## 2️⃣ 가게페이지 및 결제 페이지
+
+![촬영2](https://user-images.githubusercontent.com/79708688/232289740-27e53296-45e2-48b2-bf5c-3cc4cb5a3756.gif)
+
+## 3️⃣ 검색 페이지
+
+![촬영23](https://user-images.githubusercontent.com/79708688/232290184-cf4d4826-b5ba-4cd7-acc6-797c196fb92b.gif)
+
+## 4️⃣ 마이 페이지
+
+
 # 🛠️ 사용 기술
 
 ## 💻 Web Languages / Libraries

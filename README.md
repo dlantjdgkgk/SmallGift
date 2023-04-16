@@ -39,9 +39,15 @@
 
 <br>
 
-### 2️⃣ 카테고리별 질문 등록 서비스
+### 2️⃣ 소상공인들을 위한 e쿠폰 서비스
 
-어떠한 유형의 질문인지 카테고리를 설정하고 같이 등록해보세요!
+<p align="center">
+![image](https://user-images.githubusercontent.com/79708688/232287122-ad402817-9e09-4ef9-b8ee-717b333269b1.png)
+<br>
+![image](https://user-images.githubusercontent.com/79708688/232287145-8aadb8b1-7576-43a5-ad83-3a9fd0ba0b03.png)
+<br>
+![image](https://user-images.githubusercontent.com/79708688/232287163-e5b5ec8f-d7e3-4041-978b-08b6ea542060.png)
+</p>
 
 <br>
 

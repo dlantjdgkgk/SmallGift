@@ -42,16 +42,12 @@
 
 ### 2️⃣ e쿠폰 서비스
 
-![image](https://user-images.githubusercontent.com/79708688/232287122-ad402817-9e09-4ef9-b8ee-717b333269b1.png)----------------
-![image](https://user-images.githubusercontent.com/79708688/232287145-8aadb8b1-7576-43a5-ad83-3a9fd0ba0b03.png)
+![image](https://user-images.githubusercontent.com/79708688/232656094-13eaf146-e207-41ea-b8d4-0b62b5643fdf.png)
 <br>
 <br>
-![image](https://user-images.githubusercontent.com/79708688/232287163-e5b5ec8f-d7e3-4041-978b-08b6ea542060.png)----------------
-![image](https://user-images.githubusercontent.com/79708688/232287890-7c61cada-9fb2-4697-8ba6-d84c0bc870f3.png)
+![image](https://user-images.githubusercontent.com/79708688/232656523-e3a46abc-284b-4a7b-8cc9-4c6e5d8eed41.png)<br>
 <br>
-<br>
-![image](https://user-images.githubusercontent.com/79708688/232287921-3d4f9d2e-b0c9-4edb-bbea-94feba91e479.png)----------------
-![image](https://user-images.githubusercontent.com/79708688/232287940-cf964053-7de2-41ec-b6d5-2562a31478c6.png)
+
 <br>
 <br>
 

@@ -327,6 +327,6 @@
 
 ## 📜 트러블 슈팅
 
-[📜이슈 목록](https://www.notion.so/4d7ac5b9af814d369a3dc95edd4e88c5)
+[📜이슈 목록](https://laced-ironclad-2c9.notion.site/655b855e150c4557a142e79d3276bd5a)
 
 <br>
